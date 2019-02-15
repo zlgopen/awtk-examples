@@ -1,0 +1,10 @@
+import os
+import sys
+import glob
+
+env=DefaultEnvironment().Clone()
+BIN_DIR='../bin'
+
+src_files = glob.glob('*.c')
+
+env.Program(os.path.join(BIN_DIR, 'demo'), src_files);

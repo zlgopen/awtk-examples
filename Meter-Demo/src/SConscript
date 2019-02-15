@@ -1,0 +1,10 @@
+import os
+import glob
+
+env=DefaultEnvironment().Clone();
+
+env['LINKFLAGS'] = env['OS_SUBSYSTEM_WINDOWS'] + env['LINKFLAGS'];
+
+src_files = glob.glob('*.c')
+env.Program(os.path.join('../bin', 'demo'), src_files);
+

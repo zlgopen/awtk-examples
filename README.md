@@ -6,9 +6,7 @@
 - HelloWorld-Demo：最简单的入门 Demo，包含基本的文本和按钮控件使用方法
 - CleanAir-Demo：新风系统演示 Demo
 - Meter-Demo：普通工业仪表演示 Demo
-- Motormeter-Demo：汽车仪表演示 Demo
 - Chart-Demo：图表演示 Demo，包含仪表、饼图、曲线图、柱状图
-- MusicPlayer-Demo：音乐播放器演示 Demo
 
 
 
@@ -18,7 +16,38 @@
 
 
 
-#### 使用方法：
+#### Windows 使用方法：
+
+1. 将 awtk 和 awtk-examples 下载到同一个文件夹下
+
+2. 修改 awtk 的 SConstruct 脚本使用 AGGE 渲染方式
+
+   ```
+   NANOVG_BACKEND='AGGE'
+   ```
+
+3. 进入 awtk 文件夹，在命令行中输入 scons 编译 awtk
+
+   ```
+   C:\zlgopen\awtk> scons
+   ```
+
+4. 进入 awtk-examples 中某个项目文件夹，在命令行中输入 scons 编译项目
+
+   ```
+   C:\zlgopen\awtk-examples\HelloWorld-Demo> scons
+   ```
+
+5. 进入项目的 bin 文件夹启动 demo
+
+   ```
+   C:\zlgopen\awtk-examples\HelloWorld-Demo\bin> demo.exe
+   ```
+
+
+
+
+#### AWorks 使用方法：
 
 1. 打开已经配置好的 AWTK（Eclipse） 工程
 
@@ -35,3 +64,7 @@
 4. 编译工程
 
 5. 下载到板子调试运行
+
+
+
+> 更详细的使用方法，请参考入门文档

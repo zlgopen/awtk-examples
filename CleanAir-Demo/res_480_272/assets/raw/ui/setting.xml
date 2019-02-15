@@ -1,0 +1,36 @@
+<window anim_hint="htranslate">
+    <button h="17" name="close" tr_text="Back" w="36" x="4" y="4"/>
+    <pages h="250" w="80%" x="right" y="23">
+        <view h="60%" layout="r:4 c:3" w="100%">
+            <label style="setting_page" tr_text="Indoor Temp"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="22.0" right_margin="16" step="0.1" text="22.0"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="2.0" right_margin="16" step="0.1" text="2.0"/>
+            <label style="setting_page" tr_text="Wind In/out"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="4.0"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="0.0"/>
+            <label style="setting_page" tr_text="Indoor Hum"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="75.0"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="5.0"/>
+            <label style="setting_page" tr_text="Cycle Delay"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="0.0"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="2.0"/>
+        </view>
+        <view h="60%" layout="r:4 c:2" w="100%">
+            <label style="setting_page" tr_text="High Temp Alarm"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="22.0" right_margin="16" step="0.1" text="35.0"/>
+            <label style="setting_page" tr_text="Low Temp Alarm"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="4.0" right_margin="16" step="0.1" text="10.0"/>
+            <label style="setting_page" tr_text="High Hum Alarm"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="90.0"/>
+            <label style="setting_page" tr_text="Low Hum Alarm"/>
+            <edit auto_fix="true" input_type="ufloat" max="150" min="0.0" right_margin="16" step="0.1" text="10.0"/>
+        </view>
+    </pages>
+    <list_view auto_hide_scroll_bar="true" h="250" item_height="30" w="20%" x="left" y="23">
+        <scroll_view h="100%" name="view" w="-12" x="0" y="0">
+            <tab_button tr_text="Control Setting" value="true"/>
+            <tab_button tr_text="Alarm Setting"/>
+        </scroll_view>
+        <scroll_bar_d h="100%" name="bar" value="0" w="12" x="right" y="0"/>
+    </list_view>
+</window>

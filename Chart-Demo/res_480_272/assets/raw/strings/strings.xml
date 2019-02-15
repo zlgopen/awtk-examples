@@ -1,0 +1,64 @@
+<string name="ok">
+    <language name="en_US">OK</language>
+    <language name="zh_CN">确定</language>
+</string>
+<string name="cancel">
+    <language name="en_US">Cancel</language>
+    <language name="zh_CN">取消</language>
+</string>
+<string name="main_title">
+    <language name="en_US">Chart Demo</language>
+    <language name="zh_CN">AWTK功能演示</language>
+</string>
+<string name="meter_title">
+    <language name="en_US">Dashboard</language>
+    <language name="zh_CN">仪表</language>
+</string>
+<string name="meter_a">
+    <language name="en_US">Dashboard A</language>
+    <language name="zh_CN">仪表A</language>
+</string>
+<string name="meter_b">
+    <language name="en_US">Dashboard B</language>
+    <language name="zh_CN">仪表B</language>
+</string>
+<string name="pie_title">
+    <language name="en_US">Pie Chart</language>
+    <language name="zh_CN">饼图</language>
+</string>
+<string name="line_title">
+    <language name="en_US">Graph</language>
+    <language name="zh_CN">曲线图</language>
+</string>
+<string name="bar_title">
+    <language name="en_US">Histogram</language>
+    <language name="zh_CN">柱状图</language>
+</string>
+<string name="mon">
+    <language name="en_US">Mon</language>
+    <language name="zh_CN">周一</language>
+</string>
+<string name="tues">
+    <language name="en_US">Tues</language>
+    <language name="zh_CN">周二</language>
+</string>
+<string name="wed">
+    <language name="en_US">Wed</language>
+    <language name="zh_CN">周三</language>
+</string>
+<string name="thur">
+    <language name="en_US">Thur</language>
+    <language name="zh_CN">周四</language>
+</string>
+<string name="fri">
+    <language name="en_US">Fri</language>
+    <language name="zh_CN">周五</language>
+</string>
+<string name="sat">
+    <language name="en_US">Sat</language>
+    <language name="zh_CN">周六</language>
+</string>
+<string name="sun">
+    <language name="en_US">Sun</language>
+    <language name="zh_CN">周日</language>
+</string>

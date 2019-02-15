@@ -1,0 +1,181 @@
+#include "awtk.h"
+#include "base/assets_manager.h"
+#ifndef WITH_FS_RES
+#include "assets/inc/strings/en_US.data"
+#include "assets/inc/strings/zh_CN.data"
+#include "assets/inc/styles/default.data"
+#include "assets/inc/styles/keyboard.data"
+#include "assets/inc/styles/system_bar.data"
+#include "assets/inc/ui/kb_ascii.data"
+#include "assets/inc/ui/kb_default.data"
+#include "assets/inc/ui/kb_float.data"
+#include "assets/inc/ui/kb_hex.data"
+#include "assets/inc/ui/kb_int.data"
+#include "assets/inc/ui/kb_phone.data"
+#include "assets/inc/ui/kb_ufloat.data"
+#include "assets/inc/ui/kb_uint.data"
+#include "assets/inc/ui/main.data"
+#include "assets/inc/ui/system_bar.data"
+#include "assets/inc/ui/window_bar_series.data"
+#include "assets/inc/ui/window_line_series.data"
+#include "assets/inc/ui/window_meter.data"
+#include "assets/inc/ui/window_pie.data"
+#ifdef WITH_STB_IMAGE
+#include "assets/inc/images/backspace.res"
+#include "assets/inc/images/back_normal.res"
+#include "assets/inc/images/back_pressed.res"
+#include "assets/inc/images/bg_main.res"
+#include "assets/inc/images/close_d.res"
+#include "assets/inc/images/close_n.res"
+#include "assets/inc/images/close_o.res"
+#include "assets/inc/images/close_p.res"
+#include "assets/inc/images/earth.res"
+#include "assets/inc/images/graph_normal.res"
+#include "assets/inc/images/graph_normal_en.res"
+#include "assets/inc/images/graph_pressed.res"
+#include "assets/inc/images/graph_pressed_en.res"
+#include "assets/inc/images/guage_bg_1.res"
+#include "assets/inc/images/guage_bg_2.res"
+#include "assets/inc/images/guage_pointer_1.res"
+#include "assets/inc/images/guage_pointer_2.res"
+#include "assets/inc/images/histogram_normal.res"
+#include "assets/inc/images/histogram_normal_en.res"
+#include "assets/inc/images/histogram_pressed.res"
+#include "assets/inc/images/histogram_pressed_en.res"
+#include "assets/inc/images/icon_1_normal.res"
+#include "assets/inc/images/icon_1_pressed.res"
+#include "assets/inc/images/icon_2_normal.res"
+#include "assets/inc/images/icon_2_pressed.res"
+#include "assets/inc/images/icon_3_normal.res"
+#include "assets/inc/images/icon_3_pressed.res"
+#include "assets/inc/images/icon_4_normal.res"
+#include "assets/inc/images/icon_4_pressed.res"
+#include "assets/inc/images/icon_5_normal.res"
+#include "assets/inc/images/icon_5_pressed.res"
+#include "assets/inc/images/icon_6_normal.res"
+#include "assets/inc/images/icon_6_pressed.res"
+#include "assets/inc/images/language_en.res"
+#include "assets/inc/images/language_zh.res"
+#include "assets/inc/images/meter_normal.res"
+#include "assets/inc/images/meter_normal_en.res"
+#include "assets/inc/images/meter_pressed.res"
+#include "assets/inc/images/meter_pressed_en.res"
+#include "assets/inc/images/new_normal.res"
+#include "assets/inc/images/new_pressed.res"
+#include "assets/inc/images/pause_mormal.res"
+#include "assets/inc/images/pause_pressed.res"
+#include "assets/inc/images/pie_label_normal.res"
+#include "assets/inc/images/pie_label_select.res"
+#include "assets/inc/images/pie_normal.res"
+#include "assets/inc/images/pie_normal_en.res"
+#include "assets/inc/images/pie_pressed.res"
+#include "assets/inc/images/pie_pressed_en.res"
+#include "assets/inc/images/play_normal.res"
+#include "assets/inc/images/play_pressed.res"
+#include "assets/inc/images/shift.res"
+#include "assets/inc/images/shifton.res"
+#else
+#endif/*WITH_STB_IMAGE*/
+#ifdef WITH_STB_FONT
+#ifdef WITH_MINI_FONT
+#include "assets/inc/fonts/default.mini.res"
+#else/*WITH_MINI_FONT*/
+#endif/*WITH_MINI_FONT*/
+#else/*WITH_STB_FONT*/
+#endif/*WITH_STB_FONT*/
+#endif/*WITH_FS_RES*/
+
+ret_t assets_init(void) {
+  assets_manager_t* rm = assets_manager();
+
+#ifdef WITH_FS_RES
+#ifdef WITH_MINI_FONT
+  asset_info_t* info = assets_manager_load(rm, ASSET_TYPE_FONT, "default.mini");
+  if (info) {
+    strcpy(info->name, "default");
+  }
+#else 
+  assets_manager_load(rm, ASSET_TYPE_FONT, "default");
+#endif
+  assets_manager_load(rm, ASSET_TYPE_STYLE, "default");
+#else
+#ifdef WITH_STB_FONT
+  assets_manager_add(rm, font_default);
+#endif
+  assets_manager_add(rm, image_backspace);
+  assets_manager_add(rm, image_back_normal);
+  assets_manager_add(rm, image_back_pressed);
+  assets_manager_add(rm, image_bg_main);
+  assets_manager_add(rm, image_close_d);
+  assets_manager_add(rm, image_close_n);
+  assets_manager_add(rm, image_close_o);
+  assets_manager_add(rm, image_close_p);
+  assets_manager_add(rm, image_earth);
+  assets_manager_add(rm, image_graph_normal);
+  assets_manager_add(rm, image_graph_normal_en);
+  assets_manager_add(rm, image_graph_pressed);
+  assets_manager_add(rm, image_graph_pressed_en);
+  assets_manager_add(rm, image_guage_bg_1);
+  assets_manager_add(rm, image_guage_bg_2);
+  assets_manager_add(rm, image_guage_pointer_1);
+  assets_manager_add(rm, image_guage_pointer_2);
+  assets_manager_add(rm, image_histogram_normal);
+  assets_manager_add(rm, image_histogram_normal_en);
+  assets_manager_add(rm, image_histogram_pressed);
+  assets_manager_add(rm, image_histogram_pressed_en);
+  assets_manager_add(rm, image_icon_1_normal);
+  assets_manager_add(rm, image_icon_1_pressed);
+  assets_manager_add(rm, image_icon_2_normal);
+  assets_manager_add(rm, image_icon_2_pressed);
+  assets_manager_add(rm, image_icon_3_normal);
+  assets_manager_add(rm, image_icon_3_pressed);
+  assets_manager_add(rm, image_icon_4_normal);
+  assets_manager_add(rm, image_icon_4_pressed);
+  assets_manager_add(rm, image_icon_5_normal);
+  assets_manager_add(rm, image_icon_5_pressed);
+  assets_manager_add(rm, image_icon_6_normal);
+  assets_manager_add(rm, image_icon_6_pressed);
+  assets_manager_add(rm, image_language_en);
+  assets_manager_add(rm, image_language_zh);
+  assets_manager_add(rm, image_meter_normal);
+  assets_manager_add(rm, image_meter_normal_en);
+  assets_manager_add(rm, image_meter_pressed);
+  assets_manager_add(rm, image_meter_pressed_en);
+  assets_manager_add(rm, image_new_normal);
+  assets_manager_add(rm, image_new_pressed);
+  assets_manager_add(rm, image_pause_mormal);
+  assets_manager_add(rm, image_pause_pressed);
+  assets_manager_add(rm, image_pie_label_normal);
+  assets_manager_add(rm, image_pie_label_select);
+  assets_manager_add(rm, image_pie_normal);
+  assets_manager_add(rm, image_pie_normal_en);
+  assets_manager_add(rm, image_pie_pressed);
+  assets_manager_add(rm, image_pie_pressed_en);
+  assets_manager_add(rm, image_play_normal);
+  assets_manager_add(rm, image_play_pressed);
+  assets_manager_add(rm, image_shift);
+  assets_manager_add(rm, image_shifton);
+  assets_manager_add(rm, style_default);
+  assets_manager_add(rm, style_keyboard);
+  assets_manager_add(rm, style_system_bar);
+  assets_manager_add(rm, ui_kb_ascii);
+  assets_manager_add(rm, ui_kb_default);
+  assets_manager_add(rm, ui_kb_float);
+  assets_manager_add(rm, ui_kb_hex);
+  assets_manager_add(rm, ui_kb_int);
+  assets_manager_add(rm, ui_kb_phone);
+  assets_manager_add(rm, ui_kb_ufloat);
+  assets_manager_add(rm, ui_kb_uint);
+  assets_manager_add(rm, ui_main);
+  assets_manager_add(rm, ui_system_bar);
+  assets_manager_add(rm, ui_window_bar_series);
+  assets_manager_add(rm, ui_window_line_series);
+  assets_manager_add(rm, ui_window_meter);
+  assets_manager_add(rm, ui_window_pie);
+  assets_manager_add(rm, strings_en_US);
+  assets_manager_add(rm, strings_zh_CN);
+#endif
+
+  tk_init_assets();
+  return RET_OK;
+}

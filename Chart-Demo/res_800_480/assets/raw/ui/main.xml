@@ -1,0 +1,14 @@
+<window anim_hint="htranslate" tr_text="main_title" style="main">
+    <image name="meter_image" x="30" y="57" w="180" h="318" clickable="true" />
+    <image name="pie_image" x="218" y="57" w="180" h="318" clickable="true" />
+    <image name="graph_image" x="406" y="57" w="180" h="318" clickable="true" />
+    <image name="histogram_image" x="594" y="57" w="180" h="318" clickable="true" />
+    <button name="meter" x="58" y="275" w="126" h="41" text="" style="main_meter"/>
+    <button name="pie" x="244" y="275" w="126" h="41" text="" style="main_pie"/>
+    <button name="graph" x="433" y="275" w="126" h="41" text="" style="main_graph"/>
+    <button name="histogram" x="620" y="275" w="126" h="41" text="" style="main_histogram"/>
+</window>
+
+
+
+

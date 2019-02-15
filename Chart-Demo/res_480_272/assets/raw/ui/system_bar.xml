@@ -1,0 +1,5 @@
+<system_bar h="30">
+    <label style="title" x="10" y="m" w="100" h="100%" name="title"/>
+    <digit_clock style="time" x="right:45" y="m" w="145" h="100%" format="Y-MM-DD hh:mm:ss"/>
+    <button style="language_zh" x="right:10" y="m" w="25" h="100%" name="language_btn" />
+</system_bar>

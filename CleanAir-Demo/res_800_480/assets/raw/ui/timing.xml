@@ -1,0 +1,17 @@
+<dialog anim_hint="center_scale" h="200" w="580" x="c" y="m">
+    <dialog_title h="35" tr_text="Timing Setting" w="100%" x="0" y="0"/>
+    <dialog_client h="-35" w="100%" x="0" y="bottom">
+        <row h="30" layout="row:1 col:3" w="200" x="30" y="10">
+            <label style="timing" tr_text="hour"/>
+            <label style="timing" tr_text="minute"/>
+            <label style="timing" tr_text="second"/>
+        </row>
+        <row h="120" layout="row:1 col:3" w="200" x="30" y="40">
+            <text_selector name="hour_selector" options="1-24" text="15" visible_nr="3"/>
+            <text_selector name="min_selector"  options="1-60" text="10" visible_nr="3"/>
+            <text_selector name="sec_selector"  options="1-60" text="16" visible_nr="3"/>
+        </row>
+        <button h="30" name="ok" style="timing_switch_btn" tr_text="On" w="150" x="right:30" y="33"/>
+        <button h="30" name="cancle" style="timing_switch_btn" tr_text="Off" w="150" x="right:30" y="96"/>
+    </dialog_client>
+</dialog>

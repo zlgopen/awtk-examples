@@ -1,0 +1,27 @@
+<window anim_hint="htranslate" tr_text="line_title">
+    <view x="460" y="7%" w="170" h="7%" layout="r1 c2 m4 s10">
+        <image name="typeie" clickable="true">
+            <label name="typeie_icon" y="m" w="10" h="10" style="typeie"/>
+            <label x="14" y="m" w="80%" h="100%" text="data1" style="series_label"/>
+        </image>
+        <image name="dayas" clickable="true">
+            <label name="dayas_icon" y="m" w="10" h="10" style="dayas"/>
+            <label x="14" y="m" w="80%" h="100%" text="data2" style="series_label"/>
+        </image>
+    </view>
+    <chart_view name="chartview" x="7%" y="14%" w="73.5%" h="79%">
+        <axis name="x" w="100%" h="100%" type="value" orientation="x" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}" data="[0,1,2,3,4,5,6,7,8,9,10,11]"/>
+        <axis name="y" w="100%" h="100%" type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
+        <line_series name="s1" w="100%" h="100%" capacity="12" line="{smooth:true, color:#69cf5c}" area={"show:true, color:#69cf5c66}" symbol="{show:true, fill_color:#69cf5c, stroke_color:#ffc393}"/>
+        <line_series name="s2" w="100%" h="100%" capacity="12" line="{smooth:true, color:#36b3c3}" area="{show:true, color:#36b3c366}" symbol="{show:true, fill_color:#36b3c3, stroke_color:#ffc393}"/>
+    </chart_view>
+    <view x="right" y="0" w="101" h="100%" style="seperate" />
+    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m20 s20" style="function_view">
+        <button name="new_graph" style="new"/>
+        <button name="line" style="line_select"/>
+        <button name="area" style="area_select"/>
+        <button name="symbol" style="symbol_select"/>
+        <button name="smooth" style="smooth_select"/>
+        <button name="close" style="back"/>
+    </view>
+</window>

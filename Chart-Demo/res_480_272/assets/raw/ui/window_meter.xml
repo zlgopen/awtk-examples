@@ -1,0 +1,23 @@
+<window anim_hint="htranslate" tr_text="meter_title">
+    <view name="guage_function_view" x="4%" y="0" w="79.5%" h="90%" layout="r:1 c:2 s:25" style="dark">
+        <guage  image="guage_bg_1" >
+            <guage_pointer name="left_pointer" x="c" y="m" w="7" h="90" value="-128" image="guage_pointer_1" 
+            animation="value(from=-128, to=128, yoyo_times=0, forever=TRUE, duration=3000, delay=1000)"/>
+        </guage>
+        <guage image="guage_bg_2" >
+            <guage_pointer name="right_pointer" x="c" y="m" w="7" h="90" value="-128" image="guage_pointer_2" 
+            animation="value(from=-128, to=128, yoyo_times=0, forever=TRUE, duration=3000, delay=1000)"/>
+        </guage>
+    </view>
+    <label name="meter_a" x="82" y="bottom:22" w="60" h="40" tr_text="meter_a" style="meter_name"/>
+    <label name="meter_b" x="right:136" y="bottom:22" w="60" h="40" tr_text="meter_b" style="meter_name"/>
+    <view x="right" y="0" w="61" h="100%" style="seperate"/>
+    <view name="right_menu" x="right" y="0" w="60" h="100%" layout="r6 c1 m10 s10" style="function_view">
+        <button name="function_start" text="" style="meter_start"/>
+        <button name="function_stop" text="" style="meter_stop"/>
+        <view />
+        <view />
+        <view />
+        <button name="close" style="back"/>
+    </view>
+</window>

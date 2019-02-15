@@ -1,0 +1,239 @@
+<window anim_hint="htranslate">
+    <button name="close" x="4" y="4" w="36" h="17" tr_text="Back"/>
+    <view x="4" y="20" w="100%" h="23" layout="r:1 c:5">
+        <label tr_text="Status" style="header"/>
+        <label tr_text="Indoor Temp" style="header"/>
+        <label tr_text="Outside Temp" style="header"/>
+        <label tr_text="Indoor Hum" style="header"/>
+        <label tr_text="Outside Hum" style="header"/>
+    </view>
+    <list_view x="4"  y="43" w="-8" h="227" item_height="23">
+        <scroll_view name="view" x="0"  y="0" w="100%" h="100%">
+            <list_item style="odd_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="odd_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="odd_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="odd_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="odd_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+            <list_item style="even_clickable" layout="r1 c0">
+                <image draw_type="icon" w="20%" image="bell"/>
+                <label w="20%" text="24.4℃"/>
+                <label w="20%" text="26.4℃"/>
+                <label w="20%" text="20%"/>
+                <label w="20%" text="30%"/>
+            </list_item>
+        </scroll_view>
+        <scroll_bar_m name="bar" x="right" y="0" w="6" h="100%" value="0"/>
+    </list_view>
+</window>

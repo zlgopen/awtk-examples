@@ -1,0 +1,14 @@
+__docs__
+*.o
+*.a
+*.so
+*.swp
+*.pdb 
+*.ilk 
+*.idb
+*.obj
+*.lib
+*.exp
+*.doc
+*.docx
+*.vsd

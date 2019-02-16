@@ -2,7 +2,6 @@
 
 #### 项目介绍：
 
-- awtk-demos：AWTK 内置的演示 Demo，包含各种控件的使用方法
 - HelloWorld-Demo：最简单的入门 Demo，包含基本的文本和按钮控件使用方法
 - CleanAir-Demo：新风系统演示 Demo
 - Meter-Demo：普通工业仪表演示 Demo
@@ -67,4 +66,18 @@
 
 
 
+> Eclipse 工程中的 awtk-demos 是 AWTK 的内置的示例，包含各种控件的使用方法
+>
 > 更详细的使用方法，请参考入门文档
+
+
+
+#### 运行效果截图：
+
+![HelloWorld-Demo](docs/images/helloworld_main.png)
+
+![CleanAir-Demo](docs/images/cleanair_main.png)
+
+![Meter-Demo](docs/images/meter_main.png)
+
+![Chart-Demo](docs/images/chart_main.png)

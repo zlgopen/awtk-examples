@@ -1,4 +1,5 @@
 __docs__
+__images__
 *.o
 *.a
 *.so

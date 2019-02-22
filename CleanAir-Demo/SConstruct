@@ -7,8 +7,10 @@ def joinPath(root, subdir):
 def getAwtkRoot():
   fo = open('assets_gen.bat', 'r')
   for line in fo.readlines():
+    line = line.replace('\r', '')
+    line = line.replace('\n', '')
     if line.find('AWTK_DIR=') != -1:
-      awtk_root = line.split('=')[1].replace('\n', '')
+      awtk_root = line.split('=')[1]
       return os.path.abspath(awtk_root)
 	  
 OS_NAME=platform.system()

@@ -13,3 +13,5 @@ __images__
 *.doc
 *.docx
 *.vsd
+.sconsign.dblite
+.vscode

@@ -20,8 +20,8 @@
         <bar_series name="s2" capacity="7" bar="{color:#36b3c3}"/>
         <bar_series name="s3" capacity="7" bar="{color:#327ad3}"/>
     </chart_view>
-    <view x="right" y="0" w="61" h="100%" style="seperate"/>
-    <view name="right_menu" x="right" y="0" w="60" h="100%" layout="r6 c1 m10 s10" style="function_view">
+    <view x="right" y="0" w="58" h="100%" style="seperate"/>
+    <view name="right_menu" x="right" y="0" w="57" h="100%" layout="r6 c1 m10 s10" style="function_view">
         <button name="new_graph" style="new"/>
         <view />
         <view />

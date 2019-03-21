@@ -90,6 +90,7 @@ static ret_t on_btn_view(void* ctx, event_t* e) {
     } else {
       widget_use_style(iter, "pie_label");
     }
+    widget_invalidate(iter, NULL);
   }
   WIDGET_FOR_EACH_CHILD_END();
 
@@ -118,6 +119,7 @@ static ret_t on_pie_view(void* ctx, event_t* e) {
   } else {
     widget_use_style(result, "pie_label");
   }
+  widget_invalidate(result, NULL);
   WIDGET_FOR_EACH_CHILD_END();
   str_reset(&str);
 
@@ -310,6 +312,7 @@ static ret_t on_arch(void* ctx, event_t* e) {
   } else {
     widget_use_style(target, "pie_circle");
   }
+  widget_invalidate(target, NULL);
   return RET_OK;
 }
 

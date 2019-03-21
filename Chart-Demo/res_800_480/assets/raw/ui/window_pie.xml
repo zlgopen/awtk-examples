@@ -7,7 +7,7 @@
         <pie_slice name="pie5_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie5"/>
         <pie_slice name="pie6_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie6"/>
     </view>
-    <view name="color_view" x="64%" y="20%" w="3%" h="60%" layout="r:6 c:1 s:25">
+    <view name="color_view" x="64%" y="20%" w="4%" h="60%" layout="r:6 c:1 s:19">
         <label name="pie1" text="" style="pie1"/>
         <label name="pie2" text="" style="pie2"/>
         <label name="pie3" text="" style="pie3"/>
@@ -15,7 +15,7 @@
         <label name="pie5" text="" style="pie5"/>
         <label name="pie6" text="" style="pie6"/>
     </view>
-    <view name="btn_view" x="70%" y="20%" w="69" h="60%" layout="r:6 c:1 s:25">
+    <view name="btn_view" x="72%" y="20%" w="69" h="60%" layout="r:6 c:1 s:19">
         <button name="pie1_label" text="pie1" style="pie_label"/>
         <button name="pie2_label" text="pie2" style="pie_label"/>
         <button name="pie3_label" text="pie3" style="pie_label"/>
@@ -24,7 +24,7 @@
         <button name="pie6_label" text="pie6" style="pie_label"/>
     </view>
     <view x="right" y="0" w="101" h="100%" style="seperate" />
-    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m20 s20" style="function_view">
+    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m19 s18" style="function_view">
         <button name="function_new_pie" style="new"/>
         <button name="function_arch" style="pie_annular"/>
         <view />

@@ -12,7 +12,7 @@
     <label name="meter_a" x="136" y="bottom:45" w="60" h="40" tr_text="meter_a" style="meter_name"/>
     <label name="meter_b" x="498" y="bottom:45" w="60" h="40" tr_text="meter_b" style="meter_name"/>
     <view x="right" y="0" w="101" h="100%" style="seperate" />
-    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m20 s20" style="function_view">
+    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m19 s18" style="function_view">
         <button name="function_start" text="" style="meter_start"/>
         <button name="function_stop"  text="" style="meter_stop"/>
         <view />

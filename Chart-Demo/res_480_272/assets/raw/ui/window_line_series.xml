@@ -15,8 +15,8 @@
         <line_series name="s1" capacity="12" line="{smooth:true, color:#69cf5c}" area="{show:true, color:#69cf5c66}" symbol="{show:true, fill_color:#69cf5c, stroke_color:#ffc393, size:3}"/>
         <line_series name="s2" capacity="12" line="{smooth:true, color:#36b3c3}" area="{show:true, color:#36b3c366}" symbol="{show:true, fill_color:#36b3c3, stroke_color:#ffc393, size:3}"/>
     </chart_view>
-    <view x="right" y="0" w="61" h="100%" style="seperate" />
-    <view name="right_menu" x="right" y="0" w="60" h="100%" layout="r6 c1 m10 s10" style="function_view">
+    <view x="right" y="0" w="58" h="100%" style="seperate" />
+    <view name="right_menu" x="right" y="0" w="57" h="100%" layout="r6 c1 m10 s10" style="function_view">
         <button name="new_graph" style="new"/>
         <button name="line" style="line_select"/>
         <button name="area" style="area_select"/>

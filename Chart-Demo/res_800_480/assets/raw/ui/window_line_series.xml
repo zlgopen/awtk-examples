@@ -16,7 +16,7 @@
         <line_series name="s2" w="100%" h="100%" capacity="12" line="{smooth:true, color:#36b3c3}" area="{show:true, color:#36b3c366}" symbol="{show:true, fill_color:#36b3c3, stroke_color:#ffc393}"/>
     </chart_view>
     <view x="right" y="0" w="101" h="100%" style="seperate" />
-    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m20 s20" style="function_view">
+    <view name="right_menu" x="right" y="0" w="100" h="100%" layout="r6 c1 m19 s18" style="function_view">
         <button name="new_graph" style="new"/>
         <button name="line" style="line_select"/>
         <button name="area" style="area_select"/>

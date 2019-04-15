@@ -28,5 +28,10 @@
 	@set PY_VERSION=py -2
 )
 
+@rem Œ™¡À  ≈‰awtk∞Ê±æ(sha=4b7f6c59449fab21dd7859e5ace6422533dddb82)
+@if exist %cd%\assets\raw\fonts\default.mini.ttf (
+    @rename %cd%\assets\raw\fonts\default.mini.ttf default_mini.ttf
+)
+
 %PY_VERSION% ../assets_gen.py %AWTK_BIN_DIR% ./assets/raw ./assets/inc
 %PY_VERSION% ../assets_c_gen.py ./assets

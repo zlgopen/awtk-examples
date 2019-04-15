@@ -326,7 +326,7 @@ static ret_t pie_slice_on_paint_self(widget_t* widget, canvas_t* c) {
 
 ret_t pie_slice_set_value(widget_t* widget, float_t value) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   if (pie_slice->value != value) {
     event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
@@ -342,7 +342,7 @@ ret_t pie_slice_set_value(widget_t* widget, float_t value) {
 
 ret_t pie_slice_set_max(widget_t* widget, uint32_t max) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->max = max;
 
@@ -351,7 +351,7 @@ ret_t pie_slice_set_max(widget_t* widget, uint32_t max) {
 
 ret_t pie_slice_set_inner_radius(widget_t* widget, uint32_t inner_radius) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->inner_radius = inner_radius;
 
@@ -360,7 +360,7 @@ ret_t pie_slice_set_inner_radius(widget_t* widget, uint32_t inner_radius) {
 
 ret_t pie_slice_set_start_angle(widget_t* widget, int32_t start_angle) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->start_angle = start_angle;
 
@@ -369,7 +369,7 @@ ret_t pie_slice_set_start_angle(widget_t* widget, int32_t start_angle) {
 
 ret_t pie_slice_set_unit(widget_t* widget, const char* unit) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->unit = tk_str_copy(pie_slice->unit, unit);
 
@@ -378,7 +378,7 @@ ret_t pie_slice_set_unit(widget_t* widget, const char* unit) {
 
 ret_t pie_slice_set_show_text(widget_t* widget, bool_t show_text) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->show_text = show_text;
 
@@ -387,7 +387,7 @@ ret_t pie_slice_set_show_text(widget_t* widget, bool_t show_text) {
 
 ret_t pie_slice_set_is_exploded(widget_t* widget, bool_t is_exploded) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->is_exploded = is_exploded;
 
@@ -396,7 +396,7 @@ ret_t pie_slice_set_is_exploded(widget_t* widget, bool_t is_exploded) {
 
 ret_t pie_slice_set_counter_clock_wise(widget_t* widget, bool_t counter_clock_wise) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->counter_clock_wise = counter_clock_wise;
 
@@ -405,7 +405,7 @@ ret_t pie_slice_set_counter_clock_wise(widget_t* widget, bool_t counter_clock_wi
 
 ret_t pie_slice_set_semicircle(widget_t* widget, bool_t is_semicircle) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   pie_slice->is_semicircle = is_semicircle;
 
@@ -414,7 +414,7 @@ ret_t pie_slice_set_semicircle(widget_t* widget, bool_t is_semicircle) {
 
 static ret_t pie_slice_get_prop(widget_t* widget, const char* name, value_t* v) {
   pie_slice_t* pie_slice = PIE_SLICE(widget);
-  return_value_if_fail(widget != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(pie_slice != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
 
   if (tk_str_eq(name, WIDGET_PROP_VALUE)) {
     value_set_float(v, pie_slice->value);

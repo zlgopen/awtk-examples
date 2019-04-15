@@ -35,7 +35,10 @@ def genAssetsManagerAdd(assets_inc_dir, filter, dir_name, name, suffix):
   result = ''
   for f in files:
     basename = GetFileBaseName(copy.copy(f), assets_inc_dir, dir_name,  suffix)
-    result += '  assets_manager_add(rm, ' + name + basename + ');\n'
+    if dir_name == "data":
+      result += '  assets_manager_add(rm, ' + name + basename + '_bin' +');\n'
+    else:
+      result += '  assets_manager_add(rm, ' + name + basename + ');\n'
   return result
 
 def gen_assets_c(assets_dir, assets_c_path):
@@ -51,7 +54,8 @@ def gen_assets_c(assets_dir, assets_c_path):
   
   files=glob.glob(joinPath(assets_inc_dir, 'strings/*.data')) \
     + glob.glob(joinPath(assets_inc_dir, 'styles/*.data')) \
-    + glob.glob(joinPath(assets_inc_dir, 'ui/*.data')) 
+    + glob.glob(joinPath(assets_inc_dir, 'ui/*.data')) \
+    + glob.glob(joinPath(assets_inc_dir, 'data/*.res')) 
   result += genIncludes(files, assets_inc_dir);
 
   result += "#ifdef WITH_STB_IMAGE\n"
@@ -64,7 +68,7 @@ def gen_assets_c(assets_dir, assets_c_path):
   
   result += "#ifdef WITH_STB_FONT\n"
   result += "#ifdef WITH_MINI_FONT\n"
-  files=glob.glob(joinPath(assets_inc_dir, 'fonts/default.mini.res')) 
+  files=glob.glob(joinPath(assets_inc_dir, 'fonts/default_mini.res')) 
   result += genIncludes(files, assets_inc_dir)
   result += "#else/*WITH_MINI_FONT*/\n"
   files=glob.glob(joinPath(assets_inc_dir, 'fonts/default.res')) 
@@ -83,26 +87,26 @@ def gen_assets_c(assets_dir, assets_c_path):
   result += ''
 
   result += '#ifdef WITH_FS_RES\n'
-  result += '#ifdef WITH_MINI_FONT\n'
-  result += '  asset_info_t* info = assets_manager_load(rm, ASSET_TYPE_FONT, "default.mini");\n'
-  result += '  if (info) {\n'
-  result += '    strcpy(info->name, "default");\n'
-  result += '  }\n'
-  result += '#else \n'
-  result += '  assets_manager_load(rm, ASSET_TYPE_FONT, "default");\n'
-  result += '#endif\n'
-  result += '  assets_manager_load(rm, ASSET_TYPE_STYLE, "default");\n'
+  result += '#if defined(WITH_MINI_FONT)\n'
+  result += '  assets_manager_preload(rm, ASSET_TYPE_FONT, "default_mini");\n'
+  result += '#else/*WITH_MINI_FONT*/\n'
+  result += '  assets_manager_preload(rm, ASSET_TYPE_FONT, "default");\n'
+  result += '#endif/*WITH_MINI_FONT*/\n'
+  result += '  assets_manager_preload(rm, ASSET_TYPE_STYLE, "default");\n'
   result += '#else\n'
   
-  result += '#ifdef WITH_STB_FONT\n'
-  result += '  assets_manager_add(rm, font_default'  + ');\n'
- 
+  result += '#if defined(WITH_MINI_FONT) && (defined(WITH_STB_FONT) || defined(WITH_FT_FONT))\n'
+  result += '  assets_manager_add(rm, font_default_mini);\n'
+  result += '#else/*WITH_MINI_FONT*/\n'
+  result += '   assets_manager_add(rm, font_default);\n'
+
   result += genAssetsManagerAdd(assets_inc_dir, 'fonts/*.data', 'fonts', 'font_', '.data')
   result += '#endif\n'
   result += genAssetsManagerAdd(assets_inc_dir, 'images/*.res', 'images', 'image_', '.res')
   result += genAssetsManagerAdd(assets_inc_dir, 'styles/*.data', 'styles', 'style_', '.data')
-  result += genAssetsManagerAdd(assets_inc_dir, 'ui/*.data', 'ui', 'ui_',  '.data')
+  result += genAssetsManagerAdd(assets_inc_dir, 'ui/*.data', 'ui', 'ui_', '.data')
   result += genAssetsManagerAdd(assets_inc_dir, 'strings/*.data', 'strings', 'strings_', '.data')
+  result += genAssetsManagerAdd(assets_inc_dir, 'data/*.res', 'data', 'data_', '.res')
   result += '#endif\n'
 
   result += '\n'

@@ -1,0 +1,37 @@
+<dialog anim_hint="fade"  x="right" y="bottom:73" w="50%" h="355" style="bg_setting">
+    <view x="0" y="0" w="100%" h="10%" style="dialog_title_gray">
+        <button name="close" x="right:20" y="0" w="28" h="35" style="s_setting_close"/>
+        <label x="15" y="0" w="20%" h="100%" tr_text="Advanced" style="title"/> 
+    </view>        
+
+    <view name="guage_pointer_view" x="0" y="10%" w="100%" h="100%">
+        <view name="guage_low" x="20%" y="10%" w="120" h="120">
+            <label x="left" y="middle:35" w="10" h="10" text="-"/>
+            <label x="right" y="middle:35" w="10" h="10" text="+"/>  
+            <label x="center" y="bottom" w="10" h="10" tr_text="Low"/>
+            <progress_circle name="circle_low"  w="120" h="120" max="360" style="blue" start_angle="150" value="120" line_width="2"/>
+            <guage_pointer  x="17" y="17" name="low_guage_pointer" w="86" h="86"  image="btn_round"/>  
+        </view>   
+        <view name="guage_high" x="60%" y="10%" w="120" h="120">
+            <label x="left" y="middle:35" w="10" h="10" text="-"/>
+            <label x="right" y="middle:35" w="10" h="10" text="+"/>        
+            <label x="center" y="bottom" w="10" h="10" tr_text="High"/>
+            <progress_circle name="circle_high" w="120" h="120" max="360" style="blue" start_angle="150" value="120" line_width="2" />
+            <guage_pointer x="17" y="17" name="high_guage_pointer"  w="86" h="86"  image="btn_round"/>  
+        </view> 
+        <view name="guage_round" x="20%" y="50%" w="120" h="120">
+            <label x="left" y="middle:35" w="10" h="10" text="-"/>
+            <label x="right" y="middle:35" w="10" h="10" text="+"/>        
+            <label x="center" y="bottom" w="10" h="10" tr_text="SURR-Strenth"/>
+            <progress_circle name="circle_round" w="120" h="120" max="360" style="blue" start_angle="150" value="120" line_width="2"/>        
+            <guage_pointer x="17" y="17" name="round_guage_pointer"  w="86" h="86"  image="btn_round"/>
+        </view> 
+        <view name="guage_deep" x="60%" y="50%" w="120" h="120">
+            <label x="left" y="middle:35" w="10" h="10" text="-"/>
+            <label x="right" y="middle:35" w="10" h="10" text="+"/>        
+            <label x="center" y="bottom" w="10" h="10" tr_text="SURR-Depth"/>
+            <progress_circle name="circle_deep" w="120" h="120" max="360" style="blue" start_angle="150" value="120" line_width="2"/>        
+            <guage_pointer x="17" y="17" name="deep_guage_pointer" w="86" h="86"  image="btn_round"/>
+        </view>  
+    </view> 
+</dialog>

@@ -13,7 +13,7 @@
 #endif/*WITH_STB_IMAGE*/
 #ifdef WITH_STB_FONT
 #ifdef WITH_MINI_FONT
-#include "assets/inc/fonts/default.mini.res"
+#include "assets/inc/fonts/default_mini.res"
 #else/*WITH_MINI_FONT*/
 #endif/*WITH_MINI_FONT*/
 #else/*WITH_STB_FONT*/
@@ -24,18 +24,17 @@ ret_t assets_init(void) {
   assets_manager_t* rm = assets_manager();
 
 #ifdef WITH_FS_RES
-#ifdef WITH_MINI_FONT
-  asset_info_t* info = assets_manager_load(rm, ASSET_TYPE_FONT, "default.mini");
-  if (info) {
-    strcpy(info->name, "default");
-  }
-#else 
-  assets_manager_load(rm, ASSET_TYPE_FONT, "default");
-#endif
-  assets_manager_load(rm, ASSET_TYPE_STYLE, "default");
+#if defined(WITH_MINI_FONT)
+  assets_manager_preload(rm, ASSET_TYPE_FONT, "default_mini");
+#else/*WITH_MINI_FONT*/
+  assets_manager_preload(rm, ASSET_TYPE_FONT, "default");
+#endif/*WITH_MINI_FONT*/
+  assets_manager_preload(rm, ASSET_TYPE_STYLE, "default");
 #else
-#ifdef WITH_STB_FONT
-  assets_manager_add(rm, font_default);
+#if defined(WITH_MINI_FONT) && (defined(WITH_STB_FONT) || defined(WITH_FT_FONT))
+  assets_manager_add(rm, font_default_mini);
+#else/*WITH_MINI_FONT*/
+   assets_manager_add(rm, font_default);
 #endif
   assets_manager_add(rm, image_bg);
   assets_manager_add(rm, image_bg_480_272);

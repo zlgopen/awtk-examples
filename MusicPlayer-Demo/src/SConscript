@@ -1,0 +1,15 @@
+﻿import os
+import sys
+import glob
+
+env=DefaultEnvironment().Clone()
+BIN_DIR='../bin'
+
+env['LINKFLAGS'] = env['OS_SUBSYSTEM_WINDOWS'] + env['LINKFLAGS'];
+
+src_files = glob.glob('*.c')
+src_files += glob.glob('custom_function/*.c')
+src_files += glob.glob('custom_widgets/*.c')
+src_files += glob.glob('custom_widgets/*/*.c')
+
+env.Program(os.path.join(BIN_DIR, 'demo'), src_files);

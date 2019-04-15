@@ -114,7 +114,7 @@ def genImage(tools_dir, src_dir, dst_dir, dpi):
   IMAGEGEN_OPTIONS = '\"bgra|bgr565\"'
   suffix = ['.png', '.jpg']
   # generate(tools_dir, 'imagegen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.data', IMAGEGEN_OPTIONS, 1)
-  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 0)
+  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 1)
 
 def genUI(tools_dir, src_dir, dst_dir): 
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', dst_dir, 'ui', '.data', '', 1)

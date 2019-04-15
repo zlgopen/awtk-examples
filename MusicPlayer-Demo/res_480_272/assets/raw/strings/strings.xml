@@ -1,0 +1,49 @@
+<string name="ok">
+<language name="en_US">OK</language>
+<language name="zh_CN">确定</language>
+</string>
+
+<string name="Close">
+<language name="en_US">Close</language>
+<language name="zh_CN">关闭</language>
+</string>
+
+<string name="Music Player">
+<language name="en_US">Music Player</language>
+<language name="zh_CN">Music Player</language>
+</string>
+
+<string name="Play List">
+<language name="en_US">Play List</language>
+<language name="zh_CN">播放列表</language>
+</string>
+
+<string name="Low">
+<language name="en_US">Low</language>
+<language name="zh_CN">低音</language>
+</string>
+
+<string name="High">
+<language name="en_US">High</language>
+<language name="zh_CN">高音</language>
+</string>
+
+<string name="SURR-Strenth">
+<language name="en_US">SURR-Strenth</language>
+<language name="zh_CN">环绕强度</language>
+</string>
+
+<string name="SURR-Depth">
+<language name="en_US">SURR-Depth</language>
+<language name="zh_CN">环绕深度</language>
+</string>
+
+<string name="EQ">
+<language name="en_US">EQ</language>
+<language name="zh_CN">均衡器</language>
+</string>
+
+<string name="Advanced">
+<language name="en_US">Advanced</language>
+<language name="zh_CN">高级设置</language>
+</string>

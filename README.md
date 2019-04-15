@@ -6,6 +6,7 @@
 - CleanAir-Demo：新风系统演示 Demo
 - Meter-Demo：普通工业仪表演示 Demo
 - Chart-Demo：图表演示 Demo，包含仪表、饼图、曲线图、柱状图
+- MusicPlayer-Demo：音乐播放器演示 Demo
 
 
 
@@ -83,3 +84,5 @@
 ![Meter-Demo](docs/images/meter_main.png)
 
 ![Chart-Demo](docs/images/chart_main.png)
+
+![MusicPlayer-Demo](docs/images/musicplayer_main.png)

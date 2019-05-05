@@ -27,7 +27,7 @@ static ret_t on_close(void* ctx, event_t* e) {
   return window_close(win);
 }
 
-static ret_t init_widget(void* ctx, void* iter) {
+static ret_t init_widget(void* ctx, const void* iter) {
   widget_t* widget = WIDGET(iter);
 
   (void)ctx;

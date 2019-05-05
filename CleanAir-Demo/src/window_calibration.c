@@ -23,7 +23,7 @@
 
 ret_t open_main_window(void);
 
-static ret_t init_widget(void* ctx, void* iter) {
+static ret_t init_widget(void* ctx, const void* iter) {
   widget_t* widget = WIDGET(iter);
 
   (void)ctx;

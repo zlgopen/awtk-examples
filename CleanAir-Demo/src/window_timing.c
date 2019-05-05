@@ -67,7 +67,7 @@ static ret_t on_cancle(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static ret_t init_widget(void* ctx, void* iter) {
+static ret_t init_widget(void* ctx, const void* iter) {
   widget_t* widget = WIDGET(iter);
 
   (void)ctx;

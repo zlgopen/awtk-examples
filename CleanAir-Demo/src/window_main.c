@@ -525,7 +525,7 @@ static ret_t on_humidity_dec(void* ctx, event_t* e) {
 /**
  * 子控件初始化(主要是设置click回调、初始显示信息)
  */
-static ret_t init_widget(void* ctx, void* iter) {
+static ret_t init_widget(void* ctx, const void* iter) {
   widget_t* widget = WIDGET(iter);
 
   (void)ctx;

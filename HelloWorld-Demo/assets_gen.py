@@ -113,19 +113,22 @@ def genFont(tools_dir, src_dir, dst_dir):
 def genImage(tools_dir, src_dir, dst_dir, dpi): 
   IMAGEGEN_OPTIONS = '\"bgra|bgr565\"'
   suffix = ['.png', '.jpg']
-  # generate(tools_dir, 'imagegen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.data', IMAGEGEN_OPTIONS, 1)
   generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 1)
-
+  #generate(tools_dir, 'imagegen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.data', IMAGEGEN_OPTIONS, 0)
+  
+def genData(tools_dir, src_dir, dst_dir): 
+  generate(tools_dir, 'resgen', src_dir, 'data', '.bin', dst_dir, 'data', '.res', '', 1)
+  
 def genUI(tools_dir, src_dir, dst_dir): 
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', dst_dir, 'ui', '.data', '', 1)
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', src_dir, 'ui', '.bin', 'bin', 0)
 
 def check_python_version():
-	major_version = sys.version_info[0]
-	if major_version > 2:
-		print("The python version is %d.%d. But python2.x is required.(Version 2.7 is well tested!)" %(major_version, sys.version_info[1]))
-		return True
-	return False
+  major_version = sys.version_info[0]
+  if major_version > 2:
+    print("The python version is %d.%d. But python2.x is required.(Version 2.7 is well tested!)" %(major_version, sys.version_info[1]))
+    return True
+  return False
 
 def run():
   if check_python_version():
@@ -164,5 +167,7 @@ def run():
     genImage(tools_dir, src_dir, dst_dir, dpi)
   if opt == '' or opt == '-ui':
     genUI(tools_dir, src_dir, dst_dir)
+  if opt == '' or opt == '-data':
+    genData(tools_dir, src_dir, dst_dir)
 
 run()

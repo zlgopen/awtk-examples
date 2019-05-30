@@ -393,7 +393,7 @@ float_t axis_measure_label(widget_t* widget, canvas_t* c) {
   axis_label_params_t* params = &(axis->label);
   LABEL_FOR_EACH_DATA_BEGIN(params, iter, i)
   if (iter) {
-    canvas_set_font(c, params->font.name ? params->font.name : TK_DEFAULT_FONT, params->font.size);
+    canvas_set_font(c, params->font.name ? params->font.name : "default", params->font.size);
     ret = tk_max(ret, canvas_measure_text(c, iter->str, iter->size));
   }
   LABEL_FOR_EACH_DATA_END();

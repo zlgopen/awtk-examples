@@ -316,7 +316,7 @@ void axis_render_draw_label_x(canvas_t* c, float_t x, float_t y, float_t w, floa
     }
 
     canvas_set_text_color(c, param->font.color);
-    canvas_set_font(c, param->font.name ? param->font.name : TK_DEFAULT_FONT, param->font.size);
+    canvas_set_font(c, param->font.name ? param->font.name : "default", param->font.size);
     if (at == AXIS_AT_TOP) {
       canvas_set_text_align(c, ALIGN_H_CENTER, ALIGN_V_BOTTOM);
       h -= -tick_len + margin;
@@ -357,7 +357,7 @@ void axis_render_draw_label_y(canvas_t* c, float_t x, float_t y, float_t w, floa
     }
 
     canvas_set_text_color(c, param->font.color);
-    canvas_set_font(c, param->font.name ? param->font.name : TK_DEFAULT_FONT, param->font.size);
+    canvas_set_font(c, param->font.name ? param->font.name : "default", param->font.size);
     if (at == AXIS_AT_RIGHT) {
       canvas_set_text_align(c, ALIGN_H_LEFT, ALIGN_V_MIDDLE);
       x += tick_len + margin;

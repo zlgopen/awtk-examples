@@ -14,8 +14,8 @@ def getAwtkRoot():
 sys.path.insert(0, getAwtkRoot())
 import awtk_config as awtk
 
-APP_CPPPATH = ['src/chars/']
-APP_CCFLAGS = '-DWITH_MINI_FONT '
+APP_CPPPATH = []
+APP_CCFLAGS = ' '
 
 LCD_FLAG = ARGUMENTS.get('LCD', 0)
 if LCD_FLAG == '480_272':

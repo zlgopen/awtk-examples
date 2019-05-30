@@ -66,18 +66,13 @@ def gen_assets_c(assets_dir, assets_c_path):
   result += genIncludes(files, assets_inc_dir)
   result += '#endif/*WITH_STB_IMAGE*/\n'
   
-  result += "#ifdef WITH_STB_FONT\n"
-  result += "#ifdef WITH_MINI_FONT\n"
-  files=glob.glob(joinPath(assets_inc_dir, 'fonts/default_mini.res')) 
+  result += "#if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)\n"
+  files=glob.glob(joinPath(assets_inc_dir, 'fonts/*.res'))
   result += genIncludes(files, assets_inc_dir)
-  result += "#else/*WITH_MINI_FONT*/\n"
-  files=glob.glob(joinPath(assets_inc_dir, 'fonts/default.res')) 
+  result += "#else/*WITH_STB_FONT or WITH_FT_FONT*/\n"
+  files=glob.glob(joinPath(assets_inc_dir, 'fonts/*.data'))
   result += genIncludes(files, assets_inc_dir)
-  result += '#endif/*WITH_MINI_FONT*/\n'
-  result += "#else/*WITH_STB_FONT*/\n"
-  files=glob.glob(joinPath(assets_inc_dir, 'fonts/*.data')) 
-  result += genIncludes(files, assets_inc_dir)
-  result += '#endif/*WITH_STB_FONT*/\n'
+  result += '#endif/*WITH_STB_FONT or WITH_FT_FONT*/\n'
 
   result += '#endif/*WITH_FS_RES*/\n'
 
@@ -87,21 +82,11 @@ def gen_assets_c(assets_dir, assets_c_path):
   result += ''
 
   result += '#ifdef WITH_FS_RES\n'
-  result += '#if defined(WITH_MINI_FONT)\n'
-  result += '  assets_manager_preload(rm, ASSET_TYPE_FONT, "default_mini");\n'
-  result += '#else/*WITH_MINI_FONT*/\n'
   result += '  assets_manager_preload(rm, ASSET_TYPE_FONT, "default");\n'
-  result += '#endif/*WITH_MINI_FONT*/\n'
   result += '  assets_manager_preload(rm, ASSET_TYPE_STYLE, "default");\n'
   result += '#else\n'
   
-  result += '#if defined(WITH_MINI_FONT) && (defined(WITH_STB_FONT) || defined(WITH_FT_FONT))\n'
-  result += '  assets_manager_add(rm, font_default_mini);\n'
-  result += '#else/*WITH_MINI_FONT*/\n'
-  result += '   assets_manager_add(rm, font_default);\n'
-
-  result += genAssetsManagerAdd(assets_inc_dir, 'fonts/*.data', 'fonts', 'font_', '.data')
-  result += '#endif\n'
+  result += genAssetsManagerAdd(assets_inc_dir, 'fonts/*.res', 'fonts', 'font_', '.res')
   result += genAssetsManagerAdd(assets_inc_dir, 'images/*.res', 'images', 'image_', '.res')
   result += genAssetsManagerAdd(assets_inc_dir, 'styles/*.data', 'styles', 'style_', '.data')
   result += genAssetsManagerAdd(assets_inc_dir, 'ui/*.data', 'ui', 'ui_', '.data')

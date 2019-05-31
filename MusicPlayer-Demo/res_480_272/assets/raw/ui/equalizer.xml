@@ -10,31 +10,31 @@
             <label name="db_12_neg" y="95%" w="100%" h="3" text="-12db" style="eq_text"/>
         </view>
         <view name="view" x="8%"  y="0" w="90%" h="60%">
-            <slider name="frequency_0" text="31" x="0" w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_0" text="31" x="0" w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="31" x="0" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_1" text="63"  x="10%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_1" text="63"  x="10%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="63" x="10%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_2" text="125"  x="20%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_2" text="125"  x="20%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="125" x="20%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_3" text="250"  x="30%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_3" text="250"  x="30%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="250" x="30%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_4" text="500"  x="40%" w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_4" text="500"  x="40%" w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="500" x="40%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_5" text="1k"  x="50%" w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_5" text="1k"  x="50%" w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="1k" x="50%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_6" text="2k"  x="60%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_6" text="2k"  x="60%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="2k" x="60%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_7" text="4k"  x="70%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_7" text="4k"  x="70%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="4k" x="70%" y="bottom" w="6" h="20%"  style="eq_text"/>
 
-            <slider name="frequency_8" text="8k"  x="80%"  w="9" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
+            <slider name="frequency_8" text="8k"  x="80%"  w="15" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="8k" x="80%" y="bottom" w="6" h="20%"  style="eq_text"/>
     </view>
 </view>

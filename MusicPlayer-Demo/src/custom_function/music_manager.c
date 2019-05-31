@@ -76,17 +76,21 @@ void init_player(widget_t* win) {
 void update_lrc(int32_t value, widget_t* win) {
   value_t val;
   value_t v_lrc_time;
+  value_t v_lrc_time_next;
   widget_t* lrc_scroll = widget_lookup(win, "lrc_scroll", TRUE);
-
-  for (int32_t i = 0; i < lrc_scroll->children->size; i++) {
+  list_view_t* lrc_view = LIST_VIEW(widget_lookup(win,"lrc_view",TRUE));
+  int32_t size = lrc_scroll->children->size;
+  for (int32_t i = 0; i < size; i++) {
     if (widget_get_prop(win, "lrc_move", &val) != RET_OK || value_bool(&val) == FALSE) break;
     widget_get_prop(WIDGET(lrc_scroll->children->elms[i]), "lrc_time", &v_lrc_time);
-    if (value_int32(&v_lrc_time) >= value) {
-      for (int32_t k = 0; k < lrc_scroll->children->size; k++) {
+    int32_t next_id = ((i+1)< size) ? (i + 1) : i;  
+    widget_get_prop(WIDGET(lrc_scroll->children->elms[next_id]), "lrc_time", &v_lrc_time_next);
+    if (value_int32(&v_lrc_time) <= value && value_int32(&v_lrc_time_next) >= value) {
+      for (int32_t k = 0; k < size; k++) {
         widget_t* child = WIDGET(lrc_scroll->children->elms[k]);
         if (k == i) {
           widget_use_style(child, "empty_hl");
-          scroll_view_scroll_to(lrc_scroll, 0, 25 * k, 10);
+          scroll_view_scroll_to(lrc_scroll, 0, lrc_view->item_height * k, 10);
         } else {
           widget_use_style(child, "empty");
         }

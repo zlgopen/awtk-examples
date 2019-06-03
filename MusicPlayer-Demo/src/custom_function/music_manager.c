@@ -184,7 +184,9 @@ int32_t load_song(widget_t* win, int32_t song_iter, bool_t play_now) {
   widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
   widget_t* song_name = widget_lookup(win, "song_name", TRUE);
   widget_t* song_artist = widget_lookup(win, "song_artist", TRUE);
-
+  widget_t* scroll_view = widget_lookup(win, "lrc_scroll", TRUE);
+  
+  scroll_view_scroll_to(scroll_view, 0, 0, 10);
   if (parse_lrc_line(win, analy_name[song_iter]) != RET_OK) {
     parse_lrc_line(win, analy_name1[song_iter]);
   }

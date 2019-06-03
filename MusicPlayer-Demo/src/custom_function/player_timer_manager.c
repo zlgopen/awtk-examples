@@ -26,10 +26,13 @@ static ret_t update_play_slider(const timer_info_t* timer) {
 
   int value = widget_get_value(play_slider);
   value_set_bool(&val, TRUE);
-  if(value == max)
+  if(value >= max)
   {
+    if(!slider->dragging){
     play_mode_choose(win);
+    
     return RET_OK;
+    }
   }
   if (widget_get_prop(btn_play, "btn_state", &val) == RET_OK && value_bool(&val) == TRUE) {
     return RET_OK;

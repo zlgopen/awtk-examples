@@ -3,7 +3,7 @@ import sys
 import glob
 
 env=DefaultEnvironment().Clone()
-BIN_DIR='../bin'
+BIN_DIR=os.environ['BIN_DIR']
 
 src_files = glob.glob('*.c')
 

@@ -49,7 +49,8 @@ static ret_t on_dialog_state(void* ctx, event_t* e) {
 
 static ret_t list_view_clean(widget_t* parent) {
   return_value_if_fail(parent != NULL, RET_BAD_PARAMS);
-  for (int i = 0; i < parent->children->size; i++) {
+  int i;
+  for (i = 0; i < parent->children->size; i++) {
     widget_t* iter = (widget_t*)(parent->children->elms[i]);
     widget_use_style(iter, "empty_list");
     widget_invalidate(iter, NULL);

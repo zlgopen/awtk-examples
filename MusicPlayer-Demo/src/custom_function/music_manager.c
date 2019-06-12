@@ -80,13 +80,15 @@ void update_lrc(int32_t value, widget_t* win) {
   widget_t* lrc_scroll = widget_lookup(win, "lrc_scroll", TRUE);
   list_view_t* lrc_view = LIST_VIEW(widget_lookup(win,"lrc_view",TRUE));
   int32_t size = lrc_scroll->children->size;
-  for (int32_t i = 0; i < size; i++) {
+  int32_t i;
+  for (i = 0; i < size; i++) {
     if (widget_get_prop(win, "lrc_move", &val) != RET_OK || value_bool(&val) == FALSE) break;
     widget_get_prop(WIDGET(lrc_scroll->children->elms[i]), "lrc_time", &v_lrc_time);
     int32_t next_id = ((i+1)< size) ? (i + 1) : i;  
     widget_get_prop(WIDGET(lrc_scroll->children->elms[next_id]), "lrc_time", &v_lrc_time_next);
     if (value_int32(&v_lrc_time) <= value && value_int32(&v_lrc_time_next) >= value) {
-      for (int32_t k = 0; k < size; k++) {
+      int32_t k;
+      for (k = 0; k < size; k++) {
         widget_t* child = WIDGET(lrc_scroll->children->elms[k]);
         if (k == i) {
           widget_use_style(child, "empty_hl");
@@ -119,7 +121,8 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
   tokenizer_t* t = &tokenizer;
 
   if (lrc_scroll->children != NULL) {
-    for (int index = 0; index < lrc_scroll->children->size; index++) {
+    int index;
+    for (index = 0; index < lrc_scroll->children->size; index++) {
       widget_set_visible(lrc_scroll->children->elms[index], FALSE, FALSE);
     }
   }

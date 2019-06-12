@@ -27,10 +27,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-#ifdef WIN32
-#define random rand
-#endif
-
 #define PROP_RANDOM_TIMER "timer_id"
 
 static ret_t on_series_prop_changed(void* ctx, event_t* e, const char* prop, const char* btn_name,
@@ -121,7 +117,7 @@ static void on_append_series_data(widget_t* widget, uint32_t count) {
   uint32_t nr = chart_view_count_series(widget, WIDGET_TYPE_LINE_SERIES);
   for (i = 0; i < nr; i++) {
     for (j = 0; j < count; j++) {
-      new_value[j] = random() % 120 + 10;
+      new_value[j] = rand() % 120 + 10;
     }
 
     series = chart_view_get_series(widget, WIDGET_TYPE_LINE_SERIES, i);
@@ -139,7 +135,7 @@ static void on_set_series_data(widget_t* widget, uint32_t count) {
   uint32_t nr = chart_view_count_series(widget, WIDGET_TYPE_LINE_SERIES);
   for (i = 0; i < nr; i++) {
     for (j = 0; j < count; j++) {
-      new_value[j] = random() % 120 + 10;
+      new_value[j] = rand() % 120 + 10;
     }
 
     series = chart_view_get_series(widget, WIDGET_TYPE_LINE_SERIES, i);

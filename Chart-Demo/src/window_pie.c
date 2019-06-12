@@ -322,7 +322,8 @@ static ret_t on_arch(void* ctx, event_t* e) {
 static ret_t on_close(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
   (void)e;
-  for (int i = 0; i < ARRAY_SIZE(save_pie_exploded); i++) {
+  int i;
+  for (i = 0; i < ARRAY_SIZE(save_pie_exploded); i++) {
     save_pie_exploded[i] = FALSE;
   }
   return window_close(win);

@@ -26,10 +26,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-#ifdef WIN32
-#define random rand
-#endif
-
 #define PROP_RANDOM_TIMER "timer_id"
 
 extern ret_t on_series_typeie_visible_changed(void* ctx, event_t* e);
@@ -44,7 +40,7 @@ static void random_series_data(widget_t* widget) {
   uint32_t nr = chart_view_count_series(widget, NULL);
   for (i = 0; i < nr; i++) {
     for (j = 0; j < count; j++) {
-      new_value[j] = random() % 140;
+      new_value[j] = rand() % 140;
     }
     series = chart_view_get_series(widget, NULL, i);
     if (series) {

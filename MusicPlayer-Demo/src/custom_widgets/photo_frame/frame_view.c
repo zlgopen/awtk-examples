@@ -165,7 +165,8 @@ static ret_t frame_view_do_layout_children(widget_t* widget) {
   widget_move_resize(iter, x, y, size, size);
 
   uint32_t n_child = widget_count_children(iter);
-  for (int i = 0; i < n_child; i++) {
+  int i;
+  for (i = 0; i < n_child; i++) {
     if (tk_str_eq(iter_child[i]->vt->type, WIDGET_TYPE_IMAGE)) {
       child_x = (size - iter_child[i]->w) / 2;
       child_y = (size - iter_child[i]->h) / 2;

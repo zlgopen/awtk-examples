@@ -56,6 +56,8 @@ ret_t open_timing_window(time_t* result);
 ret_t open_record_window(void);
 ret_t open_setting_window(void);
 
+extern ret_t application_init(void);
+
 /**
  * Label文本的数值 + offset
  */
@@ -162,9 +164,9 @@ static void bkgnd_image_fade_in(widget_t* widget, uint32_t duration) {
  * 获取当前时间的字符串
  */
 static void time_now_str(char* str, size_t size) {
-  time_t t;
-  time(&t);
-  strftime(str, size, "%Y/%m/%d %H:%M:%S", localtime(&t));
+  date_time_t dt;
+  date_time_init(&dt);
+  snprintf(str, size, "%04d/%02d/%02d %02d:%02d:%02d", dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second);
 }
 
 /**
@@ -221,8 +223,6 @@ static ret_t on_bkgnd_delay_in(const timer_info_t* timer) {
  * 更新主题背景(淡出淡入)
  */
 static ret_t on_bkgnd_update(const timer_info_t* timer) {
-  char style[5];
-  value_t val;
   widget_t* win = WIDGET(timer->ctx);
   widget_t* bkgnd = widget_lookup(win, "bkgnd", TRUE);
 
@@ -330,8 +330,6 @@ static ret_t on_reading_update(const timer_info_t* timer) {
   widget_t* co_2 = widget_lookup(win, "CO_2", TRUE);
   widget_t* flow = widget_lookup(win, "flow", TRUE);
   widget_t* pm2_5 = widget_lookup(win, "PM2_5", TRUE);
-  widget_t* humidity_in = widget_lookup(win, "humidity_in", TRUE);
-  widget_t* humidity_out = widget_lookup(win, "humidity_out", TRUE);
   widget_t* temperature_in1 = widget_lookup(win, "temperature_in1", TRUE);
   widget_t* temperature_in2 = widget_lookup(win, "temperature_in2", TRUE);
   widget_t* temperature_out1 = widget_lookup(win, "temperature_out1", TRUE);
@@ -619,14 +617,13 @@ static ret_t on_language(void* ctx, event_t* e) {
   } else {
     change_locale("en_US");
   }
-
   return RET_OK;
 }
 
 /**
  * 打开主窗口
  */
-ret_t open_main_window(void) {
+ret_t application_init(void) {
   widget_t* win = window_open("main");
   if (win) {
     init_children_widget(win);

@@ -431,17 +431,6 @@ widget_t* line_series_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
   return widget;
 }
 
-static ret_t line_series_append_normal(widget_t* widget, const float_t* data, uint32_t nr) {
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-  return_value_if_fail(series != NULL && data != NULL && nr > 0, RET_BAD_PARAMS);
-  return_value_if_fail(series->fifo != NULL && series->fifo_capacity > 0, RET_BAD_PARAMS);
-
-  series_fifo_float(series->fifo, &(series->fifo_size), series->fifo_capacity, data, nr);
-  widget_invalidate(widget, NULL);
-
-  return RET_OK;
-}
-
 ret_t line_series_set_data(widget_t* widget, const float_t* data, uint32_t nr) {
   float_t* fifo;
   uint32_t fifo_size;
@@ -491,13 +480,11 @@ ret_t line_series_set_data(widget_t* widget, const float_t* data, uint32_t nr) {
 
 ret_t line_series_append(widget_t* widget, const float_t* data, uint32_t nr) {
   float_t* fifo;
-  uint32_t fifo_size;
   uint32_t fifo_capacity;
   line_series_t* series = LINE_SERIES(line_series_cast(widget));
   return_value_if_fail(series != NULL && data != NULL && nr > 0, RET_BAD_PARAMS);
 
   fifo = series->fifo;
-  fifo_size = series->fifo_size;
   fifo_capacity = series->fifo_capacity;
   return_value_if_fail(fifo != NULL && fifo_capacity > 0, RET_BAD_PARAMS);
 

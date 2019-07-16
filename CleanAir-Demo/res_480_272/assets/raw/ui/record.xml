@@ -1,4 +1,4 @@
-<window anim_hint="htranslate">
+<window anim_hint="htranslate" x="0%" y="0%" w="480" h="272">
     <button name="close" x="4" y="4" w="36" h="17" tr_text="Back"/>
     <view x="4" y="20" w="100%" h="23" layout="r:1 c:5">
         <label tr_text="Status" style="header"/>

@@ -1,4 +1,4 @@
-<dialog anim_hint="fade"  x="right" y="bottom:41" w="50%" h="201" style="bg_setting">
+<dialog anim_hint="fade"  self_layout="default(x=240,y=30,w=240,h=201)" style="bg_setting">
     <view x="0" y="0" w="100%" h="10%" style="dialog_title_gray">
         <button name="close" x="right:12" y="0" w="17" h="20" style="s_setting_close"/>
         <label x="9" y="0" w="20%" h="100%" tr_text="Advanced" style="title"/> 

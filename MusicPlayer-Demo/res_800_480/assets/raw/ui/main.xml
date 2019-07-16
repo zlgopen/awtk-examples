@@ -1,7 +1,7 @@
-<window anim_hint="htranslate" style="bg_main">
+<window anim_hint="htranslate" style="bg_main" x="0%" y="0%" w="800" h="480">
     <view x="0" y="0" w="100%" h="11%">
-        <label name="dev_name" x="25" y="m" w="120" h="100%" text="Music Player" style="left"/>
-        <label name="sys_time" x="right:20" y="m" w="50" h="100%" style="right"/>
+        <label name="dev_name" x="10" y="m" w="120" h="100%" text="Music Player" style="left"/>
+        <label name="sys_time" x="right:10" y="m" w="50" h="100%" style="right"/>
     </view>
 
     <view  x="0" y="bottom" w="100%" h="60">
@@ -18,7 +18,7 @@
     <view x="32%" y="bottom:-5" w="50%" h="50">
         <label name="slider_min" text="00:00" x="0"  w="4%" h="20"/>
         <label name="slider_max" text="00:00" x="91%"  w="4%" h="20"/>
-        <slider name="play_slider" x="10%" y="5" w="75%" h="15"  min="0" max="100" step="1" style="slider_h"/>
+        <slider name="play_slider" x="10%" y="0" w="75%" h="22"  min="0" max="100" step="1" style="slider_h"/>
     </view>
     <frame_view name="frame_menu" x="-20" y="90" w="450" h="300" align_v="bottom" >
         <view x="0" y="0" w="300" h="300">
@@ -34,9 +34,9 @@
             <image name="Vinyl" image="Vinyl" w="300" h="300" draw_type="default" />
         </view>
     </frame_view>
-    <guage_pointer name="vinyl_head" x="165" y="50" w="20" h="20" angle="-70"  image="guage_pointer"/>
+    <guage_pointer name="vinyl_head" x="150" y="50" w="49" h="121"  anchor_x="10px" anchor_y="9px" angle="-70" image="guage_pointer"/>
     <view x="53%" y="12%" w="40%" h="18%">
-        <label name="song_name" x="m" y="20%" text=""  w="100%" h="40%" style="s_song_name"/>
+        <label name="song_name" x="m" y="20%" text=""  w="100%" h="40%" style=" s_song_name"/>
         <label name="song_artist" x="m" y="50%" text="" w="100%" h="40%" style="s_artist_name"/>
     </view>
     <image name="lrc_rule" image="lrc_rule" x="400" y="140" w="350" h="2" draw_type="default" />

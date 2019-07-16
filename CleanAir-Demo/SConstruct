@@ -3,7 +3,10 @@ import sys
 import platform
 
 def getAwtkRoot():
-  fo = open('assets_gen.bat', 'r')
+  if platform.system() == "Windows":
+    fo = open('assets_gen.bat', 'r')
+  else:
+    fo = open('assets_gen.sh', 'r')
   for line in fo.readlines():
     line = line.replace('\r', '')
     line = line.replace('\n', '')

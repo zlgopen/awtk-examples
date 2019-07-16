@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" style="black">
+<window anim_hint="htranslate" style="black" x="0%" y="0%" w="800" h="480">
     <label name="bkgnd" x="0" y="0" w="100%" h="100%" style="bg0"/>
 
     <app_bar x="0" y="0" w="100%" h="40">

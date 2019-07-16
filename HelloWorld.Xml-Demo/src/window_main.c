@@ -19,7 +19,7 @@
  *
  */
 #include "awtk.h"
-
+extern ret_t application_init(void);
 /**
  * Label文本的数值 + offset
  */
@@ -106,9 +106,10 @@ static void init_children_widget(widget_t* widget) {
 /**
  * 初始化
  */
-void application_init() {
+ret_t application_init() {
   widget_t* win = window_open("main");
   if (win) {
     init_children_widget(win);
   }
+  return RET_OK;
 }

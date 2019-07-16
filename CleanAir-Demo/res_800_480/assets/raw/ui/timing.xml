@@ -1,4 +1,4 @@
-<dialog anim_hint="center_scale" h="200" w="580" x="c" y="m">
+<dialog anim_hint="center_scale" self_layout="default(x=110,y=140,w=580,h=200)">
     <dialog_title h="35" tr_text="Timing Setting" w="100%" x="0" y="0"/>
     <dialog_client h="-35" w="100%" x="0" y="bottom">
         <row h="30" layout="row:1 col:3" w="200" x="30" y="10">

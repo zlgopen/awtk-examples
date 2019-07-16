@@ -36,7 +36,7 @@ static void axis_render_init(widget_t* widget, canvas_t* c, wh_t w, wh_t h, wh_t
     axis = AXIS(chart_view_get_axis(widget, AXIS_ORIENTATION_X, i));
     assert(axis);
     if (axis->render == NULL) {
-      axis->render = axis_render_create(axis);
+      axis->render = axis_render_create();
     }
 
     axis->render->ruler.w = w;
@@ -53,7 +53,7 @@ static void axis_render_init(widget_t* widget, canvas_t* c, wh_t w, wh_t h, wh_t
     axis = AXIS(chart_view_get_axis(widget, AXIS_ORIENTATION_Y, i));
     assert(axis);
     if (axis->render == NULL) {
-      axis->render = axis_render_create(axis);
+      axis->render = axis_render_create();
     }
 
     axis->render->ruler.w = axis->label.show ? axis_measure_label(WIDGET(axis), c) : 1;

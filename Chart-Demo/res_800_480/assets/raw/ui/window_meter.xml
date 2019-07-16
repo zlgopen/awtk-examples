@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" tr_text="meter_title">
+<window anim_hint="htranslate" tr_text="meter_title" x="0%" y="50" w="800" h="427" >
     <view name="guage_function_view" x="0" y="0" w="87%" h="90%" layout="r:1 c:2 s:25" style="dark">
         <guage  image="guage_bg_1" >
             <guage_pointer name="left_pointer" x="c" y="m" w="12" h="160" value="-128" image="guage_pointer_1" 
@@ -18,6 +18,6 @@
         <view />
         <view />
         <view />
-        <button name="close" x="right" y="bottom:5" w="100%" h="30" style="back"/>
+        <button name="close" style="back"/>
     </view>
 </window>

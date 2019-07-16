@@ -18,6 +18,7 @@
 #include "assets/inc/ui/main.data"
 #include "assets/inc/ui/record.data"
 #include "assets/inc/ui/setting.data"
+#include "assets/inc/ui/system_bar.data"
 #include "assets/inc/ui/timing.data"
 #ifdef WITH_STB_IMAGE
 #include "assets/inc/images/arr_left.res"
@@ -159,6 +160,7 @@ ret_t assets_init(void) {
   assets_manager_add(rm, ui_main);
   assets_manager_add(rm, ui_record);
   assets_manager_add(rm, ui_setting);
+  assets_manager_add(rm, ui_system_bar);
   assets_manager_add(rm, ui_timing);
   assets_manager_add(rm, strings_en_US);
   assets_manager_add(rm, strings_zh_CN);

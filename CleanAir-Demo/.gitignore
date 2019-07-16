@@ -1,0 +1,7 @@
+/.vscode
+/.sconsign.dblite
+/bin/*.exp
+/bin/*.ilk
+/bin/*.lib
+/bin/*.pdb
+/src/*.obj

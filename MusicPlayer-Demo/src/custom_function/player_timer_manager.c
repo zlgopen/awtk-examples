@@ -9,7 +9,7 @@ static void label_min_set(widget_t* win, int32_t value) {
   char c_times[10] = {0};
   int32_t sec = value % 60;
   int32_t min = value / 60;
-  sprintf(c_times, "%0.2d:%0.2d", min, sec);
+  sprintf(c_times, "%02d:%02d", min, sec);
   widget_set_text_utf8(label_min, c_times);
 }
 

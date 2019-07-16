@@ -170,6 +170,12 @@
     <normal text_color="green" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
   </style>
 
+  <style name="left_top">
+        <normal bg_color="#c0c0c0" text_color="black" text_align_h="left" text_align_v="top"/>
+   </style>
+   <style name="right_bottom">
+        <normal bg_color="#c0c0c0" text_color="black" text_align_h="right" text_align_v="bottom"/>
+   </style>
 </label>
 
 <progress_bar>

@@ -1,4 +1,4 @@
-<window anim_hint="htranslate">
+<window anim_hint="htranslate" x="0%" y="0%" w="480" h="272">
     <button h="17" name="close" tr_text="Back" w="36" x="4" y="4"/>
     <pages h="250" w="80%" x="right" y="23">
         <view h="60%" layout="r:4 c:3" w="100%">

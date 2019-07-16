@@ -431,7 +431,6 @@ widget_t* line_series_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
   return widget;
 }
 
-
 ret_t line_series_set_data(widget_t* widget, const float_t* data, uint32_t nr) {
   float_t* fifo;
   uint32_t fifo_size;

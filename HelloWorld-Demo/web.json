@@ -1,0 +1,13 @@
+{
+  "name":"HelloWorld-Demo",
+  "app_type":"c",
+  "version":"1.0",
+  "assets" : "res/assets",
+  "sources":["src/window_main.c"],
+  "config" : {
+  	"width":"800",
+	"height":"480",
+    "fontScale":"0.7",
+    "defaultFont":"Micorosoft YaHei"
+  }
+}

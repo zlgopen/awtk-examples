@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" tr_text="line_title">
+<window anim_hint="htranslate" tr_text="line_title" x="0%" y="30" w="478" h="242">
     <view x="r:105" y="2%" w="136" h="10%" layout="r1 c2 m0 s30">
         <image name="typeie" clickable="true">
             <label name="typeie_icon" x="0" y="m" w="10" h="10" style="typeie"/>

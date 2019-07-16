@@ -47,6 +47,7 @@ vgcanvas_restore(vg);
 */
 
 #include "pie_slice.h"
+#include <math.h>
 
 static pie_slice_t* pie_slice_get_clicked_pie(widget_t* widget, pie_slice_t* pie_slice, float_t r,
                                               int32_t* x_f, int32_t* y_f) {
@@ -61,7 +62,7 @@ static pie_slice_t* pie_slice_get_clicked_pie(widget_t* widget, pie_slice_t* pie
     *x_f += pie_slice->x_to;
     *y_f += pie_slice->y_to;
   }
-  float_t rad = atan(fabs(*y_f) / fabs(*x_f));
+  float_t rad = (float_t)atan((double)abs(*y_f) / (double)abs(*x_f));
   if (*x_f > 0 && *y_f > 0) {
     result = rad;
   }

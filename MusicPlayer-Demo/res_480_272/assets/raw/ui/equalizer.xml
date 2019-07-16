@@ -1,4 +1,4 @@
-<dialog anim_hint="fade"  x="right" y="bottom:41" w="50%" h="201" style="bg_setting">
+<dialog anim_hint="fade" self_layout="default(x=240,y=30,w=240,h=201)" style="bg_setting">
     <view x="0" y="0" w="100%" h="10%" style="dialog_title_gray">
         <button name="close" x="right:12" y="0" w="17" h="20" style="s_setting_close"/>
         <label x="9" y="0" w="20%" h="100%" tr_text="Equalizer" style="title"/> 
@@ -41,6 +41,6 @@
 <chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="bg_chart_view">
     <axis name="x" w="100%" h="100%" type="value" orientation="x" min="0" max="100"  tick="{show:false}" split_line="{show:false}"  label="{show:false}" line="{show:false}" data="[0,0,0,0,0,0,0,0,0]"/>
     <axis name="y" w="100%" h="100%" type="value" orientation="y" min="0" max="100" tick="{show:false}" split_line="{color:#29b4d}" label="{show:false}" line="{show:false}"/>
-    <line_series name="s1"  w="100%" h="60%" capacity="10" line="{smooth:true, color:#00fffc}" area={"show:false, color:#69cf5c66}" symbol="{show:false, fill_color:#69cf5c, stroke_color:#ffc393}"/>
+    <line_series name="s1"  w="100%" h="100%" capacity="10" line="{smooth:true, color:#00fffc}" area={"show:false, color:#69cf5c66}" symbol="{show:false, fill_color:#69cf5c, stroke_color:#ffc393}"/>
 </chart_view>
 </dialog>

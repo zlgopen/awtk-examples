@@ -19,7 +19,9 @@
  */
 
 #include "awtk.h"
+#include "custom_widgets/custom_widgets.h"
 #include "custom_function/music_manager.h"
+#include "custom_function/player_timer_manager.h"
 #include "custom_widgets/photo_frame/frame_view.h"
 #include "ext_widgets/image_animation/image_animation.h"
 #include "widget_animators/widget_animator_opacity.h"
@@ -29,6 +31,9 @@
 extern ret_t open_advanced_dialog();
 extern ret_t open_equalizer_dialog();
 extern ret_t open_play_list_window(widget_t* s_parent);
+extern ret_t swtich_frame_rotation_animator(widget_t* win, bool_t start_anim);
+
+extern ret_t application_init(void);
 
 static ret_t on_advanced_open(void* ctx, event_t* e) {
   (void)e;
@@ -119,7 +124,7 @@ static ret_t on_lrc_up(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static ret_t on_lrc_down(void* ctx, pointer_event_t* e) {
+static ret_t on_lrc_down(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
   value_t val;
 
@@ -130,9 +135,9 @@ static ret_t on_lrc_down(void* ctx, pointer_event_t* e) {
 }
 
 static void time_now_str(char* str, size_t size) {
-  time_t t;
-  time(&t);
-  strftime(str, size, "%Y/%m/%d %H:%M:%S", localtime(&t));
+  date_time_t dt;
+  date_time_init(&dt);
+  snprintf(str, size, "%04d/%02d/%02d %02d:%02d:%02d", dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second);
 }
 
 /**
@@ -163,11 +168,15 @@ static ret_t on_music_play(void* ctx, event_t* e) {
   if (tk_str_eq(btn_play->style, "s_play_pause")) {
     swtich_frame_vinyl_head_animator(win, FALSE);
     swtich_frame_rotation_animator(win, FALSE);
-    load_song(win, frame_view->value, FALSE);
+    widget_use_style(btn_play, "s_play");
+    player_timer_clear(win);
+
   } else if (tk_str_eq(btn_play->style, "s_play")) {
     swtich_frame_vinyl_head_animator(win, TRUE);
     swtich_frame_rotation_animator(win, TRUE);
-    load_song(win, frame_view->value, TRUE);
+    widget_use_style(btn_play, "s_play_pause");
+    player_timer_clear(win);
+    player_timer_start(win);
   } else
     return RET_FAIL;
 
@@ -300,7 +309,11 @@ static void init_children_widget(widget_t* widget) {
 /**
  * 打开主界面窗口
  */
-ret_t open_main_window(void) {
+ret_t application_init(void) {
+  
+  /* 初始化自定义控件 */
+  custom_widgets_init();
+
   widget_t* win = window_open("main");
   if (win) {
     init_children_widget(win);

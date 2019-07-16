@@ -20,11 +20,14 @@
  */
 #include <time.h>
 #include "awtk.h"
+#include "custom_widgets/custom_widgets.h"
 
-extern ret_t open_meter_window();
-extern ret_t open_pie_window();
-extern ret_t open_line_series_window();
-extern ret_t open_bar_series_window();
+extern ret_t open_meter_window(void);
+extern ret_t open_pie_window(void);
+extern ret_t open_line_series_window(void);
+extern ret_t open_bar_series_window(void);
+
+extern ret_t application_init(void);
 
 static ret_t on_meter(void* ctx, event_t* e) {
   (void)ctx;
@@ -159,7 +162,11 @@ static ret_t on_language(void* ctx, event_t* e) {
 /**
  * 打开主窗口
  */
-ret_t open_main_window(void) {
+ret_t application_init(void) {
+  
+  /* 初始化自定义控件 */
+  custom_widgets_init();
+
   widget_t* sys_bar = window_open("system_bar");
   if (sys_bar) {
     change_locale("zh_CN");

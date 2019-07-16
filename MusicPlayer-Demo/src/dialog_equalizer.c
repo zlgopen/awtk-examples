@@ -55,12 +55,11 @@ static void set_series_data(float* slider_line, widget_t* widget, uint32_t count
   series = chart_view_get_series(widget, WIDGET_TYPE_LINE_SERIES, 0);
   if (series) {
     line_series_set_data(series, slider_line, count);
-    widget_invalidate(widget, NULL);
   }
 }
 
 /**
- * eq滑动条数值发生改变回调(联动char_view波形发生对应改变)
+ * char_view波形数值改变
  */
 static ret_t on_slider_changing(void* ctx, event_t* e) {
   widget_t* win = WIDGET(ctx);

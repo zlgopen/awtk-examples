@@ -1,4 +1,4 @@
-<dialog anim_hint="fade" x="right" y="bottom:73" w="50%" h="355" style="bg_setting">
+<dialog anim_hint="fade" self_layout="default(x=400,y=53,w=400,h=355)" style="bg_setting">
     <view x="0" y="0" w="100%" h="15%" style="dialog_title_gray">
         <button name="close" x="right:20" y="10" w="28" h="35" style="s_setting_close"/>
         <label x="15" y="0" w="20%" h="100%" tr_text="PlayList" style="title"/> 

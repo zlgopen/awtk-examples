@@ -11,7 +11,10 @@ def joinPath(root, subdir):
 
 def writeToFile(file_name, str):
   fd = os.open(file_name, os.O_RDWR|os.O_CREAT|os.O_TRUNC)
-  os.write(fd, str)
+  if check_python_version() :
+    os.write(fd, bytes(str, 'utf-8'))
+  else:
+    os.write(fd, str)
   os.close(fd)
 
 def genIncludes(files, dir_name):
@@ -103,13 +106,11 @@ def gen_assets_c(assets_dir, assets_c_path):
 def check_python_version():
 	major_version = sys.version_info[0]
 	if major_version > 2:
-		print("The python version is %d.%d. But python2.x is required.(Version 2.7 is well tested!)" %(major_version, sys.version_info[1]))
+		# print("The python version is %d.%d. But python2.x is required.(Version 2.7 is well tested!)" %(major_version, sys.version_info[1]))
 		return True
 	return False
 
 def run():
-  if check_python_version():
-    exit()
   if len(sys.argv) <= 1 :
     print('Usage: assets_c_gen.py assets_dir')
     exit()

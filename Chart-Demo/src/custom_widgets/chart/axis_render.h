@@ -59,7 +59,7 @@ typedef struct _axis_render_t {
 
 ret_t axis_render_layout(widget_t* widget, canvas_t* c, wh_t margin);
 ret_t axis_render_on_paint(widget_t* widget, canvas_t* c);
-axis_render_t* axis_render_create();
+axis_render_t* axis_render_create(void);
 ret_t axis_render_destroy(axis_render_t* render);
 
 END_C_DECLS

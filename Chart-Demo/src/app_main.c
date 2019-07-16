@@ -27,6 +27,8 @@
 #include "../res_800_480/assets.inc"
 #endif
 
+extern ret_t application_init(void);
+
 #ifdef USE_GUI_MAIN
 int gui_app_start(int lcd_w, int lcd_h) {
   tk_init(lcd_w, lcd_h, APP_MOBILE, NULL, NULL);
@@ -93,11 +95,8 @@ int main(void) {
   /* 初始化扩展控件 */
   tk_ext_widgets_init();
 
-  /* 初始化自定义控件 */
-  custom_widgets_init();
-
   /* 打开主屏幕 */
-  open_main_window();
+  application_init();
 
   /* 进入awtk事件循环 */
   tk_run();

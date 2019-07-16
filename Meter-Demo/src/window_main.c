@@ -71,9 +71,9 @@ static ret_t on_paint_needle(void* ctx, event_t* e) {
     vgcanvas_translate(vg, anchor_x + needle_len / 2, anchor_y + needle_len / 2);
     vgcanvas_set_fill_color(vg, color_init(0xff, 0, 0, 0xff));
     if (is_big_lcd) {
-      vgcanvas_rounded_rect(vg, 0, 0, 20, 20, 20);
+      vgcanvas_ellipse(vg, 12, 12, 10, 10);
     } else {
-      vgcanvas_rounded_rect(vg, 0, 0, 12, 12, 12);
+      vgcanvas_ellipse(vg, 6, 6, 6, 6);
     }
     vgcanvas_fill(vg);
 
@@ -312,8 +312,18 @@ static ret_t create_bg_labels(widget_t* win) {
 /**
  * 打开主窗口
  */
-ret_t open_main_window(void) {
-  widget_t* main_win = window_create(NULL, 0, 0, 0, 0);
+ret_t application_init(void) {
+  widget_t* win = window_create(NULL, 0, 0, 0, 0);
+
+#if defined(LCD_W) && defined(LCD_H)
+  int32_t lcd_w = LCD_W;
+  int32_t lcd_h = LCD_H;
+#else
+  int32_t lcd_w = 800;
+  int32_t lcd_h = 480;
+#endif
+
+  widget_t* main_win = view_create(win, 0, 0, lcd_w, lcd_h);
   if (main_win) {
     create_bg_labels(main_win);
     create_images(main_win);

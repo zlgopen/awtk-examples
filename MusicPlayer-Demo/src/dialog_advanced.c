@@ -58,7 +58,8 @@ static ret_t on_guage_pointer_leave(void* ctx, event_t* e) {
 static ret_t on_guage_pointer_up(void* ctx, event_t* e) {
   widget_t* widget_guage_pointer = WIDGET(ctx);
   value_t val;
-
+  
+  widget_ungrab(widget_guage_pointer->parent, widget_guage_pointer);
   value_set_bool(&val, FALSE);
   widget_set_prop(widget_guage_pointer, "s_pmove", &val);
 
@@ -90,7 +91,7 @@ static ret_t on_guage_pointer_down(void* ctx, event_t* e) {
   widget_t* win = widget_get_window(widget_guage_pointer);
   pointer_event_t* evt = (pointer_event_t*)e;
   point_t p = {evt->x, evt->y};
-
+  widget_grab(widget_guage_pointer->parent, widget_guage_pointer);
   widget_to_local(win, &p);
   knob_down_init(widget_guage_pointer, p, strtok(widget_guage_pointer->name, "_"));
 

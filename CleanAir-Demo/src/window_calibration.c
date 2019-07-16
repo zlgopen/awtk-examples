@@ -21,11 +21,10 @@
 
 #include "awtk.h"
 
-ret_t open_main_window(void);
+extern ret_t application_init(void);
 
 static ret_t init_widget(void* ctx, const void* iter) {
-  widget_t* widget = WIDGET(iter);
-
+  (void)iter;
   (void)ctx;
 
   return RET_OK;
@@ -39,7 +38,7 @@ static void init_children_widget(widget_t* widget) {
  * 校准完成回调函数
  */
 ret_t on_calibration_win__done(void* ctx, point_t points[4]) {
-  return open_main_window();
+  return application_init();
 }
 
 /**

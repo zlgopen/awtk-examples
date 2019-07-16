@@ -19,7 +19,7 @@
  *
  */
 #include "awtk.h"
-
+extern ret_t application_init(void);
 /**
  * Label文本的数值 + offset
  */
@@ -77,10 +77,15 @@ static ret_t on_changing(void* ctx, event_t* evt) {
 /**
  * 初始化
  */
-void application_init() {
+ret_t application_init() {
   widget_t* win = window_create(NULL, 0, 0, 0, 0);
 
   char height[] = "40";
+  int screen_width = win->w;
+  int screen_height = win->h;
+  char label_width[] = "70", label_height[] = "20";
+  char label_text[32], right_bottom_x[32], right_bottom_y[32];
+  tk_snprintf(label_text, sizeof(label_text) - 1, "%d * %d", screen_width, screen_height);
 
   /* 创建文本框*/
   widget_t* label_4_edit = label_create(win, 0, 0, 0, 0);
@@ -113,5 +118,22 @@ void application_init() {
   widget_set_self_layout_params(inc_btn, "60%", "60%", "20%", height);
   widget_on(inc_btn, EVT_CLICK, on_inc_click, win);
 
+  /* 创建左上角label显示屏幕分辨率 */
+  widget_t* left_top = label_create(win, 0, 0, 0, 0);
+  widget_set_text_utf8(left_top, label_text);
+  widget_set_self_layout_params(left_top, "0", "0", label_width, label_height);
+  widget_use_style(left_top, "left_top");
+
+  /* 创建右下角label显示屏幕分辨率 */
+  widget_t* right_bottom = label_create(win, 0, 0, 0, 0);
+  widget_set_text_utf8(right_bottom, label_text);
+  tk_itoa(right_bottom_x, sizeof(right_bottom_x), screen_width - tk_atoi(label_width));
+  tk_itoa(right_bottom_y, sizeof(right_bottom_y), screen_height - tk_atoi(label_height));
+  widget_set_self_layout_params(right_bottom, right_bottom_x, right_bottom_y, label_width,
+                                label_height);
+  widget_use_style(right_bottom, "right_bottom");
+
   widget_layout(win);
+
+  return RET_OK;
 }

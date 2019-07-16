@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" tr_text="main_title" style="main">
+<window anim_hint="htranslate" tr_text="main_title" style="main" x="0%" y="30" w="478" h="242">
     <image name="meter_image" x="18" y="33" w="110" h="180" clickable="true" />
     <image name="pie_image" x="129" y="33" w="110" h="180" clickable="true" />
     <image name="graph_image" x="243" y="33" w="110" h="180" clickable="true" />

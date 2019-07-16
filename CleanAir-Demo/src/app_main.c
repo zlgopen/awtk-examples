@@ -1,4 +1,4 @@
-/**
+﻿/**
  * File:   app_main.c
  * Author: AWTK Develop Team
  * Brief:  app main
@@ -20,13 +20,14 @@
  */
 
 #include "awtk.h"
+
 #if LCD_W == 480
 #include "../res_480_272/assets.inc"
 #else
 #include "../res_800_480/assets.inc"
 #endif
 
-ret_t open_calibration_win(void);
+extern ret_t application_init(void);
 
 #ifdef USE_GUI_MAIN
 int gui_app_start(int lcd_w, int lcd_h) {
@@ -86,7 +87,7 @@ int main(void) {
 
   /* 打开校准屏幕 */
   // open_calibration_win();
-  open_main_window();
+  application_init();
 
   /* 进入awtk事件循环 */
   tk_run();

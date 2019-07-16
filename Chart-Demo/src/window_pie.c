@@ -174,7 +174,6 @@ static ret_t on_new_pie_timer(const timer_info_t* timer) {
     widget_t* pie_view = widget_lookup(win, "pie_view", TRUE);
     if (pie_view) {
       WIDGET_FOR_EACH_CHILD_BEGIN(pie_view, iter, i)
-      pie_slice_t* pie_slice = PIE_SLICE(iter);
       int32_t delay = DELAY_TIME;
       int32_t duration = DURATION_TIME;
       delay = delay * i;
@@ -245,7 +244,6 @@ static ret_t on_arch_timer(const timer_info_t* timer) {
   uint32_t new_inner_radius = win->h / 5;
   uint32_t inner_radius = 0;
 
-  widget_t* pie_view = widget_lookup(win, "pie_view", TRUE);
   uint32_t count = widget_animator_manager_count(widget_animator_manager());
   if (count == 0) {
     value_t v;
@@ -262,7 +260,6 @@ static ret_t on_arch_timer(const timer_info_t* timer) {
     widget_t* pie_view = widget_lookup(win, "pie_view", TRUE);
     if (pie_view) {
       WIDGET_FOR_EACH_CHILD_BEGIN(pie_view, iter, i)
-      pie_slice_t* pie_slice = PIE_SLICE(iter);
       pie_slice_set_inner_radius(iter, inner_radius);
 
       if (flag) {

@@ -1,0 +1,22 @@
+{
+  "name":"Chart-Demo",
+  "app_type":"c",
+  "version":"1.0",
+  "assets" : "res_800_480/assets",
+  "sources":[
+    "src/window_main.c", 
+    "src/window_bar_series.c", 
+    "src/window_line_series.c", 
+    "src/window_meter.c", 
+    "src/window_pie.c", 
+    "src/custom_widgets/*.c", 
+    "src/custom_widgets/chart/*.c", 
+    "src/custom_widgets/pie_slice/*.c"
+  ],
+  "config" : {
+	"width":"800",
+	"height":"480",
+    "fontScale":"0.7",
+    "defaultFont":"sans"
+  }
+}

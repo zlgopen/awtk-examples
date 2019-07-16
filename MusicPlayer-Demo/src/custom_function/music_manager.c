@@ -9,20 +9,7 @@
 
 #define STRLEN 128
 
-/**
- * 歌词时间转换为秒
- */
-int32_t timetosec(char* time) {
-  int32_t min = 0;
-  int32_t sec = 0;
-  char* str = NULL;
-  str = strtok(time, ":");
-  min = atoi(str);
-  str = strtok(NULL, ":");
-  sec = atoi(str);
-
-  return (min * 60 + sec);
-}
+extern ret_t swtich_frame_rotation_animator(widget_t* win, bool_t start_anim);
 
 /**
  * 根据设定的播放模式，改变歌曲播放顺序
@@ -59,13 +46,18 @@ void init_player(widget_t* win) {
   widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
   widget_t* slider = widget_lookup(win, "play_slider", TRUE);
   widget_t* label_min = widget_lookup(win, "slider_min", TRUE);
+  widget_t* lrc_scroll = widget_lookup(win, "lrc_scroll", TRUE);
   value_t val;
-
+  
+  scroll_view_scroll_to(lrc_scroll, 0, 0, 10);
+  widget_destroy_children(lrc_scroll);
+  lrc_scroll->key_target = NULL;
+  lrc_scroll->target = NULL;
   value_set_bool(&val, TRUE);
   widget_use_style(btn_play, "s_play");
   widget_invalidate(btn_play, NULL);
   slider_set_value(slider, 0);
-  sprintf(time_zero, "%0.2d:%0.2d", 0, 0);
+  sprintf(time_zero, "%02d:%02d", 0, 0);
   widget_set_text_utf8(label_min, time_zero);
   player_timer_clear(win);
 }
@@ -77,22 +69,26 @@ void update_lrc(int32_t value, widget_t* win) {
   value_t val;
   value_t v_lrc_time;
   value_t v_lrc_time_next;
+  int32_t y_offset;
   widget_t* lrc_scroll = widget_lookup(win, "lrc_scroll", TRUE);
+  scroll_view_t* t_lrc_scroll= SCROLL_VIEW(lrc_scroll);
   list_view_t* lrc_view = LIST_VIEW(widget_lookup(win,"lrc_view",TRUE));
   int32_t size = lrc_scroll->children->size;
-  int32_t i;
-  for (i = 0; i < size; i++) {
+
+  for (int32_t i = 0; i < size; i++) {
     if (widget_get_prop(win, "lrc_move", &val) != RET_OK || value_bool(&val) == FALSE) break;
     widget_get_prop(WIDGET(lrc_scroll->children->elms[i]), "lrc_time", &v_lrc_time);
     int32_t next_id = ((i+1)< size) ? (i + 1) : i;  
     widget_get_prop(WIDGET(lrc_scroll->children->elms[next_id]), "lrc_time", &v_lrc_time_next);
     if (value_int32(&v_lrc_time) <= value && value_int32(&v_lrc_time_next) >= value) {
-      int32_t k;
-      for (k = 0; k < size; k++) {
+      for (int32_t  k = 0; k < size; k++) {
         widget_t* child = WIDGET(lrc_scroll->children->elms[k]);
         if (k == i) {
+          y_offset = lrc_view->item_height * k;
           widget_use_style(child, "empty_hl");
-          scroll_view_scroll_to(lrc_scroll, 0, lrc_view->item_height * k, 10);
+          if(y_offset != t_lrc_scroll->yoffset){
+            scroll_view_scroll_to(lrc_scroll, 0, y_offset, 10);
+          }
         } else {
           widget_use_style(child, "empty");
         }
@@ -113,7 +109,6 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
   char buff[STRLEN] = {0};
   char* p2 = NULL;
   value_t v_lrc_time;
-  int32_t n = 0;
   widget_t* slider = widget_lookup(win, "play_slider", TRUE);
   widget_t* lrc_scroll = widget_lookup(win, "lrc_scroll", TRUE);
   widget_t* slider_max_label = widget_lookup(win, "slider_max", TRUE);
@@ -126,12 +121,13 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
       widget_set_visible(lrc_scroll->children->elms[index], FALSE, FALSE);
     }
   }
-  asset_info_t* info = assets_manager_ref(assets_manager(), ASSET_TYPE_DATA, name);
+  const asset_info_t* info = assets_manager_ref(assets_manager(), ASSET_TYPE_DATA, name);
   if (info == NULL) return RET_FAIL;
-  tokenizer_init(t, info->data, strlen(info->data), "\n");
+  if (info->size <= 0) return RET_FAIL;
+  tokenizer_init(t, (const char *)(info->data), strlen((const char *)(info->data)), "\n");
   while (tokenizer_has_more(t)) {
     const char* token = tokenizer_next(t);
-    p = token;
+    p = (char*)token;
     left = strchr(p, '[');
     if (left == NULL) {
       return RET_OK;
@@ -143,18 +139,17 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
       p2 = strrchr(p, ']');
       if (p2 != NULL) {
         p2++;
-        value_set_int32(&v_lrc_time, timetosec(buff));
-        if (lrc_scroll->children == NULL || lrc_scroll->children->size < n + 1)
-        list_item_create(lrc_scroll, 0, 0, 0, 0);
-        widget_use_style(lrc_scroll->children->elms[n], "empty");
-        widget_invalidate(lrc_scroll->children->elms[n], NULL);
-
-        setlocale(LC_CTYPE, "");
-        widget_set_prop(lrc_scroll->children->elms[n], "lrc_time", &v_lrc_time);
-        widget_set_text_utf8(lrc_scroll->children->elms[n], p2);
-        widget_set_visible(lrc_scroll->children->elms[n], TRUE, FALSE);
+        int32_t m_time = atoi(strtok(buff, ":"))*60 + atoi(strtok(NULL, ":"));
+        value_set_int32(&v_lrc_time, m_time);
         slider_set_max(slider, value_int32(&v_lrc_time));
-        n++;
+
+        widget_t* iter = list_item_create(lrc_scroll, 0, 0, 0, 0);
+        widget_use_style(iter, "empty");
+        setlocale(LC_CTYPE, "");
+        widget_set_prop(iter, "lrc_time", &v_lrc_time);
+        widget_set_text_utf8(iter, p2);
+        widget_set_visible(iter, TRUE, FALSE);
+        widget_invalidate(iter, NULL);
       }
       p = right;
       *p = '\0';
@@ -187,9 +182,7 @@ int32_t load_song(widget_t* win, int32_t song_iter, bool_t play_now) {
   widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
   widget_t* song_name = widget_lookup(win, "song_name", TRUE);
   widget_t* song_artist = widget_lookup(win, "song_artist", TRUE);
-  widget_t* scroll_view = widget_lookup(win, "lrc_scroll", TRUE);
-  
-  scroll_view_scroll_to(scroll_view, 0, 0, 10);
+
   if (parse_lrc_line(win, analy_name[song_iter]) != RET_OK) {
     parse_lrc_line(win, analy_name1[song_iter]);
   }

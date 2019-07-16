@@ -60,7 +60,7 @@
         <normal margin="4" text_align_h="left" text_color="white" font_size="22"/>
     </style>
     <style name="left">
-        <normal margin="4" text_align_h="left" text_color="white" font_size="35"/>
+        <normal margin="4" text_align_h="left" text_color="white" font_size="33"/>
     </style>
     <style name="s_song_name">
         <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="40"/>

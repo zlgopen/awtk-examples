@@ -1,7 +1,7 @@
-<window anim_hint="htranslate" style="bg_main">
+<window anim_hint="htranslate" style="bg_main" x="0%" y="0%" w="480" h="272">
     <view x="0" y="0" w="100%" h="11%">
-        <label name="dev_name" x="15" y="m" w="72" h="100%" text="Music Player" style="left"/>
-        <label name="sys_time" x="right:12" y="m" w="30" h="100%" style="right"/>
+        <label name="dev_name" x="5" y="m" w="72" h="100%" text="Music Player" style="left"/>
+        <label name="sys_time" x="right:5" y="m" w="30" h="100%" style="right"/>
     </view>
 
     <view  x="0" y="bottom" w="100%" h="36">
@@ -34,7 +34,7 @@
             <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
         </view>
     </frame_view>
-    <guage_pointer name="vinyl_head" x="99" y="28" w="12" h="12" angle="-70"  image="guage_pointer"/>
+    <guage_pointer name="vinyl_head" x="89" y="28" w="29" h="72" angle="-70"  anchor_x="6px" anchor_y="5px" image="guage_pointer"/>
     <view x="53%" y="12%" w="40%" h="18%">
         <label name="song_name" x="m" y="20%" text=""  w="100%" h="30%" style="s_song_name"/>
         <label name="song_artist" x="m" y="50%" text="" w="100%" h="40%" style="s_artist_name"/>

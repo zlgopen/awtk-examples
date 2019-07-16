@@ -10,8 +10,8 @@
         </image>
     </view>
     <chart_view name="chartview" x="7%" y="14%" w="73.5%" h="79%">
-        <axis name="x" type="value" orientation="x" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}" data="[0,1,2,3,4,5,6,7,8,9,10,11]"/>
-        <axis name="y" type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef, font_size:14}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
+        <axis name="x" axis_type="value" orientation="x" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}" data="[0,1,2,3,4,5,6,7,8,9,10,11]"/>
+        <axis name="y" axis_type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef, font_size:14}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
         <line_series name="s1" capacity="12" line="{smooth:true, color:#69cf5c}" area="{show:true, color:#69cf5c66}" symbol="{show:true, fill_color:#69cf5c, stroke_color:#ffc393, size:3}"/>
         <line_series name="s2" capacity="12" line="{smooth:true, color:#36b3c3}" area="{show:true, color:#36b3c366}" symbol="{show:true, fill_color:#36b3c3, stroke_color:#ffc393, size:3}"/>
     </chart_view>

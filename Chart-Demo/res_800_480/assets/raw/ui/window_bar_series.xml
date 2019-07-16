@@ -14,8 +14,8 @@
         </image>
     </view>
     <chart_view name="chartview" x="7%" y="14%" w="73.5%" h="79%" bar.margin="20" bar.spacing="4">
-        <axis name="x" type="category" orientation="x" tick="{show:false}" split_line="{show:false}" label="{color:#a1d8ef}" line="{color:#294b63}" data="[Mon,Tues,Wed,Thur,Fri,Sat,Sun]"/>
-        <axis name="y" w="100%" h="100%" type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
+        <axis name="x" axis_type="category" orientation="x" tick="{show:false}" split_line="{show:false}" label="{color:#a1d8ef}" line="{color:#294b63}" data="[Mon,Tues,Wed,Thur,Fri,Sat,Sun]"/>
+        <axis name="y" w="100%" h="100%" axis_type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
         <bar_series name="s1" capacity="7" bar="{color:#69cf5c}"/>
         <bar_series name="s2" capacity="7" bar="{color:#36b3c3}"/>
         <bar_series name="s3" capacity="7" bar="{color:#327ad3}"/>

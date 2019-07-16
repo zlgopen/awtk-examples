@@ -274,7 +274,7 @@ widget_t* axis_cast(widget_t* widget);
 float_t axis_measure_label(widget_t* widget, canvas_t* c);
 
 #define AXIS_PROP_ORIENTATION "orientation"
-#define AXIS_PROP_TYPE "type"
+#define AXIS_PROP_TYPE "axis_type"
 #define AXIS_PROP_AT "at"
 #define AXIS_PROP_OFFSET "offset"
 #define AXIS_PROP_DATA "data"

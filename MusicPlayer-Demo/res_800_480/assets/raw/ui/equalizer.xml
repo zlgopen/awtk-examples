@@ -36,11 +36,11 @@
 
             <slider name="frequency_8" text="8k"  x="80%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
             <label  text="8k" x="80%" y="bottom" w="10" h="20%"  style="eq_text"/>
+        </view>
     </view>
-</view>
-<chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="bg_chart_view">
-    <axis name="x" w="100%" h="100%" type="value" orientation="x" min="0" max="100"  tick="{show:false}" split_line="{show:false}"  label="{show:false}" line="{color:#294b63}" data="[0,0,0,0,0,0,0,0,0]"/>
-    <axis name="y" w="100%" h="100%" type="value" orientation="y" min="0" max="100" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}"/>
-    <line_series name="s1"  w="100%" h="100%" capacity="10" line="{smooth:true, color:#00fffc}" area={"show:false, color:#69cf5c66}" symbol="{show:false, fill_color:#69cf5c, stroke_color:#ffc393}"/>
-</chart_view>
+    <chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="bg_chart_view">
+        <axis name="x" w="100%" h="100%" axis_type="value" orientation="x" min="0" max="100"  tick="{show:false}" split_line="{show:false}"  label="{show:false}" line="{color:#294b63}" data="[0,0,0,0,0,0,0,0,0]"/>
+        <axis name="y" w="100%" h="100%" axis_type="value" orientation="y" min="0" max="100" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}"/>
+        <line_series name="s1"  w="100%" h="100%" capacity="10" line="{smooth:true, color:#00fffc}" area={"show:false, color:#69cf5c66}" symbol="{show:false, fill_color:#69cf5c, stroke_color:#ffc393}"/>
+    </chart_view>
 </dialog>

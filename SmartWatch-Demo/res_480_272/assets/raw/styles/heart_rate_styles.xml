@@ -1,0 +1,82 @@
+<window>
+    <style name="default">
+        <normal bg_color="#f0f0f0"/>
+    </style>
+    <style name="dark">
+        <normal bg_color="#664d74"/>
+    </style>
+    <style name="bricks">
+        <normal bg_image="bricks"  bg_image_draw_type="repeat"/>
+    </style>
+    <style name="sky">
+        <normal bg_image="bg800x480"/>
+    </style>
+    <style name="black">
+        <normal bg_color="#000000" />
+    </style>
+    <style name="blue">
+        <normal bg_color="#125FA8" />
+    </style>
+    <style name="music">
+        <normal bg_color="#272727" />
+    </style>
+    <style name="heart_rate">
+        <normal bg_color="#010101" />
+    </style>
+</window>
+<view>
+    <style name="black">
+        <normal bg_color="black" />
+    </style>
+</view>
+<label>
+    <style name="white">
+        <normal text_color="#b6b6b6" font_size="18" text_align_h="left" text_align_v="middle"/>
+    </style>
+    <style name="red">
+        <normal text_color="#FF0338" font_size="22" text_align_h="left" text_align_v="middle"/>
+    </style>
+    <style name="write_black_right">
+        <normal text_color="#ffffff" font_size="25" text_align_h="right" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="heart_rate">
+        <normal text_color="#ffffff" font_size="25" text_align_h="left" bg_color="black"/>
+    </style>
+    <style name="heart_rate_number">
+        <normal text_color="white" font_size="46" text_align_h="right" text_align_v="bottom"/>
+    </style>
+    <style name="left_red">
+        <normal text_color="#b6b6b6" font_size="17" text_align_h="left" text_align_v="bottom"/>
+    </style>
+    <style name="mid">
+        <normal bg_color="#6CA5C0"/>
+    </style>
+    <style name="check_top">
+        <normal text_color="white" font_size="31" text_align_h="center" text_align_v="middle"/>
+    </style>
+    <style name="check_bottom">
+        <normal text_color="#A9A9A9" font_size="25" text_align_h="center" text_align_v="middle"/>
+    </style>
+</label>
+<digit_clock>
+    <style name="heart_rate_top">
+        <normal bg_image="ico_heart_top" font_size="23" text_align_h="center" text_align_v="middle" text_color="white"/>
+    </style>
+</digit_clock>
+<bar_graph>
+    <style name="heart_rate">
+        <!-- <normal bg_color="#181818"/> -->
+    </style>
+</bar_graph>
+<button>
+    <style name="heart_rate_bottom" font_size="25" text_align_h="center" text_align_v="middle" text_color="white">
+        <normal bg_image="ico_heart_bottom_normal"/>
+        <pressed bg_image="ico_heart_bottom_pressed"/>
+        <over bg_image="ico_heart_bottom_pressed"/>
+    </style>
+</button>
+<digit_clock>
+    <style name="heart_rate_top">
+        <normal bg_image="ico_heart_top"/>
+    </style>
+</digit_clock>

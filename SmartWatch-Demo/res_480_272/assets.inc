@@ -1,0 +1,403 @@
+#include "awtk.h"
+#include "base/assets_manager.h"
+#ifndef WITH_FS_RES
+#include "assets/inc/strings/en_US.data"
+#include "assets/inc/strings/zh_CN.data"
+#include "assets/inc/styles/alarm_clock_styles.data"
+#include "assets/inc/styles/application_styles.data"
+#include "assets/inc/styles/button.data"
+#include "assets/inc/styles/calculator_styles.data"
+#include "assets/inc/styles/calendar_styles.data"
+#include "assets/inc/styles/clock_styles.data"
+#include "assets/inc/styles/default.data"
+#include "assets/inc/styles/health_styles.data"
+#include "assets/inc/styles/heart_rate_styles.data"
+#include "assets/inc/styles/keyboard.data"
+#include "assets/inc/styles/message_styles.data"
+#include "assets/inc/styles/music_styles.data"
+#include "assets/inc/styles/quick_styles.data"
+#include "assets/inc/styles/select_dial_styles.data"
+#include "assets/inc/styles/set_aims.data"
+#include "assets/inc/styles/watch_01_styles.data"
+#include "assets/inc/styles/watch_02_styles.data"
+#include "assets/inc/styles/watch_04_styles.data"
+#include "assets/inc/styles/watch_06_styles.data"
+#include "assets/inc/styles/weather_styles.data"
+#include "assets/inc/ui/app.data"
+#include "assets/inc/ui/application.data"
+#include "assets/inc/ui/app_default.data"
+#include "assets/inc/ui/calendar.data"
+#include "assets/inc/ui/health.data"
+#include "assets/inc/ui/heart_rate.data"
+#include "assets/inc/ui/heart_rate_check.data"
+#include "assets/inc/ui/kb_ascii.data"
+#include "assets/inc/ui/kb_default.data"
+#include "assets/inc/ui/kb_float.data"
+#include "assets/inc/ui/kb_hex.data"
+#include "assets/inc/ui/kb_int.data"
+#include "assets/inc/ui/kb_phone.data"
+#include "assets/inc/ui/kb_ufloat.data"
+#include "assets/inc/ui/kb_uint.data"
+#include "assets/inc/ui/main.data"
+#include "assets/inc/ui/message.data"
+#include "assets/inc/ui/music.data"
+#include "assets/inc/ui/quick.data"
+#include "assets/inc/ui/select_dial.data"
+#include "assets/inc/ui/watch_01.data"
+#include "assets/inc/ui/watch_02.data"
+#include "assets/inc/ui/watch_04.data"
+#include "assets/inc/ui/watch_06.data"
+#include "assets/inc/ui/weather.data"
+#ifdef WITH_STB_IMAGE
+#include "assets/inc/images/0.res"
+#include "assets/inc/images/1.res"
+#include "assets/inc/images/10.res"
+#include "assets/inc/images/11.res"
+#include "assets/inc/images/2.res"
+#include "assets/inc/images/3.res"
+#include "assets/inc/images/4.res"
+#include "assets/inc/images/5.res"
+#include "assets/inc/images/6.res"
+#include "assets/inc/images/7.res"
+#include "assets/inc/images/8.res"
+#include "assets/inc/images/9.res"
+#include "assets/inc/images/active_dot.res"
+#include "assets/inc/images/app_cloudy_normal_74.res"
+#include "assets/inc/images/app_cloudy_normal_88.res"
+#include "assets/inc/images/app_heart_normal_74.res"
+#include "assets/inc/images/app_mail_normal_74.res"
+#include "assets/inc/images/app_message_normal_74.res"
+#include "assets/inc/images/app_message_normal_88.res"
+#include "assets/inc/images/app_thunderstorm_normal_88.res"
+#include "assets/inc/images/app_thunderstorm_pressed_88.res"
+#include "assets/inc/images/app_training_normal_74.res"
+#include "assets/inc/images/app_training_normal_88.res"
+#include "assets/inc/images/calendar_current.res"
+#include "assets/inc/images/dot.res"
+#include "assets/inc/images/heart_00000.res"
+#include "assets/inc/images/heart_00001.res"
+#include "assets/inc/images/heart_00002.res"
+#include "assets/inc/images/icon_app_calendar_normal.res"
+#include "assets/inc/images/icon_app_calendar_normal_88.res"
+#include "assets/inc/images/icon_app_calendar_pressed.res"
+#include "assets/inc/images/icon_app_calendar_pressed_88.res"
+#include "assets/inc/images/icon_app_cloudy_normal.res"
+#include "assets/inc/images/icon_app_cloudy_normal_88.res"
+#include "assets/inc/images/icon_app_cloudy_pressed.res"
+#include "assets/inc/images/icon_app_cloudy_pressed_88.res"
+#include "assets/inc/images/icon_app_heart_normal.res"
+#include "assets/inc/images/icon_app_heart_pressed.res"
+#include "assets/inc/images/icon_app_heart_s_01.res"
+#include "assets/inc/images/icon_app_heart_s_02.res"
+#include "assets/inc/images/icon_app_mail_normal.res"
+#include "assets/inc/images/icon_app_mail_pressed.res"
+#include "assets/inc/images/icon_app_music_normal.res"
+#include "assets/inc/images/icon_app_music_normal_88.res"
+#include "assets/inc/images/icon_app_music_pressed.res"
+#include "assets/inc/images/icon_app_music_pressed_88.res"
+#include "assets/inc/images/icon_app_phone_s_01.res"
+#include "assets/inc/images/icon_app_phone_s_02.res"
+#include "assets/inc/images/icon_app_rainy_normal_88.res"
+#include "assets/inc/images/icon_app_rainy_pressed_88.res"
+#include "assets/inc/images/icon_app_run_s_01.res"
+#include "assets/inc/images/icon_app_run_s_02.res"
+#include "assets/inc/images/icon_app_sunny_normal_88.res"
+#include "assets/inc/images/icon_app_sunny_pressed_88.res"
+#include "assets/inc/images/icon_app_training_normal.res"
+#include "assets/inc/images/icon_app_training_normal_88.res"
+#include "assets/inc/images/icon_app_training_pressed.res"
+#include "assets/inc/images/icon_app_training_pressed_88.res"
+#include "assets/inc/images/icon_app_training_s_01.res"
+#include "assets/inc/images/icon_app_training_s_02.res"
+#include "assets/inc/images/icon_app_wechart_normal_88.res"
+#include "assets/inc/images/icon_app_wechart_pressed_88.res"
+#include "assets/inc/images/icon_app_wechart_s_01.res"
+#include "assets/inc/images/icon_app_wechart_s_02.res"
+#include "assets/inc/images/ico_background2.res"
+#include "assets/inc/images/ico_calculator_bottom_normal.res"
+#include "assets/inc/images/ico_calculator_bottom_pressed.res"
+#include "assets/inc/images/ico_calculator_top.res"
+#include "assets/inc/images/ico_calendar_bottom_normal.res"
+#include "assets/inc/images/ico_calendar_bottom_pressed.res"
+#include "assets/inc/images/ico_calendar_top.res"
+#include "assets/inc/images/ico_down_normal.res"
+#include "assets/inc/images/ico_down_pressed.res"
+#include "assets/inc/images/ico_health_normal.res"
+#include "assets/inc/images/ico_health_over.res"
+#include "assets/inc/images/ico_heart_bottom_normal.res"
+#include "assets/inc/images/ico_heart_bottom_pressed.res"
+#include "assets/inc/images/ico_heart_normal.res"
+#include "assets/inc/images/ico_heart_over.res"
+#include "assets/inc/images/ico_heart_top.res"
+#include "assets/inc/images/ico_music.res"
+#include "assets/inc/images/ico_musicmudel_01_normal.res"
+#include "assets/inc/images/ico_musicmudel_01_pressed.res"
+#include "assets/inc/images/ico_musicmudel_02_normal.res"
+#include "assets/inc/images/ico_musicmudel_02_pressed.res"
+#include "assets/inc/images/ico_musicmudel_03_normal.res"
+#include "assets/inc/images/ico_musicmudel_03_pressed.res"
+#include "assets/inc/images/ico_music_back_normal.res"
+#include "assets/inc/images/ico_music_back_pressed.res"
+#include "assets/inc/images/ico_music_next_normal.res"
+#include "assets/inc/images/ico_music_next_pressed.res"
+#include "assets/inc/images/ico_music_play_normal.res"
+#include "assets/inc/images/ico_music_play_pressed.res"
+#include "assets/inc/images/ico_music_stop_normal.res"
+#include "assets/inc/images/ico_music_stop_pressed.res"
+#include "assets/inc/images/ico_music_top.res"
+#include "assets/inc/images/ico_music_top_pressed.res"
+#include "assets/inc/images/ico_pay_background.res"
+#include "assets/inc/images/ico_pay_bar.res"
+#include "assets/inc/images/ico_pay_card.res"
+#include "assets/inc/images/ico_phone_normal.res"
+#include "assets/inc/images/ico_phone_over.res"
+#include "assets/inc/images/ico_plus_normal.res"
+#include "assets/inc/images/ico_plus_pressed.res"
+#include "assets/inc/images/ico_sound.res"
+#include "assets/inc/images/ico_switch_normal.res"
+#include "assets/inc/images/ico_switch_pressed.res"
+#include "assets/inc/images/ico_training_normal.res"
+#include "assets/inc/images/ico_training_over.res"
+#include "assets/inc/images/ico_up_normal.res"
+#include "assets/inc/images/ico_up_pressed.res"
+#include "assets/inc/images/ico_watch_01.res"
+#include "assets/inc/images/ico_watch_01_hour.res"
+#include "assets/inc/images/ico_watch_01_minute.res"
+#include "assets/inc/images/ico_watch_01_second.res"
+#include "assets/inc/images/ico_watch_02.res"
+#include "assets/inc/images/ico_watch_03_hour.res"
+#include "assets/inc/images/ico_watch_03_minute.res"
+#include "assets/inc/images/ico_watch_03_second.res"
+#include "assets/inc/images/ico_watch_04.res"
+#include "assets/inc/images/ico_watch_04_hour.res"
+#include "assets/inc/images/ico_watch_04_minute.res"
+#include "assets/inc/images/ico_watch_04_second.res"
+#include "assets/inc/images/ico_watch_05_hour.res"
+#include "assets/inc/images/ico_watch_05_minute.res"
+#include "assets/inc/images/ico_watch_05_second.res"
+#include "assets/inc/images/ico_watch_06.res"
+#include "assets/inc/images/ico_watch_background_01.res"
+#include "assets/inc/images/ico_watch_background_02.res"
+#include "assets/inc/images/ico_watch_background_04.res"
+#include "assets/inc/images/ico_watch_background_06.res"
+#include "assets/inc/images/ico_watch_black_background.res"
+#include "assets/inc/images/ico_weather_01.res"
+#include "assets/inc/images/ico_weather_02.res"
+#include "assets/inc/images/ico_weather_03.res"
+#include "assets/inc/images/ico_weather_04.res"
+#include "assets/inc/images/ico_weather_bottom.res"
+#include "assets/inc/images/ico_weather_top.res"
+#include "assets/inc/images/ico_wechart_normal.res"
+#include "assets/inc/images/ico_wechart_over.res"
+#include "assets/inc/images/vol_bar_bg.res"
+#include "assets/inc/images/vol_bar_fg.res"
+#else
+#endif/*WITH_STB_IMAGE*/
+#if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)
+#include "assets/inc/fonts/default.res"
+#else/*WITH_STB_FONT or WITH_FT_FONT*/
+#endif/*WITH_STB_FONT or WITH_FT_FONT*/
+#endif/*WITH_FS_RES*/
+
+ret_t assets_init(void) {
+  assets_manager_t* rm = assets_manager();
+
+#ifdef WITH_FS_RES
+  assets_manager_preload(rm, ASSET_TYPE_FONT, "default");
+  assets_manager_preload(rm, ASSET_TYPE_STYLE, "default");
+#else
+  assets_manager_add(rm, font_default);
+  assets_manager_add(rm, image_0);
+  assets_manager_add(rm, image_1);
+  assets_manager_add(rm, image_10);
+  assets_manager_add(rm, image_11);
+  assets_manager_add(rm, image_2);
+  assets_manager_add(rm, image_3);
+  assets_manager_add(rm, image_4);
+  assets_manager_add(rm, image_5);
+  assets_manager_add(rm, image_6);
+  assets_manager_add(rm, image_7);
+  assets_manager_add(rm, image_8);
+  assets_manager_add(rm, image_9);
+  assets_manager_add(rm, image_active_dot);
+  assets_manager_add(rm, image_app_cloudy_normal_74);
+  assets_manager_add(rm, image_app_cloudy_normal_88);
+  assets_manager_add(rm, image_app_heart_normal_74);
+  assets_manager_add(rm, image_app_mail_normal_74);
+  assets_manager_add(rm, image_app_message_normal_74);
+  assets_manager_add(rm, image_app_message_normal_88);
+  assets_manager_add(rm, image_app_thunderstorm_normal_88);
+  assets_manager_add(rm, image_app_thunderstorm_pressed_88);
+  assets_manager_add(rm, image_app_training_normal_74);
+  assets_manager_add(rm, image_app_training_normal_88);
+  assets_manager_add(rm, image_calendar_current);
+  assets_manager_add(rm, image_dot);
+  assets_manager_add(rm, image_heart_00000);
+  assets_manager_add(rm, image_heart_00001);
+  assets_manager_add(rm, image_heart_00002);
+  assets_manager_add(rm, image_icon_app_calendar_normal);
+  assets_manager_add(rm, image_icon_app_calendar_normal_88);
+  assets_manager_add(rm, image_icon_app_calendar_pressed);
+  assets_manager_add(rm, image_icon_app_calendar_pressed_88);
+  assets_manager_add(rm, image_icon_app_cloudy_normal);
+  assets_manager_add(rm, image_icon_app_cloudy_normal_88);
+  assets_manager_add(rm, image_icon_app_cloudy_pressed);
+  assets_manager_add(rm, image_icon_app_cloudy_pressed_88);
+  assets_manager_add(rm, image_icon_app_heart_normal);
+  assets_manager_add(rm, image_icon_app_heart_pressed);
+  assets_manager_add(rm, image_icon_app_heart_s_01);
+  assets_manager_add(rm, image_icon_app_heart_s_02);
+  assets_manager_add(rm, image_icon_app_mail_normal);
+  assets_manager_add(rm, image_icon_app_mail_pressed);
+  assets_manager_add(rm, image_icon_app_music_normal);
+  assets_manager_add(rm, image_icon_app_music_normal_88);
+  assets_manager_add(rm, image_icon_app_music_pressed);
+  assets_manager_add(rm, image_icon_app_music_pressed_88);
+  assets_manager_add(rm, image_icon_app_phone_s_01);
+  assets_manager_add(rm, image_icon_app_phone_s_02);
+  assets_manager_add(rm, image_icon_app_rainy_normal_88);
+  assets_manager_add(rm, image_icon_app_rainy_pressed_88);
+  assets_manager_add(rm, image_icon_app_run_s_01);
+  assets_manager_add(rm, image_icon_app_run_s_02);
+  assets_manager_add(rm, image_icon_app_sunny_normal_88);
+  assets_manager_add(rm, image_icon_app_sunny_pressed_88);
+  assets_manager_add(rm, image_icon_app_training_normal);
+  assets_manager_add(rm, image_icon_app_training_normal_88);
+  assets_manager_add(rm, image_icon_app_training_pressed);
+  assets_manager_add(rm, image_icon_app_training_pressed_88);
+  assets_manager_add(rm, image_icon_app_training_s_01);
+  assets_manager_add(rm, image_icon_app_training_s_02);
+  assets_manager_add(rm, image_icon_app_wechart_normal_88);
+  assets_manager_add(rm, image_icon_app_wechart_pressed_88);
+  assets_manager_add(rm, image_icon_app_wechart_s_01);
+  assets_manager_add(rm, image_icon_app_wechart_s_02);
+  assets_manager_add(rm, image_ico_background2);
+  assets_manager_add(rm, image_ico_calculator_bottom_normal);
+  assets_manager_add(rm, image_ico_calculator_bottom_pressed);
+  assets_manager_add(rm, image_ico_calculator_top);
+  assets_manager_add(rm, image_ico_calendar_bottom_normal);
+  assets_manager_add(rm, image_ico_calendar_bottom_pressed);
+  assets_manager_add(rm, image_ico_calendar_top);
+  assets_manager_add(rm, image_ico_down_normal);
+  assets_manager_add(rm, image_ico_down_pressed);
+  assets_manager_add(rm, image_ico_health_normal);
+  assets_manager_add(rm, image_ico_health_over);
+  assets_manager_add(rm, image_ico_heart_bottom_normal);
+  assets_manager_add(rm, image_ico_heart_bottom_pressed);
+  assets_manager_add(rm, image_ico_heart_normal);
+  assets_manager_add(rm, image_ico_heart_over);
+  assets_manager_add(rm, image_ico_heart_top);
+  assets_manager_add(rm, image_ico_music);
+  assets_manager_add(rm, image_ico_musicmudel_01_normal);
+  assets_manager_add(rm, image_ico_musicmudel_01_pressed);
+  assets_manager_add(rm, image_ico_musicmudel_02_normal);
+  assets_manager_add(rm, image_ico_musicmudel_02_pressed);
+  assets_manager_add(rm, image_ico_musicmudel_03_normal);
+  assets_manager_add(rm, image_ico_musicmudel_03_pressed);
+  assets_manager_add(rm, image_ico_music_back_normal);
+  assets_manager_add(rm, image_ico_music_back_pressed);
+  assets_manager_add(rm, image_ico_music_next_normal);
+  assets_manager_add(rm, image_ico_music_next_pressed);
+  assets_manager_add(rm, image_ico_music_play_normal);
+  assets_manager_add(rm, image_ico_music_play_pressed);
+  assets_manager_add(rm, image_ico_music_stop_normal);
+  assets_manager_add(rm, image_ico_music_stop_pressed);
+  assets_manager_add(rm, image_ico_music_top);
+  assets_manager_add(rm, image_ico_music_top_pressed);
+  assets_manager_add(rm, image_ico_pay_background);
+  assets_manager_add(rm, image_ico_pay_bar);
+  assets_manager_add(rm, image_ico_pay_card);
+  assets_manager_add(rm, image_ico_phone_normal);
+  assets_manager_add(rm, image_ico_phone_over);
+  assets_manager_add(rm, image_ico_plus_normal);
+  assets_manager_add(rm, image_ico_plus_pressed);
+  assets_manager_add(rm, image_ico_sound);
+  assets_manager_add(rm, image_ico_switch_normal);
+  assets_manager_add(rm, image_ico_switch_pressed);
+  assets_manager_add(rm, image_ico_training_normal);
+  assets_manager_add(rm, image_ico_training_over);
+  assets_manager_add(rm, image_ico_up_normal);
+  assets_manager_add(rm, image_ico_up_pressed);
+  assets_manager_add(rm, image_ico_watch_01);
+  assets_manager_add(rm, image_ico_watch_01_hour);
+  assets_manager_add(rm, image_ico_watch_01_minute);
+  assets_manager_add(rm, image_ico_watch_01_second);
+  assets_manager_add(rm, image_ico_watch_02);
+  assets_manager_add(rm, image_ico_watch_03_hour);
+  assets_manager_add(rm, image_ico_watch_03_minute);
+  assets_manager_add(rm, image_ico_watch_03_second);
+  assets_manager_add(rm, image_ico_watch_04);
+  assets_manager_add(rm, image_ico_watch_04_hour);
+  assets_manager_add(rm, image_ico_watch_04_minute);
+  assets_manager_add(rm, image_ico_watch_04_second);
+  assets_manager_add(rm, image_ico_watch_05_hour);
+  assets_manager_add(rm, image_ico_watch_05_minute);
+  assets_manager_add(rm, image_ico_watch_05_second);
+  assets_manager_add(rm, image_ico_watch_06);
+  assets_manager_add(rm, image_ico_watch_background_01);
+  assets_manager_add(rm, image_ico_watch_background_02);
+  assets_manager_add(rm, image_ico_watch_background_04);
+  assets_manager_add(rm, image_ico_watch_background_06);
+  assets_manager_add(rm, image_ico_watch_black_background);
+  assets_manager_add(rm, image_ico_weather_01);
+  assets_manager_add(rm, image_ico_weather_02);
+  assets_manager_add(rm, image_ico_weather_03);
+  assets_manager_add(rm, image_ico_weather_04);
+  assets_manager_add(rm, image_ico_weather_bottom);
+  assets_manager_add(rm, image_ico_weather_top);
+  assets_manager_add(rm, image_ico_wechart_normal);
+  assets_manager_add(rm, image_ico_wechart_over);
+  assets_manager_add(rm, image_vol_bar_bg);
+  assets_manager_add(rm, image_vol_bar_fg);
+  assets_manager_add(rm, style_alarm_clock_styles);
+  assets_manager_add(rm, style_application_styles);
+  assets_manager_add(rm, style_button);
+  assets_manager_add(rm, style_calculator_styles);
+  assets_manager_add(rm, style_calendar_styles);
+  assets_manager_add(rm, style_clock_styles);
+  assets_manager_add(rm, style_default);
+  assets_manager_add(rm, style_health_styles);
+  assets_manager_add(rm, style_heart_rate_styles);
+  assets_manager_add(rm, style_keyboard);
+  assets_manager_add(rm, style_message_styles);
+  assets_manager_add(rm, style_music_styles);
+  assets_manager_add(rm, style_quick_styles);
+  assets_manager_add(rm, style_select_dial_styles);
+  assets_manager_add(rm, style_set_aims);
+  assets_manager_add(rm, style_watch_01_styles);
+  assets_manager_add(rm, style_watch_02_styles);
+  assets_manager_add(rm, style_watch_04_styles);
+  assets_manager_add(rm, style_watch_06_styles);
+  assets_manager_add(rm, style_weather_styles);
+  assets_manager_add(rm, ui_app);
+  assets_manager_add(rm, ui_application);
+  assets_manager_add(rm, ui_app_default);
+  assets_manager_add(rm, ui_calendar);
+  assets_manager_add(rm, ui_health);
+  assets_manager_add(rm, ui_heart_rate);
+  assets_manager_add(rm, ui_heart_rate_check);
+  assets_manager_add(rm, ui_kb_ascii);
+  assets_manager_add(rm, ui_kb_default);
+  assets_manager_add(rm, ui_kb_float);
+  assets_manager_add(rm, ui_kb_hex);
+  assets_manager_add(rm, ui_kb_int);
+  assets_manager_add(rm, ui_kb_phone);
+  assets_manager_add(rm, ui_kb_ufloat);
+  assets_manager_add(rm, ui_kb_uint);
+  assets_manager_add(rm, ui_main);
+  assets_manager_add(rm, ui_message);
+  assets_manager_add(rm, ui_music);
+  assets_manager_add(rm, ui_quick);
+  assets_manager_add(rm, ui_select_dial);
+  assets_manager_add(rm, ui_watch_01);
+  assets_manager_add(rm, ui_watch_02);
+  assets_manager_add(rm, ui_watch_04);
+  assets_manager_add(rm, ui_watch_06);
+  assets_manager_add(rm, ui_weather);
+  assets_manager_add(rm, strings_en_US);
+  assets_manager_add(rm, strings_zh_CN);
+#endif
+
+  tk_init_assets();
+  return RET_OK;
+}

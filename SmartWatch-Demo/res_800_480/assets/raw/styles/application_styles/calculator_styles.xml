@@ -1,0 +1,7 @@
+<button>
+    <style name="calculator" text_color="#ffffff" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+</button>

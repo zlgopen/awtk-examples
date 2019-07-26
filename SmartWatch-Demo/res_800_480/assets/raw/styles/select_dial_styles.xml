@@ -1,0 +1,22 @@
+<window>
+    <style name="select_dial">
+        <normal     bg_color="#061B26" />
+    </style>
+</window>
+<button>
+    <style name="select_digit_dial"  >
+        <normal      bg_image="dial_style/dial_style_time" />
+        <pressed     bg_image="dial_style/dial_style_time" />
+        <over        bg_image="dial_style/dial_style_time" />
+    </style>
+    <style name="select_time_dial" border_color="#a0a0a0" >
+        <normal      bg_image="dial_style/dial_style_digit" />
+        <pressed     bg_image="dial_style/dial_style_digit" />
+        <over        bg_image="dial_style/dial_style_digit" />
+    </style>
+    <style name="music" font_name="default" text_color="#FFFFFF" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+</button>

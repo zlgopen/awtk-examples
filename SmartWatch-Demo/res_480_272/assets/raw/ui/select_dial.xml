@@ -1,0 +1,31 @@
+<window anim_hint="slide_right" style="select_dial"  full_screen="false" x="c" y="m" w="240" h="240" theme="select_dial_styles">
+    <view x="0" y="0" w="100%" h="100%" name="select:gesture">
+        <slide_menu name="select:slideview" x="c" y="m" w="240%" h="70%" style="dot" min_scale="1.0">
+            <view x="0" y="0" w="100%" h="100%">
+                <button name="watch_04" style="watch_04" x="c" y="m" w="159" h="159"/>
+            </view>
+            <view x="0" y="0" w="100%" h="100%">
+                <button name="watch_01" style="watch_01" x="c" y="m" w="159" h="159"/>
+            </view>
+            <view x="0" y="0" w="100%" h="100%">
+                <button name="watch_02" style="watch_02" x="c" y="m" w="159" h="159"/>
+            </view>
+            <view x="0" y="0" w="100%" h="100%">
+                <button name="watch_06" style="watch_06" x="c" y="m" w="159" h="159"/>
+            </view>
+        </slide_menu>
+        <view name="select:digit_btns" x="c" y="m" w="80%" h="80%" visible="false" sensitive="false" style="digit_btns" >
+            <button name="select:top" x="126" y="45" w="60" h="60" text="Top" />
+            <button name="select:bottom" x="126" y="165" w="60" h="60" text="Bottom" />
+            <button name="select:left" x="66" y="105" w="60" h="60" text="Left" />
+            <button name="select:right" x="186" y="105" w="60" h="60" text="Right" />
+        </view>
+        <view name="select:time_btns" x="c" y="m" w="80%" h="80%" visible="false" sensitive="false" style="time_btn" >
+            <button name="select:1" x="31" y="30" w="60" h="60" text="1" />
+            <button name="select:2" x="31" y="210" w="60" h="60" />
+            <button name="select:3" x="126" y="210" w="60" h="60" />
+            <button name="select:4" x="221" y="210" w="60" h="60" />
+        </view>
+        <button name="select:done" style="music" x="c" y="bottom" w="100%" h="30" text="完成" visible="false" sensitive="false" />
+    </view>
+</window>

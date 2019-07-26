@@ -28,17 +28,6 @@
 
 BEGIN_C_DECLS
 
-typedef struct _bar_layout_t {
-  /**
-   * 柱条在间隔内的边距。
-   */
-  uint8_t margin;
-  /**
-   * 间隔内相邻柱条的间距。
-   */
-  uint8_t spacing;
-} bar_layout_t;
-
 /**
  * @class chart_view_t
  * @parent widget_t
@@ -47,12 +36,21 @@ typedef struct _bar_layout_t {
  */
 typedef struct _chart_view_t {
   widget_t widget;
-  bar_layout_t bar_layout;
+
+  /**
+   * @property {int32_t} top_series
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 位于顶层的series的索引。
+   */
+  int32_t top_series;
 
   /* private */
-  bool_t is_axes_dirty;
-  darray_t* axes;
-  darray_t* series;
+  uint32_t* last_series_offset;
+  uint32_t series_cnt;
+  bool_t pressed;
+  bool_t dragged;
+  point_t down;
+  uint8_t need_relayout_axes : 1;
 } chart_view_t;
 
 /**
@@ -70,104 +68,15 @@ typedef struct _chart_view_t {
 widget_t* chart_view_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
- * @method chart_view_count_axis
- * 获取指定方向的axis的个数。
+ * @method chart_view_set_top_series
+ * 设置需置顶的series的索引。
  * @annotation ["scriptable"]
  * @param {widget_t*} widget 控件对象。
- * @param {axis_orientation_t} orientation axis的方向
- *
- * @return {uint32_t} axis的个数。
- */
-uint32_t chart_view_count_axis(widget_t* widget, axis_orientation_t orientation);
-
-/**
- * @method chart_view_get_axis
- * 获取指定方向的指定索引的axis对象。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {axis_orientation_t} orientation axis的方向
- * @param {uint32_t} index 索引
- *
- * @return {widget_t*} axis对象。
- */
-widget_t* chart_view_get_axis(widget_t* widget, axis_orientation_t orientation, uint32_t index);
-
-/**
- * @method chart_view_count_series
- * 获取指定类型的series的个数。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {const char*} type series对象的类型。
- *
- * @return {uint32_t} series的个数。
- */
-uint32_t chart_view_count_series(widget_t* widget, const char* type);
-
-/**
- * @method chart_view_get_series
- * 获取指定类型的指定索引的series对象。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {const char*} type series对象的类型。
- * @param {uint32_t} index 索引
- *
- * @return {widget_t*} series对象。
- */
-widget_t* chart_view_get_series(widget_t* widget, const char* type, uint32_t index);
-
-/**
- * @method chart_view_index_of_series
- * 获取series对象在指定类型的series集合中的索引编号。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {const char*} type series对象的类型。
- * @param {widget_t*} series series对象
- *
- * @return {int32_t} 索引编号。
- */
-int32_t chart_view_index_of_series(widget_t* widget, const char* type, widget_t* series);
-
-/**
- * @method chart_view_get_bar_margin
- * 获取柱条在间隔内的边距。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- *
- * @return {uint32_t} 返回值。
- */
-uint32_t chart_view_get_bar_margin(widget_t* widget);
-
-/**
- * @method chart_view_set_bar_margin
- * 设置柱条在间隔内的边距。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {uint32_t} margin 边距。
+ * @param {int32_t} index series索引。
  *
  * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
  */
-ret_t chart_view_set_bar_margin(widget_t* widget, uint32_t margin);
-
-/**
- * @method chart_view_get_bar_spacing
- * 获取同一间隔内的相邻柱条的间距。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- *
- * @return {uint32_t} 返回值。
- */
-uint32_t chart_view_get_bar_spacing(widget_t* widget);
-
-/**
- * @method chart_view_set_bar_spacing
- * 设置同一间隔内的相邻柱条的间距。
- * @annotation ["scriptable"]
- * @param {widget_t*} widget 控件对象。
- * @param {uint32_t} spacing 间距。
- *
- * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
- */
-ret_t chart_view_set_bar_spacing(widget_t* widget, uint32_t spacing);
+ret_t chart_view_set_top_series(widget_t* widget, int32_t index);
 
 /**
  * @method chart_view_cast
@@ -179,11 +88,33 @@ ret_t chart_view_set_bar_spacing(widget_t* widget, uint32_t spacing);
  */
 widget_t* chart_view_cast(widget_t* widget);
 
-#define CHART_VIEW_PROP_BAR_MARGIN "bar.margin"
-#define CHART_VIEW_PROP_BAR_SPACING "bar.spacing"
+/**
+ * @enum widget_prop_t
+ * @annotation ["scriptable", "string"]
+ * @prefix CHART_VIEW_PROP_
+ * 控件的属性。
+ */
 
+/**
+ * @const CHART_VIEW_PROP_TOP_SERIES
+ * 位于顶层的series的索引
+ */
+#define CHART_VIEW_PROP_TOP_SERIES "top_series"
+
+/**
+ * @enum widget_type_t
+ * @annotation ["scriptable", "string"]
+ * @prefix WIDGET_TYPE_
+ * 控件的类型。
+ */
+
+/**
+ * @const WIDGET_TYPE_CHART_VIEW
+ * chart_view。
+ */
 #define WIDGET_TYPE_CHART_VIEW "chart_view"
-#define CHART_VIEW(widget) ((chart_view_t*)(widget))
+
+#define CHART_VIEW(widget) ((chart_view_t*)(chart_view_cast(WIDGET(widget))))
 
 END_C_DECLS
 

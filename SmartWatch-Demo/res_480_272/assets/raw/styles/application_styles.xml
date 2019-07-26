@@ -1,0 +1,230 @@
+<window>
+    <style name="app">
+        <normal     bg_color="#061B26" />
+    </style>
+</window>
+<button>
+    <style name="icon" icon="return_pink"   text_color="red">
+        <normal     bg_color="#f0f0f0" />
+        <pressed    bg_color="#c0c0c0" x_offset="3" y_offset="3" />
+        <over       bg_color="#e0e0e0" />
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+    </style>
+    <style name="alarm_clock_bg"  >
+        <normal      bg_image="alarm_clock_bg" />
+        <pressed     bg_image="alarm_clock_bg" />
+        <over        bg_image="alarm_clock_bg" />
+    </style>
+    <style name="alarm_set"  >
+        <normal      bg_image="alarm_set" />
+        <pressed     bg_image="alarm_set" />
+        <over        bg_image="alarm_set" />
+    </style>
+    <style name="alarm_cancel"  >
+        <normal      bg_image="alarm_cancel" />
+        <pressed     bg_image="alarm_cancel" />
+        <over        bg_image="alarm_cancel" />
+    </style>
+    <style name="none"  >
+        <normal      bg_color="#000000" />
+        <pressed     bg_color="#000000" />
+        <over        bg_color="#000000" />
+    </style>
+    <style name="browser_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="browser_60" />
+        <pressed     bg_image="browser_60" />
+        <over        bg_image="browser_60" />
+    </style>
+    <style name="call_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="call_60" />
+        <pressed     bg_image="call_60" />
+        <over        bg_image="call_60" />
+    </style>
+    <style name="calculator_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="calculator_60" />
+        <pressed     bg_image="calculator_60" />
+        <over        bg_image="calculator_60" />
+    </style>
+    <style name="heart_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="heart_60" />
+        <pressed     bg_image="heart_60" />
+        <over        bg_image="heart_60" />
+    </style>
+    <style name="message_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="message_60" />
+        <pressed     bg_image="message_60" />
+        <over        bg_image="message_60" />
+    </style>
+    <style name="sport_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="sport_60" />
+        <pressed     bg_image="sport_60" />
+        <over        bg_image="sport_60" />
+    </style>
+    <style name="weather_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="weather_60" />
+        <pressed     bg_image="weather_60" />
+        <over        bg_image="weather_60" />
+    </style>
+    <style name="calendar_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="calendar_60" />
+        <pressed     bg_image="calendar_60" />
+        <over        bg_image="calendar_60" />
+    </style>
+    <style name="music_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="music_60" />
+        <pressed     bg_image="music_60" />
+        <over        bg_image="music_60" />
+    </style>
+    <style name="mail_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="mail_60" />
+        <pressed     bg_image="mail_60" />
+        <over        bg_image="mail_60" />
+    </style>
+    <style name="setting_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="setting_60" />
+        <pressed     bg_image="setting_60" />
+        <over        bg_image="setting_60" />
+    </style>
+    <style name="syjz_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="syjz_60" />
+        <pressed     bg_image="syjz_60" />
+        <over        bg_image="syjz_60" />
+    </style>
+    <style name="video_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="video_60" />
+        <pressed     bg_image="video_60" />
+        <over        bg_image="video_60" />
+    </style>
+    <style name="file_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="file_60" />
+        <pressed     bg_image="file_60" />
+        <over        bg_image="file_60" />
+    </style>
+    <style name="clock_60" bg_image_draw_type="scale">
+        <normal    bg_image="clock_60" />
+        <pressed   bg_image="clock_60" />
+        <over      bg_image="clock_60" />
+    </style>
+    <style name="flat_60" bg_image_draw_type="scale">
+        <normal    bg_image="flat_60" />
+        <pressed   bg_image="flat_60" />
+        <over      bg_image="flat_60" />
+    </style>
+    <style name="maps_60" bg_image_draw_type="scale">
+        <normal    bg_image="maps_60" />
+        <pressed   bg_image="maps_60" />
+        <over      bg_image="maps_60" />
+    </style>
+    <style name="camera_60" bg_image_draw_type="scale">
+        <normal    bg_image="camera_60" />
+        <pressed   bg_image="camera_60" />
+        <over      bg_image="camera_60" />
+    </style>
+</button>
+<view>
+    <style name="app_calendar">
+        <normal bg_image="icon_app_calendar_normal"/>
+        <pressed bg_image="icon_app_calendar_pressed"/>
+        <over bg_image="icon_app_calendar_pressed"/>
+    </style>
+    <style name="app_breath">
+        <normal bg_image="icon_app_breath_normal"/>
+        <pressed bg_image="icon_app_breath_pressed"/>
+        <over bg_image="icon_app_breath_pressed"/>
+    </style>
+    <style name="app_calendar">
+        <normal bg_image="icon_app_calendar_normal"/>
+        <pressed bg_image="icon_app_calendar_pressed"/>
+        <over bg_image="icon_app_calendar_pressed"/>
+    </style>
+    <style name="app_clock">
+        <normal bg_image="icon_app_clock_normal"/>
+        <pressed bg_image="icon_app_clock_pressed"/>
+        <over bg_image="icon_app_clock_pressed"/>
+    </style>
+    <style name="app_cloudy">
+        <normal bg_image="icon_app_cloudy_normal"/>
+        <pressed bg_image="icon_app_cloudy_pressed"/>
+        <over bg_image="icon_app_cloudy_pressed"/>
+    </style>
+    <style name="app_heart">
+        <normal bg_image="icon_app_heart_normal"/>
+        <pressed bg_image="icon_app_heart_pressed"/>
+        <over bg_image="icon_app_heart_pressed"/>
+    </style>
+    <style name="app_mail">
+        <normal bg_image="icon_app_mail_normal"/>
+        <pressed bg_image="icon_app_mail_pressed"/>
+        <over bg_image="icon_app_mail_pressed"/>
+    </style>
+    <style name="app_map">
+        <normal bg_image="icon_app_map_normal"/>
+        <pressed bg_image="icon_app_map_pressed"/>
+        <over bg_image="icon_app_map_pressed"/>
+    </style>
+    <style name="app_message">
+        <normal bg_image="icon_app_message_normal"/>
+        <pressed bg_image="icon_app_message_pressed"/>
+        <over bg_image="icon_app_message_pressed"/>
+    </style>
+    <style name="app_music">
+        <normal bg_image="icon_app_music_normal"/>
+        <pressed bg_image="icon_app_music_pressed"/>
+        <over bg_image="icon_app_music_pressed"/>
+    </style>
+    <style name="app_phone">
+        <normal bg_image="icon_app_phone_normal"/>
+        <pressed bg_image="icon_app_phone_pressed"/>
+        <over bg_image="icon_app_phone_pressed"/>
+    </style>
+    <style name="app_photo">
+        <normal bg_image="icon_app_photo_normal"/>
+        <pressed bg_image="icon_app_photo_pressed"/>
+        <over bg_image="icon_app_photo_pressed"/>
+    </style>
+    <style name="app_rainy">
+        <normal bg_image="icon_app_rainy_normal"/>
+        <pressed bg_image="icon_app_rainy_pressed"/>
+        <over bg_image="icon_app_rainy_pressed"/>
+    </style>
+    <style name="app_recording">
+        <normal bg_image="icon_app_recording_normal"/>
+        <pressed bg_image="icon_app_recording_pressed"/>
+        <over bg_image="icon_app_recording_pressed"/>
+    </style>
+    <style name="app_setting">
+        <normal bg_image="icon_app_setting_normal"/>
+        <pressed bg_image="icon_app_setting_pressed"/>
+        <over bg_image="icon_app_setting_pressed"/>
+    </style>
+    <style name="app_stopwatch">
+        <normal bg_image="icon_app_stopwatch_normal"/>
+        <pressed bg_image="icon_app_stopwatch_pressed"/>
+        <over bg_image="icon_app_stopwatch_pressed"/>
+    </style>
+    <style name="app_sunny">
+        <normal bg_image="icon_app_sunny_normal"/>
+        <pressed bg_image="icon_app_sunny_pressed"/>
+        <over bg_image="icon_app_sunny_pressed"/>
+    </style>
+    <style name="app_thunderstorm">
+        <normal bg_image="icon_app_thunderstorm_normal"/>
+        <pressed bg_image="icon_app_thunderstorm_pressed"/>
+        <over bg_image="icon_app_thunderstorm_pressed"/>
+    </style>
+    <style name="app_timer">
+        <normal bg_image="icon_app_timer_normal"/>
+        <pressed bg_image="icon_app_timer_pressed"/>
+        <over bg_image="icon_app_timer_pressed"/>
+    </style>
+    <style name="app_training">
+        <normal bg_image="icon_app_training_normal"/>
+        <pressed bg_image="icon_app_training_pressed"/>
+        <over bg_image="icon_app_training_pressed"/>
+    </style>
+    <style name="app_wechart">
+        <normal bg_image="icon_app_wechart_normal"/>
+        <pressed bg_image="icon_app_wechart_pressed"/>
+        <over bg_image="icon_app_wechart_pressed"/>
+    </style>
+</view>

@@ -3,24 +3,20 @@
   "app_type":"c",
   "version":"1.0",
   "assets" : "res_800_480/assets",
+  "includes":[
+    "src/"
+  ],
   "sources":[
     "src/window_main.c", 
     "src/dialog_advanced.c", 
     "src/dialog_equalizer.c", 
     "src/window_play_list.c", 
+	"src/base/*.c",     
+	"src/custom_function/*.c", 
     "src/custom_widgets/custom_widgets.c", 
-    "src/custom_widgets/chart/axis.c", 
-    "src/custom_widgets/chart/axis_render.c", 
-    "src/custom_widgets/chart/bar_series.c", 
-    "src/custom_widgets/chart/chart_animator.c", 
-    "src/custom_widgets/chart/chart_utils.c", 
-    "src/custom_widgets/chart/chart_view.c", 
-    "src/custom_widgets/chart/line_series.c", 
-    "src/custom_widgets/chart/series.c", 
+    "src/custom_widgets/chart/*.c", 
     "src/custom_widgets/photo_frame/frame_view.c", 
-    "src/custom_function/knob_function.c", 
-    "src/custom_function/music_manager.c", 
-    "src/custom_function/player_timer_manager.c"
+	"src/custom_widgets/pie_slice/pie_slice.c"
   ],
   "config" : {
   	"width":"800",

@@ -1,0 +1,192 @@
+<window>
+    <style name="default">
+        <normal bg_color="#f0f0f0"/>
+    </style>
+    <style name="dark">
+        <normal bg_color="#664d74"/>
+    </style>
+    <style name="bricks">
+        <normal bg_image="bricks"  bg_image_draw_type="repeat"/>
+    </style>
+    <style name="sky">
+        <normal bg_image="bg800x480"/>
+    </style>
+    <style name="black">
+        <normal bg_color="#000000" />
+    </style>
+    <style name="blue">
+        <normal bg_color="#125FA8" />
+    </style>
+    <style name="music">
+        <normal bg_color="#272727" />
+    </style>
+    <style name="weather_00">
+        <!--<normal bg_image="ico_weather_background" />-->
+        <normal bg_color="#0AA2EB" />
+    </style>
+    <style name="weather_01">
+        <normal bg_image="ico_weather_background_01" />
+    </style>
+    <style name="weather_02">
+        <normal bg_image="ico_weather_background_02" />
+    </style>
+    <style name="weather_03">
+        <normal bg_image="ico_weather_background_03" />
+    </style>
+    <style name="weather_04">
+        <normal bg_image="ico_weather_background_03" />
+    </style>
+    <style name="weather_05">
+        <normal bg_image="ico_weather_background_05" />
+    </style>
+</window>
+<label>
+    <style name="day">
+        <normal text_align_h="left" text_align_v="middle"
+            text_color="#00FFEF" font_size="25"
+            />
+    </style>
+    <style name="aqi">
+        <normal text_align_h="left" text_align_v="middle"
+            text_color="#00D0E3" font_size="25"
+            />
+    </style>
+    <style name="aqi_text">
+        <normal text_align_h="right" text_align_v="middle"
+            text_color="#00D0E3" font_size="25"
+            />
+    </style>
+    <style name="default">
+        <normal text_color="black" />
+    </style>
+    <style name="green">
+        <normal text_color="green" />
+    </style>
+    <style name="left">
+        <normal text_color="red" text_align_h="left" border_color="#a0a0a0" margin="4" />
+    </style>
+    <style name="center_hour">
+        <normal text_color="#00FFED" text_align_h="right" font_size="48" />
+    </style>
+    <style name="center_hour_c">
+        <normal text_color="#00FFED" text_align_h="left" font_size="55" />
+    </style>
+    <style name="right">
+        <normal text_color="blue" text_align_h="right" border_color="#a0a0a0" margin="4"/>
+    </style>
+    <style name="center_ap">
+        <normal text_color="green" text_align_h="center" border_color="#a0a0a0" font_name="ap" font_size="12"/>
+    </style>
+    <style name="big_green">
+        <normal text_color="green" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="day_week">
+        <normal text_color="red" font_size="30" font_name="Deng" text_align_h="right" />
+    </style>
+    <style name="digit_clock">
+        <normal text_color="#ffffff" font_size="86" font_name="Deng" text_align_h="right" />
+    </style>
+    <style name="calendar">
+        <normal text_color="white" />
+    </style>
+    <style name="calendar_weekend">
+        <normal text_color="red" />
+    </style>
+    <style name="calendar_today">
+        <normal text_color="green" />
+    </style>
+    <style name="alarmitem_time">
+        <normal text_color="white" font_size="32" text_align_h="left"  />
+    </style>
+    <style name="health_value">
+        <normal text_color="white" font_size="86" text_align_h="center" />
+    </style>
+    <style name="health_max">
+        <normal text_color="white" font_size="22" text_align_h="center" />
+    </style>
+    <style name="weather_white">
+        <normal text_color="white" font_size="25" />
+    </style>
+    <style name="update_text">
+        <normal text_color="#B9D1E5" font_size="18" text_align_h="right" />
+    </style>
+    <style name="update">
+        <normal text_color="#B9D1E5" font_size="18" text_align_h="left" />
+    </style>
+    <style name="weather_white_r">
+        <normal text_color="#ACFEF7" font_size="22" text_align_h="right" />
+    </style>
+    <style name="weather_white_l">
+        <normal text_color="white" font_size="22" text_align_h="left" />
+    </style>
+    <style name="weather_temp">
+        <normal text_align_h="left" text_align_v="middle"
+            text_color="white" font_size="62" />
+    </style>
+    <style name="center">
+        <normal text_align_h="center" text_align_v="middle"
+            text_color="#26FFED" font_size="50" />
+    </style>
+    <style name="weather_bg0">
+        <normal bg_image="weather_bg0" />
+    </style>
+    <style name="white">
+        <normal  text_color="white" font_size="22" text_align_h="center" />
+    </style>
+    <style name="calculator">
+        <normal text_color="black" bg_color="#ffffff"/>
+    </style>
+    <style name="big_green">
+        <normal text_color="green" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="middle_red">
+        <normal text_color="red" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="heart">
+        <normal text_color="black" font_size="40" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="heart_rate">
+        <normal text_color="#ffffff" font_size="25" text_align_h="left" bg_color="black"/>
+    </style>
+    <style name="left_red">
+        <normal text_color="#ff0000" font_size="40" text_align_h="left" text_align_v="top" bg_color="black"/>
+    </style>
+    <style name="heart_rate_number">
+        <normal text_color="#ffffff" font_size="72" text_align_h="right" text_align_v="top" bg_color="black"/>
+    </style>
+    <style name="heart_rate_bottom">
+        <normal text_color="#ACB1C0" font_size="25" text_align_h="left" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="write_black_right">
+        <normal text_color="#ffffff" font_size="25" text_align_h="right" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="red_black_right">
+        <normal text_color="#FF3818" font_size="25" text_align_h="left" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="weather_top">
+        <normal bg_image="ico_weather_top"
+            text_align_h="center" text_align_v="middle"
+            text_color="white" font_size="31"
+            />
+    </style>
+</label>
+<row>
+    <style name="weather_bottom">
+        <normal bg_image="ico_weather_bottom"
+            text_align_h="center" text_align_v="middle"
+            text_color="white" font_size="24"/>
+    </style>
+</row>
+<progress_circle>
+    <style name="circle">
+        <normal fg_color="#042745"/>
+    </style>
+    <style name="hour_circle">
+        <normal fg_color="#014495"/>
+    </style>
+</progress_circle>
+<slide_view>
+    <style name="default">
+        <normal fg_color="#00FFED20" />
+    </style>
+</slide_view>

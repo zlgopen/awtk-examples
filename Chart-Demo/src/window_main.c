@@ -22,10 +22,10 @@
 #include "awtk.h"
 #include "custom_widgets/custom_widgets.h"
 
-extern ret_t open_meter_window(void);
-extern ret_t open_pie_window(void);
-extern ret_t open_line_series_window(void);
-extern ret_t open_bar_series_window(void);
+extern ret_t open_meter_window();
+extern ret_t open_pie_window();
+extern ret_t open_line_series_window(const char* name);
+extern ret_t open_bar_series_window(const char* name);
 
 extern ret_t application_init(void);
 
@@ -47,14 +47,14 @@ static ret_t on_graph(void* ctx, event_t* e) {
   (void)ctx;
   (void)e;
 
-  return open_line_series_window();
+  return open_line_series_window("window_line_series");
 }
 
 static ret_t on_histogram(void* ctx, event_t* e) {
   (void)ctx;
   (void)e;
 
-  return open_bar_series_window();
+  return open_bar_series_window("window_bar_series");
 }
 
 /**
@@ -62,22 +62,19 @@ static ret_t on_histogram(void* ctx, event_t* e) {
  */
 static ret_t init_widget(void* ctx, const void* iter) {
   widget_t* widget = WIDGET(iter);
+  widget_t* win = widget_get_window(widget);
 
   (void)ctx;
 
   if (widget->name != NULL) {
     const char* name = widget->name;
     if (tk_str_eq(name, "meter") || tk_str_eq(name, "meter_image")) {
-      widget_t* win = widget_get_window(widget);
       widget_on(widget, EVT_CLICK, on_meter, win);
     } else if (tk_str_eq(name, "pie") || tk_str_eq(name, "pie_image")) {
-      widget_t* win = widget_get_window(widget);
       widget_on(widget, EVT_CLICK, on_pie, win);
-    } else if (tk_str_eq(name, "graph") || tk_str_eq(name, "graph_image")) {
-      widget_t* win = widget_get_window(widget);
+    } else if ((strstr(name, "window_line_series") != NULL) || tk_str_eq(name, "graph_image")) {
       widget_on(widget, EVT_CLICK, on_graph, win);
-    } else if (tk_str_eq(name, "histogram") || tk_str_eq(name, "histogram_image")) {
-      widget_t* win = widget_get_window(widget);
+    } else if ((strstr(name, "window_bar_series") != NULL) || tk_str_eq(name, "histogram_image")) {
       widget_on(widget, EVT_CLICK, on_histogram, win);
     }
   }
@@ -130,8 +127,8 @@ static ret_t change_style(widget_t* win, const char* name, const char* style, bo
 static ret_t change_func(widget_t* win, bool_t flag) {
   change_style(win, "meter", "main_meter", flag);
   change_style(win, "pie", "main_pie", flag);
-  change_style(win, "graph", "main_graph", flag);
-  change_style(win, "histogram", "main_histogram", flag);
+  change_style(win, "window_line_series", "main_graph", flag);
+  change_style(win, "window_bar_series", "main_histogram", flag);
 
   return RET_OK;
 }
@@ -163,7 +160,6 @@ static ret_t on_language(void* ctx, event_t* e) {
  * 打开主窗口
  */
 ret_t application_init(void) {
-  
   /* 初始化自定义控件 */
   custom_widgets_init();
 

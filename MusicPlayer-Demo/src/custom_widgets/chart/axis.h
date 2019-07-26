@@ -22,177 +22,19 @@
 #ifndef TK_AXIS_H
 #define TK_AXIS_H
 
-#include "awtk.h"
-#include "axis_render.h"
+#include "base/widget.h"
+#include "axis_types.h"
 
 BEGIN_C_DECLS
 
 /**
- * @enum axis_type_t
- * 坐标轴类型。
- */
-typedef enum _axis_type_t {
-  /**
-   * @const AXIS_TYPE_CATEGORY
-   * 种类坐标轴, 用于表示坐标点的类别，坐标点默认在间隔内居中。
-   */
-  AXIS_TYPE_CATEGORY = 0,
-  /**
-   * @const AXIS_TYPE_VALUE
-   * 值坐标轴, 用于表示坐标点的值, 坐标点默认在间隔的边缘。
-   */
-  AXIS_TYPE_VALUE
-} axis_type_t;
-
-/**
- * @enum axis_orientation_t
- * 坐标轴方向。
- */
-typedef enum _axis_orientation_t {
-  /**
-   * @const AXIS_ORIENTATION_X
-   * 未定义。
-   */
-  AXIS_ORIENTATION_UNDEF = -1,
-  /**
-   * @const AXIS_ORIENTATION_X
-   * x方向。
-   */
-  AXIS_ORIENTATION_X = 0,
-  /**
-   * @const AXIS_ORIENTATION_Y
-   * y方向。
-   */
-  AXIS_ORIENTATION_Y
-} axis_orientation_t;
-
-/**
- * @enum axis_at_type_t
- * 坐标轴位置。
- */
-typedef enum _axis_at_type_t {
-  /**
-   * @const AXIS_AT_AUTO
-   * 自动选择位置。
-   */
-  AXIS_AT_AUTO = 0,
-  /**
-   * @const AXIS_AT_LEFT
-   * 水平左边。
-   */
-  AXIS_AT_LEFT = 1,
-  /**
-   * @const AXIS_AT_RIGHT
-   * 水平右边。
-   */
-  AXIS_AT_RIGHT = 2,
-  /**
-   * @const AXIS_AT_TOP
-   * 垂直顶部。
-   */
-  AXIS_AT_TOP = 3,
-  /**
-   * @const AXIS_AT_BOTTOM
-   * 垂直低部。
-   */
-  AXIS_AT_BOTTOM = 4
-} axis_at_type_t;
-
-/**
- * @enum axis_font_t
- * 字体。
- */
-typedef struct _axis_font_t {
-  char* name;
-  color_t color;
-  uint16_t size;
-  uint16_t bold : 1;
-  uint16_t italic : 1;
-  uint16_t underline : 1;
-} axis_font_t;
-
-/**
- * @enum axis_line_style_t
- * 坐标轴的线条样式。
- */
-typedef struct _axis_line_style_t {
-  color_t color;
-} axis_line_style_t;
-
-/**
- * @enum axis_label_params_t
- * 轴上标尺的刻度值。
- */
-typedef struct _axis_label_params_t {
-  axis_font_t font;
-  char* formater;
-  darray_t* data;
-  float_t val_min;
-  float_t val_max;
-  uint8_t show : 1;
-  uint8_t inside : 1;
-  uint8_t from_series : 1;
-} axis_label_params_t;
-
-/**
- * @enum axis_title_params_t
- * 轴上的标题。
- */
-typedef struct _axis_title_params_t {
-  axis_font_t font;
-  wchar_t* text;
-  uint8_t show : 1;
-} axis_title_params_t;
-
-/**
- * @enum axis_tick_params_t
- * 轴上的刻度线。
- */
-typedef struct _axis_tick_params_t {
-  axis_line_style_t style;
-  uint8_t show : 1;
-  uint8_t align_with_label : 1;
-} axis_tick_params_t;
-
-/**
- * @enum axis_line_params_t
- * 轴线。
- */
-typedef struct _axis_line_params_t {
-  axis_line_style_t style;
-  uint8_t show : 1;
-  uint8_t on_zero : 5;
-} axis_line_params_t;
-
-/**
- * @enum axis_split_line_params_t
- * 坐标系上的分割线。
- */
-typedef struct _axis_split_line_params_t {
-  axis_line_style_t style;
-  uint8_t show : 1;
-} axis_split_line_params_t;
-
-/**
  * @class axis_t
  * @parent widget_t
- * @annotation ["scriptable"]
- * 坐标轴。
+ * @annotation ["scriptable","widget"]
+ * 坐标轴控件。
  */
 typedef struct _axis_t {
   widget_t widget;
-  /**
-   * @property {axis_orientation_t} orientation
-   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
-   * 方向。
-   */
-  axis_orientation_t orientation;
-  /**
-   * @property {axis_at_type_t} at
-   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
-   * 位置。
-   */
-  axis_at_type_t at;
   /**
    * @property {axis_type_t} type
    * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
@@ -200,11 +42,41 @@ typedef struct _axis_t {
    */
   axis_type_t type;
   /**
-   * @property {wh_t} offset
+   * @property {axis_at_type_t} at
    * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
-   * 偏移位置。
+   * 位置。
    */
-  wh_t offset;
+  axis_at_type_t at;
+  /**
+   * @property {float_t} min
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 最小刻度。
+   */
+  float_t min;
+  /**
+   * @property {float_t} max
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 最大刻度。
+   */
+  float_t max;
+  /**
+   * @property {darray_t*} data
+   * @annotation ["readable"]
+   * 刻度数据。
+   */
+  darray_t* data;
+  /**
+   * @property {axis_data_from_series_t} data_from_series
+   * @annotation ["readable"]
+   * 刻度数据的生成器。
+   */
+  axis_data_from_series_t data_from_series;
+  /**
+   * @property {void*} data_from_series_ctx
+   * @annotation ["readable"]
+   * 刻度数据生成时的上下文。
+   */
+  void* data_from_series_ctx;
   /**
    * 分隔线
    */
@@ -218,7 +90,7 @@ typedef struct _axis_t {
    */
   axis_line_params_t line;
   /**
-   * 刻度值
+   * 刻度显示值
    */
   axis_label_params_t label;
   /**
@@ -226,78 +98,301 @@ typedef struct _axis_t {
    */
   axis_title_params_t title;
   /**
-   * 采样点是否显示在采样间隔的边缘
+   * @property {uint32_t} offset
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 偏移位置。
    */
-  uint8_t boundary_gap : 1;
+  float_t offset;
   /**
+   * @property {bool_t} offset_percent
+   * @annotation ["readable"]
+   * 偏移位置是否为百分比值。
+   */
+  uint8_t offset_percent : 1;
+  /**
+   * @property {bool_t} inverse
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
    * 是否反向
    */
   uint8_t inverse : 1;
+  /**
+   * @property {bool_t} data_fixed
+   * @annotation ["readable"]
+   * 刻度数据是否固定。
+   */
+  uint8_t data_fixed : 1;
+  /**
+   * @property {bool_t} need_update_data
+   * @annotation ["readable"]
+   * 刻度数据是否需要更新。
+   */
+  uint8_t need_update_data : 1;
+  /**
+   * @property {bool_t} painted_before
+   * @annotation ["readable"]
+   * 是否需要在绘制前做额外处理。
+   */
+  uint8_t painted_before : 1;
+  /**
+   * @property {bool_t} inited
+   * @annotation ["readable"]
+   * 是否已初始化。
+   */
+  uint8_t inited : 1;
+
+  /**
+   * @property {series_vtable_t} vt
+   * @annotation ["readable"]
+   * 虚函数表。
+   */
+  const axis_vtable_t* vt;
 
   /* private */
-  axis_render_t* render;
+  rect_t draw_rect;
 } axis_t;
 
 /**
  * @method axis_create
- * 创建axis对象
- * @annotation ["constructor", "scriptable"]
- * @param {widget_t*} parent 父控件
- * @param {xy_t} x x坐标
- * @param {xy_t} y y坐标
- * @param {wh_t} w 宽度
- * @param {wh_t} h 高度
+ * 创建对象。
  *
- * @return {widget_t*} 对象。
+ * > 仅供子类调用。
+ *
+ * @param {widget_t*} parent widget的父控件。
+ * @param {const widget_vtable_t*} vt 虚函数表。
+ * @param {xy_t}   x x坐标。
+ * @param {xy_t}   y y坐标。
+ * @param {wh_t}   w 宽度。
+ * @param {wh_t}   h 高度。
+ *
+ * @return {widget_t*} widget对象本身。
  */
-widget_t* axis_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
+widget_t* axis_create(widget_t* parent, const widget_vtable_t* vt, xy_t x, xy_t y, wh_t w, wh_t h);
+
+/**
+ * @method axis_on_destroy
+ * 销毁对象时的处理。
+ *
+ * > 仅供子类调用。
+ *
+ * @param {widget_t*} widget widget对象。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_on_destroy(widget_t* widget);
+
+/**
+ * @method axis_on_paint_begin
+ * 绘图开始时的处理。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ * @param {canvas_t*} c 画布对象。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_on_paint_begin(widget_t* widget, canvas_t* c);
+
+/**
+ * @method axis_on_paint_before
+ * 绘图前的处理。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ * @param {canvas_t*} c 画布对象。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_on_paint_before(widget_t* widget, canvas_t* c);
+
+/**
+ * @method axis_on_self_layout
+ * 调整坐标轴自身的布局。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ * @param {rect_t*} r series的显示区域。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_on_self_layout(widget_t* widget, rect_t* r);
+
+/**
+ * @method axis_set_range
+ * 设置坐标轴的刻度范围。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {float_t} min 最小值。
+ * @param {float_t} max 最大值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_set_range(widget_t* widget, float_t min, float_t max);
+
+/**
+ * @method axis_get_range
+ * 获取坐标轴的刻度范围。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ *
+ * @return {float_t} 刻度范围。
+ */
+float_t axis_get_range(widget_t* widget);
+
+/**
+ * @method axis_set_data
+ * 设置坐标轴的刻度显示值。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} data 显示值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_set_data(widget_t* widget, const char* data);
+
+/**
+ * @method axis_set_data_from_series
+ * 设置坐标轴的刻度显示值的生成器。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {axis_data_from_series_t} from_series 生成回调。
+ * @param {void*} ctx 上下文。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_set_data_from_series(widget_t* widget, axis_data_from_series_t from_series, void* ctx);
+
+/**
+ * @method axis_set_need_update_data
+ * 设置需要更新坐标轴的刻度显示值。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_set_need_update_data(widget_t* widget);
+
+/**
+ * @method axis_update_data_from_series
+ * 更新坐标轴的刻度显示值。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_update_data_from_series(widget_t* widget);
+
+/**
+ * @method axis_measure_series_interval
+ * 测量坐标轴上的序列点之间的间隔。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ *
+ * @return {float_t} 返回序列点之间的间隔。
+ */
+float_t axis_measure_series_interval(widget_t* widget);
+
+/**
+ * @method axis_measure_series_interval
+ * 测量坐标轴上的序列点的坐标。
+ * @annotation ["private"]
+ * @param {widget_t*} widget widget对象。
+ * @param {void*} params 测量时需要的参数。
+ * @param {fifo_t*} src 原始序列。
+ * @param {fifo_t*} dst 坐标序列。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_measure_series(widget_t* widget, void* sample_params, fifo_t* src, fifo_t* dst);
+
+/**
+ * @method axis_subpart_use_style
+ * 启用指定子部件的主题。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} subpart 子部件。
+ * @param {const char*} style style的名称。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_subpart_use_style(widget_t* widget, const char* subpart, const char* style);
+
+/**
+ * @method axis_subpart_set_style
+ * 设置指定子部件的style。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} subpart 子部件。
+ * @param {const char*} state_and_name 状态和名字，用英文的冒号分隔。
+ * @param {const value_t*} value 值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_subpart_set_style(widget_t* widget, const char* subpart, const char* state_and_name,
+                             const value_t* value);
+
+/**
+ * @method axis_subpart_set_style_int
+ * 设置指定子部件的整数类型style。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} subpart 子部件。
+ * @param {const char*} state_and_name 状态和名字，用英文的冒号分隔。
+ * @param {int32_t} value 值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_subpart_set_style_int(widget_t* widget, const char* subpart, const char* state_and_name,
+                                 int32_t value);
+
+/**
+ * @method axis_subpart_set_style_color
+ * 设置指定子部件的颜色类型style。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} subpart 子部件。
+ * @param {const char*} state_and_name 状态和名字，用英文的冒号分隔。
+ * @param {uint32_t} value 值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_subpart_set_style_color(widget_t* widget, const char* subpart,
+                                   const char* state_and_name, uint32_t value);
+
+/**
+ * @method axis_subpart_set_style_str
+ * 设置指定子部件的字符串类型style。
+ * @annotation ["scriptable"]
+ * @param {widget_t*} widget widget对象。
+ * @param {const char*} subpart 子部件。
+ * @param {const char*} state_and_name 状态和名字，用英文的冒号分隔。
+ * @param {const char*} value 值。
+ *
+ * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ */
+ret_t axis_subpart_set_style_str(widget_t* widget, const char* subpart, const char* state_and_name,
+                                 const char* value);
 
 /**
  * @method axis_cast
- * 转换为axis对象(供脚本语言使用)。
+ * 转换为axis_base对象(供脚本语言使用)。
  * @annotation ["cast", "scriptable"]
- * @param {widget_t*} widget axis对象。
+ * @param {widget_t*} widget axis_base对象。
  *
- * @return {widget_t*} axis对象。
+ * @return {widget_t*} axis_base对象。
  */
 widget_t* axis_cast(widget_t* widget);
 
+#define AXIS(widget) ((axis_t*)(axis_cast(WIDGET(widget))))
+
 /**
- * @method axis_measure_label
- * 测量刻度值文本的最大宽度。
+ * @method widget_is_axis
+ * 判断当前控件是否为axis控件。
  * @annotation ["scriptable"]
- * @param {widget_t*} widget axis对象。
- * @param {canvas_t*} c canvas对象。
+ * @param {widget_t*} widget 控件对象。
  *
- * @return {float_t} 返回刻度值文本的最大宽度。
+ * @return {bool_t} 返回当前控件是否为axis控件。
  */
-float_t axis_measure_label(widget_t* widget, canvas_t* c);
+bool_t widget_is_axis(widget_t* widget);
 
-#define AXIS_PROP_ORIENTATION "orientation"
-#define AXIS_PROP_TYPE "axis_type"
-#define AXIS_PROP_AT "at"
-#define AXIS_PROP_OFFSET "offset"
-#define AXIS_PROP_DATA "data"
-#define AXIS_PROP_SPLIT_LINE "split_line"
-#define AXIS_PROP_SPLIT_LINE_COLOR "split_line.color"
-#define AXIS_PROP_SPLIT_LINE_SHOW "split_line.show"
-#define AXIS_PROP_LINE "line"
-#define AXIS_PROP_LINE_COLOR "line.color"
-#define AXIS_PROP_LINE_SHOW "line.show"
-#define AXIS_PROP_TICK "tick"
-#define AXIS_PROP_TICK_COLOR "tick.color"
-#define AXIS_PROP_TICK_SHOW "tick.show"
-#define AXIS_PROP_LABEL "label"
-#define AXIS_PROP_LABEL_FONT_SIZE "label.font_size"
-#define AXIS_PROP_LABEL_COLOR "label.color"
-#define AXIS_PROP_LABEL_SHOW "label.show"
-#define AXIS_PROP_TITLE "title"
-#define AXIS_PROP_TITLE_FONT_SZIE "title.font_size"
-#define AXIS_PROP_TITLE_COLOR "title.color"
-#define AXIS_PROP_TITLE_SHOW "title.show"
-
-#define WIDGET_TYPE_AXIS "axis"
-#define AXIS(widget) ((axis_t*)(widget))
+/*public for subclass and runtime type check*/
+TK_EXTERN_VTABLE(axis);
 
 END_C_DECLS
 

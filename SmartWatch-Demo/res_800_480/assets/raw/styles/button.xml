@@ -1,0 +1,118 @@
+<button>
+    <style name="icon" icon="return_pink"   text_color="red">
+        <normal     bg_color="#f0f0f0" />
+        <pressed    bg_color="#c0c0c0" x_offset="3" y_offset="3" />
+        <over       bg_color="#e0e0e0" />
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+    </style>
+    <style name="alarm_clock_bg"  >
+        <normal      bg_image="alarm_clock_bg" />
+        <pressed     bg_image="alarm_clock_bg" />
+        <over        bg_image="alarm_clock_bg" />
+    </style>
+    <style name="alarm_set"  >
+        <normal      bg_image="alarm_set" />
+        <pressed     bg_image="alarm_set" />
+        <over        bg_image="alarm_set" />
+    </style>
+    <style name="alarm_cancel"  >
+        <normal      bg_image="alarm_cancel" />
+        <pressed     bg_image="alarm_cancel" />
+        <over        bg_image="alarm_cancel" />
+    </style>
+    <style name="none"  >
+        <normal      bg_color="#000000" />
+        <pressed     bg_color="#000000" />
+        <over        bg_color="#000000" />
+    </style>
+    <style name="browser_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="browser_60" />
+        <pressed     bg_image="browser_60" />
+        <over        bg_image="browser_60" />
+    </style>
+    <style name="call_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="call_60" />
+        <pressed     bg_image="call_60" />
+        <over        bg_image="call_60" />
+    </style>
+    <style name="calculator_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="calculator_60" />
+        <pressed     bg_image="calculator_60" />
+        <over        bg_image="calculator_60" />
+    </style>
+    <style name="heart_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="heart_60" />
+        <pressed     bg_image="heart_60" />
+        <over        bg_image="heart_60" />
+    </style>
+    <style name="message_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="message_60" />
+        <pressed     bg_image="message_60" />
+        <over        bg_image="message_60" />
+    </style>
+    <style name="sport_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="sport_60" />
+        <pressed     bg_image="sport_60" />
+        <over        bg_image="sport_60" />
+    </style>
+    <style name="weather_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="weather_60" />
+        <pressed     bg_image="weather_60" />
+        <over        bg_image="weather_60" />
+    </style>
+    <style name="calendar_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="calendar_60" />
+        <pressed     bg_image="calendar_60" />
+        <over        bg_image="calendar_60" />
+    </style>
+    <style name="music_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="music_60" />
+        <pressed     bg_image="music_60" />
+        <over        bg_image="music_60" />
+    </style>
+    <style name="mail_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="mail_60" />
+        <pressed     bg_image="mail_60" />
+        <over        bg_image="mail_60" />
+    </style>
+    <style name="setting_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="setting_60" />
+        <pressed     bg_image="setting_60" />
+        <over        bg_image="setting_60" />
+    </style>
+    <style name="syjz_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="syjz_60" />
+        <pressed     bg_image="syjz_60" />
+        <over        bg_image="syjz_60" />
+    </style>
+    <style name="video_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="video_60" />
+        <pressed     bg_image="video_60" />
+        <over        bg_image="video_60" />
+    </style>
+    <style name="file_60"  bg_image_draw_type="scale" >
+        <normal      bg_image="file_60" />
+        <pressed     bg_image="file_60" />
+        <over        bg_image="file_60" />
+    </style>
+    <style name="clock_60" bg_image_draw_type="scale">
+        <normal    bg_image="clock_60" />
+        <pressed   bg_image="clock_60" />
+        <over      bg_image="clock_60" />
+    </style>
+    <style name="flat_60" bg_image_draw_type="scale">
+        <normal    bg_image="flat_60" />
+        <pressed   bg_image="flat_60" />
+        <over      bg_image="flat_60" />
+    </style>
+    <style name="maps_60" bg_image_draw_type="scale">
+        <normal    bg_image="maps_60" />
+        <pressed   bg_image="maps_60" />
+        <over      bg_image="maps_60" />
+    </style>
+    <style name="camera_60" bg_image_draw_type="scale">
+        <normal    bg_image="camera_60" />
+        <pressed   bg_image="camera_60" />
+        <over      bg_image="camera_60" />
+    </style>
+</button>

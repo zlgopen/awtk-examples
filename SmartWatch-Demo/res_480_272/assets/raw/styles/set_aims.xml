@@ -1,0 +1,137 @@
+<button>
+    <style name="pink_dec">
+        <normal      bg_image="pink_dec" />
+        <pressed     bg_image="pink_dec" />
+        <over        bg_image="pink_dec" />
+    </style>
+    <style name="pink_inc">
+        <normal      bg_image="pink_inc" />
+        <pressed     bg_image="pink_inc" />
+        <over        bg_image="pink_inc" />
+    </style>
+    <style name="pink_ok">
+        <normal      bg_image="pink_ok" />
+        <pressed     bg_image="pink_ok" />
+        <over        bg_image="pink_ok" />
+    </style>
+    <style name="green_dec">
+        <normal      bg_image="green_dec" />
+        <pressed     bg_image="green_dec" />
+        <over        bg_image="green_dec" />
+    </style>
+    <style name="green_inc">
+        <normal      bg_image="green_inc" />
+        <pressed     bg_image="green_inc" />
+        <over        bg_image="green_inc" />
+    </style>
+    <style name="green_ok">
+        <normal      bg_image="green_ok" />
+        <pressed     bg_image="green_ok" />
+        <over        bg_image="green_ok" />
+    </style>
+    <style name="blue_dec">
+        <normal      bg_image="blue_dec" />
+        <pressed     bg_image="blue_dec" />
+        <over        bg_image="blue_dec" />
+    </style>
+    <style name="blue_inc">
+        <normal      bg_image="blue_inc" />
+        <pressed     bg_image="blue_inc" />
+        <over        bg_image="blue_inc" />
+    </style>
+    <style name="blue_ok">
+        <normal      bg_image="blue_ok" />
+        <pressed     bg_image="blue_ok" />
+        <over        bg_image="blue_ok" />
+    </style>
+    <style name="icon" icon="return_pink"   text_color="#F74F4F" font_name="Deng" font_size="16" >
+        <normal      font_size="16" />
+        <pressed     icon="return_pink_p" font_size="18" />
+        <over        />
+        <disable     />
+    </style>
+    <style name="pink" border_color="#000000"  text_color="#FA1150">
+        <normal     bg_color="#000000" />
+        <pressed    bg_color="#000000" x_offset="1" y_offset="1"/>
+        <over       bg_color="#000000" />
+        <disable    bg_color="#000000" text_color="#d0d0d0" />
+    </style>
+    <style name="green" border_color="#000000"  text_color="#c2ee11">
+        <normal     bg_color="#000000" />
+        <pressed    bg_color="#000000" x_offset="1" y_offset="1"/>
+        <over       bg_color="#000000" />
+        <disable    bg_color="#000000" text_color="#d0d0d0" />
+    </style>
+    <style name="blue" border_color="#000000"  text_color="#09c7f7">
+        <normal     bg_color="#000000" />
+        <pressed    bg_color="#000000" x_offset="1" y_offset="1"/>
+        <over       bg_color="#000000" />
+        <disable    bg_color="#000000" text_color="#d0d0d0" />
+    </style>
+    <style name="music_next">
+        <normal      bg_image="music_next" />
+        <pressed     bg_image="music_next" />
+        <over        bg_image="music_next" />
+    </style>
+    <style name="music_pre">
+        <normal      bg_image="music_pre" />
+        <pressed     bg_image="music_pre" />
+        <over        bg_image="music_pre" />
+    </style>
+    <style name="music_stop">
+        <normal      bg_image="music_stop" />
+        <pressed     bg_image="music_stop" />
+        <over        bg_image="music_stop" />
+    </style>
+    <style name="music_play">
+        <normal      bg_image="music_play" />
+        <pressed     bg_image="music_play" />
+        <over        bg_image="music_play" />
+    </style>
+    <style name="music_list">
+        <normal      bg_image="music_list" />
+        <pressed     bg_image="music_list" />
+        <over        bg_image="music_list" />
+    </style>
+    <style name="music_loop">
+        <normal      bg_image="music_loop" />
+        <pressed     bg_image="music_loop" />
+        <over        bg_image="music_loop" />
+    </style>
+    <style name="music_playlist">
+        <normal      bg_image="music_playlist" />
+        <pressed     bg_image="music_playlist" />
+        <over        bg_image="music_playlist" />
+    </style>
+    <style name="music_rand">
+        <normal      bg_image="music_rand" />
+        <pressed     bg_image="music_rand" />
+        <over        bg_image="music_rand" />
+    </style>
+</button>
+<label>
+    <style name="white">
+        <normal font_size="16" text_color="white" />
+    </style>
+    <style name="white_number">
+        <normal font_size="100" text_color="white" />
+    </style>
+    <style name="pink">
+        <normal font_size="42" text_color="#FA1150" />
+    </style>
+    <style name="green">
+        <normal font_size="42" text_color="#c2ee11" />
+    </style>
+    <style name="blue">
+        <normal font_size="42" text_color="#09c7f7" />
+    </style>
+    <style name="pink_22">
+        <normal font_size="22" text_color="#FA1150" text_align_h="left" />
+    </style>
+    <style name="green_22">
+        <normal font_size="22" text_color="#c2ee11" text_align_h="left"/>
+    </style>
+    <style name="blue_22">
+        <normal font_size="22" text_color="#09c7f7" text_align_h="left"/>
+    </style>
+</label>

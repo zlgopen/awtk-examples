@@ -3,12 +3,17 @@
   "app_type":"c",
   "version":"1.0",
   "assets" : "res_800_480/assets",
-  "sources":[
-    "src/window_main.c", 
+  "includes":[
+    "src/"
+  ],
+  "sources":[ 
     "src/window_bar_series.c", 
     "src/window_line_series.c", 
+    "src/window_main.c",
     "src/window_meter.c", 
     "src/window_pie.c", 
+	"src/window_series_common.c", 
+	"src/base/*.c", 
     "src/custom_widgets/*.c", 
     "src/custom_widgets/chart/*.c", 
     "src/custom_widgets/pie_slice/*.c"

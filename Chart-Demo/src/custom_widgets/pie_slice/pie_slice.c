@@ -276,7 +276,7 @@ static ret_t pie_slice_on_paint_self(widget_t* widget, canvas_t* c) {
 
     vgcanvas_save(vg);
     vgcanvas_translate(vg, c->ox, c->oy);
-    if (end_angle > start_angle) {
+    if (end_angle - start_angle > 0.0001f) {
       vgcanvas_set_fill_color(vg, color);
       vgcanvas_begin_path(vg);
       r = tk_min(cx, cy);
@@ -288,9 +288,11 @@ static ret_t pie_slice_on_paint_self(widget_t* widget, canvas_t* c) {
           end_angle = start_angle + angle / 2;
           cy = cy + r * 0.5;
           r += pie_slice->explode_distancefactor * 1.5;
-          vgcanvas_arc(vg, cx, cy, r, start_angle, end_angle, !ccw);
-          r -= pie_slice->inner_radius;
-          vgcanvas_arc(vg, cx, cy, r, end_angle, start_angle, ccw);
+          if (end_angle - start_angle > 0.0001f) {
+            vgcanvas_arc(vg, cx, cy, r, start_angle, end_angle, !ccw);
+            r -= pie_slice->inner_radius;
+            vgcanvas_arc(vg, cx, cy, r, end_angle, start_angle, ccw);
+          }
         }
       } else {
         vgcanvas_arc(vg, cx, cy, r, start_angle, end_angle, ccw);

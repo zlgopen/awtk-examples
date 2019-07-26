@@ -1,0 +1,22 @@
+<window anim_hint="slide_left(start_alpha=0, end_alpha=200)" style="heart_rate" full_screen="false" x="c" y="m" w="240" h="240"
+        theme="heart_rate_styles">
+    <gesture name="heart_gesture" x="c" y="m" w="100%" h="100%" >
+        <digit_clock format="hh:mm" name="heart_rate_top" x="c" y="4" w="154" h="41" style="heart_rate_top" />
+        <column x="21" y="65" w="204" h="31">
+            <view x="0" y="1" w="50" h="27" children_layout="default(r=2,c=1)">
+                <label name="check_time" text="2分钟前" style="white"/>
+                <label name="heart_rate_check_number" text="125次/分" style="white"/>
+            </view>
+            <label x="60" y="0" w="2" h="31" style="mid"/>
+            <view x="75" y="1" w="26" h="30" children_layout="default(r=2,c=1)">
+                <label text="当前" style="red"/>
+                <label text="心率" style="red"/>
+            </view>
+            <label x="111" y="bottom" w="48" h="28" name="label_heart" style="heart_rate_number" text="68"/>
+            <label x="162" y="bottom" w="42" h="17" style="left_red" text="次/分"/>
+        </column>
+        <bar_graph x="c" y="110" w="204" h="67"
+               name="heart_rate_bar" style="heart_rate" size="24" spacing="2" color="#FF0138" arc="true"/>
+        <button name="heart_rate_bottom" x="c" y="bottom:4" w="165" h="48" style="heart_rate_bottom" text="开始检测"/>
+    </gesture>
+</window>

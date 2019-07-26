@@ -28,27 +28,28 @@ BEGIN_C_DECLS
 
 /**
  * @class bar_series_t
- * @parent widget_t
+ * @parent series_t
  * @annotation ["scriptable"]
  * 柱条序列。
  */
 typedef struct _bar_series_t {
   series_t base;
+  /**
+   * @property {char*} series_axis
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 标示序列位置的轴。
+   */
+  char* series_axis;
+  /**
+   * @property {char*} value_axis
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 标示序列值的轴。
+   */
+  char* value_axis;
+  /**
+   * 柱条参数。
+   */
   series_bar_params_t bar;
-  /**
-   * X轴索引。
-   */
-  uint32_t x_axis_index;
-  /**
-   * y轴索引。
-   */
-  uint32_t y_axis_index;
-  /**
-   * 数据fifo。
-   */
-  float_t* fifo;
-  uint32_t fifo_capacity;
-  uint32_t fifo_size;
 } bar_series_t;
 
 /**
@@ -66,38 +67,18 @@ typedef struct _bar_series_t {
 widget_t* bar_series_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
- * @method bar_series_set_data
- * 设置柱条的值(从第0条开始)
- * @annotation ["scriptable"]
- * @param {widget_t*} series bar_series对象
- * @param {float_t*} data 值缓存
- * @param {uint32_t} nr 值数量
+ * @method bar_series_minmax_create
+ * 创建bar_series_minmax对象（同时显示最大最小值）
+ * @annotation ["constructor", "scriptable"]
+ * @param {widget_t*} parent 父控件
+ * @param {xy_t} x x坐标
+ * @param {xy_t} y y坐标
+ * @param {wh_t} w 宽度
+ * @param {wh_t} h 高度
  *
- * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ * @return {widget_t*} 对象。
  */
-ret_t bar_series_set_data(widget_t* series, const float_t* data, uint32_t nr);
-
-/**
- * @method bar_series_append
- * 向后追加柱条的值(超出容量则移除旧值)
- * @annotation ["scriptable"]
- * @param {widget_t*} series bar_series对象
- * @param {float_t*} data 值缓存
- * @param {uint32_t} nr 值数量
- *
- * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
- */
-ret_t bar_series_append(widget_t* series, const float_t* data, uint32_t nr);
-
-/**
- * @method bar_series_clear
- * 清空柱条的值
- * @annotation ["scriptable"]
- * @param {widget_t*} series bar_series对象
- *
- * @return {void}
- */
-void bar_series_clear(widget_t* series);
+widget_t* bar_series_minmax_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
  * @method bar_series_cast
@@ -109,8 +90,7 @@ void bar_series_clear(widget_t* series);
  */
 widget_t* bar_series_cast(widget_t* series);
 
-#define WIDGET_TYPE_BAR_SERIES "bar_series"
-#define BAR_SERIES(widget) ((bar_series_t*)(widget))
+#define BAR_SERIES(widget) ((bar_series_t*)(bar_series_cast(WIDGET(widget))))
 
 END_C_DECLS
 

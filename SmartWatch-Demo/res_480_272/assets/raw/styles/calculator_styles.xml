@@ -1,0 +1,20 @@
+<window>
+    <!--<style name="health"><normal bg_image="ico_watch_black_background"/></style>-->
+</window>
+<button>
+    <style name="calculator" text_color="#ffffff" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="calculator_eq" text_color="#ffffff" >
+        <normal     bg_image="ico_calculator_bottom_normal"/>
+        <pressed     bg_image="ico_calculator_bottom_pressed"/>
+        <over     bg_image="ico_calculator_bottom_pressed"/>
+    </style>
+</button>
+<view>
+    <style name="calculator_top" text_color="white" >
+        <normal bg_image="ico_calculator_top"/>
+    </style>
+</view>

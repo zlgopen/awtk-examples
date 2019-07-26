@@ -15,6 +15,142 @@
         <normal bg_image="bg800x480"/>
     </style>
 </window>
+<chart_view>
+    <style name="default">
+        <normal margin_left="55" margin_right="55" margin_top="20" margin_bottom="20"/>
+    </style>
+</chart_view>
+<bar_series>
+    <style name="edge1">
+        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+    </style>
+    <style name="spacing">
+        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+    </style>
+    <style name="edge2">
+        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+    </style>
+    <style name="overlap">
+        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+    </style>
+    <style name="overlap_small">
+        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+    </style>
+</bar_series>
+<bar_series_minmax>
+    <style name="margin_left">
+        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+    </style>
+    <style name="spacing">
+        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+    </style>
+    <style name="margin_right">
+        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+    </style>
+    <style name="overlap">
+        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+    </style>
+    <style name="overlap_small">
+        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+    </style>
+</bar_series_minmax>
+<axis_split_line>
+    <style name="default">
+        <normal fg_color="#213b4d"/>
+    </style>
+</axis_split_line>
+<axis_line>
+    <style name="default">
+        <normal fg_color="#294b63"/>
+    </style>
+    <style name="x">
+        <normal fg_image="x_axis"/>
+    </style>
+    <style name="y">
+        <normal fg_image="y_axis"/>
+    </style>
+</axis_line>
+<axis_tick>
+    <style name="default">
+        <normal fg_color="#294b63"/>
+    </style>
+</axis_tick>
+<axis_label>
+    <style name="default">
+        <normal text_color="#a1d8ef"/>
+    </style>
+</axis_label>
+<series_line>
+    <style name="default">
+        <normal border_color="#36b3c3" border_width="3"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal border_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal border_color="#327ad3"/>
+    </style>
+</series_line>
+<series_bar>
+    <style name="default">
+        <normal fg_color="#FF0138" round_radius="8"/>
+    </style>
+    <style name="s1">
+        <normal fg_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal fg_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal fg_color="#327ad3"/>
+    </style>
+</series_bar>
+<series_symbol>
+    <style name="default">
+        <normal border_color="#ffc393" fg_color="#69cf5c"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#ffc393" fg_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal border_color="#ffc393" fg_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal border_color="#ffc393" fg_color="#327ad3"/>
+    </style>
+</series_symbol>
+<series_line_area>
+    <style name="default">
+        <normal fg_color="#69cf5c66"/>
+    </style>
+    <style name="s1">
+        <normal fg_color="#69cf5c66"/>
+    </style>
+    <style name="s2">
+        <normal fg_color="#36b3c366"/>
+    </style>
+    <style name="s3">
+        <normal fg_color="#327ad366"/>
+    </style>
+</series_line_area>
+<tooltip_line>
+    <style name="default">
+        <normal fg_color="#ffffff"/>
+    </style>
+</tooltip_line>
+<tooltip_symbol>
+    <style name="default">
+        <normal fg_color="#ffffff" border_color="#007acc" border_width="3"/>
+    </style>
+</tooltip_symbol>
+<tooltip_tip>
+    <style name="default">
+        <normal margin="4" bg_color="#ffffff80" text_color="#ffffff" border_color="#ffffff" border_width="3"/>
+    </style>
+</tooltip_tip>
 <calibration_win>
     <style name="default" fg_color="black"  text_color="black">
         <normal bg_color="#f0f0f0"/>
@@ -256,6 +392,15 @@
     </style>
     <style name="series_hide">
         <normal bg_color="#808080" />
+    </style>
+    <style name="typeie_focus">
+        <normal bg_color="#69cf5c" border_color="blue" />
+    </style>
+    <style name="dayas_focus">
+        <normal bg_color="#36b3c3" border_color="blue" />
+    </style>
+    <style name="drean_focus">
+        <normal bg_color="#327ad4" border_color="blue" />
     </style>
     <style name="pie1">
         <normal bg_color="#4e7ccc" />

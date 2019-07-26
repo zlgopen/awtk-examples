@@ -1,0 +1,47 @@
+<window>
+    <style name="clock">
+        <normal bg_image="ico_watch_black_background"/>
+    </style>
+</window>
+<button>
+    <style name="clock_right">
+        <normal bg_image="ico_clock_right_normal"/>
+        <pressed bg_image="ico_clock_right_selected"/>
+        <over bg_image="ico_clock_right_selected"/>
+    </style>
+    <style name="clock_left">
+        <normal bg_image="ico_clock_left_normal"/>
+        <pressed bg_image="ico_clock_left_selected"/>
+        <over bg_image="ico_clock_left_selected"/>
+    </style>
+</button>
+<label>
+    <style name="clock_left_style">
+        <normal bg_image="ico_clock_right_normal"/>
+        <pressed bg_image="ico_clock_right_selected"/>
+        <over bg_image="ico_clock_right_selected"/>
+    </style>
+    <style name="selected_clock_left_style">
+        <normal bg_image="ico_clock_right_selected"/>
+        <pressed bg_image="ico_clock_right_selected"/>
+        <over bg_image="ico_clock_right_selected"/>
+    </style>
+    <style name="clock_right_style">
+        <normal bg_image="ico_clock_left_normal"/>
+        <pressed bg_image="ico_clock_left_selected"/>
+        <over bg_image="ico_clock_left_selected"/>
+    </style>
+    <style name="selected_clock_right_style">
+        <normal bg_image="ico_clock_left_selected"/>
+        <pressed bg_image="ico_clock_left_selected"/>
+        <over bg_image="ico_clock_left_selected"/>
+    </style>
+    <style name="text">
+        <normal text_color="#ADADAD" font_size="35" />
+    </style>
+</label>
+<digit_clock>
+    <style name="clock_digit_clock">
+        <normal font_size="50" text_color="white"/>
+    </style>
+</digit_clock>

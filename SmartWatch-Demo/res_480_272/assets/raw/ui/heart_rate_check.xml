@@ -1,0 +1,9 @@
+<window anim_hint="slide_left(start_alpha=0, end_alpha=200)" style="heart_rate" full_screen="false" x="c" y="m" w="240" h="240"
+        theme="heart_rate_styles">
+    <gesture name="heart_rate_check_gesture" x="c" y="m" w="100%" h="100%" >
+        <label name="show" style="check_top" x="c" y="37" w="86" h="21" text="正在检测"/>
+        <image_animation x="c" y="m" w="146" h="146" image="heart_" start_index="0" end_index="2" format="%s%05d"
+      auto_play="true" interval="100" delay="0"/>
+        <label name="bottom" style="check_bottom" x="c" y="190" w="119" h="16" text="请保持手腕平衡"/>
+    </gesture>
+</window>

@@ -1,0 +1,40 @@
+<window>
+    <style name="watch_01">
+        <normal bg_color="black"/>
+    </style>
+</window>
+<label>
+    <style name="watch_01_battery_value">
+        <normal text_color="#FF6500" font_size="30" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="center_middle">
+        <normal text_color="#FF6500" font_size="25" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="watch_01_battery_value_c">
+        <normal text_color="#FF6500" font_size="35" text_align_h="left" text_align_v="middle" />
+    </style>
+    <style name="watch_01_foot_value">
+        <normal text_color="#FF6500" font_size="30" text_align_h="center" text_align_v="middle" />
+    </style>
+</label>
+<button>
+    <style name="enable" text_color="black">
+        <normal />
+        <pressed x_offset="1" y_offset="1"/>
+        <over x_offset="1" y_offset="1"/>
+        <disable text_color="#d0d0d0" />
+    </style>
+    <style name="disable" text_color="black">
+        <normal />
+        <pressed />
+        <over />
+        <disable text_color="#d0d0d0" />
+    </style>
+</button>
+<view>
+    <style name="enable">
+        <normal />
+        <pressed x_offset="1" y_offset="1"/>
+        <over x_offset="1" y_offset="1"/>
+    </style>
+</view>

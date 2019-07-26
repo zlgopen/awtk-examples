@@ -1,0 +1,53 @@
+<window anim_hint="slide_down" style="message" full_screen="false" x="c" y="m" w="240" h="240"
+        theme="message_styles">
+    <gesture  x="0" y="0" h="100%" w="100%" name="message_window" >
+        <list_view x="c" y="-34" w="100%" h="120%" item_height="62">
+            <scroll_view name="view" x="c" y="m" w="100%" h="100%">
+                <list_item style="a" children_layout="default(rows=1,cols=1)" >
+                    <view x="c" y="m" w="100%" h="95%" style="dragger" visible="false">
+                        <!--<column x="31" y="m" w="100%" h="100%"><image x="0" y="m" w="74" h="74" image="app_mail_normal_74" draw_type="scale_auto"/><row x="90" y="m" w="200" h="100%"><digit_clock x="0" y="0" w="100%" h="50%" format="hh:mm" style="time"/><label x="0" y="50%" w="100%" h="50%" text="收到一封新邮件" style="text"/></row></column>-->
+                    </view>
+                </list_item>
+                <list_item style="a" children_layout="default(rows=1,cols=1)">
+                    <view x="c" y="m" w="100%" h="95%" style="dragger">
+                        <column x="31" y="m" w="100%" h="100%">
+                            <image x="0" y="m" w="54" h="54" image="app_cloudy_normal_88" draw_type="scale_auto"/>
+                            <row x="55" y="m" w="123" h="100%">
+                                <digit_clock x="0" y="0" w="100%" h="50%" format="hh:mm" style="time"/>
+                                <label x="0" y="50%" w="100%" h="50%" text="天气晴朗" style="text"/>
+                            </row>
+                        </column>
+                    </view>
+                </list_item>
+                <list_item style="a" children_layout="default(rows=1,cols=1)">
+                    <view x="c" y="m" w="100%" h="95%" style="dragger">
+                        <column x="31" y="m" w="100%" h="100%">
+                            <image x="0" y="m" w="54" h="54" image="app_message_normal_88" draw_type="scale_auto"/>
+                            <row x="55" y="m" w="123" h="100%">
+                                <digit_clock x="0" y="0" w="100%" h="50%" format="hh:mm" style="time"/>
+                                <label x="0" y="50%" w="100%" h="50%" text="你好啊在干嘛？" style="text"/>
+                            </row>
+                        </column>
+                    </view>
+                </list_item>
+                <list_item style="a" children_layout="default(rows=1,cols=1)">
+                    <view x="c" y="m" w="100%" h="95%" style="dragger">
+                        <column x="31" y="m" w="100%" h="100%">
+                            <image x="0" y="m" w="54" h="54" image="app_training_normal_88" draw_type="scale_auto"/>
+                            <row x="55" y="m" w="123" h="100%">
+                                <digit_clock x="0" y="0" w="100%" h="50%" format="hh:mm" style="time"/>
+                                <label x="0" y="50%" w="100%" h="50%" text="多久没运动了" style="text"/>
+                            </row>
+                        </column>
+                    </view>
+                </list_item>
+                <list_item style="a" children_layout="default(rows=1,cols=1)" visible="false">
+                    <view x="c" y="m" w="100%" h="95%" style="dragger">
+                        <!--<column x="50" y="m" w="100%" h="100%"><image x="0" y="m" w="74" h="74" image="app_heart_normal_74" draw_type="scale_auto"/><row x="90" y="m" w="200" h="100%"><digit_clock x="0" y="0" w="100%" h="50%" format="hh:mm" style="time"/><label x="0" y="50%" w="100%" h="50%" text="是时候来量心率了" style="text"/></row></column>-->
+                    </view>
+                </list_item>
+            </scroll_view>
+            <scroll_bar_m name="bar" x="right" y="0" w="6" h="100%" value="0"/>
+        </list_view>
+    </gesture>
+</window>

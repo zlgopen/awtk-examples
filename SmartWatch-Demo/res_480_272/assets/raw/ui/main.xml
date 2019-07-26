@@ -1,0 +1,7 @@
+<window  anim_hint="slide_left" name="time_dial" style="black" full_screen="false" x="c" y="m" w="390" h="390" >
+    <gesture name="clock_gesture" x="0" y="0" w="100%" h="100%" ></gesture>
+    <view name="digit_time" x="right:43" y="20" w="255" h="130" visible="FALSE" sensitive="false" >
+        <label name="date" style="day_week" x="10" y="0" w="200" h="50"  sensitive="false"/>
+        <label name="time" style="digit_clock"  x="10" y="50" w="245" h="80"  sensitive="false"/>
+    </view>
+</window>

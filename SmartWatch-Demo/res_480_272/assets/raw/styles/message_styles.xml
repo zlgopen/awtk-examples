@@ -1,0 +1,397 @@
+<window>
+    <style name="default">
+        <normal bg_color="#f0f0f0"/>
+    </style>
+    <style name="dark">
+        <normal bg_color="#664d74"/>
+    </style>
+    <style name="bricks">
+        <normal bg_image="bricks"  bg_image_draw_type="repeat"/>
+    </style>
+    <style name="sky">
+        <normal bg_image="bg800x480"/>
+    </style>
+    <style name="black">
+        <normal bg_color="#000000" />
+    </style>
+    <style name="blue">
+        <normal bg_color="#125FA8" />
+    </style>
+    <style name="music">
+        <normal bg_color="#272727" />
+    </style>
+    <style name="message">
+        <!--<normal bg_image="ico_message_background"/>-->
+        <normal bg_color="#061B26"/>
+    </style>
+</window>
+<message_card>
+    <style name="default">
+        <normal bg_color="#00000000"/>
+    </style>
+</message_card>
+<label>
+    <style name="text">
+        <normal text_color="white" text_align_h="left" text_align_v="top" font_size="23" />
+    </style>
+    <style name="default">
+        <normal text_color="black" />
+    </style>
+    <style name="green">
+        <normal text_color="green" />
+    </style>
+    <style name="left">
+        <normal text_color="red" text_align_h="left" border_color="#a0a0a0" margin="4" />
+    </style>
+    <style name="center">
+        <normal text_color="green" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="right">
+        <normal text_color="blue" text_align_h="right" border_color="#a0a0a0" margin="4"/>
+    </style>
+    <style name="center_ap">
+        <normal text_color="green" text_align_h="center" border_color="#a0a0a0" font_name="ap" font_size="12"/>
+    </style>
+    <style name="big_green">
+        <normal text_color="green" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="day_week">
+        <normal text_color="red" font_size="30" font_name="Deng" text_align_h="right" />
+    </style>
+    <style name="digit_clock">
+        <normal text_color="#ffffff" font_size="86" font_name="Deng" text_align_h="right" />
+    </style>
+    <style name="calendar">
+        <normal text_color="white" />
+    </style>
+    <style name="calendar_weekend">
+        <normal text_color="red" />
+    </style>
+    <style name="calendar_today">
+        <normal text_color="green" />
+    </style>
+    <style name="alarmitem_time">
+        <normal text_color="white" font_size="32" text_align_h="left"  />
+    </style>
+    <style name="health_value">
+        <normal text_color="white" font_size="86" text_align_h="center" />
+    </style>
+    <style name="health_max">
+        <normal text_color="white" font_size="22" text_align_h="center" />
+    </style>
+    <style name="weather_white">
+        <normal text_color="white" font_size="22" />
+    </style>
+    <style name="weather_white_r">
+        <normal text_color="white" font_size="22" text_align_h="right" />
+    </style>
+    <style name="weather_white_l">
+        <normal text_color="white" font_size="22" text_align_h="left" />
+    </style>
+    <style name="weather_temp">
+        <normal text_color="white" font_size="78" />
+    </style>
+    <style name="weather_bg0">
+        <normal bg_image="weather_bg0" />
+    </style>
+    <style name="white">
+        <normal  text_color="white" font_size="22" text_align_h="center" />
+    </style>
+    <style name="calculator">
+        <normal text_color="black" bg_color="#ffffff"/>
+    </style>
+    <style name="big_green">
+        <normal text_color="green" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="middle_red">
+        <normal text_color="red" font_size="24" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="heart">
+        <normal text_color="black" font_size="40" text_align_h="center" border_color="#a0a0a0"/>
+    </style>
+    <style name="heart_rate">
+        <normal text_color="#ffffff" font_size="25" text_align_h="left" bg_color="black"/>
+    </style>
+    <style name="left_red">
+        <normal text_color="#ff0000" font_size="40" text_align_h="left" text_align_v="top" bg_color="black"/>
+    </style>
+    <style name="heart_rate_number">
+        <normal text_color="#ffffff" font_size="72" text_align_h="right" text_align_v="top" bg_color="black"/>
+    </style>
+    <style name="heart_rate_bottom">
+        <normal text_color="#ACB1C0" font_size="25" text_align_h="left" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="write_black_right">
+        <normal text_color="#ffffff" font_size="25" text_align_h="right" text_align_v="middle" bg_color="black"/>
+    </style>
+    <style name="red_black_right">
+        <normal text_color="#FF3818" font_size="25" text_align_h="left" text_align_v="middle" bg_color="black"/>
+    </style>
+</label>
+<button>
+    <style name="default" border_color="#a0a0a0"  text_color="black">
+        <normal     bg_color="#f0f0f0" />
+        <pressed    bg_color="#c0c0c0" x_offset="1" y_offset="1"/>
+        <over       bg_color="#e0e0e0" />
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+    </style>
+    <style name="combobox_down" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_down_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_down_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_down_o"/>
+    </style>
+    <style name="spinbox_down" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_down_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_down_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_down_o"/>
+    </style>
+    <style name="spinbox_up" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_up_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_up_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_up_o"/>
+    </style>
+    <style name="spinbox_left" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_left_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_left_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_left_o"/>
+    </style>
+    <style name="spinbox_right" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_right_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_right_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_right_o"/>
+    </style>
+    <style name="edit_clear">
+        <normal     icon="edit_clear_n"/>
+        <pressed    icon="edit_clear_p"/>
+        <over       icon="edit_clear_o"/>
+    </style>
+    <style name="grid_item" border_color="#a0a0a0"  text_color="black">
+        <pressed    bg_color="#c0c0c0" />
+    </style>
+    <style name="scroll_down" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_down_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_down_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_down_o"/>
+    </style>
+    <style name="scroll_up" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_up_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_up_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_up_o"/>
+    </style>
+    <style name="scroll_left" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_left_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_left_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_left_o"/>
+    </style>
+    <style name="scroll_right" border_color="#a0a0a0">
+        <normal     bg_color="#f0f0f0" icon="arrow_right_n"/>
+        <pressed    bg_color="#c0c0c0" icon="arrow_right_p"/>
+        <over       bg_color="#e0e0e0" icon="arrow_right_o"/>
+    </style>
+    <style name="icon" icon="return_pink"   text_color="#F74F4F" font_name="Deng" font_size="16" >
+        <normal      font_size="16" />
+        <pressed     icon="return_pink_p" font_size="16" />
+        <over        font_size="18" />
+        <disable     />
+    </style>
+    <style name="time_dial"  >
+        <normal      bg_image="clock_bg_red" />
+        <pressed     bg_image="clock_bg_red" />
+        <over        bg_image="clock_bg_red" />
+    </style>
+    <style name="none"  >
+        <normal      bg_color="#000000" />
+        <pressed     bg_color="#000000" />
+        <over        bg_color="#000000" />
+    </style>
+    <style name="select_time_dial" border_color="#a0a0a0" >
+        <normal      bg_image="dial_style_digit" />
+        <pressed     bg_image="dial_style_digit" />
+        <over        bg_image="dial_style_digit" />
+    </style>
+    <style name="select_digit_dial"  >
+        <normal      bg_image="dial_style_time" />
+        <pressed     bg_image="dial_style_time" />
+        <over        bg_image="dial_style_time" />
+    </style>
+    <style name="green_button" font_name="Deng" font_size="12" text_color="0xffffff" >
+        <normal      bg_image="button_green" />
+        <pressed     bg_image="button_green" x_offset="1" y_offset="1" />
+        <over        bg_image="button_green" />
+    </style>
+    <style name="gray_button" font_name="Deng" >
+        <normal      bg_image="button_gray" />
+        <pressed     bg_image="button_gray" x_offset="1" y_offset="1" />
+        <over        bg_image="button_gray" />
+    </style>
+    <style name="up">
+        <normal      bg_image="calendar_up" />
+        <pressed     bg_image="calendar_up" />
+        <over        bg_image="calendar_up" />
+    </style>
+    <style name="current">
+        <normal      bg_image="calendar_current" />
+        <pressed     bg_image="calendar_current" />
+        <over        bg_image="calendar_current" />
+    </style>
+    <style name="down">
+        <normal      bg_image="calendar_down" />
+        <pressed     bg_image="calendar_down" />
+        <over        bg_image="calendar_down" />
+    </style>
+    <style name="alarmitem_bg"  >
+        <normal      bg_image="alarmitem_bg" />
+        <pressed     bg_image="alarmitem_bg" />
+        <over        bg_image="alarmitem_bg" />
+    </style>
+    <style name="health_dlg_record">
+        <normal      bg_image="health_change_aims" />
+        <pressed     bg_image="health_change_aims" />
+        <over        bg_image="health_change_aims" />
+    </style>
+    <style name="health_dlg_aims">
+        <normal      bg_image="health_change_aims" />
+        <pressed     bg_image="health_change_aims" />
+        <over        bg_image="health_change_aims" />
+    </style>
+    <style name="health_circle_60" bg_image_draw_type="scale">
+        <normal    bg_image="health_circle_60" />
+        <pressed   bg_image="health_circle_60" />
+        <over      bg_image="health_circle_60" />
+    </style>
+    <style name="music_60" bg_image_draw_type="scale">
+        <normal    bg_image="music_60" />
+        <pressed   bg_image="music_60" />
+        <over      bg_image="music_60" />
+    </style>
+    <style name="sport_60" bg_image_draw_type="scale">
+        <normal    bg_image="sport_60" />
+        <pressed   bg_image="sport_60" />
+        <over      bg_image="sport_60" />
+    </style>
+    <style name="aqi_60" bg_image_draw_type="scale">
+        <normal    bg_image="aqi_60" />
+        <pressed   bg_image="aqi_60" />
+        <over      bg_image="aqi_60" />
+    </style>
+    <style name="heart_60" bg_image_draw_type="scale">
+        <normal    bg_image="heart_60" />
+        <pressed   bg_image="heart_60" />
+        <over      bg_image="heart_60" />
+    </style>
+    <style name="breath_60" bg_image_draw_type="scale">
+        <normal    bg_image="breath_60" />
+        <pressed   bg_image="breath_60" />
+        <over      bg_image="breath_60" />
+    </style>
+    <style name="weather_60" bg_image_draw_type="scale">
+        <normal    bg_image="weather_60" />
+        <pressed   bg_image="weather_60" />
+        <over      bg_image="weather_60" />
+    </style>
+    <style name="play_play">
+        <normal    bg_image="play_play" />
+        <pressed   bg_image="play_play" />
+        <over      bg_image="play_play" />
+    </style>
+    <style name="play_pause">
+        <normal    bg_image="play_pause" />
+        <pressed   bg_image="play_pause" />
+        <over      bg_image="play_pause" />
+    </style>
+    <style name="music" font_name="default" text_color="#FFFFFF" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="music_rand"  icon="play_rand" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="music_shun"  icon="play_shun" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="music_loop"  icon="play_loop" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="music_pre"  icon="play_pre" >
+        <normal     />
+        <pressed    x_offset="1" y_offset="1"/>
+        <over       />
+    </style>
+    <style name="music_next"  icon="play_next" >
+        <normal     />
+        <pressed    x_offset="1" y_offset="1"/>
+        <over       />
+    </style>
+    <style name="music_vol"  icon="play_vol" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+    <style name="calculator" text_color="#ffffff" >
+        <normal     bg_color="#4B4B4B"/>
+        <pressed    bg_color="#787878"/>
+        <over       bg_color="#5c5c5c"/>
+    </style>
+</button>
+<list_item>
+    <style name="default" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#f0f0f0" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#f0f0f0" />
+    </style>
+    <style name="odd_clickable" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#f5f5f5" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#f5f5f5" />
+    </style>
+    <style name="even_clickable" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#eaeaea" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#eaeaea" />
+    </style>
+    <style name="odd"  text_color="black">
+        <normal     bg_color="#000000" />
+        <pressed    bg_color="#000000" />
+        <over       bg_color="#000000" />
+    </style>
+    <style name="even" text_color="black">
+        <normal     bg_color="#000000" />
+        <pressed    bg_color="#000000" />
+        <over       bg_color="#000000" />
+    </style>
+    <style name="empty" >
+        <normal  />
+        <pressed />
+        <over  />
+    </style>
+    <style name="a" text_color="black">
+        <normal     bg_color="#00000000" />
+        <pressed    bg_color="#00000000" />
+        <over       bg_color="#00000000" />
+    </style>
+</list_item>
+<digit_clock>
+    <style name="time">
+        <normal text_color="#00E1D3" font_size="26" text_align_h="left" text_align_v="middle" />
+    </style>
+</digit_clock>
+<dragger>
+    <style name="message_dragger">
+        <normal fg_color="green"/>
+    </style>
+</dragger>
+<view>
+    <style name="dragger">
+        <normal bg_color="#FFFFFF20"/>
+    </style>
+    <style name="dragger_remove">
+        <normal bg_color="#FF0020"/>
+    </style>
+</view>

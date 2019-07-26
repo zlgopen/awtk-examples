@@ -20,245 +20,18 @@
  */
 
 #include "line_series.h"
-#include "chart_utils.h"
-#include "chart_view.h"
+#include "tkc/utils.h"
+#include "base/style_factory.h"
+#include "series_p.h"
+#include "chart_animator.h"
+#include "axis.h"
 
-#define SERIES_ANIMATION_TIME 500
-#define SERIES_ANIMATION_EASING EASING_SIN_INOUT
-
-#define _COLOR_BLACK color_init(0, 0, 0, 0xff)
-#define _COLOR_TRANS color_init(0, 0, 0, 0)
-
-// 坐标取整加0.5，防止线宽为1时显示2个像素
-#define _VG_XY(v) (float_t)((xy_t)(v) + 0.5)
-#define _VGCANVAS_TRANSLATE(vg, x, y) vgcanvas_translate(vg, _VG_XY(x), _VG_XY(y))
-
-static void line_series_animator_move_on_update(chart_animator_t* animator, float_t percent) {
-  float_t from = value_float(&(animator->from));
-  float_t to = value_float(&(animator->to));
-  line_series_t* series = LINE_SERIES(line_series_cast(animator->ctx));
-  if (series) {
-    series->clip_sample = from + (to - from) * percent;
-  }
-}
-
-static void line_series_animator_value_on_update(chart_animator_t* animator, float_t percent) {
-  float_t* from = (float_t*)value_pointer(&(animator->from));
-  float_t* to = (float_t*)value_pointer(&(animator->to));
-  line_series_t* series = LINE_SERIES(line_series_cast(animator->ctx));
-  if (from && to && series) {
-    uint32_t i;
-    for (i = 0; i < series->fifo_size; i++) {
-      series->fifo[i] = from[i] + (to[i] - from[i]) * percent;
-    }
-  }
-}
-
-static ret_t line_series_generate_points(line_series_t* series, float_t* x0, float_t* y0,
-                                         float_t** x, float_t** y, uint32_t* nr, bool_t* vertical) {
-  widget_t* parent = series->base.widget.parent;
-  axis_t* x_axis = AXIS(chart_view_get_axis(parent, AXIS_ORIENTATION_X, series->x_axis_index));
-  axis_t* y_axis = AXIS(chart_view_get_axis(parent, AXIS_ORIENTATION_Y, series->y_axis_index));
-  axis_render_t* x_render;
-  axis_render_t* y_render;
-  bool_t boundary;
-  float_t v_range;
-  float_t p_range;
-  uint32_t i;
-
-  if (x_axis == NULL || x_axis->render == NULL || y_axis == NULL || y_axis->render == NULL) {
-    return RET_FAIL;
-  }
-  x_render = x_axis->render;
-  y_render = y_axis->render;
-
-  if (x_axis->type == AXIS_TYPE_VALUE && y_axis->type != AXIS_TYPE_VALUE) {
-    *vertical = FALSE;
-    boundary = y_axis->type == AXIS_TYPE_CATEGORY;
-  } else {
-    *vertical = TRUE;
-    boundary = x_axis->type == AXIS_TYPE_CATEGORY;
-  }
-
-  if (vertical) {
-    float_t offset = boundary ? (x_render->tick[1] - x_render->tick[0]) / 2 : 0;
-
-    if (y_axis->at == AXIS_AT_RIGHT) {
-      *x0 = y_render->ruler.x - x_render->ruler.w + 1 + offset;
-    } else {
-      *x0 = y_render->ruler.x + y_render->ruler.w - 1 + offset;
-    }
-    *y0 = y_render->ruler.y + y_render->ruler.h - 1 - y_render->tick[y_render->index_of_zero];
-    *nr = tk_min(x_axis->label.data->size, series->fifo_size);
-
-    if (*nr < 1) {
-      return RET_FAIL;
-    }
-
-    *x = x_render->tick;
-    *y = (float_t*)TKMEM_ZALLOCN(float_t, *nr);
-    assert(*y);
-
-    v_range = y_axis->label.val_max - y_axis->label.val_min;
-    p_range = y_render->ruler.h;
-    for (i = 0; i < *nr; i++) {
-      (*y)[i] = -series->fifo[i] / v_range * p_range;
-    }
-  } else {
-    float_t offset = boundary ? (y_render->tick[1] - y_render->tick[0]) / 2 : 0;
-
-    if (x_axis->at == AXIS_AT_TOP) {
-      *y0 = x_render->ruler.y + x_render->ruler.h - 1 + offset;
-    } else {
-      *y0 = x_render->ruler.y - y_render->ruler.h + 1 + offset;
-    }
-    *x0 = x_render->ruler.x + x_render->tick[x_render->index_of_zero] - 1;
-    *nr = tk_min(y_axis->label.data->size, series->fifo_size);
-
-    if (*nr < 1) {
-      return RET_FAIL;
-    }
-
-    *x = (float_t*)TKMEM_ZALLOCN(float_t, *nr);
-    *y = y_render->tick;
-    assert(*x);
-
-    v_range = x_axis->label.val_max - x_axis->label.val_min;
-    p_range = x_render->ruler.w;
-    for (i = 0; i < *nr; i++) {
-      (*x)[i] = series->fifo[i] / v_range * p_range;
-    }
-  }
-
-  return RET_OK;
-}
-
-static void line_series_release_points(float_t* x, float_t* y, bool_t vertical) {
-  if (vertical) {
-    TKMEM_FREE(y);
-  } else {
-    TKMEM_FREE(x);
-  }
-}
-
-static ret_t line_series_on_paint_self(widget_t* widget, canvas_t* c) {
-  vgcanvas_t* vg;
-  float_t x0, y0;
-  float_t* x;
-  float_t* y;
-  uint32_t nr;
-  bitmap_t img;
-  bool_t has_image = FALSE;
-  bool_t vertical = TRUE;
-  rect_t r_save;
-  rect_t r = rect_init(c->ox, c->oy, widget->w, widget->h);
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-
-  return_value_if_fail(series != NULL, RET_BAD_PARAMS);
-
-  if (line_series_generate_points(series, &x0, &y0, &x, &y, &nr, &vertical) != RET_OK) {
-    return RET_OK;
-  }
-
-  if (series->symbol.image) {
-    has_image = widget_load_image(widget, series->symbol.image, &img) == RET_OK;
-  }
-
-  canvas_get_clip_rect(c, &r_save);
-  r = r_save;
-  if (nr > 1) {
-    if (vertical) {
-      r.x = c->ox;
-      r.w = x0 + x[nr - 1] - (x[1] - x[0] + 1) * series->clip_sample + series->symbol.size + 1;
-    } else {
-      r.y = c->oy;
-      r.h = y0 + y[nr - 1] - (y[1] - y[0] + 1) * series->clip_sample + series->symbol.size + 1;
-    }
-  }
-  canvas_set_clip_rect(c, &r);
-
-  if (nr == 1) {
-    canvas_fill_rect(c, x0 + x[0], y0 + y[0], 1, 1);
-  }
-
-  vg = canvas_get_vgcanvas(c);
-  vgcanvas_save(vg);
-  vgcanvas_translate(vg, c->ox, c->oy);
-  vgcanvas_translate(vg, x0, y0);
-  if (nr > 1) {
-    if (series->line.smooth) {
-      series_draw_smooth_line(vg, x, y, nr, &(series->line));
-      series_draw_smooth_line_area(vg, 0, 0, x, y, nr, &(series->area), vertical);
-    } else {
-      series_draw_line(vg, x, y, nr, &(series->line));
-      series_draw_line_area(vg, 0, 0, x, y, nr, &(series->area), vertical);
-    }
-  }
-  series_draw_symbol(vg, x, y, nr, &(series->symbol), has_image ? &img : NULL);
-  vgcanvas_restore(vg);
-
-  canvas_set_clip_rect(c, &r_save);
-
-  line_series_release_points(x, y, vertical);
-
-  return RET_OK;
-}
-
-static ret_t line_series_get_prop(widget_t* widget, const char* name, value_t* v) {
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-  return_value_if_fail(series != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
-
-  if (tk_str_eq(name, SERIES_PROP_TITLE)) {
-    value_set_wstr(v, series->base.title);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_ANIMATIC)) {
-    value_set_bool(v, series->base.animatic);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_COLOR)) {
-    value_set_uint32(v, series->line.color.color);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_WIDTH)) {
-    value_set_float(v, series->line.width);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_SHOW)) {
-    value_set_bool(v, series->line.show);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_SMOOTH)) {
-    value_set_bool(v, series->line.smooth);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_AREA_COLOR)) {
-    value_set_uint32(v, series->area.color.color);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_AREA_SHOW)) {
-    value_set_bool(v, series->area.show);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_FILL_COLOR)) {
-    value_set_uint32(v, series->symbol.fill_color.color);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_STROKE_COLOR)) {
-    value_set_uint32(v, series->symbol.stroke_color.color);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_IMAGE)) {
-    value_set_str(v, series->symbol.image);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SIZE)) {
-    value_set_float(v, series->symbol.size);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SHOW)) {
-    value_set_bool(v, series->symbol.show);
-    return RET_OK;
-  }
-
-  return RET_NOT_FOUND;
-}
-
-static void line_series_parse_line(void* ctx, const char* name, const value_t* v) {
+static void line_series_parse_line_params(void* ctx, const char* name, const value_t* v) {
   line_series_t* series = LINE_SERIES(ctx);
   ENSURE(series != NULL && name != NULL && v != NULL);
-  if (tk_str_eq(name, "color")) {
-    series->line.color = chart_utils_value_color(v);
-  } else if (tk_str_eq(name, "width")) {
-    series->line.width = value_float(v);
+
+  if (tk_str_eq(name, "style")) {
+    series_subpart_use_style(WIDGET(series), SERIES_SUBPART_LINE, value_str(v));
   } else if (tk_str_eq(name, "smooth")) {
     series->line.smooth = value_bool(v);
   } else if (tk_str_eq(name, "show")) {
@@ -266,263 +39,436 @@ static void line_series_parse_line(void* ctx, const char* name, const value_t* v
   }
 }
 
-static void line_series_parse_area(void* ctx, const char* name, const value_t* v) {
+static void line_series_parse_line_area_params(void* ctx, const char* name, const value_t* v) {
   line_series_t* series = LINE_SERIES(ctx);
   ENSURE(series != NULL && name != NULL && v != NULL);
-  if (tk_str_eq(name, "color")) {
-    series->area.color = chart_utils_value_color(v);
+
+  if (tk_str_eq(name, "style")) {
+    series_subpart_use_style(WIDGET(series), SERIES_SUBPART_LINE_AREA, value_str(v));
   } else if (tk_str_eq(name, "show")) {
     series->area.show = value_bool(v);
   }
 }
 
-static void line_series_parse_symbol(void* ctx, const char* name, const value_t* v) {
+static void line_series_parse_symbol_params(void* ctx, const char* name, const value_t* v) {
   line_series_t* series = LINE_SERIES(ctx);
   ENSURE(series != NULL && name != NULL && v != NULL);
-  if (tk_str_eq(name, "fill_color")) {
-    series->symbol.fill_color = chart_utils_value_color(v);
-  } else if (tk_str_eq(name, "stroke_color")) {
-    series->symbol.stroke_color = chart_utils_value_color(v);
+
+  if (tk_str_eq(name, "style")) {
+    series_subpart_use_style(WIDGET(series), SERIES_SUBPART_SYMBOL, value_str(v));
   } else if (tk_str_eq(name, "size")) {
     series->symbol.size = value_float(v);
-  } else if (tk_str_eq(name, "image")) {
-    const char* image = value_str(v);
-    if (image) {
-      TKMEM_FREE(series->symbol.image);
-      series->symbol.image = tk_strdup(image);
-    }
   } else if (tk_str_eq(name, "show")) {
     series->symbol.show = value_bool(v);
   }
 }
 
-static ret_t line_series_set_prop(widget_t* widget, const char* name, const value_t* v) {
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
+static ret_t line_series_get_prop(widget_t* widget, const char* name, value_t* v) {
+  line_series_t* series = LINE_SERIES(widget);
   return_value_if_fail(series != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
 
-  if (tk_str_eq(name, SERIES_PROP_TITLE)) {
-    const char* title = value_str(v);
-    if (title) {
-      uint32_t len = strlen(title);
-      TKMEM_FREE(series->base.title);
-      series->base.title = (wchar_t*)TKMEM_ALLOC(sizeof(wchar_t) * (len + 1));
-      utf8_to_utf16(title, series->base.title, len + 1);
-    }
+  return_value_if_true(series_p_get_prop(widget, name, v) == RET_OK, RET_OK);
+
+  if (tk_str_eq(name, SERIES_PROP_SERIES_AXIS)) {
+    value_set_pointer(v, series_p_lookup_series_axis(widget, series->series_axis));
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_ANIMATIC)) {
-    series->base.animatic = value_bool(v);
+  } else if (tk_str_eq(name, SERIES_PROP_VALUE_AXIS)) {
+    value_set_pointer(v, series_p_lookup_value_axis(widget, series->value_axis));
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_CAPACITY)) {
-    TKMEM_FREE(series->fifo)
-    series->fifo_capacity = value_uint32(v);
-    if (series->fifo_capacity) {
-      series->fifo = TKMEM_ZALLOCN(float_t, series->fifo_capacity);
-    } else {
-      series->fifo = NULL;
-    }
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE)) {
-    return chart_utils_object_parse(line_series_parse_line, series, value_str(v));
-  } else if (tk_str_eq(name, SERIES_PROP_AREA)) {
-    return chart_utils_object_parse(line_series_parse_area, series, value_str(v));
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL)) {
-    return chart_utils_object_parse(line_series_parse_symbol, series, value_str(v));
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_COLOR)) {
-    series->line.color = chart_utils_value_color(v);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_LINE_WIDTH)) {
-    series->line.width = value_float(v);
+  } else if (tk_str_eq(name, SERIES_PROP_TITLE)) {
+    value_set_wstr(v, series_get_title(widget));
     return RET_OK;
   } else if (tk_str_eq(name, SERIES_PROP_LINE_SHOW)) {
-    series->line.show = value_bool(v);
+    value_set_bool(v, series->line.show);
     return RET_OK;
   } else if (tk_str_eq(name, SERIES_PROP_LINE_SMOOTH)) {
-    series->line.smooth = value_bool(v);
+    value_set_bool(v, series->line.smooth);
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_AREA_COLOR)) {
-    series->area.color = chart_utils_value_color(v);
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_STYLE)) {
+    value_set_str(v, series->line.style);
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_AREA_SHOW)) {
-    series->area.show = value_bool(v);
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_AREA_SHOW)) {
+    value_set_bool(v, series->area.show);
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_FILL_COLOR)) {
-    series->symbol.fill_color = chart_utils_value_color(v);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_STROKE_COLOR)) {
-    series->symbol.stroke_color = chart_utils_value_color(v);
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_IMAGE)) {
-    const char* image = value_str(v);
-    if (image) {
-      TKMEM_FREE(series->symbol.image);
-      series->symbol.image = tk_strdup(image);
-    }
-    return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SIZE)) {
-    series->symbol.size = value_float(v);
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_AREA_STYLE)) {
+    value_set_str(v, series->area.style);
     return RET_OK;
   } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SHOW)) {
-    series->symbol.show = value_bool(v);
+    value_set_bool(v, series->symbol.show);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_STYLE)) {
+    value_set_str(v, series->symbol.style);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SIZE)) {
+    value_set_float(v, series->symbol.size);
     return RET_OK;
   }
 
   return RET_NOT_FOUND;
 }
 
+static ret_t line_series_set_prop(widget_t* widget, const char* name, const value_t* v) {
+  line_series_t* series = LINE_SERIES(widget);
+  return_value_if_fail(series != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
+
+  return_value_if_true(series_p_set_prop(widget, name, v) == RET_OK, RET_OK);
+
+  if (tk_str_eq(name, SERIES_PROP_SERIES_AXIS)) {
+    series->series_axis = tk_str_copy(series->series_axis, value_str(v));
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_VALUE_AXIS)) {
+    series->value_axis = tk_str_copy(series->value_axis, value_str(v));
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_TITLE)) {
+    return series_set_title(widget, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_LINE)) {
+    return chart_utils_object_parse(line_series_parse_line_params, series, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_AREA)) {
+    return chart_utils_object_parse(line_series_parse_line_area_params, series, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL)) {
+    return chart_utils_object_parse(line_series_parse_symbol_params, series, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_SHOW)) {
+    series->line.show = value_bool(v);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_SMOOTH)) {
+    series->line.smooth = value_bool(v);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_STYLE)) {
+    return series_subpart_use_style(widget, SERIES_SUBPART_LINE, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_AREA_SHOW)) {
+    series->area.show = value_bool(v);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_LINE_AREA_STYLE)) {
+    return series_subpart_use_style(widget, SERIES_SUBPART_LINE_AREA, value_str(v));
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SIZE)) {
+    series->symbol.size = value_float(v);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_SHOW)) {
+    series->symbol.show = value_bool(v);
+    return RET_OK;
+  } else if (tk_str_eq(name, SERIES_PROP_SYMBOL_STYLE)) {
+    return series_subpart_use_style(widget, SERIES_SUBPART_SYMBOL, value_str(v));
+  }
+
+  return RET_NOT_FOUND;
+}
+
 static ret_t line_series_on_destroy(widget_t* widget) {
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
+  line_series_t* series = LINE_SERIES(widget);
   return_value_if_fail(series != NULL, RET_BAD_PARAMS);
 
-  TKMEM_FREE(series->base.title);
-  TKMEM_FREE(series->symbol.image);
-  TKMEM_FREE(series->fifo);
+  TKMEM_FREE(series->line.style);
+  style_destroy(series->line.astyle);
+  series->line.astyle = NULL;
+
+  TKMEM_FREE(series->area.style);
+  style_destroy(series->area.astyle);
+  series->area.astyle = NULL;
+
+  TKMEM_FREE(series->symbol.style);
+  style_destroy(series->symbol.astyle);
+  series->symbol.astyle = NULL;
+
+  TKMEM_FREE(series->series_axis);
+  TKMEM_FREE(series->value_axis);
+  fifo_destroy(series->base.fifo);
 
   return RET_OK;
 }
 
-static const char* s_line_series_properties[] = {SERIES_PROP_TITLE,
-                                                 SERIES_PROP_ANIMATIC,
-                                                 SERIES_PROP_LINE_COLOR,
-                                                 SERIES_PROP_LINE_WIDTH,
-                                                 SERIES_PROP_LINE_SHOW,
-                                                 SERIES_PROP_LINE_SMOOTH,
-                                                 SERIES_PROP_AREA_COLOR,
-                                                 SERIES_PROP_AREA_SHOW,
-                                                 SERIES_PROP_SYMBOL_FILL_COLOR,
-                                                 SERIES_PROP_SYMBOL_STROKE_COLOR,
-                                                 SERIES_PROP_SYMBOL_IMAGE,
-                                                 SERIES_PROP_SYMBOL_SIZE,
-                                                 SERIES_PROP_SYMBOL_SHOW,
-                                                 NULL};
+static ret_t line_series_draw_one_series(widget_t* widget, canvas_t* c, float_t ox, float_t oy,
+                                         fifo_t* fifo, uint32_t index, uint32_t size,
+                                         rect_t* clip_rect, series_p_draw_line_t draw_line,
+                                         series_p_draw_line_area_t draw_area,
+                                         series_p_draw_smooth_line_t draw_smooth_line,
+                                         series_p_draw_smooth_line_area_t draw_smooth_area,
+                                         series_p_draw_symbol_t draw_symbol) {
+  rect_t r_save;
+  rect_t r = *clip_rect;
+  vgcanvas_t* vg;
+  line_series_t* series = LINE_SERIES(widget);
+  bool_t vertical = series_p_is_vertical(widget);
+  return_value_if_fail(series != NULL, RET_BAD_PARAMS);
 
-static const widget_vtable_t s_line_series_vtable = {
-    .size = sizeof(line_series_t),
-    .type = WIDGET_TYPE_LINE_SERIES,
-    .clone_properties = s_line_series_properties,
-    .persistent_properties = s_line_series_properties,
-    .create = line_series_create,
-    .on_paint_self = line_series_on_paint_self,
-    .set_prop = line_series_set_prop,
-    .get_prop = line_series_get_prop,
-    .on_destroy = line_series_on_destroy};
+  canvas_get_clip_rect(c, &r_save);
 
-widget_t* line_series_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
-  line_series_t* series = TKMEM_ZALLOC(line_series_t);
-  widget_t* widget = WIDGET(series);
+  if (series->line.show || series->area.show) {
+    canvas_set_clip_rect(c, &r);
+
+    vg = canvas_get_vgcanvas(c);
+    assert(vg != NULL);
+    vgcanvas_save(vg);
+    vgcanvas_translate(vg, c->ox, c->oy);
+
+    // 加0.5, 避免色块边缘出现虚化（注意, 色块的区域为rect(x + 0.5, y + 0.5, w, h)）
+    vgcanvas_translate(vg, 0.5, 0.5);
+
+    if (series->line.show) {
+      if (series->line.smooth) {
+        draw_smooth_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size, vertical);
+      } else {
+        draw_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size);
+      }
+    }
+
+    if (series->area.show) {
+      if (series->line.smooth) {
+        draw_smooth_area(widget, vg, series->area.astyle, ox, oy, fifo, index, size, vertical);
+      } else {
+        draw_area(widget, vg, series->area.astyle, ox, oy, fifo, index, size, vertical);
+      }
+    }
+
+    vgcanvas_restore(vg);
+  }
+
+  if (series->symbol.show) {
+    widget_t* axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
+    float_t range = axis_get_range(axis);
+
+    // 默认symbol的border_with不超过symbol.size
+    if (vertical) {
+      r.x -= (r.w > 0 ? 1 : -1) * series->symbol.size * 2;
+      r.w += (r.w > 0 ? 1 : -1) * series->symbol.size * 4;
+    } else {
+      r.y -= (r.h > 0 ? 1 : -1) * series->symbol.size * 2;
+      r.h += (r.h > 0 ? 1 : -1) * series->symbol.size * 4;
+    }
+
+    // caover类型时，旧波形减少一个sysmbol, 避免symbol的间距很小时，显示残余
+    if (fifo->size > range && index + size < fifo->size) {
+      index++;
+      size--;
+    }
+
+    canvas_set_clip_rect(c, &r);
+
+    vg = canvas_get_vgcanvas(c);
+    assert(vg != NULL);
+    vgcanvas_save(vg);
+    vgcanvas_translate(vg, c->ox, c->oy);
+    draw_symbol(widget, vg, series->symbol.astyle, ox, oy, fifo, index, size, series->symbol.size);
+    vgcanvas_restore(vg);
+  }
+
+  canvas_set_clip_rect(c, &r_save);
+
+  return RET_OK;
+}
+
+static ret_t line_series_on_paint(widget_t* widget, canvas_t* c, float_t ox, float_t oy,
+                                  fifo_t* fifo, uint32_t index, uint32_t size, rect_t* clip_rect) {
+  return line_series_draw_one_series(
+      widget, c, ox, oy, fifo, index, size, clip_rect, series_p_draw_line, series_p_draw_line_area,
+      series_p_draw_smooth_line, series_p_draw_smooth_line_area, series_p_draw_symbol);
+}
+
+static ret_t line_series_start_init_if_not_inited(widget_t* widget) {
+  line_series_t* series = LINE_SERIES(widget);
+  return_value_if_fail(series != NULL, RET_BAD_PARAMS);
+
+  if (!series->base.inited) {
+    assert(series->line.astyle != NULL);
+    widget_subpart_update_style(series->line.astyle, widget, SERIES_SUBPART_LINE,
+                                series->line.style);
+
+    assert(series->area.astyle != NULL);
+    widget_subpart_update_style(series->area.astyle, widget, SERIES_SUBPART_LINE_AREA,
+                                series->area.style);
+
+    assert(series->symbol.astyle != NULL);
+    widget_subpart_update_style(series->symbol.astyle, widget, SERIES_SUBPART_SYMBOL,
+                                series->symbol.style);
+
+    series_p_start_animator_when_inited(widget);
+
+    series->base.inited = TRUE;
+  }
+
+  return RET_OK;
+}
+
+static ret_t line_series_on_paint_self(widget_t* widget, canvas_t* c) {
+  line_series_t* series = LINE_SERIES(widget);
+  return_value_if_fail(series != NULL, RET_BAD_PARAMS);
+
+  line_series_start_init_if_not_inited(widget);
+  series_p_reset_fifo(widget);
+
+  if (series->base.display_mode == SERIES_DISPLAY_COVER) {
+    return series_p_on_paint_self_cover(widget, c);
+  } else {
+    return series_p_on_paint_self_push(widget, c);
+  }
+}
+
+static ret_t line_series_subpart_set_style_name(widget_t* widget, const char* subpart,
+                                                const char* value) {
+  line_series_t* series = LINE_SERIES(widget);
+  return_value_if_fail(series != NULL && subpart != NULL, RET_BAD_PARAMS);
+
+  if (tk_str_eq(subpart, SERIES_SUBPART_LINE)) {
+    series->line.style = tk_str_copy(series->line.style, value);
+  } else if (tk_str_eq(subpart, SERIES_SUBPART_LINE_AREA)) {
+    series->area.style = tk_str_copy(series->area.style, value);
+  } else if (tk_str_eq(subpart, SERIES_SUBPART_SYMBOL)) {
+    series->symbol.style = tk_str_copy(series->symbol.style, value);
+  } else {
+    return RET_NOT_FOUND;
+  }
+
+  return RET_OK;
+}
+
+static style_t** line_series_subpart_get_style_obj(widget_t* widget, const char* subpart) {
+  line_series_t* series = LINE_SERIES(widget);
+  return_value_if_fail(series != NULL && subpart != NULL, NULL);
+
+  if (tk_str_eq(subpart, SERIES_SUBPART_LINE)) {
+    return &(series->line.astyle);
+  } else if (tk_str_eq(subpart, SERIES_SUBPART_LINE_AREA)) {
+    return &(series->area.astyle);
+  } else if (tk_str_eq(subpart, SERIES_SUBPART_SYMBOL)) {
+    return &(series->symbol.astyle);
+  } else {
+    return NULL;
+  }
+}
+
+static ret_t line_series_colorful_on_paint(widget_t* widget, canvas_t* c, float_t ox, float_t oy,
+                                           fifo_t* fifo, uint32_t index, uint32_t size,
+                                           rect_t* clip_rect) {
+  return line_series_draw_one_series(
+      widget, c, ox, oy, fifo, index, size, clip_rect, series_p_draw_line_colorful,
+      series_p_draw_line_area_colorful, series_p_draw_smooth_line_colorful,
+      series_p_draw_smooth_line_area_colorful, series_p_draw_symbol_colorful);
+}
+
+ret_t line_series_colorful_set(widget_t* widget, uint32_t index, const void* data, uint32_t nr) {
+  return series_p_set_with_animator(widget, index, data, nr,
+                                    chart_animator_fifo_colorful_value_create);
+}
+
+static const char* s_line_series_properties[] = {
+    SERIES_PROP_CAPACITY,        SERIES_PROP_UNIT_SIZE,      SERIES_PROP_COVERAGE,
+    SERIES_PROP_DISPLAY_MODE,    SERIES_PROP_ANIMATION,      SERIES_PROP_TITLE,
+    SERIES_PROP_LINE_STYLE,      SERIES_PROP_LINE_SHOW,      SERIES_PROP_LINE_SMOOTH,
+    SERIES_PROP_LINE_AREA_STYLE, SERIES_PROP_LINE_AREA_SHOW, SERIES_PROP_SYMBOL_STYLE,
+    SERIES_PROP_SYMBOL_SIZE,     SERIES_PROP_SYMBOL_SHOW,    NULL};
+
+#define LINE_SERIES_WIDGET_VT                                                               \
+  .count = series_p_count, .rset = series_p_rset, .push = series_p_push, .at = series_p_at, \
+  .get_current = series_p_get_current, .is_point_in = series_p_is_point_in,                 \
+  .index_of_point_in = series_p_index_of_point_in, .to_local = series_p_to_local,           \
+  .subpart_set_style_name = line_series_subpart_set_style_name,                             \
+  .subpart_get_style_obj = line_series_subpart_get_style_obj
+
+static const series_draw_data_info_t s_line_series_draw_data_info = {
+    .size = sizeof(series_p_draw_data_t),
+    .compare_in_axis1 = series_p_draw_data_compare_x,
+    .compare_in_axis2 = series_p_draw_data_compare_y,
+    .min_axis1 = series_p_draw_data_min_x,
+    .min_axis2 = series_p_draw_data_min_y,
+    .max_axis1 = series_p_draw_data_max_x,
+    .max_axis2 = series_p_draw_data_max_y,
+    .get_axis1 = series_p_draw_data_get_x,
+    .get_axis2 = series_p_draw_data_get_y,
+    .set_as_axis21 = series_p_draw_data_set_yx,
+    .set_as_axis12 = series_p_draw_data_set_xy};
+
+static const series_vtable_t s_line_series_internal_vtable = {
+    LINE_SERIES_WIDGET_VT, .set = series_p_set_default, .on_paint = line_series_on_paint,
+    .draw_data_info = &s_line_series_draw_data_info};
+
+TK_DECL_VTABLE(line_series) = {.size = sizeof(line_series_t),
+                               .type = WIDGET_TYPE_LINE_SERIES,
+                               .enable_pool = TRUE,
+                               .parent = TK_PARENT_VTABLE(series),
+                               .clone_properties = s_line_series_properties,
+                               .persistent_properties = s_line_series_properties,
+                               .create = line_series_create,
+                               .on_paint_self = line_series_on_paint_self,
+                               .set_prop = line_series_set_prop,
+                               .get_prop = line_series_get_prop,
+                               .on_destroy = line_series_on_destroy};
+
+static const series_draw_data_info_t s_series_p_colorful_draw_data_info = {
+    .size = sizeof(series_p_colorful_draw_data_t),
+    .compare_in_axis1 = series_p_colorful_draw_data_compare_x,
+    .compare_in_axis2 = series_p_colorful_draw_data_compare_y,
+    .min_axis1 = series_p_colorful_draw_data_min_x,
+    .min_axis2 = series_p_colorful_draw_data_min_y,
+    .max_axis1 = series_p_colorful_draw_data_max_x,
+    .max_axis2 = series_p_colorful_draw_data_max_y,
+    .get_axis1 = series_p_colorful_draw_data_get_x,
+    .get_axis2 = series_p_colorful_draw_data_get_y,
+    .set_as_axis21 = series_p_colorful_draw_data_set_yx,
+    .set_as_axis12 = series_p_colorful_draw_data_set_xy};
+
+static const series_vtable_t s_line_series_colorful_internal_vtable = {
+    LINE_SERIES_WIDGET_VT, .set = line_series_colorful_set,
+    .on_paint = line_series_colorful_on_paint,
+    .draw_data_info = &s_series_p_colorful_draw_data_info};
+
+TK_DECL_VTABLE(line_series_colorful) = {.size = sizeof(line_series_t),
+                                        .type = WIDGET_TYPE_LINE_SERIES_COLORFUL,
+                                        .enable_pool = TRUE,
+                                        .parent = TK_PARENT_VTABLE(series),
+                                        .clone_properties = s_line_series_properties,
+                                        .persistent_properties = s_line_series_properties,
+                                        .create = line_series_colorful_create,
+                                        .on_paint_self = line_series_on_paint_self,
+                                        .set_prop = line_series_set_prop,
+                                        .get_prop = line_series_get_prop,
+                                        .on_destroy = line_series_on_destroy};
+
+widget_t* line_series_create_internal(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h,
+                                      const widget_vtable_t* wvt, const series_vtable_t* svt) {
+  widget_t* widget = series_create(parent, wvt, x, y, w, h);
+  line_series_t* series = LINE_SERIES(widget);
   return_value_if_fail(series != NULL, NULL);
 
-  widget_init(widget, parent, &s_line_series_vtable, x, y, w, h);
-
-  series->base.animatic = TRUE;
-  series->line.color = _COLOR_BLACK;
-  series->line.width = 1;
+  series->base.vt = svt;
   series->line.show = TRUE;
   series->line.smooth = FALSE;
-  series->area.color = _COLOR_BLACK;
-  series->symbol.fill_color = _COLOR_BLACK;
-  series->symbol.stroke_color = _COLOR_TRANS;
-  series->symbol.size = 5;
+  series->symbol.size = 3;
 
-  widget_t* win = widget_get_window(widget);
-  if (win) {
-    widget_on(win, EVT_WINDOW_OPEN, series_on_window_open, widget);
+  if (series->line.astyle == NULL) {
+    series->line.astyle = style_factory_create_style(style_factory(), widget);
+  }
+
+  if (series->area.astyle == NULL) {
+    series->area.astyle = style_factory_create_style(style_factory(), widget);
+  }
+
+  if (series->symbol.astyle == NULL) {
+    series->symbol.astyle = style_factory_create_style(style_factory(), widget);
   }
 
   return widget;
 }
 
-ret_t line_series_set_data(widget_t* widget, const float_t* data, uint32_t nr) {
-  float_t* fifo;
-  uint32_t fifo_size;
-  uint32_t fifo_capacity;
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-  return_value_if_fail(series != NULL && data != NULL && nr > 0, RET_BAD_PARAMS);
-
-  fifo = series->fifo;
-  fifo_size = series->fifo_size;
-  fifo_capacity = series->fifo_capacity;
-  return_value_if_fail(fifo != NULL && fifo_capacity > 0, RET_BAD_PARAMS);
-
-  if (series->base.animatic) {
-    widget_animator_t* wa = NULL;
-    widget_t* win = widget_get_window(widget);
-    uint32_t size = tk_min(fifo_size + nr, fifo_capacity);
-    float_t* from = (float_t*)TKMEM_ZALLOCN(float_t, size);
-    float_t* to = (float_t*)TKMEM_ZALLOCN(float_t, size);
-
-    /* 销毁旧的动画对象, 避免line_series_animator_on_update时由于fifo_size更新导致from/to数组越界 */
-    widget_destroy_animator(widget, NULL);
-
-    /* 手动复位，防止由于动画未完成而没有复位 */
-    series->clip_sample = 0;
-
-    /* 创建新的动画 */
-    wa = chart_animator_create(widget, SERIES_ANIMATION_TIME, 0, SERIES_ANIMATION_EASING);
-    assert(wa != NULL && from != NULL && to != NULL);
-    series_animator_floats_set_params(wa, from, to, (void*)series,
-                                      line_series_animator_value_on_update,
-                                      series_animator_floats_on_destroy);
-
-    memcpy(from, fifo, sizeof(float_t) * fifo_size);
-    memcpy(to, fifo, sizeof(float_t) * fifo_size);
-    series_set_data_float(to, &(series->fifo_size), fifo_capacity, data, nr);
-
-    if (win && widget_is_window_opened(win)) {
-      widget_animator_start(wa);
-    }
-  } else {
-    series_set_data_float(fifo, &(series->fifo_size), fifo_capacity, data, nr);
-    widget_invalidate(widget, NULL);
-  }
-
-  return RET_OK;
+widget_t* line_series_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
+  return line_series_create_internal(parent, x, y, w, h, TK_REF_VTABLE(line_series),
+                                     &s_line_series_internal_vtable);
 }
 
-ret_t line_series_append(widget_t* widget, const float_t* data, uint32_t nr) {
-  float_t* fifo;
-  uint32_t fifo_capacity;
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-  return_value_if_fail(series != NULL && data != NULL && nr > 0, RET_BAD_PARAMS);
+widget_t* line_series_colorful_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
+  widget_t* widget =
+      line_series_create_internal(parent, x, y, w, h, TK_REF_VTABLE(line_series_colorful),
+                                  &s_line_series_colorful_internal_vtable);
+  series_t* series = SERIES(widget);
+  return_value_if_fail(series != NULL, NULL);
 
-  fifo = series->fifo;
-  fifo_capacity = series->fifo_capacity;
-  return_value_if_fail(fifo != NULL && fifo_capacity > 0, RET_BAD_PARAMS);
+  series->unit_size = sizeof(series_colorful_data_t);
 
-  series_fifo_float(fifo, &(series->fifo_size), fifo_capacity, data, nr);
-
-  if (series->base.animatic && series->fifo_size > 1) {
-    widget_animator_t* wa = NULL;
-    widget_t* win = widget_get_window(widget);
-
-    series->clip_sample = tk_min(nr, fifo_capacity);
-
-    /* 销毁旧的动画对象*/
-    widget_destroy_animator(widget, NULL);
-
-    /* 创建新的动画 */
-    wa = chart_animator_create(widget, SERIES_ANIMATION_TIME, 100, SERIES_ANIMATION_EASING);
-    assert(wa != NULL);
-    series_animator_float_set_params(wa, series->clip_sample, 0, (void*)series,
-                                     line_series_animator_move_on_update, NULL);
-
-    if (win && widget_is_window_opened(win)) {
-      widget_animator_start(wa);
-    }
-  }
-
-  widget_invalidate(widget, NULL);
-
-  return RET_OK;
-}
-
-void line_series_clear(widget_t* widget) {
-  line_series_t* series = LINE_SERIES(line_series_cast(widget));
-  return_if_fail(series != NULL);
-  series->fifo_size = 0;
+  return widget;
 }
 
 widget_t* line_series_cast(widget_t* widget) {
-  return_value_if_fail(widget != NULL && (widget->vt == &s_line_series_vtable), NULL);
+  return_value_if_fail(WIDGET_IS_INSTANCE_OF(widget, line_series) ||
+                           WIDGET_IS_INSTANCE_OF(widget, line_series_colorful),
+                       NULL);
 
   return widget;
 }

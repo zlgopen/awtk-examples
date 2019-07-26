@@ -1,0 +1,22 @@
+<window anim_hint="slide_left" style="music" full_screen="false" x="c" y="m" w="240" h="240"
+        theme="music_styles">
+    <gesture name="music:gesture" x="0" y="0" w="100%" h="100%" >
+        <button name="music:mode" style="music_loop" x="c" y="0" w="174" h="53" />
+        <label name="music:song_name" style="song_name" x="c" y="55" w="100%" h="25" text="Shape Of You" />
+        <view x="c" y="106" w="173" h="60" >
+            <button name="music:pre" style="music_pre" x="0" y="m" w="42" h="42"  />
+            <health_circle name="music:progress" x="c" y="m" w="64" h="64"
+                     width="6" color_b="#CA11FF" only_big="true" draggable="true" no_beyond="true"
+                     draw_end_line_b="false" bg_color_b="#00000000"/>
+            <button name="music:pause_play" style="play_play" x="c" y="m" w="60" h="60"  />
+            <button name="music:next" style="music_next" x="right" y="m" w="42" h="42" />
+        </view>
+    </gesture>
+    <row x="c" y="192" w="131" h="12">
+        <image x="0" y="m" w="12" h="11" image="ico_sound"/>
+        <view x="18" y="m" w="113" h="12">
+            <slider x="c" y="m" w="100%" h="100%" style="music_vol" name="music:vol" bar_size="20" sensitive="true"
+              min="0" max="100"/>
+        </view>
+    </row>
+</window>

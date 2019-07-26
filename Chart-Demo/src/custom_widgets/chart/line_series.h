@@ -23,47 +23,42 @@
 #define TK_LINE_SERIES_H
 
 #include "series.h"
+#include "base/fifo.h"
 
 BEGIN_C_DECLS
 
 /**
  * @class line_series_t
- * @parent widget_t
+ * @parent series_t
  * @annotation ["scriptable"]
  * 线形序列。
  */
 typedef struct _line_series_t {
   series_t base;
   /**
-   * 线。
+   * @property {char*} series_axis
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 标示序列位置的轴。
+   */
+  char* series_axis;
+  /**
+   * @property {char*} value_axis
+   * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
+   * 标示序列值的轴。
+   */
+  char* value_axis;
+  /**
+   * 线参数。
    */
   series_line_params_t line;
   /**
-   * 面。
+   * 面参数。
    */
   series_line_area_params_t area;
   /**
-   * 点。
+   * 点参数。
    */
   series_symbol_params_t symbol;
-  /**
-   * X轴索引。
-   */
-  uint32_t x_axis_index;
-  /**
-   * y轴索引。
-   */
-  uint32_t y_axis_index;
-  /**
-   * 裁剪显示的采样点。
-   */
-  float_t clip_sample;
-  /**
-   * 数据fifo。
-   */
-  float_t* fifo;
-  uint32_t fifo_capacity;
-  uint32_t fifo_size;
 } line_series_t;
 
 /**
@@ -81,38 +76,18 @@ typedef struct _line_series_t {
 widget_t* line_series_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
- * @method line_series_set_data
- * 设置点的值(从第0点开始)
- * @annotation ["scriptable"]
- * @param {widget_t*} series line_series对象
- * @param {float_t*} data 值缓存
- * @param {uint32_t} nr 值数量
+ * @method line_series_create
+ * 创建彩色line_series对象
+ * @annotation ["constructor", "scriptable"]
+ * @param {widget_t*} parent 父控件
+ * @param {xy_t} x x坐标
+ * @param {xy_t} y y坐标
+ * @param {wh_t} w 宽度
+ * @param {wh_t} h 高度
  *
- * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
+ * @return {widget_t*} 对象。
  */
-ret_t line_series_set_data(widget_t* series, const float_t* data, uint32_t nr);
-
-/**
- * @method line_series_append
- * 向后追加点的值(超出容量则移除旧值)
- * @annotation ["scriptable"]
- * @param {widget_t*} series line_series对象
- * @param {float_t*} data 值缓存
- * @param {uint32_t} nr 值数量
- *
- * @return {ret_t} 返回RET_OK表示成功，否则表示失败。
- */
-ret_t line_series_append(widget_t* series, const float_t* data, uint32_t nr);
-
-/**
- * @method line_series_clear
- * 清空点的值
- * @annotation ["scriptable"]
- * @param {widget_t*} series bar_series对象
- *
- * @return {void}
- */
-void line_series_clear(widget_t* series);
+widget_t* line_series_colorful_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
  * @method line_series_cast
@@ -124,8 +99,7 @@ void line_series_clear(widget_t* series);
  */
 widget_t* line_series_cast(widget_t* series);
 
-#define WIDGET_TYPE_LINE_SERIES "line_series"
-#define LINE_SERIES(widget) ((line_series_t*)(widget))
+#define LINE_SERIES(widget) ((line_series_t*)(line_series_cast(WIDGET(widget))))
 
 END_C_DECLS
 

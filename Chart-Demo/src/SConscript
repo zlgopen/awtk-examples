@@ -4,9 +4,13 @@ import sys
 env=DefaultEnvironment().Clone()
 BIN_DIR=os.environ['BIN_DIR']
 
+APP_CPPPATH = [os.path.normpath(os.getcwd())]
+env['CPPPATH'] = APP_CPPPATH + env['CPPPATH'];
+
 env['LINKFLAGS'] = env['OS_SUBSYSTEM_WINDOWS'] + env['LINKFLAGS'];
 
 src_files = Glob('*.c')
+src_files += Glob('base/*.c')
 src_files += Glob('custom_widgets/*.c')
 src_files += Glob('custom_widgets/*/*.c')
 

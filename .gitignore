@@ -1,8 +1,8 @@
 FIA-Demo
 Game2D*
 Motormeter-Demo
+PatientMonitor-Demo
 SmartHome-Demo
-SmartWatch-Demo
 Ventilator-Demo
 __docs__
 __images__
@@ -21,3 +21,4 @@ __images__
 *.vsd
 .sconsign.dblite
 .vscode
+build_web.py

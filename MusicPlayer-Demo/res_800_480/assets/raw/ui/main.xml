@@ -22,15 +22,15 @@
     </view>
     <frame_view name="frame_menu" x="-20" y="90" w="450" h="300" align_v="bottom" >
         <view x="0" y="0" w="300" h="300">
-            <image name="song_y" w="188" h="188" image="yellow" draw_type="default" />
+            <image name="song_y" w="188" h="188" image="yellow" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="300" h="300" draw_type="default" />
         </view>
         <view x="0" y="0" w="300" h="300">
-            <image name="song_q" w="188" h="188"  image="see_you_again" draw_type="default" />
+            <image name="song_q" w="188" h="188"  image="see_you_again" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="300" h="300" draw_type="default" />
         </view>
         <view x="0" y="0" w="250" h="250">
-            <image name="song_n" w="188" h="188"  image="let_it_go" draw_type="default" />
+            <image name="song_n" w="188" h="188"  image="let_it_go" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="300" h="300" draw_type="default" />
         </view>
     </frame_view>

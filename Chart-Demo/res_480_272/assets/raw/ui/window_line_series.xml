@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" tr_text="line_title" x="0%" y="30" w="478" h="242">
+<window anim_hint="htranslate" tr_text="line_title" x="0%" y="30" w="480" h="242">
     <view x="r:105" y="2%" w="136" h="10%" layout="r1 c2 m0 s30">
         <image name="typeie" clickable="true">
             <label name="typeie_icon" x="0" y="m" w="10" h="10" style="typeie"/>
@@ -9,11 +9,12 @@
             <label x="14" y="m" w="50" h="100%" text="data2" style="series_label"/>
         </image>
     </view>
-    <chart_view name="chartview" x="7%" y="14%" w="73.5%" h="79%">
-        <axis name="x" axis_type="value" orientation="x" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}" data="[0,1,2,3,4,5,6,7,8,9,10,11]"/>
-        <axis name="y" axis_type="value" orientation="y" min="0" max="140" tick="{color:#294b63}" split_line="{color:#213b4d}" label="{color:#a1d8ef, font_size:14}" line="{color:#294b63}" data="[140,120,100,80,60,40,20,0]"/>
-        <line_series name="s1" capacity="12" line="{smooth:true, color:#69cf5c}" area="{show:true, color:#69cf5c66}" symbol="{show:true, fill_color:#69cf5c, stroke_color:#ffc393, size:3}"/>
-        <line_series name="s2" capacity="12" line="{smooth:true, color:#36b3c3}" area="{show:true, color:#36b3c366}" symbol="{show:true, fill_color:#36b3c3, stroke_color:#ffc393, size:3}"/>
+    <chart_view name="chartview" x="6%" y="13%" w="82%" h="80%">
+        <x_axis name="x" axis_type="value" min="0" max="11" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,20,40,60,80,100,120,140]"/>
+        <y_axis name="y" axis_type="value" min="0" max="140" data="[0,20,40,60,80,100,120,140]"/>
+        <line_series name="s1" capacity="24" line="{style:s1, smooth:true}" area={"style:s1, show:true}" symbol="{style:s1, show:true}"/>
+        <line_series name="s2" capacity="24" line="{style:s2, smooth:true}" area="{style:s2, show:true}" symbol="{style:s2, show:true}"/>
+        <tooltip />
     </chart_view>
     <view x="right" y="0" w="58" h="100%" style="seperate" />
     <view name="right_menu" x="right" y="0" w="57" h="100%" layout="r6 c1 m10 s10" style="function_view">

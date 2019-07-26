@@ -1,0 +1,85 @@
+<window anim_hint="slide_left" style="black" theme="application_styles" full_screen="false" x="c" y="m" w="390" h="390" >
+    <!--<view name="gesture" x="0" y="0" w="100%" h="100%" children_layout="default(r=1,c=1)">-->
+    <view name="gesture" w="100%" h="100%" children_layout="default(r=1,c=1)">
+        <!--<view name="app_view" x="c" y="m" w="330" h="330">-->
+        <!--<view name="app_view" children_layout="default(r=5,c=5)">-->
+        <view name="app_view">
+            <!--<view name="app_view" children_layout="nest(radius=[18%|16%|14%|15%]),spacing=5,adaptive=true">-->
+            <view children_layout="default(r=1,c=1)">
+                <button style="clock_60" name="open:alarm" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="message_60" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="health_circle_60" name="open:health" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="browser_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="music_60" name="open:music"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="calculator_60" name="open:calculator"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="flat_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="file_60" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="health_circle_60" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="setting_60" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="sport_60" name="open:health" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="weather_60" name="open:weather"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="maps_60" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="weather_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="calendar_60" name="open:calendar" />
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="camera_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="call_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="video_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="heart_60" name="open:heart_rate"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="heart_60" name="open:heart_rate"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="camera_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="call_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="video_60"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="heart_60" name="open:heart_rate"/>
+            </view>
+            <view children_layout="default(r=1,c=1)">
+                <button style="heart_60" name="open:heart_rate"/>
+            </view>
+        </view>
+    </view>
+</window>

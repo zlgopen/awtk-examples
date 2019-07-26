@@ -38,9 +38,10 @@
             <label  text="8k" x="80%" y="bottom" w="10" h="20%"  style="eq_text"/>
         </view>
     </view>
-    <chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="bg_chart_view">
-        <axis name="x" w="100%" h="100%" axis_type="value" orientation="x" min="0" max="100"  tick="{show:false}" split_line="{show:false}"  label="{show:false}" line="{color:#294b63}" data="[0,0,0,0,0,0,0,0,0]"/>
-        <axis name="y" w="100%" h="100%" axis_type="value" orientation="y" min="0" max="100" tick="{show:false}" split_line="{show:false}" label="{show:false}" line="{color:#294b63}"/>
-        <line_series name="s1"  w="100%" h="100%" capacity="10" line="{smooth:true, color:#00fffc}" area={"show:false, color:#69cf5c66}" symbol="{show:false, fill_color:#69cf5c, stroke_color:#ffc393}"/>
+    <chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="default">
+        <x_axis name="x" w="100%" h="100%" axis_type="value"  min="0" max="8"  tick="{show:false}" split_line="{show:false}"  label="{show:false}"  data="[0,0,0,0,0,0,0,0,0]"/>
+        <y_axis name="y" w="100%" h="100%" axis_type="value"  min="-15" max="120" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,10,20,30,40,50,60,70,80]"/>
+        <line_series name="s1"  w="100%" h="100%" capacity="10" line="{style:s1, smooth:true}" area="{show:false}" symbol="{show:false}"/>
+        <tooltip />
     </chart_view>
 </dialog>

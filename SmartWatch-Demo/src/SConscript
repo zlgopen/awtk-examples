@@ -1,0 +1,14 @@
+import os
+
+env=DefaultEnvironment().Clone();
+BIN_DIR=os.environ['BIN_DIR'];
+
+env['LINKFLAGS'] = env['OS_SUBSYSTEM_WINDOWS'] + env['LINKFLAGS'];
+
+src_files = Glob('*.c')
+src_files += Glob('custom_widgets/*.c')
+src_files += Glob('watch/*.c')
+src_files += Glob('application/*.c')
+src_files += Glob('slide_appliction/*.c')
+src_files += Glob('common/*.c')
+env.Program(os.path.join(BIN_DIR, 'demo'), src_files);

@@ -1,0 +1,16 @@
+<window anim_hint="slide_up" full_screen="false" style="pay" x="c" y="m" w="240" h="240"
+        theme="quick_styles">
+    <gesture name="gesture" x="0" y="0" w="100%" h="100%">
+        <slide_view x="m" y="c" w="100%" h="100%" indicator="solid_dot(margin=17, spacing=10, arc=true, size=12)">
+            <view x="c" y="m" w="100%" h="100%">
+                <label x="c" y="38" w="131" h="21" text="支付宝付款码" style="text"/>
+                <button x="c" y="77" w="188" h="96" name="alipay" style="alipay"/>
+            </view>
+            <view x="c" y="m" w="100%" h="100%">
+                <label x="c" y="38" w="43" h="21" text="请靠近读卡器" style="text" />
+                <button name="gongshang" style="gongshang" x="c" y="77" w="169" h="106" />
+            </view>
+        </slide_view>
+        <slide_indicator_arc x="0" y="b" w="100%" h="12" spacing="8" size="8" />
+    </gesture>
+</window>

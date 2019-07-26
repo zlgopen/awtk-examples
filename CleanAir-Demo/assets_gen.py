@@ -113,7 +113,12 @@ def genFont(tools_dir, src_dir, dst_dir):
 def genImage(tools_dir, src_dir, dst_dir, dpi): 
   IMAGEGEN_OPTIONS = '\"bgra|bgr565\"'
   suffix = ['.png', '.jpg', '.bmp']
-  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 1)
+
+  removeDir(joinPath(dst_dir, 'images'))
+  os.makedirs(joinPath(dst_dir, 'images'));
+  
+  generate(tools_dir, 'resgen', src_dir, 'images/xx'    , suffix, dst_dir, 'images', '.res', '', 0)
+  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 0)
   #generate(tools_dir, 'imagegen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.data', IMAGEGEN_OPTIONS, 0)
   
 def genData(tools_dir, src_dir, dst_dir): 

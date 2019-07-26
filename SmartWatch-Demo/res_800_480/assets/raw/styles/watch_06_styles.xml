@@ -1,0 +1,117 @@
+<window>
+    <style name="watch_06">
+        <normal bg_image="ico_watch_background_06"
+            bg_color="black"/>
+    </style>
+</window>
+<watch_slide_view>
+    <style name="default">
+        <normal  fg_color="red" />
+    </style>
+    <style name="dot">
+        <normal  icon="dot" active_icon="active_dot"/>
+    </style>
+</watch_slide_view>
+<digit_clock>
+    <style name="time">
+        <normal text_color="#26ffed" font_size="90" text_align_h="right" text_align_v="middle" />
+    </style>
+    <style name="date">
+        <normal text_color="#26ffed" font_size="28" text_align_h="center" text_align_v="middle" />
+    </style>
+</digit_clock>
+<label>
+    <style name="heart_number">
+        <normal text_color="#26ffed" font_size="52" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="heart_text">
+        <normal text_color="#999999" font_size="30" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="week">
+        <normal text_color="#26ffed" font_size="28" text_align_h="right" text_align_v="middle" />
+    </style>
+</label>
+<button>
+    <style name="watch_06_weather_00">
+        <normal bg_image="icon_app_cloudy_normal_88"/>
+        <pressed bg_image="icon_app_cloudy_pressed_88"/>
+        <over bg_image="icon_app_cloudy_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_01">
+        <normal bg_image="icon_app_rainy_normal_88"/>
+        <pressed bg_image="icon_app_rainy_pressed_88"/>
+        <over bg_image="icon_app_rainy_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_02">
+        <normal bg_image="icon_app_sunny_normal_88"/>
+        <pressed bg_image="icon_app_sunny_pressed_88"/>
+        <over bg_image="icon_app_sunny_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_03">
+        <normal bg_image="app_thunderstorm_normal_88"/>
+        <pressed bg_image="app_thunderstorm_pressed_88"/>
+        <over bg_image="app_thunderstorm_pressed_88"/>
+    </style>
+    <style name="watch_06_wechart">
+        <normal bg_image="icon_app_wechart_normal_88"/>
+        <pressed bg_image="icon_app_wechart_pressed_88"/>
+        <over bg_image="icon_app_wechart_pressed_88"/>
+    </style>
+    <style name="watch_06_health">
+        <normal bg_image="icon_app_training_normal_88"/>
+        <pressed bg_image="icon_app_training_pressed_88"/>
+        <over bg_image="icon_app_training_pressed_88"/>
+    </style>
+    <style name="watch_06_music">
+        <normal bg_image="icon_app_music_normal_88"/>
+        <pressed bg_image="icon_app_music_pressed_88"/>
+        <over bg_image="icon_app_music_pressed_88"/>
+    </style>
+    <style name="watch_06_calendar">
+        <normal bg_image="icon_app_calendar_normal_88"/>
+        <pressed bg_image="icon_app_calendar_pressed_88"/>
+        <over bg_image="icon_app_calendar_pressed_88"/>
+    </style>
+</button>
+<view>
+    <style name="watch_06_weather_00">
+        <normal bg_image="icon_app_cloudy_normal_88"/>
+        <pressed bg_image="icon_app_cloudy_pressed_88"/>
+        <over bg_image="icon_app_cloudy_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_01">
+        <normal bg_image="icon_app_rainy_normal_88"/>
+        <pressed bg_image="icon_app_rainy_pressed_88"/>
+        <over bg_image="icon_app_rainy_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_02">
+        <normal bg_image="icon_app_sunny_normal_88"/>
+        <pressed bg_image="icon_app_sunny_pressed_88"/>
+        <over bg_image="icon_app_sunny_pressed_88"/>
+    </style>
+    <style name="watch_06_weather_03">
+        <normal bg_image="app_thunderstorm_normal_88"/>
+        <pressed bg_image="app_thunderstorm_pressed_88"/>
+        <over bg_image="app_thunderstorm_pressed_88"/>
+    </style>
+    <style name="watch_06_wechart">
+        <normal bg_image="icon_app_wechart_normal_88"/>
+        <pressed bg_image="icon_app_wechart_pressed_88"/>
+        <over bg_image="icon_app_wechart_pressed_88"/>
+    </style>
+    <style name="watch_06_calendar">
+        <normal bg_image="icon_app_calendar_normal_88"/>
+        <pressed bg_image="icon_app_calendar_pressed_88"/>
+        <over bg_image="icon_app_calendar_pressed_88"/>
+    </style>
+    <style name="watch_06_health">
+        <normal bg_image="icon_app_training_normal_88"/>
+        <pressed bg_image="icon_app_training_pressed_88"/>
+        <over bg_image="icon_app_training_pressed_88"/>
+    </style>
+    <style name="watch_06_music">
+        <normal bg_image="icon_app_music_normal_88"/>
+        <pressed bg_image="icon_app_music_pressed_88"/>
+        <over bg_image="icon_app_music_pressed_88"/>
+    </style>
+</view>

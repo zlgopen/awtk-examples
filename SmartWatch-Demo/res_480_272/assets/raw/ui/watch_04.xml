@@ -1,0 +1,35 @@
+<window style="watch_04" full_screen="false" x="c" y="m" w="240" h="240"
+        children_layout="default(r=1,c=1)" theme="watch_04_styles">
+    <gesture name="gesture" x="c" y="m" w="100%" h="100%">
+        <guage x="c" y="m" w="100%" h="100%" image="ico_watch_background_04" >
+            <button name="watch_04_day" style="enable"
+              enable_long_press="true"
+              x="55" y="77" w="54" h="54">
+                <label name="week" style="week" x="c" y="14" w="26" h="10" text="WEN"/>
+                <label name="day" style="day" x="c" y="30" w="15" h="14" text="10"/>
+            </button>
+            <button name="watch_04_weather" style="enable"
+              enable_long_press="true"
+              x="132" y="77" w="54" h="54">
+                <view x="c" y="9" w="24" h="21" style="cloud_sun"/>
+                <label name="day" style="weather_now" x="c" y="31" w="33" h="10" text="18~24"/>
+                <label style="c" x="46" y="31" w="6" h="10" text="°"/>
+            </button>
+            <button name="watch_04_music" style="enable"
+              enable_long_press="true"
+              x="95" y="128" w="50" h="50">
+                <health_circle name="music_circle" x="c" y="m" w="50" h="50" width="5" only_big="true"
+                       color_b="#F33A63" value_b="0" max_b="100" smooth_end="false" smooth_start="false"/>
+                <image x="c" y="m" w="22" h="23" image="ico_music" draw_type="scale_auto"/>
+            </button>
+            <button name="icon_app_wechart" x="49" y="161" w="18" h="18" style="icon_app_wechart"/>
+            <button name="icon_app_phone" x="77" y="184" w="18" h="18" style="icon_app_phone"/>
+            <button name="icon_app_run" x="109" y="191" w="18" h="19" style="icon_app_run"/>
+            <button name="icon_app_training" x="143" y="185" w="22" h="15" style="icon_app_training"/>
+            <button name="icon_app_heart" x="174" y="162" w="19" h="19" style="icon_app_heart"/>
+            <guage_hour_pointer sensitive="false" name="hour" x="c" y="m" w="100%" h="100%" image="ico_watch_04_hour"/>
+            <guage_minute_pointer sensitive="false" name="minute" x="c" y="m" w="100%" h="100%" image="ico_watch_04_minute"/>
+            <guage_second_pointer sensitive="false" name="second" x="c" y="m" w="100%" h="100%" image="ico_watch_04_second"/>
+        </guage>
+    </gesture>
+</window>

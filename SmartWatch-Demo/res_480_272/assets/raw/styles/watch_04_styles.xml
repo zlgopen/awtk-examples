@@ -1,0 +1,86 @@
+<window>
+    <style name="watch_04">
+        <normal bg_color="black"/>
+    </style>
+</window>
+<label>
+    <style name="week">
+        <normal text_color="#2BBCC0" font_size="22" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="day">
+        <normal text_color="#3FFCFF" font_size="22" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="weather_now">
+        <normal text_color="#2BBCC0" font_size="18" text_align_h="center" text_align_v="middle" />
+    </style>
+    <style name="c">
+        <normal text_color="#3FFCFF" font_size="18" text_align_h="left" text_align_v="middle" />
+    </style>
+</label>
+<button>
+    <style name="icon_app_wechart">
+        <normal icon="icon_app_wechart_s_02"/>
+        <pressed icon="icon_app_wechart_s_01" />
+        <over icon="icon_app_wechart_s_01"/>
+    </style>
+    <style name="icon_app_wechart_pressed">
+        <normal icon="icon_app_wechart_s_01"/>
+        <pressed icon="icon_app_wechart_s_01" />
+        <over icon="icon_app_wechart_s_01"/>
+    </style>
+    <style name="icon_app_phone">
+        <normal icon="icon_app_phone_s_02"/>
+        <pressed icon="icon_app_phone_s_01" />
+        <over icon="icon_app_phone_s_01"/>
+    </style>
+    <style name="icon_app_phone_pressed">
+        <normal icon="icon_app_phone_s_01"/>
+        <pressed icon="icon_app_phone_s_01" />
+        <over icon="icon_app_phone_s_01"/>
+    </style>
+    <style name="icon_app_run">
+        <normal icon="icon_app_run_s_02"/>
+        <pressed icon="icon_app_run_s_01" />
+        <over icon="icon_app_run_s_01"/>
+    </style>
+    <style name="icon_app_run_pressed">
+        <normal icon="icon_app_run_s_01"/>
+        <pressed icon="icon_app_run_s_01" />
+        <over icon="icon_app_run_s_01"/>
+    </style>
+    <style name="icon_app_training">
+        <normal icon="icon_app_training_s_02"/>
+        <pressed icon="icon_app_training_s_01" />
+        <over icon="icon_app_training_s_01"/>
+    </style>
+    <style name="icon_app_training_pressed">
+        <normal icon="icon_app_training_s_01"/>
+        <pressed icon="icon_app_training_s_01" />
+        <over icon="icon_app_training_s_01"/>
+    </style>
+    <style name="icon_app_heart">
+        <normal icon="icon_app_heart_s_02"/>
+        <pressed icon="icon_app_heart_s_01" />
+        <over icon="icon_app_heart_s_01"/>
+    </style>
+    <style name="icon_app_heart_pressed">
+        <normal icon="icon_app_heart_s_01"/>
+        <pressed icon="icon_app_heart_s_01" />
+        <over icon="icon_app_heart_s_01"/>
+    </style>
+    <style name="enable">
+        <normal />
+        <pressed x_offset="1" y_offset="1"/>
+        <over x_offset="1" y_offset="1"/>
+    </style>
+</button>
+<view>
+    <style name="enable">
+        <normal />
+        <pressed x_offset="1" y_offset="1"/>
+        <over x_offset="1" y_offset="1"/>
+    </style>
+    <style name="cloud_sun">
+        <normal bg_image="ico_weather_02" />
+    </style>
+</view>

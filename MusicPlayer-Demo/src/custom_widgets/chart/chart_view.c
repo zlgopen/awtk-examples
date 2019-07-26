@@ -20,59 +20,33 @@
  */
 
 #include "chart_view.h"
-#include "line_series.h"
-#include "bar_series.h"
+#include "axis.h"
+#include "series_p.h"
+#include "tooltip.h"
 
-#define _VGCANVAS_TRANSLATE(vg, x, y) vgcanvas_translate(vg, _VG_XY(x), _VG_XY(y))
+static widget_t* chart_view_get_series(widget_t* widget, uint32_t index) {
+  uint32_t cnt = 0;
+  return_value_if_fail(widget != NULL, NULL);
 
-#define CHART_VIEW_FOR_EACH_AXIS_BEGIN(chart_view, iter, i)     \
-  if (chart_view->axes != NULL && chart_view->axes->size > 0) { \
-    int32_t i = 0;                                              \
-    int32_t nr = chart_view->axes->size;                        \
-    axis_t** nodes = (axis_t**)(chart_view->axes->elms);        \
-    for (i = 0; i < nr; i++) {                                  \
-      axis_t* iter = nodes[i];
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_series(iter)) {
+    if (cnt == index) {
+      return iter;
+    }
 
-#define CHART_VIEW_FOR_EACH_AXIS_BEGIN_R(chart_view, iter, i)   \
-  if (chart_view->axes != NULL && chart_view->axes->size > 0) { \
-    int32_t i = 0;                                              \
-    int32_t nr = chart_view->axes->size;                        \
-    axis_t** nodes = (axis_t**)(chart_view->axes->elms);        \
-    for (i = nr - 1; i >= 0; i--) {                             \
-      axis_t* iter = nodes[i];
-
-#define CHART_VIEW_FOR_EACH_AXIS_END() \
-  }                                    \
+    cnt++;
   }
+  WIDGET_FOR_EACH_CHILD_END()
 
-#define CHART_VIEW_FOR_EACH_SERIES_BEGIN(chart_view, iter, i)       \
-  if (chart_view->series != NULL && chart_view->series->size > 0) { \
-    int32_t i = 0;                                                  \
-    int32_t nr = chart_view->series->size;                          \
-    series_t** nodes = (series_t**)(chart_view->series->elms);      \
-    for (i = 0; i < nr; i++) {                                      \
-      series_t* iter = nodes[i];
-
-#define CHART_VIEW_FOR_EACH_SERIES_BEGIN_R(chart_view, iter, i)     \
-  if (chart_view->series != NULL && chart_view->series->size > 0) { \
-    int32_t i = 0;                                                  \
-    int32_t nr = chart_view->series->size;                          \
-    series_t** nodes = (series_t**)(chart_view->series->elms);      \
-    for (i = nr - 1; i >= 0; i--) {                                 \
-      series_t* iter = nodes[i];
-
-#define CHART_VIEW_FOR_EACH_SERIES_END() \
-  }                                      \
-  }
+  return NULL;
+}
 
 static ret_t chart_view_get_prop(widget_t* widget, const char* name, value_t* v) {
-  return_value_if_fail(widget != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
 
-  if (tk_str_eq(name, CHART_VIEW_PROP_BAR_MARGIN)) {
-    value_set_uint32(v, chart_view_get_bar_margin(widget));
-    return RET_OK;
-  } else if (tk_str_eq(name, CHART_VIEW_PROP_BAR_SPACING)) {
-    value_set_uint32(v, chart_view_get_bar_spacing(widget));
+  if (tk_str_eq(name, CHART_VIEW_PROP_TOP_SERIES)) {
+    value_set_uint32(v, chart_view->top_series);
     return RET_OK;
   }
 
@@ -80,81 +54,352 @@ static ret_t chart_view_get_prop(widget_t* widget, const char* name, value_t* v)
 }
 
 static ret_t chart_view_set_prop(widget_t* widget, const char* name, const value_t* v) {
-  return_value_if_fail(widget != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && name != NULL && v != NULL, RET_BAD_PARAMS);
 
-  if (tk_str_eq(name, CHART_VIEW_PROP_BAR_MARGIN)) {
-    return chart_view_set_bar_margin(widget, value_uint32(v));
-  } else if (tk_str_eq(name, CHART_VIEW_PROP_BAR_SPACING)) {
-    return chart_view_set_bar_spacing(widget, value_uint32(v));
+  if (tk_str_eq(name, CHART_VIEW_PROP_TOP_SERIES)) {
+    return chart_view_set_top_series(widget, value_int32(v));
   }
 
   return RET_NOT_FOUND;
 }
 
-static ret_t chart_view_on_add_child(widget_t* widget, widget_t* child) {
-  const char* type = widget_get_type(child);
-  if (tk_str_eq(type, WIDGET_TYPE_AXIS)) {
-    chart_view_t* chart_view = CHART_VIEW(widget);
-    if (chart_view) {
-      if (chart_view->axes == NULL) {
-        chart_view->axes = darray_create(sizeof(axis_t*), NULL, NULL);
-      }
-      darray_push(chart_view->axes, child);
-    }
-  } else if (tk_str_eq(type, WIDGET_TYPE_LINE_SERIES) || tk_str_eq(type, WIDGET_TYPE_BAR_SERIES)) {
-    chart_view_t* chart_view = CHART_VIEW(widget);
-    if (chart_view) {
-      if (chart_view->series == NULL) {
-        chart_view->series = darray_create(sizeof(series_t*), NULL, NULL);
-      }
-      darray_push(chart_view->series, child);
-    }
-  }
-  return RET_CONTINUE;
+static ret_t chart_view_calc_series_rect(widget_t* widget, rect_t* r) {
+  style_t* style;
+  int32_t margin = 0;
+  int32_t margin_left = 0;
+  int32_t margin_right = 0;
+  int32_t margin_top = 0;
+  int32_t margin_bottom = 0;
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && r != NULL, RET_BAD_PARAMS);
+
+  style = widget->astyle;
+  return_value_if_fail(style != NULL, RET_BAD_PARAMS);
+
+  margin = style_get_int(style, STYLE_ID_MARGIN, 0);
+  margin_top = style_get_int(style, STYLE_ID_MARGIN_TOP, margin);
+  margin_left = style_get_int(style, STYLE_ID_MARGIN_LEFT, margin);
+  margin_right = style_get_int(style, STYLE_ID_MARGIN_RIGHT, margin);
+  margin_bottom = style_get_int(style, STYLE_ID_MARGIN_BOTTOM, margin);
+
+  r->x = margin_left;
+  r->y = margin_top;
+  r->w = widget->w - margin_left - margin_right;
+  r->h = widget->h - margin_top - margin_bottom;
+  return RET_OK;
 }
 
-static ret_t chart_view_on_remove_child(widget_t* widget, widget_t* child) {
-  const char* type = widget_get_type(child);
-  if (tk_str_eq(type, WIDGET_TYPE_AXIS)) {
-    chart_view_t* chart_view = CHART_VIEW(widget);
-    if (chart_view) {
-      if (chart_view->axes) {
-        darray_remove(chart_view->axes, child);
-      }
-    }
-  } else if (tk_str_eq(type, WIDGET_TYPE_LINE_SERIES) || tk_str_eq(type, WIDGET_TYPE_BAR_SERIES)) {
-    chart_view_t* chart_view = CHART_VIEW(widget);
-    if (chart_view) {
-      if (chart_view->series) {
-        darray_remove(chart_view->series, child);
-      }
-    }
-  }
-  return RET_CONTINUE;
-}
+static ret_t chart_view_on_layout_axes(widget_t* widget) {
+  rect_t r = {0};
+  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
 
-static ret_t chart_view_resize_children(widget_t* widget) {
+  return_value_if_fail(chart_view_calc_series_rect(widget, &r) == RET_OK, RET_BAD_PARAMS);
+  return_value_if_fail(r.w > 0 && r.h > 0, RET_BAD_PARAMS);
+
   WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
-  widget_resize(iter, widget->w, widget->h);
-  WIDGET_FOR_EACH_CHILD_END();
+  if (widget_is_axis(iter)) {
+    axis_on_self_layout(iter, &r);
+    widget_move_resize(iter, 0, 0, widget->w, widget->h);
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_layout_series(widget_t* widget) {
+  uint32_t cnt = 0;
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_series(iter)) {
+    widget_move_resize(iter, 0, 0, widget->w, widget->h);
+    cnt++;
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  if (chart_view->series_cnt != cnt) {
+    TKMEM_FREE(chart_view->last_series_offset);
+    if (cnt > 0) {
+      chart_view->last_series_offset = TKMEM_ZALLOCN(uint32_t, cnt);
+    }
+    chart_view->series_cnt = cnt;
+  }
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_layout_tooltip(widget_t* widget) {
+  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_tooltip(iter)) {
+    widget_move_resize(iter, 0, 0, widget->w, widget->h);
+  }
+  WIDGET_FOR_EACH_CHILD_END()
 
   return RET_OK;
 }
 
 static ret_t chart_view_on_layout_children(widget_t* widget) {
-  chart_view_resize_children(widget);
-  return widget_layout_children_default(widget);
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
+
+  widget_layout_children_default(widget);
+  chart_view_on_layout_series(widget);
+  chart_view_on_layout_tooltip(widget);
+  chart_view->need_relayout_axes = TRUE;
+  return RET_OK;
+}
+
+static ret_t chart_view_on_paint_self(widget_t* widget, canvas_t* c) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && c != NULL, RET_BAD_PARAMS);
+
+  if (chart_view->need_relayout_axes) {
+    chart_view_on_layout_axes(widget);
+    chart_view->need_relayout_axes = FALSE;
+  }
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_paint_children_before(widget_t* widget, canvas_t* c) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && c != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  int32_t left = c->ox + iter->x;
+  int32_t top = c->oy + iter->y;
+  int32_t bottom = top + iter->h;
+  int32_t right = left + iter->w;
+
+  if (!iter->visible) {
+    iter->dirty = FALSE;
+    continue;
+  }
+
+  if (left > c->clip_right || right < c->clip_left || top > c->clip_bottom ||
+      bottom < c->clip_top) {
+    iter->dirty = FALSE;
+    continue;
+  }
+
+  if (widget_is_axis(iter)) {
+    axis_on_paint_before(iter, c);
+  }
+
+  WIDGET_FOR_EACH_CHILD_END();
+
+  return RET_OK;
 }
 
 static ret_t chart_view_on_paint_children(widget_t* widget, canvas_t* c) {
+  widget_t* top_series = NULL;
   chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && c != NULL, RET_BAD_PARAMS);
 
-  if (chart_view->axes && chart_view->is_axes_dirty) {
-    axis_render_layout(widget, c, 0);
-    chart_view->is_axes_dirty = FALSE;
+  if (chart_view->top_series >= 0) {
+    top_series = chart_view_get_series(widget, chart_view->top_series);
   }
 
-  widget_on_paint_children_default(widget, c);
+  chart_view_on_paint_children_before(widget, c);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  int32_t left = c->ox + iter->x;
+  int32_t top = c->oy + iter->y;
+  int32_t bottom = top + iter->h;
+  int32_t right = left + iter->w;
+
+  if (!iter->visible) {
+    iter->dirty = FALSE;
+    continue;
+  }
+
+  if (left > c->clip_right || right < c->clip_left || top > c->clip_bottom ||
+      bottom < c->clip_top) {
+    iter->dirty = FALSE;
+    continue;
+  }
+
+  if (top_series != NULL && iter == top_series) {
+    continue;
+  }
+
+  widget_paint(iter, c);
+  WIDGET_FOR_EACH_CHILD_END();
+
+  if (top_series != NULL) {
+    widget_paint(top_series, c);
+  }
+
+  return RET_OK;
+}
+
+ret_t chart_view_set_top_series(widget_t* widget, int32_t index) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
+
+  if (chart_view->top_series != index) {
+    chart_view->top_series = index;
+    widget_invalidate(widget, NULL);
+  }
+
+  return RET_OK;
+}
+
+static ret_t chart_view_set_axes_need_update_data(widget_t* widget) {
+  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_axis(iter)) {
+    axis_set_need_update_data(iter);
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_pointer_down(widget_t* widget, pointer_event_t* evt) {
+  uint32_t cnt = 0;
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && evt != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_series(iter)) {
+    chart_view->last_series_offset[cnt] = widget_get_prop_int(iter, SERIES_PROP_OFFSET, 0);
+    cnt++;
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  chart_view->pressed = TRUE;
+  chart_view->down.x = evt->x;
+  chart_view->down.y = evt->y;
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_pointer_move(widget_t* widget, pointer_event_t* evt) {
+  uint32_t cnt = 0;
+  bool_t vertical;
+  uint32_t interval;
+  float_t cur_offset;
+  float_t offset;
+  widget_t* saxis;
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && evt != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_series(iter)) {
+    saxis = widget_get_prop_pointer(iter, SERIES_PROP_SERIES_AXIS);
+    return_value_if_fail(saxis != NULL, RET_BAD_PARAMS);
+
+    interval = axis_measure_series_interval(saxis);
+    vertical = series_p_is_vertical(iter);
+
+    if (!chart_view->dragged) {
+      float_t threshold = tk_min(TK_DRAG_THRESHOLD, interval / 2);
+      if (vertical) {
+        chart_view->dragged = tk_abs(evt->x - chart_view->down.x) > threshold;
+      } else {
+        chart_view->dragged = tk_abs(evt->y - chart_view->down.y) > threshold;
+      }
+    }
+
+    if (chart_view->dragged) {
+      offset = vertical ? (evt->x - chart_view->down.x) : (chart_view->down.y - evt->y);
+      offset =
+          chart_view->last_series_offset[cnt] + (AXIS(saxis)->inverse ? -1 : 1) * offset / interval;
+      offset = tk_max(0, offset);
+
+      cur_offset = widget_get_prop_int(iter, SERIES_PROP_OFFSET, 0);
+      if (offset >= 0 && offset != cur_offset) {
+        widget_set_prop_int(iter, SERIES_PROP_OFFSET, offset);
+        chart_view_set_axes_need_update_data(widget);
+      }
+    }
+
+    cnt++;
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  return RET_OK;
+}
+
+static ret_t chart_view_move_tooltip(widget_t* widget, xy_t x, xy_t y) {
+  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+  if (widget_is_tooltip(iter)) {
+    tooltip_move(iter, x, y);
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+  return RET_OK;
+}
+
+static ret_t chart_view_on_pointer_up(widget_t* widget, pointer_event_t* evt) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL && evt != NULL, RET_BAD_PARAMS);
+
+  if (!chart_view->dragged) {
+    point_t p;
+    int32_t index;
+
+    WIDGET_FOR_EACH_CHILD_BEGIN(widget, iter, i)
+    if (widget_is_series(iter)) {
+      index = series_index_of_point_in(iter, evt->x, evt->y, FALSE);
+      if (index >= 0 && series_to_local(iter, index, &p) == RET_OK) {
+        widget_to_global(iter, &p);
+        chart_view_move_tooltip(widget, p.x, p.y);
+        break;
+      }
+    }
+    WIDGET_FOR_EACH_CHILD_END()
+  }
+
+  return RET_OK;
+}
+
+static ret_t chart_view_pointer_up_cleanup(widget_t* widget) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
+
+  chart_view->pressed = FALSE;
+  chart_view->dragged = FALSE;
+  widget_ungrab(widget->parent, widget);
+
+  return RET_OK;
+}
+
+static ret_t chart_view_on_event(widget_t* widget, event_t* e) {
+  chart_view_t* chart_view = CHART_VIEW(widget);
+  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
+
+  switch (e->type) {
+    case EVT_POINTER_DOWN: {
+      chart_view_on_pointer_down(widget, (pointer_event_t*)e);
+      widget_grab(widget->parent, widget);
+      break;
+    }
+    case EVT_POINTER_DOWN_ABORT: {
+      chart_view_pointer_up_cleanup(widget);
+      break;
+    }
+    case EVT_POINTER_MOVE: {
+      if (chart_view->pressed) {
+        chart_view_on_pointer_move(widget, (pointer_event_t*)e);
+      }
+      break;
+    }
+    case EVT_POINTER_UP: {
+      chart_view_on_pointer_up(widget, (pointer_event_t*)e);
+      chart_view_pointer_up_cleanup(widget);
+      break;
+    }
+    default:
+      break;
+  }
 
   return RET_OK;
 }
@@ -163,32 +408,27 @@ static ret_t chart_view_on_destroy(widget_t* widget) {
   chart_view_t* chart_view = CHART_VIEW(widget);
   return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
 
-  if (chart_view->axes != NULL) {
-    darray_destroy(chart_view->axes);
-  }
-
-  if (chart_view->series != NULL) {
-    darray_destroy(chart_view->series);
-  }
+  TKMEM_FREE(chart_view->last_series_offset);
 
   return RET_OK;
 }
 
-static const char* s_chart_view_properties[] = {CHART_VIEW_PROP_BAR_MARGIN,
-                                                CHART_VIEW_PROP_BAR_SPACING, NULL};
+static const char* s_chart_view_properties[] = {CHART_VIEW_PROP_TOP_SERIES, NULL};
 
 static const widget_vtable_t s_chart_view_vtable = {
     .size = sizeof(chart_view_t),
+    .inputable = TRUE,
     .type = WIDGET_TYPE_CHART_VIEW,
     .clone_properties = s_chart_view_properties,
     .persistent_properties = s_chart_view_properties,
+    .parent = TK_PARENT_VTABLE(widget),
     .create = chart_view_create,
-    .on_add_child = chart_view_on_add_child,
-    .on_remove_child = chart_view_on_remove_child,
     .on_layout_children = chart_view_on_layout_children,
     .on_paint_children = chart_view_on_paint_children,
+    .on_paint_self = chart_view_on_paint_self,
     .get_prop = chart_view_get_prop,
     .set_prop = chart_view_set_prop,
+    .on_event = chart_view_on_event,
     .on_destroy = chart_view_on_destroy};
 
 widget_t* chart_view_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
@@ -198,140 +438,10 @@ widget_t* chart_view_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
 
   widget_init(widget, parent, &s_chart_view_vtable, x, y, w, h);
 
-  chart_view->bar_layout.margin = 4;
-  chart_view->bar_layout.spacing = 0;
-  chart_view->is_axes_dirty = TRUE;
+  chart_view->top_series = -1;
+  chart_view->need_relayout_axes = TRUE;
 
   return widget;
-}
-
-uint32_t chart_view_count_axis(widget_t* widget, axis_orientation_t orientation) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, 0);
-
-  uint32_t cnt = 0;
-  if (chart_view->axes != NULL) {
-    if (orientation == AXIS_ORIENTATION_UNDEF) {
-      cnt = chart_view->axes->size;
-    } else {
-      CHART_VIEW_FOR_EACH_AXIS_BEGIN(chart_view, iter, i)
-      if (iter->orientation == orientation) {
-        cnt++;
-      }
-      CHART_VIEW_FOR_EACH_AXIS_END()
-    }
-  }
-  return cnt;
-}
-
-widget_t* chart_view_get_axis(widget_t* widget, axis_orientation_t orientation, uint32_t index) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL && chart_view->axes, NULL);
-
-  if (orientation == AXIS_ORIENTATION_UNDEF) {
-    return WIDGET(chart_view->axes->elms[index]);
-  } else {
-    uint32_t cnt = 0;
-    CHART_VIEW_FOR_EACH_AXIS_BEGIN(chart_view, iter, i)
-    if (iter->orientation == orientation) {
-      if (cnt == index) {
-        return WIDGET(iter);
-      }
-      cnt++;
-    }
-    CHART_VIEW_FOR_EACH_AXIS_END()
-  }
-  return NULL;
-}
-
-uint32_t chart_view_count_series(widget_t* widget, const char* type) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, 0);
-
-  uint32_t cnt = 0;
-  if (chart_view->series != NULL) {
-    if (type == NULL) {
-      cnt = chart_view->series->size;
-    } else {
-      CHART_VIEW_FOR_EACH_SERIES_BEGIN(chart_view, iter, i)
-      if (tk_str_eq(widget_get_type(WIDGET(iter)), type)) {
-        cnt++;
-      }
-      CHART_VIEW_FOR_EACH_SERIES_END()
-    }
-  }
-  return cnt;
-}
-
-widget_t* chart_view_get_series(widget_t* widget, const char* type, uint32_t index) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL && chart_view->series, NULL);
-
-  if (type == NULL) {
-    return WIDGET(chart_view->series->elms[index]);
-  } else {
-    uint32_t cnt = 0;
-    CHART_VIEW_FOR_EACH_SERIES_BEGIN(chart_view, iter, i)
-    if (tk_str_eq(widget_get_type(WIDGET(iter)), type)) {
-      if (cnt == index) {
-        return WIDGET(iter);
-      }
-      cnt++;
-    }
-    CHART_VIEW_FOR_EACH_SERIES_END()
-  }
-  return NULL;
-}
-
-int32_t chart_view_index_of_series(widget_t* widget, const char* type, widget_t* series) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL && series != NULL, -1);
-
-  if (type) {
-    int32_t cnt = 0;
-    CHART_VIEW_FOR_EACH_SERIES_BEGIN(chart_view, iter, i)
-    if (tk_str_eq(widget_get_type(WIDGET(iter)), type)) {
-      if (iter == SERIES(series)) {
-        return cnt;
-      }
-      cnt++;
-    }
-    WIDGET_FOR_EACH_CHILD_END();
-  } else {
-    CHART_VIEW_FOR_EACH_SERIES_BEGIN(chart_view, iter, i)
-    if (iter == SERIES(series)) {
-      return i;
-    }
-    WIDGET_FOR_EACH_CHILD_END();
-  }
-
-  return -1;
-}
-
-uint32_t chart_view_get_bar_margin(widget_t* widget) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, 0);
-  return chart_view->bar_layout.margin;
-}
-
-ret_t chart_view_set_bar_margin(widget_t* widget, uint32_t margin) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
-  chart_view->bar_layout.margin = (uint8_t)margin;
-  return RET_OK;
-}
-
-uint32_t chart_view_get_bar_spacing(widget_t* widget) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, 0);
-  return chart_view->bar_layout.spacing;
-}
-
-ret_t chart_view_set_bar_spacing(widget_t* widget, uint32_t spacing) {
-  chart_view_t* chart_view = CHART_VIEW(widget);
-  return_value_if_fail(chart_view != NULL, RET_BAD_PARAMS);
-  chart_view->bar_layout.spacing = (uint8_t)spacing;
-  return RET_OK;
 }
 
 widget_t* chart_view_cast(widget_t* widget) {

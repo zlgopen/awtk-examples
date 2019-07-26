@@ -25,7 +25,7 @@
 #define SLIDER_COUNT 9
 #define BUFF_LEN 32
 
-static float val_slider[SLIDER_COUNT] = {50, 50, 50, 50, 50, 50, 50, 50, 50};
+static float_t val_slider[SLIDER_COUNT] = {50, 50, 50, 50, 50, 50, 50, 50, 50};
 
 
 
@@ -49,13 +49,18 @@ static ret_t on_dialog_state(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static void set_series_data(float* slider_line, widget_t* widget, uint32_t count) {
-  widget_t* series;
+static ret_t set_series_data(float_t* slider_line, widget_t* widget, uint32_t count) {
+  void* buffer = TKMEM_CALLOC(count, sizeof(float_t)); 
+  float_t* b = (float_t*)buffer;
 
-  series = chart_view_get_series(widget, WIDGET_TYPE_LINE_SERIES, 0);
-  if (series) {
-    line_series_set_data(series, slider_line, count);
+  for(int i = 0; i < count; i++){
+    b[i] = slider_line[i];
   }
+  
+  widget_t* series = widget_lookup(widget, "s1", TRUE);
+  series_set(series, 0, buffer, count);
+  TKMEM_FREE(buffer);
+  return RET_OK;
 }
 
 /**
@@ -67,7 +72,7 @@ static ret_t on_slider_changing(void* ctx, event_t* e) {
   char name_buf[BUFF_LEN] = {0};
   strcpy(name_buf, child->name);
   strtok(name_buf, "_");
-  int i = atoi(strtok(NULL, "_"));
+  int32_t i = atoi(strtok(NULL, "_"));
   val_slider[i] = widget_get_value(child);
 
   widget_t* chart_view = widget_lookup(win, "chartview", TRUE);

@@ -1,0 +1,21 @@
+{
+  "name":"SmartWatch-Demo",
+  "app_type":"c",
+  "version":"1.0",
+  "assets" : "res_800_480/assets",
+  "sources":[
+    "src/window_main.c", 
+    "src/application/*.c", 
+	"src/common/*.c", 
+	"src/custom_widgets/*.c", 
+	"src/slide_appliction/*.c", 
+	"src/watch/*.c"
+  ],
+  "config" : {
+  	"width":"800",
+	"height":"480",
+    "fontScale":"0.7",
+    "defaultFont":"sans",
+	"nowebgl":"true"
+  }
+}

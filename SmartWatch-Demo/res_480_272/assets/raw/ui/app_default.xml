@@ -1,0 +1,6 @@
+<window  anim_hint="slide_left" full_screen="false" x="c" y="m" w="240" h="240"
+         children_layout="default(r=1,c=1)">
+    <gesture name="gesture" x="c" y="m" w="100%" h="100%">
+        <label style="app_default" x="c" y="m" w="100%" h="100%" text="未实现"/>
+    </gesture>
+</window>

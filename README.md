@@ -8,6 +8,7 @@
 - Meter-Demo：普通工业仪表演示 Demo
 - Chart-Demo：图表演示 Demo，包含仪表、饼图、曲线图、柱状图
 - MusicPlayer-Demo：音乐播放器演示 Demo
+- SmartWatch-Demo：智能手表演示 Demo
 
 
 
@@ -19,11 +20,13 @@
 
 #### Windows 使用方法：
 
-1. 确保已经安装好 VS2015（Visual C++）、Python2.7、SCons 等工具
+1. 确保已经安装好 VS2015（Visual C++）、Python2.7（x64）、SCons3.0.1 等工具
 
 2. 将 awtk 和 awtk-examples 下载到同一个文件夹下
 
-3. 修改 awtk 的 SConstruct 脚本使用 AGGE 渲染方式
+3. 修改 awtk 文件夹的 awtk_config.py 脚本使用 AGGE 渲染方式
+
+   > AGGE 渲染方式兼容性最好，可以兼容 Windows、Linux、macOS 以及各种嵌入式平台
 
    ```
    NANOVG_BACKEND='AGGE'
@@ -54,9 +57,9 @@
 
 1. 打开已经配置好的 AWTK（Eclipse） 工程
 
-2. 将上面某个 Demo 文件夹直接拷贝或拖放到工程目录下
+2. 将上面某个 Demo 文件夹直接拷贝或拖放到工程 app 目录下
 
-3. 将其他 Demo 文件夹从工程中屏蔽（Exclude from Build）
+3. 将 app 中其他 Demo 文件夹从工程中屏蔽（Exclude from Build）
 
    ```
    1. 在工程数中选中要屏蔽的 Demo 文件夹
@@ -87,3 +90,5 @@
 ![Chart-Demo](docs/images/chart_main.png)
 
 ![MusicPlayer-Demo](docs/images/musicplayer_main.png)
+
+![SmartWatch-Demo](docs/images/smartwatch_main.png)

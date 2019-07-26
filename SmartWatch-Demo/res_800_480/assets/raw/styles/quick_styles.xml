@@ -1,0 +1,35 @@
+<window>
+    <style name="pay">
+        <normal bg_image="ico_pay_background" bg_color="black"/>
+    </style>
+</window>
+<watch_slide_view>
+    <style name="default">
+        <normal  fg_color="red" />
+    </style>
+    <style name="dot">
+        <normal  icon="dot" active_icon="active_dot"/>
+    </style>
+</watch_slide_view>
+<button>
+    <style name="alipay">
+        <normal      bg_image="ico_pay_bar" />
+        <pressed     bg_image="ico_pay_bar" />
+        <over        bg_image="ico_pay_bar" />
+    </style>
+    <style name="gongshang">
+        <normal      bg_image="ico_pay_card" />
+        <pressed     bg_image="ico_pay_card" />
+        <over        bg_image="ico_pay_card" />
+    </style>
+</button>
+<label>
+    <style name="text">
+        <normal text_color="white" font_size="50" text_align_h="center" text_align_v="middle" />
+    </style>
+</label>
+<slide_view>
+    <style name="default">
+        <normal fg_color="#FFFFFF88" />
+    </style>
+</slide_view>

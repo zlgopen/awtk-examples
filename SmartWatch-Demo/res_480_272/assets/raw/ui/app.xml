@@ -1,0 +1,14 @@
+<window  style="app" full_screen="false" x="c" y="m" w="240" h="240"
+         children_layout="default(r=1,c=1)" theme="application_styles">
+    <gesture name="app_gesture" x="c" y="m" w="100%" h="100%">
+        <slide_menu_v name="app_slide" x="c" y="m" align_h="center" w="100%" h="200%"
+                  xoffset="55" min_scale="1" item_height="123" item_width="123" spacing="6">
+            <button name="app_calendar" style="app_calendar"/>
+            <button name="app_cloudy" style="app_cloudy"/>
+            <button name="app_heart" style="app_heart"/>
+            <button name="app_mail" style="app_mail"/>
+            <button name="app_music" style="app_music"/>
+            <button name="app_training" style="app_training"/>
+        </slide_menu_v>
+    </gesture>
+</window>

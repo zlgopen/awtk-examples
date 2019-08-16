@@ -23,7 +23,7 @@
 #define TK_SERIES_TYPES_H
 
 #include "base/widget.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 #include "chart_utils.h"
 
 /**

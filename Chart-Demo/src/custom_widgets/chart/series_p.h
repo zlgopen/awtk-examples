@@ -89,8 +89,9 @@ ret_t series_p_minmax_draw_data_set_xy(void* dst, float_t series, fifo_t* value,
                                        uint32_t value_index, float_t value_min, float_t value_range,
                                        float_t pixel_range, bool_t inverse);
 
-typedef ret_t (*series_p_draw_line_t)(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox,
-                                      float_t oy, fifo_t* fifo, uint32_t index, uint32_t size);
+typedef ret_t (*series_p_draw_line_t)(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t* style,
+                                      float_t ox, float_t oy, fifo_t* fifo, uint32_t index,
+                                      uint32_t size);
 typedef ret_t (*series_p_draw_line_area_t)(widget_t* widget, vgcanvas_t* vg, style_t* style,
                                            float_t ox, float_t oy, fifo_t* fifo, uint32_t index,
                                            uint32_t size, bool_t vertical);
@@ -104,10 +105,11 @@ typedef ret_t (*series_p_draw_symbol_t)(widget_t* widget, vgcanvas_t* vg, style_
                                         float_t ox, float_t oy, fifo_t* fifo, uint32_t index,
                                         uint32_t size, float_t symbol_size);
 
-ret_t series_p_draw_line(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox, float_t oy,
-                         fifo_t* fifo, uint32_t index, uint32_t size);
-ret_t series_p_draw_line_colorful(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox,
-                                  float_t oy, fifo_t* fifo, uint32_t index, uint32_t size);
+ret_t series_p_draw_line(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t* style, float_t ox,
+                         float_t oy, fifo_t* fifo, uint32_t index, uint32_t size);
+ret_t series_p_draw_line_colorful(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t* style,
+                                  float_t ox, float_t oy, fifo_t* fifo, uint32_t index,
+                                  uint32_t size);
 ret_t series_p_draw_line_area(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox,
                               float_t oy, fifo_t* fifo, uint32_t index, uint32_t size,
                               bool_t vertical);

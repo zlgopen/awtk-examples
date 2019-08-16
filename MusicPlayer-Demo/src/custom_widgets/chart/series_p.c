@@ -22,7 +22,7 @@
 #include "tkc/mem.h"
 #include "tkc/utils.h"
 #include "base/style.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 #include "series_p.h"
 #include "chart_animator.h"
 #include "base/widget_animator_manager.h"

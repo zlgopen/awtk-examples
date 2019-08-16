@@ -18,6 +18,7 @@
  *
  */
 #include "knob_function.h"
+#include <stdio.h>
 
 #define PI 3.1415926535897932
 #define BUFF_LEN 32

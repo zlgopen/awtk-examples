@@ -9,7 +9,7 @@
     <normal text_color="blue" font_style="bold"/>
   </style>
   <style name="label_480_272">
-    <normal text_color="blue" font_style="bold" font_size="12"/>
+    <normal text_color="blue" font_style="bold" font_size="9"/>
   </style>
    <style name="bg">
     <normal bg_image='bg'/>

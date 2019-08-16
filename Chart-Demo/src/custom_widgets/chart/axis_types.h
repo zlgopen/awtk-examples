@@ -23,7 +23,7 @@
 #define TK_AXIS_TYPES_H
 
 #include "base/widget.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 #include "chart_utils.h"
 
 BEGIN_C_DECLS

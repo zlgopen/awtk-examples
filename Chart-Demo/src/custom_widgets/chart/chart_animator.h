@@ -23,7 +23,7 @@
 #define TK_CHART_ANIMATOR_H
 
 #include "awtk.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 
 BEGIN_C_DECLS
 

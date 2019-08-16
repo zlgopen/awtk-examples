@@ -20,6 +20,7 @@
 
 #include "awtk.h"
 #include "custom_function/knob_function.h"
+#include <stdio.h>
 
 #define BUFF_LEN 32
 

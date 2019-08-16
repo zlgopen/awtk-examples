@@ -152,27 +152,6 @@ static void draw_weather_icon(widget_t* widget, vgcanvas_t* vg, int32_t start, f
   vgcanvas_restore(vg);
 }
 
-static void draw_temp(widget_t* widget, canvas_t* c, int32_t start, float_t r) {
-  (void)start;
-  vgcanvas_t* vg = canvas_get_vgcanvas(c);
-  hour_weather_t* hour_weather = HOUR_WEATHER(widget);
-  return_if_fail(hour_weather != NULL && vg != NULL && r > 0);
-
-  char tmp[8] = {0};
-  sprintf(tmp, "%d°", (int)hour_weather->temp[hour_weather->selected]);
-
-  // 填写数字
-  vgcanvas_save(vg);
-  vgcanvas_set_font_size(vg, widget->w / 4);
-  vgcanvas_set_font(vg, "default");
-  vgcanvas_set_fill_color(vg, color_init(0xff, 0xff, 0xff, 0xff));
-  float_t text_width = vgcanvas_measure_text(vg, tmp);
-  vgcanvas_translate(vg, widget->w / 2, widget->h / 2);
-  vgcanvas_translate(vg, -text_width / 2, -widget->w / 8);
-  vgcanvas_fill_text(vg, tmp, 0, 0, 100);
-  vgcanvas_restore(vg);
-}
-
 static void draw_end_point(widget_t* widget, canvas_t* c) {
   vgcanvas_t* vg = canvas_get_vgcanvas(c);
   hour_weather_t* hour_weather = HOUR_WEATHER(widget);

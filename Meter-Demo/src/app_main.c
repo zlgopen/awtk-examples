@@ -39,6 +39,7 @@ int main(void) {
 
   int lcd_w = 800;
   int lcd_h = 480;
+
 #if defined(LCD_W) && defined(LCD_H)
   lcd_w = LCD_W;
   lcd_h = LCD_H;
@@ -50,9 +51,9 @@ int main(void) {
   path_app_root(app_root);
   memset(res_root, 0x00, sizeof(res_root));
   path_build(res_root, MAX_PATH, app_root, "res", NULL);
-  tk_init(lcd_w, lcd_h, APP_MOBILE, NULL, res_root);
+  tk_init(lcd_w, lcd_h, APP_SIMULATOR, NULL, res_root);
 #else
-  tk_init(lcd_w, lcd_h, APP_MOBILE, NULL, NULL);
+  tk_init(lcd_w, lcd_h, APP_SIMULATOR, NULL, NULL);
 #endif
 
 #endif

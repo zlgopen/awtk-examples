@@ -1,7 +1,7 @@
 <window anim_hint="slide_left" style="calendar" full_screen="false" x="c" y="m" w="240" h="240"
         theme="calendar_styles">
     <gesture name="calendar:gesture" x="0" y="0" w="100%" h="100%">
-        <view name="calendar_labels" x="c" y="57" w="172" h="123" children_layout="default(r=6,c=7)" >
+        <view name="calendar_labels" x="c" y="57" w="172" h="130" children_layout="default(r=7,c=7)" >
             <label style="calendar_weekend" text="周日" />
             <label style="calendar" text="周一" />
             <label style="calendar" text="周二" />

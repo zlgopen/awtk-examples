@@ -123,6 +123,7 @@ static ret_t on_calendar_up_prev(void* ctx, event_t* e) {
       }
     }
   }
+  widget_invalidate_force(window, NULL);
   return RET_OK;
 }
 
@@ -183,6 +184,7 @@ static ret_t on_calendar_down_prev(void* ctx, event_t* e) {
       }
     }
   }
+  widget_invalidate_force(window, NULL);
   return RET_OK;
 }
 
@@ -205,8 +207,13 @@ static ret_t on_calendar_down(void* ctx, event_t* e) {
     widget_t* calendar_date = widget_lookup(window, s_calendar_date, TRUE);
     wh_t h = widget->h;
     if (calendar_date != NULL) {
-      widget_create_animator_with(widget, "y(from=%d, to=%d, duration=%d)", -h, calendar_date->h,
-                                  500);
+      const char* name = "after_down";
+      widget_create_animator_with(widget, "y(name=%s,from=%d, to=%d, duration=%d)", name, -h,
+                                  calendar_date->h, 500);
+      widget_animator_t* animator = widget_find_animator(widget, name);
+      if (animator != NULL) {
+        widget_animator_on(animator, EVT_ANIM_END, on_widget_invalidate, window);
+      }
     }
   }
 

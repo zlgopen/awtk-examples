@@ -185,31 +185,6 @@ float_t get_float(float_t f) {
   return f;
 }
 
-static void draw_smooth(vgcanvas_t* vg, float_t rr, color_t color, float_t a, float_t width) {
-  float_t x = (rr - width) * cos(a);
-  float_t y = (rr - width) * sin(a);
-  vgcanvas_save(vg);
-  vgcanvas_set_line_width(vg, 0);
-  vgcanvas_set_fill_color(vg, color);
-  vgcanvas_ellipse(vg, x, y, width, width);
-
-  vgcanvas_fill(vg);
-  vgcanvas_stroke(vg);
-  vgcanvas_restore(vg);
-}
-
-static void draw_black_line(vgcanvas_t* vg, float_t rr, float_t a, float_t width) {
-  float_t x = (rr - width) * cos(a);
-  float_t y = (rr - width) * sin(a);
-  vgcanvas_save(vg);
-  vgcanvas_set_stroke_color_str(vg, "black");
-  vgcanvas_set_line_width(vg, 1);
-  vgcanvas_begin_path(vg);
-  vgcanvas_arc(vg, x, y, width, a, a + M_PI, FALSE);
-  vgcanvas_stroke(vg);
-  vgcanvas_restore(vg);
-}
-
 static void draw_bg_circle(vgcanvas_t* vg, float_t rr, float_t a, color_t color) {
   vgcanvas_save(vg);
   vgcanvas_set_stroke_color(vg, color);

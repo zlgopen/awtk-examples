@@ -27,6 +27,7 @@
 #include "widget_animators/widget_animator_opacity.h"
 #include "widget_animators/widget_animator_rotation.h"
 #include <time.h>
+#include <stdio.h>
 
 extern ret_t open_advanced_dialog();
 extern ret_t open_equalizer_dialog();
@@ -161,8 +162,6 @@ static ret_t on_systime_update(const timer_info_t* timer) {
  */
 static ret_t on_music_play(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
-  widget_t* frame_menu = widget_lookup(win, "frame_menu", TRUE);
-  frame_view_t* frame_view = FRAME_VIEW(frame_menu);
   widget_t* btn_play = WIDGET(e->target);
 
   if (tk_str_eq(btn_play->style, "s_play_pause")) {

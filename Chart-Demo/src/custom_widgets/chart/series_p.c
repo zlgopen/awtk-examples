@@ -22,13 +22,23 @@
 #include "tkc/mem.h"
 #include "tkc/utils.h"
 #include "base/style.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 #include "series_p.h"
 #include "chart_animator.h"
 #include "base/widget_animator_manager.h"
 #include "widget_animators/widget_animator_prop.h"
 #include "x_axis.h"
 #include "y_axis.h"
+
+#ifdef WITH_CANVAS_DRAW_LINE
+#ifdef WITH_NANOVG_SOFT
+// base/wuxiaolin.inc, 该实现内部的for(y = ypxl1 + 1; y <= (ypxl2 - 1); y++)
+// 会有(ypxl2 - 1)溢出导致卡死的可能, 慎用
+#include "base/wuxiaolin.inc"
+#define _CANVAS_DRAW_LINE(c, x1, y1, x2, y2) \
+  draw_line(c, c->ox + (x1), c->oy + (y1), c->ox + (x2), c->oy + (y2))
+#endif /*WITH_NANOVG_SOFT*/
+#endif /*WITH_CANVAS_DRAW_LINE*/
 
 #define _COLOR_BLACK color_init(0, 0, 0, 0xff)
 #define _COLOR_TRANS color_init(0, 0, 0, 0)
@@ -335,14 +345,14 @@ ret_t series_p_minmax_draw_data_set_xy(void* dst, float_t series, fifo_t* value,
   return RET_OK;
 }
 
-ret_t series_p_draw_line(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox, float_t oy,
-                         fifo_t* fifo, uint32_t index, uint32_t size) {
+ret_t series_p_draw_line(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t* style, float_t ox,
+                         float_t oy, fifo_t* fifo, uint32_t index, uint32_t size) {
   color_t trans = color_init(0, 0, 0, 0);
   color_t color;
   float_t border_width;
   int32_t i;
   series_p_draw_data_t* d = NULL;
-  assert(widget != NULL && vg != NULL && style != NULL && fifo != NULL);
+  assert(widget != NULL && style != NULL && fifo != NULL);
   assert(index < fifo->size && index + size - 1 < fifo->size);
   return_value_if_true(fifo->size == 0 || size == 0, RET_OK);
 
@@ -350,6 +360,23 @@ ret_t series_p_draw_line(widget_t* widget, vgcanvas_t* vg, style_t* style, float
   border_width = (float_t)style_get_int(style, STYLE_ID_BORDER_WIDTH, 1);
 
   if (color.rgba.a) {
+#ifdef _CANVAS_DRAW_LINE
+    series_p_draw_data_t* dprev = NULL;
+    return_value_if_fail(c != NULL, RET_BAD_PARAMS);
+
+    d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
+
+    canvas_set_stroke_color(c, color);
+
+    for (i = index + size - 1; i > (int32_t)index; i--) {
+      dprev = (series_p_draw_data_t*)(fifo_at(fifo, i - 1));
+      _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
+      d = dprev;
+    }
+
+    canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
+#else
+    return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
     d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
 
     vgcanvas_set_line_width(vg, border_width);
@@ -363,22 +390,41 @@ ret_t series_p_draw_line(widget_t* widget, vgcanvas_t* vg, style_t* style, float
     }
 
     vgcanvas_stroke(vg);
+#endif
   }
 
   return RET_OK;
 }
 
-ret_t series_p_draw_line_colorful(widget_t* widget, vgcanvas_t* vg, style_t* style, float_t ox,
-                                  float_t oy, fifo_t* fifo, uint32_t index, uint32_t size) {
+ret_t series_p_draw_line_colorful(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t* style,
+                                  float_t ox, float_t oy, fifo_t* fifo, uint32_t index,
+                                  uint32_t size) {
   float_t border_width;
   int32_t i;
   series_p_colorful_draw_data_t* d = NULL;
   series_p_colorful_draw_data_t* dprev = NULL;
-  assert(widget != NULL && vg != NULL && style != NULL && fifo != NULL);
+  assert(widget != NULL && style != NULL && fifo != NULL);
   assert(index < fifo->size && index + size - 1 < fifo->size);
   return_value_if_true(fifo->size == 0 || size == 0, RET_OK);
 
   border_width = style_get_int(style, STYLE_ID_BORDER_WIDTH, 1);
+
+#ifdef _CANVAS_DRAW_LINE
+  return_value_if_fail(c != NULL, RET_BAD_PARAMS);
+
+  d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, index + size - 1));
+
+  for (i = index + size - 1; i > (int32_t)index; i--) {
+    dprev = (series_p_colorful_draw_data_t*)(fifo_at(fifo, i - 1));
+    canvas_set_stroke_color(c, d->c);
+    _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
+    d = dprev;
+  }
+
+  canvas_set_stroke_color(c, d->c);
+  canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
+#else
+  return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
 
   vgcanvas_set_line_width(vg, border_width);
 
@@ -414,6 +460,7 @@ ret_t series_p_draw_line_colorful(widget_t* widget, vgcanvas_t* vg, style_t* sty
   if (d->c.rgba.a) {
     vgcanvas_stroke(vg);
   }
+#endif
 
   return RET_OK;
 }

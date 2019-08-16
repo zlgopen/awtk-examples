@@ -16,21 +16,21 @@
         </view>  
     </view>
     <view x="32%" y="bottom:-3" w="50%" h="30">
-        <label name="slider_min" text="00:00" x="0"  w="4%" h="12"/>
-        <label name="slider_max" text="00:00" x="91%"  w="4%" h="12"/>
+        <label name="slider_min" text="00:00" x="0"  w="6%" h="12"/>
+        <label name="slider_max" text="00:00" x="90%"  w="6%" h="12"/>
         <slider name="play_slider" x="10%" y="-1" w="75%" h="15"  min="0" max="100" step="1" style="slider_h"/>
     </view>
     <frame_view name="frame_menu" x="-20" y="51" w="270" h="170" align_v="bottom" >
         <view x="0" y="0" w="170" h="170">
-            <image name="song_y" w="107" h="107" image="yellow" draw_type="default" />
+            <image name="song_y" w="107" h="107" image="yellow" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
         </view>
         <view x="0" y="0" w="170" h="170">
-            <image name="song_q" w="107" h="107"  image="see_you_again" draw_type="default" />
+            <image name="song_q" w="107" h="107"  image="see_you_again" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
         </view>
         <view x="0" y="0" w="170" h="170">
-            <image name="song_n" w="107" h="107"  image="let_it_go" draw_type="default" />
+            <image name="song_n" w="107" h="107"  image="let_it_go" draw_type="icon" />
             <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
         </view>
     </frame_view>

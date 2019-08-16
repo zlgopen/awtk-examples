@@ -56,18 +56,25 @@ static ret_t set_btn_enable(widget_t* win, bool_t enable) {
   return RET_OK;
 }
 
+static widget_t* get_pie_slice(widget_t* win, const char* name) {
+  widget_t* pie_slice = NULL;
+  str_t str;
+  str_init(&str, 20);
+  str_append_with_len(&str, name, 4);
+  str_append(&str, "_slice");
+  pie_slice = widget_lookup(win, str.str, TRUE);
+  str_reset(&str);
+
+  return pie_slice;
+}
+
 /**
  * 点击扇形文本
  */
 static ret_t on_btn_view(void* ctx, event_t* e) {
   widget_t* win = WIDGET(ctx);
   widget_t* target = (widget_t*)e->target;
-  const char* src = target->name;
-  char dst[20];
-  memset(dst, 0x0, sizeof(dst));
-  tk_strncpy(dst, src, 4);
-  tk_snprintf(dst, sizeof(dst), "%s_slice", dst);
-  widget_t* pie_slice = widget_lookup(win, dst, TRUE);
+  widget_t* pie_slice = get_pie_slice(win, target->name);
   pie_slice_set_exploded_4_others(pie_slice);
 
   str_t str;
@@ -77,15 +84,9 @@ static ret_t on_btn_view(void* ctx, event_t* e) {
   const char* name = iter->name;
   str_set(&str, name);
   if (str_start_with(&str, "pie") && str_end_with(&str, "label")) {
-    char dst[20];
-    memset(dst, 0x0, sizeof(dst));
-    tk_strncpy(dst, name, 4);
-    tk_snprintf(dst, sizeof(dst), "%s_slice", dst);
-    widget_t* pie_slice = widget_lookup(win, dst, TRUE);
-
-    value_t v;
-    widget_get_prop(pie_slice, PIE_SLICE_PROP_IS_EXPLODED, &v);
-    if (value_bool(&v)) {
+    widget_t* pie_slice = get_pie_slice(win, name);
+    bool_t flag = widget_get_prop_bool(pie_slice, PIE_SLICE_PROP_IS_EXPLODED, FALSE);
+    if (flag) {
       widget_use_style(iter, "pie_label_press");
     } else {
       widget_use_style(iter, "pie_label");
@@ -93,7 +94,6 @@ static ret_t on_btn_view(void* ctx, event_t* e) {
     widget_invalidate(iter, NULL);
   }
   WIDGET_FOR_EACH_CHILD_END();
-
   str_reset(&str);
 
   return RET_OK;

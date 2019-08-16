@@ -355,7 +355,7 @@
         <pressed icon="slider_drag_p"/>
         <over icon="slider_drag_o"/>
     </style>
-    <style name="music_vol" bg_image="vol_bar_bg" fg_image="vol_bar_fg"  >
+    <style name="music_vol" bg_image="vol_bar_bg" fg_image="vol_bar_fg"   border_color="#ca12ff00">
         <normal/>
         <pressed/>
         <over/>

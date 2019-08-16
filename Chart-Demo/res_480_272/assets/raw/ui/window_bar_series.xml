@@ -19,7 +19,7 @@
         <bar_series name="s1" capacity="7" bar="style:s1" style="edge1"/>
         <bar_series name="s2" capacity="7" bar="style:s2" style="spacing"/>
         <bar_series name="s3" capacity="7" bar="style:s3" style="edge2"/>
-        <tooltip/>
+
     </chart_view>
     <view x="right" y="0" w="58" h="100%" style="seperate"/>
     <view name="right_menu" x="right" y="0" w="57" h="100%" layout="r6 c1 m10 s10" style="function_view">

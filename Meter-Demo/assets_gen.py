@@ -21,8 +21,12 @@ def toExePath(root, name):
   else:
     return joinPath(root, name)
 
+def forceMakeDirs(dst_dir):
+  removeDir(dst_dir)
+  os.makedirs(dst_dir)
+
 # tool.exe src_file dst_file option
-def generate(tools_dir, tool_name, src_dir, src_sub_dir, src_suffix, dst_dir, dst_sub_dir, dst_suffix, option, is_remake_dir):
+def generate(tools_dir, tool_name, src_dir, src_sub_dir, src_suffix, dst_dir, dst_sub_dir, dst_suffix, option, is_override):
   tool_path = toExePath(tools_dir, tool_name)
   src_dir = joinPath(src_dir, src_sub_dir)
   dst_dir = joinPath(dst_dir, dst_sub_dir)
@@ -33,10 +37,6 @@ def generate(tools_dir, tool_name, src_dir, src_sub_dir, src_suffix, dst_dir, ds
   if not os.path.exists(src_dir) :
     print(src_dir + ' not exist')
     return
-  # Delete History
-  if is_remake_dir :
-    removeDir(dst_dir)
-    os.makedirs(dst_dir);
   # Generate
   if isinstance(src_suffix, list) :
     for f in glob.glob(joinPath(src_dir, '*.*')):
@@ -48,6 +48,9 @@ def generate(tools_dir, tool_name, src_dir, src_sub_dir, src_suffix, dst_dir, ds
         inc=inc.replace(src_dir, dst_dir)
         for suffix in src_suffix : 
           inc=inc.replace(suffix, dst_suffix)
+      if is_override:
+        if os.path.exists(inc):
+          os.remove(inc)
       print(tool_path + ' ' + joinPath(src_dir, raw) + ' ' + joinPath(dst_dir, inc) + ' ' + option)
       os.system(tool_path + ' ' + joinPath(src_dir, raw) + ' ' + joinPath(dst_dir, inc) + ' ' + option)
   else :
@@ -59,6 +62,9 @@ def generate(tools_dir, tool_name, src_dir, src_sub_dir, src_suffix, dst_dir, ds
         inc=copy.copy(f);
         inc=inc.replace(src_dir, dst_dir)
         inc=inc.replace(src_suffix, dst_suffix)
+      if is_override:
+        if os.path.exists(inc):
+          os.remove(inc)
       print(tool_path + ' ' + joinPath(src_dir, raw) + ' ' + joinPath(dst_dir, inc) + ' ' + option)
       os.system(tool_path + ' ' + joinPath(src_dir, raw) + ' ' + joinPath(dst_dir, inc) + ' ' + option)
 
@@ -93,15 +99,18 @@ def genBmpFont(tools_dir, tool_name, src_dir, src_suffix, dst_dir, dst_suffix, s
       os.system(tool_path + ' ' + joinPath(src_dir, raw) + ' ' + text_file + ' ' + joinPath(dst_dir, inc) + ' ' + str(font_size))
 
 def genTheme(tools_dir, src_dir, dst_dir):
-  generate(tools_dir, 'themegen', src_dir, 'styles', '.xml', dst_dir, 'styles', '.data', '', 1)
+  forceMakeDirs(joinPath(dst_dir, 'styles'))
+  generate(tools_dir, 'themegen', src_dir, 'styles', '.xml', dst_dir, 'styles', '.data', '', 0)
   generate(tools_dir, 'themegen', src_dir, 'styles', '.xml', src_dir, 'styles', '.bin', 'bin', 0)
 
 def genString(tools_dir, src_dir, dst_dir):
-  generate(tools_dir, 'strgen', src_dir, 'strings', '.xml', dst_dir, 'strings', '', '', 1)
+  forceMakeDirs(joinPath(dst_dir, 'strings'))
+  generate(tools_dir, 'strgen', src_dir, 'strings', '.xml', dst_dir, 'strings', '', '', 0)
   generate(tools_dir, 'strgen', src_dir, 'strings', '.xml', src_dir, 'strings', '', 'bin', 0)
 
 def genFont(tools_dir, src_dir, dst_dir):
-  generate(tools_dir, 'resgen', src_dir, 'fonts', '.ttf', dst_dir, 'fonts', '.res', '', 1)
+  forceMakeDirs(joinPath(dst_dir, 'fonts'))
+  generate(tools_dir, 'resgen', src_dir, 'fonts', '.ttf', dst_dir, 'fonts', '.res', '', 0)
   # genBmpFont(tools_dir, 'fontgen', src_dir, '.ttf', dst_dir, '.data', 'fonts', 10, 0)
   # genBmpFont(tools_dir, 'fontgen', src_dir, '.ttf', dst_dir, '.data', 'fonts', 18, 0)
   # genBmpFont(tools_dir, 'fontgen', src_dir, '.ttf', dst_dir, '.data', 'fonts', 28, 0)
@@ -114,19 +123,19 @@ def genImage(tools_dir, src_dir, dst_dir, dpi):
   IMAGEGEN_OPTIONS = '\"bgra|bgr565\"'
   suffix = ['.png', '.jpg', '.bmp']
 
-  removeDir(joinPath(dst_dir, 'images'))
-  os.makedirs(joinPath(dst_dir, 'images'));
-  
-  generate(tools_dir, 'resgen', src_dir, 'images/xx'    , suffix, dst_dir, 'images', '.res', '', 0)
-  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 0)
+  forceMakeDirs(joinPath(dst_dir, 'images'))
+  generate(tools_dir, 'resgen', src_dir, 'images/xx', suffix, dst_dir, 'images', '.res', '', 0)
+  generate(tools_dir, 'resgen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.res', '', 1)
   #generate(tools_dir, 'imagegen', src_dir, 'images/' + dpi, suffix, dst_dir, 'images', '.data', IMAGEGEN_OPTIONS, 0)
   
 def genData(tools_dir, src_dir, dst_dir): 
   if os.path.exists(joinPath(src_dir, 'data')):
-    generate(tools_dir, 'resgen', src_dir, 'data', '.bin', dst_dir, 'data', '.res', '', 1)
+    forceMakeDirs(joinPath(dst_dir, 'data'))
+    generate(tools_dir, 'resgen', src_dir, 'data', '.bin', dst_dir, 'data', '.res', '', 0)
   
 def genUI(tools_dir, src_dir, dst_dir): 
-  generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', dst_dir, 'ui', '.data', '', 1)
+  forceMakeDirs(joinPath(dst_dir, 'ui'))
+  generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', dst_dir, 'ui', '.data', '', 0)
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', src_dir, 'ui', '.bin', 'bin', 0)
 
 def check_python_version():

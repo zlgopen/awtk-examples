@@ -1,5 +1,6 @@
 ﻿#include "player_timer_manager.h"
 #include "music_manager.h"
+#include <stdio.h>
 
 /**
  * 进度条时间进度显示刷新

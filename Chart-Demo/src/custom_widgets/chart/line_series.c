@@ -207,7 +207,7 @@ static ret_t line_series_draw_one_series(widget_t* widget, canvas_t* c, float_t 
       if (series->line.smooth) {
         draw_smooth_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size, vertical);
       } else {
-        draw_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size);
+        draw_line(widget, c, vg, series->line.astyle, ox, oy, fifo, index, size);
       }
     }
 

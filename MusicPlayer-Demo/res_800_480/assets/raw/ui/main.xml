@@ -16,8 +16,8 @@
         </view>  
     </view>
     <view x="32%" y="bottom:-5" w="50%" h="50">
-        <label name="slider_min" text="00:00" x="0"  w="4%" h="20"/>
-        <label name="slider_max" text="00:00" x="91%"  w="4%" h="20"/>
+        <label name="slider_min" text="00:00" x="0"  w="6%" h="20"/>
+        <label name="slider_max" text="00:00" x="89%"  w="6%" h="20"/>
         <slider name="play_slider" x="10%" y="0" w="75%" h="22"  min="0" max="100" step="1" style="slider_h"/>
     </view>
     <frame_view name="frame_menu" x="-20" y="90" w="450" h="300" align_v="bottom" >

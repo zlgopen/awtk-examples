@@ -34,7 +34,7 @@
                     <view x="0" y="0" w="18" h="100%" layout="r:3 c:1" >
                         <label />
                         <image_animation name="fan_1" image="fan_1" sequence="ab" auto_play="false" interval="500" delay="100" />
-                        <image name="fan_2" image="fan_2" draw_type="default"/>
+                        <image name="fan_2" image="fan_2" draw_type="icon"/>
                     </view>
                     <view x="18" y="0" w="24" h="100%" layout="r:3 c:1" >
                         <label />

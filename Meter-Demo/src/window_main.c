@@ -23,165 +23,106 @@
 #include <math.h>
 #include "widget_animators/widget_animator_rotation.h"
 
-#define SMALL_RADIUS 150
-#define BIG_RADIUS 240
-#define SMALL_RADIUS_480 100
-#define BIG_RADIUS_480 130
-#define PROP_NEEDLE_LEN "needle_len"
-#define PROP_ANCHOR_X "anchor_x"
-#define PROP_ANCHOR_Y "anchor_y"
+#define SMALL_RADIUS 97
+#define BIG_RADIUS 132
+#define SMALL_RADIUS_480 59
+#define BIG_RADIUS_480 80
 
-static bool_t is_big_lcd = TRUE;
+static bool_t g_is_big_lcd = TRUE;
 
 /**
- * 重绘
+ * 初始化仪表指针
  */
-static ret_t on_paint_needle(void* ctx, event_t* e) {
-  value_t v;
-  paint_event_t* evt = (paint_event_t*)e;
-  canvas_t* c = evt->c;
-  widget_t* widget = WIDGET(evt->e.target);
-  vgcanvas_t* vg = lcd_get_vgcanvas(c->lcd);
-
-  int needle_len = 0;
-  int anchor_x = 0;
-  int anchor_y = 0;
-  float rotation = 0;
-
-  return_value_if_fail(widget != NULL && c != NULL, RET_BAD_PARAMS);
-
-  if (widget_get_prop(widget, PROP_NEEDLE_LEN, &v) == RET_OK) {
-    needle_len = value_int(&v);
-  }
-
-  if (widget_get_prop(widget, PROP_ANCHOR_X, &v) == RET_OK) {
-    anchor_x = value_int(&v);
-  }
-
-  if (widget_get_prop(widget, PROP_ANCHOR_Y, &v) == RET_OK) {
-    anchor_y = value_int(&v);
-  }
-
-  if (widget_get_prop(widget, WIDGET_PROP_ROTATION, &v) == RET_OK) {
-    rotation = value_float(&v);
-  }
-
-  if (vg != NULL) {
-    vgcanvas_save(vg);
-    vgcanvas_translate(vg, anchor_x + needle_len / 2, anchor_y + needle_len / 2);
-    vgcanvas_set_fill_color(vg, color_init(0xff, 0, 0, 0xff));
-    if (is_big_lcd) {
-      vgcanvas_ellipse(vg, 12, 12, 10, 10);
-    } else {
-      vgcanvas_ellipse(vg, 6, 6, 6, 6);
-    }
-    vgcanvas_fill(vg);
-
-    float len1 = needle_len * 2 / 3 - 20;
-    float len2 = needle_len * 1 / 3 - 20;
-    if (needle_len == BIG_RADIUS) {
-      len1 = needle_len * 2 / 3 - 50;
-      len2 = needle_len * 1 / 3 - 50;
-    }
-    float x1 = len1 * cos(rotation - 3.14156 / 2) + 10;
-    float y1 = len1 * sin(rotation - 3.14156 / 2) + 10;
-    float x2 = len2 * cos(rotation + 3.14156 / 2) + 10;
-    float y2 = len2 * sin(rotation + 3.14156 / 2) + 10;
-
-    if (is_big_lcd == FALSE) {
-      x1 -= 4;
-      y1 -= 4;
-      x2 -= 4;
-      y2 -= 4;
-    }
-
-    vgcanvas_set_stroke_color(vg, color_init(0xff, 0, 0, 0xff));
-    vgcanvas_set_line_width(vg, 3);
-    vgcanvas_begin_path(vg);
-    vgcanvas_move_to(vg, x1, y1);
-    vgcanvas_line_to(vg, x2, y2);
-    vgcanvas_stroke(vg);
-    vgcanvas_restore(vg);
-  }
-
-  return RET_OK;
-}
-
-/**
- * 初始化图片和动画
- */
-static void init_image(widget_t* win, int x, int y, int w, int h, char* img_name, float from,
+static void init_guage(widget_t* win, int x, int y, int w, int h, char* img_name, float from,
                        float to, int duration, int radius) {
-#if 0
-  widget_t* img = image_create(win, x, y, w, h);
-  image_set_image(img, img_name);
-  image_set_draw_type(img, IMAGE_DRAW_ICON);
-#else
-  widget_t* img = view_create(win, x, y, w, h);
-  value_t val;
-  value_set_uint32(&val, radius);
-  widget_set_prop(img, PROP_NEEDLE_LEN, &val);
+  widget_t* view = NULL;
+  widget_t* guage_pointer = NULL;
+  int32_t an_x, an_y;
+  char anchor_x[10] = {0};
+  char anchor_y[10] = {0};
+  char layout_params[100] = {0};
 
-  value_set_float(&val, 1.1);
-  widget_set_prop(img, WIDGET_PROP_ROTATION, &val);
+  view = view_create(win, x, y, w, h);
+  guage_pointer = guage_pointer_create(view, 0, 0, 0, 0);
+  if (g_is_big_lcd) {
+    if (BIG_RADIUS == radius) {
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=31%, w=20, h=%d)",
+                  radius);
+    } else {
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=20%, w=20, h=%d)",
+                  radius);
+    }
+  } else {
+    if (BIG_RADIUS_480 == radius) {
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=12%, w=12, h=%d)",
+                  radius);
+    } else {
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=10%, w=12, h=%d)",
+                  radius);
+    }
+  }
+  widget_set_self_layout(guage_pointer, layout_params);
+  widget_layout(guage_pointer);
+  guage_pointer_set_image(guage_pointer, img_name);
 
-  value_set_uint32(&val, x);
-  widget_set_prop(img, PROP_ANCHOR_X, &val);
+  /*指针图片锚点的横坐标在中心，纵坐标在高度的69%处*/
+  an_x = (int32_t)(guage_pointer->w * 0.5);
+  an_y = (int32_t)(guage_pointer->h * 0.69);
+  tk_snprintf(anchor_x, sizeof(anchor_x), "%dpx", an_x);
+  tk_snprintf(anchor_y, sizeof(anchor_y), "%dpx", an_y);
+  guage_pointer_set_anchor(guage_pointer, anchor_x, anchor_y);
 
-  value_set_uint32(&val, y);
-  widget_set_prop(img, PROP_ANCHOR_Y, &val);
-  widget_on(img, EVT_PAINT, on_paint_needle, NULL);
-#endif
-
-  char rotation_str[100];
-  memset(rotation_str, 0, sizeof(rotation_str));
-  tk_snprintf(rotation_str, sizeof(rotation_str),
-              "rotation(from=%f ,to=%f, yoyo_times=0, duration=%d, easing=linear)", from, to,
+  char animation_str[100];
+  memset(animation_str, 0, sizeof(animation_str));
+  tk_snprintf(animation_str, sizeof(animation_str),
+              "value(from=%f, to=%f, yoyo_times=0, duration=%d, easing=linear)", from, to,
               duration);
-  widget_create_animator(img, rotation_str);
+  widget_create_animator(guage_pointer, animation_str);
 }
 
 /**
- * 创建图片,rotation中的from和to使用的是弧度：1弧度=180/3.14=57.324度
+ * 创建仪表
  */
-static ret_t create_images(widget_t* win) {
+static ret_t create_guage(widget_t* win) {
   char small_image[] = "pointer_small";
   char big_image[] = "pointer_big";
+  char small_image_480[] = "pointer_small_480";
+  char big_image_480[] = "pointer_big_480";
 
-  if (is_big_lcd) {
+  if (g_is_big_lcd) {
     /* 这里的宽和高是指仪表盘宽度和高度，x, y指是各个仪表盘在背景图片上的左上标位置 */
-    int width = 171;
-    int height = 171;
+    int width = 172;
+    int height = 172;
 
     /* 左边：从上到下 */
-    init_image(win, 114, 2, width, height, small_image, -2.2, 2.2, 2000, SMALL_RADIUS);
-    init_image(win, 9, 140, width, height, small_image, -1.7, 1.7, 4000, SMALL_RADIUS);
-    init_image(win, 44, 307, width, height, small_image, -1.5, 1.5, 3000, SMALL_RADIUS);
+    init_guage(win, 113, 3, width, height, small_image, -126, 126, 2000, SMALL_RADIUS);
+    init_guage(win, 10, 140, width, height, small_image, -98, 98, 4000, SMALL_RADIUS);
+    init_guage(win, 45, 307, width, height, small_image, -86, 86, 3000, SMALL_RADIUS);
 
     /* 中间 */
-    init_image(win, 272, -3, 261, 261, big_image, -2.5, 2.5, 2000, BIG_RADIUS);
+    init_guage(win, 282, 3, 242, 242, big_image, -128, 128, 2000, BIG_RADIUS);
 
     /* 右边：从上到下 */
-    init_image(win, 524, 2, width, height, small_image, -2.2, 2.2, 2000, SMALL_RADIUS);
-    init_image(win, 627, 140, width, height, small_image, -1.7, 1.7, 4000, SMALL_RADIUS);
-    init_image(win, 595, 307, width, height, small_image, -1.5, 1.5, 3000, SMALL_RADIUS);
+    init_guage(win, 524, 3, width, height, small_image, -126, 126, 2000, SMALL_RADIUS);
+    init_guage(win, 626, 140, width, height, small_image, -98, 98, 4000, SMALL_RADIUS);
+    init_guage(win, 592, 307, width, height, small_image, -86, 86, 3000, SMALL_RADIUS);
   } else {
     /* 这里的宽和高是指仪表盘宽度和高度，x, y指是各个仪表盘在背景图片上的左上标位置 */
     int width = 100;
     int height = 100;
 
     /* 左边：从上到下 */
-    init_image(win, 65, -5, width, height, small_image, -2.2, 2.2, 2000, SMALL_RADIUS_480);
-    init_image(win, 2, 70, width, height, small_image, -1.4, 1.4, 4000, SMALL_RADIUS_480);
-    init_image(win, 23, 165, width, height, small_image, -1.5, 1.5, 3000, SMALL_RADIUS_480);
+    init_guage(win, 70, 0, width, height, small_image_480, -126, 126, 2000, SMALL_RADIUS_480);
+    init_guage(win, 8, 76, width, height, small_image_480, -80, 80, 4000, SMALL_RADIUS_480);
+    init_guage(win, 29, 172, width, height, small_image_480, -86, 86, 3000, SMALL_RADIUS_480);
 
     /* 中间 */
-    init_image(win, 170, 0, 150, 150, big_image, -2.5, 2.5, 2000, BIG_RADIUS_480);
+    init_guage(win, 170, 3, 144, 138, big_image_480, -130, 130, 2000, BIG_RADIUS_480);
 
     /* 右边：从上到下 */
-    init_image(win, 310, -5, width, height, small_image, -2.2, 2.2, 2000, SMALL_RADIUS_480);
-    init_image(win, 370, 70, width, height, small_image, -1.4, 1.4, 4000, SMALL_RADIUS_480);
-    init_image(win, 350, 165, width, height, small_image, -1.5, 1.5, 3000, SMALL_RADIUS_480);
+    init_guage(win, 315, 0, width, height, small_image_480, -126, 126, 2000, SMALL_RADIUS_480);
+    init_guage(win, 377, 77, width, height, small_image_480, -80, 80, 4000, SMALL_RADIUS_480);
+    init_guage(win, 357, 171, width, height, small_image_480, -86, 86, 3000, SMALL_RADIUS_480);
   }
 
   return RET_OK;
@@ -195,7 +136,7 @@ static void init_label(widget_t* win, int x, int y, int w, int h, const wchar_t*
   widget_t* label = label_create(win, x, y, w, h);
   widget_set_text(label, text);
   widget_set_name(label, widget_name);
-  if (is_big_lcd == FALSE) {
+  if (g_is_big_lcd == FALSE) {
     widget_use_style(label, "label_480_272");
   }
 }
@@ -207,30 +148,26 @@ static ret_t create_labels(widget_t* win) {
   int width = 30;
   int height = 30;
 
-  if (is_big_lcd) {
+  if (g_is_big_lcd) {
     /* 左边：从上到下 */
-    int x_left = 330;
-    init_label(win, x_left, 315, width, height, L"3005", "left_top_label");
-    init_label(win, x_left, 365, width, height, L"12", "left_center_label");
-    init_label(win, x_left, 415, width, height, L"13", "left_bottom_label");
+    init_label(win, 330, 314, width, height, L"3005", "left_top_label");
+    init_label(win, 325, 367, width, height, L"12", "left_center_label");
+    init_label(win, 320, 419, width, height, L"13", "left_bottom_label");
 
     /* 右边：从上到下 */
-    int x_right = 522;
-    init_label(win, x_right, 315, width, height, L"14", "right_top_label");
-    init_label(win, x_right, 365, width, height, L"15", "right_center_label");
-    init_label(win, x_right, 415, width, height, L"16", "right_bottom_label");
+    init_label(win, 515, 314, width, height, L"14", "right_top_label");
+    init_label(win, 522, 367, width, height, L"15", "right_center_label");
+    init_label(win, 522, 419, width, height, L"16", "right_bottom_label");
   } else {
     /* 左边：从上到下 */
-    int x_left = 192;
-    init_label(win, x_left, 170, width, height, L"3005", "left_top_label");
-    init_label(win, x_left, 200, width, height, L"12", "left_center_label");
-    init_label(win, x_left, 230, width, height, L"13", "left_bottom_label");
+    init_label(win, 192, 172, width, height, L"3005", "left_top_label");
+    init_label(win, 189, 202, width, height, L"12", "left_center_label");
+    init_label(win, 186, 231, width, height, L"13", "left_bottom_label");
 
     /* 右边：从上到下 */
-    int x_right = 307;
-    init_label(win, x_right, 170, width, height, L"14", "right_top_label");
-    init_label(win, x_right, 200, width, height, L"15", "right_center_label");
-    init_label(win, x_right, 230, width, height, L"16", "right_bottom_label");
+    init_label(win, 304, 171, width, height, L"14", "right_top_label");
+    init_label(win, 307, 201, width, height, L"15", "right_center_label");
+    init_label(win, 307, 231, width, height, L"16", "right_bottom_label");
   }
 
   return RET_OK;
@@ -303,7 +240,7 @@ static ret_t create_bg_labels(widget_t* win) {
     widget_use_style(bg_label, "bg");
     if (w == 480) {
       widget_use_style(bg_label, "bg_480_272");
-      is_big_lcd = FALSE;
+      g_is_big_lcd = FALSE;
     }
   }
   return RET_OK;
@@ -319,14 +256,16 @@ ret_t application_init(void) {
   int32_t lcd_w = LCD_W;
   int32_t lcd_h = LCD_H;
 #else
+
   int32_t lcd_w = 800;
   int32_t lcd_h = 480;
+
 #endif
 
   widget_t* main_win = view_create(win, 0, 0, lcd_w, lcd_h);
   if (main_win) {
     create_bg_labels(main_win);
-    create_images(main_win);
+    create_guage(main_win);
     create_labels(main_win);
     timer_add(on_update_label, main_win, 1000);
 #if 0

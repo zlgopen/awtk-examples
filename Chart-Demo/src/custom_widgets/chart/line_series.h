@@ -23,7 +23,7 @@
 #define TK_LINE_SERIES_H
 
 #include "series.h"
-#include "base/fifo.h"
+#include "../base/fifo.h"
 
 BEGIN_C_DECLS
 

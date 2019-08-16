@@ -23,6 +23,7 @@
 #include "widget_animators/widget_animator_opacity.h"
 #include "widget_animators/widget_animator_rotation.h"
 #include <time.h>
+#include <stdio.h>
 
 /**
  * 是否使能背景淡出淡入

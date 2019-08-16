@@ -6,6 +6,7 @@
 #include "widget_animators/widget_animator_rotation.h"
 #include <locale.h>
 #include <math.h>
+#include <stdio.h>
 
 #define STRLEN 128
 

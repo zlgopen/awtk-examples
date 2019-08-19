@@ -46,18 +46,18 @@ static void init_guage(widget_t* win, int x, int y, int w, int h, char* img_name
   guage_pointer = guage_pointer_create(view, 0, 0, 0, 0);
   if (g_is_big_lcd) {
     if (BIG_RADIUS == radius) {
-      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=31%, w=20, h=%d)",
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=32, w=20, h=%d)",
                   radius);
     } else {
-      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=20%, w=20, h=%d)",
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=20, w=20, h=%d)",
                   radius);
     }
   } else {
     if (BIG_RADIUS_480 == radius) {
-      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=12%, w=12, h=%d)",
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=13, w=12, h=%d)",
                   radius);
     } else {
-      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=10%, w=12, h=%d)",
+      tk_snprintf(layout_params, sizeof(layout_params) - 1, "default(x=c, y=10, w=12, h=%d)",
                   radius);
     }
   }
@@ -95,34 +95,34 @@ static ret_t create_guage(widget_t* win) {
     int height = 172;
 
     /* 左边：从上到下 */
-    init_guage(win, 113, 3, width, height, small_image, -126, 126, 2000, SMALL_RADIUS);
-    init_guage(win, 10, 140, width, height, small_image, -98, 98, 4000, SMALL_RADIUS);
-    init_guage(win, 45, 307, width, height, small_image, -86, 86, 3000, SMALL_RADIUS);
+    init_guage(win, 113, 3, width, height, small_image, -126, 126, 4500, SMALL_RADIUS);
+    init_guage(win, 10, 140, width, height, small_image, -98, 98, 5000, SMALL_RADIUS);
+    init_guage(win, 45, 307, width, height, small_image, -86, 86, 4000, SMALL_RADIUS);
 
     /* 中间 */
-    init_guage(win, 282, 3, 242, 242, big_image, -128, 128, 2000, BIG_RADIUS);
+    init_guage(win, 282, 3, 242, 242, big_image, -128, 128, 4500, BIG_RADIUS);
 
     /* 右边：从上到下 */
-    init_guage(win, 524, 3, width, height, small_image, -126, 126, 2000, SMALL_RADIUS);
-    init_guage(win, 626, 140, width, height, small_image, -98, 98, 4000, SMALL_RADIUS);
-    init_guage(win, 592, 307, width, height, small_image, -86, 86, 3000, SMALL_RADIUS);
+    init_guage(win, 524, 3, width, height, small_image, -126, 126, 4500, SMALL_RADIUS);
+    init_guage(win, 626, 140, width, height, small_image, -98, 98, 5000, SMALL_RADIUS);
+    init_guage(win, 592, 307, width, height, small_image, -86, 86, 4000, SMALL_RADIUS);
   } else {
     /* 这里的宽和高是指仪表盘宽度和高度，x, y指是各个仪表盘在背景图片上的左上标位置 */
     int width = 100;
     int height = 100;
 
     /* 左边：从上到下 */
-    init_guage(win, 70, 0, width, height, small_image_480, -126, 126, 2000, SMALL_RADIUS_480);
-    init_guage(win, 8, 76, width, height, small_image_480, -80, 80, 4000, SMALL_RADIUS_480);
-    init_guage(win, 29, 172, width, height, small_image_480, -86, 86, 3000, SMALL_RADIUS_480);
+    init_guage(win, 70, 0, width, height, small_image_480, -126, 126, 4500, SMALL_RADIUS_480);
+    init_guage(win, 8, 76, width, height, small_image_480, -80, 80, 5000, SMALL_RADIUS_480);
+    init_guage(win, 29, 172, width, height, small_image_480, -86, 86, 4000, SMALL_RADIUS_480);
 
     /* 中间 */
-    init_guage(win, 170, 3, 144, 138, big_image_480, -130, 130, 2000, BIG_RADIUS_480);
+    init_guage(win, 170, 3, 144, 138, big_image_480, -130, 130, 4500, BIG_RADIUS_480);
 
     /* 右边：从上到下 */
-    init_guage(win, 315, 0, width, height, small_image_480, -126, 126, 2000, SMALL_RADIUS_480);
-    init_guage(win, 377, 77, width, height, small_image_480, -80, 80, 4000, SMALL_RADIUS_480);
-    init_guage(win, 357, 171, width, height, small_image_480, -86, 86, 3000, SMALL_RADIUS_480);
+    init_guage(win, 315, 0, width, height, small_image_480, -126, 126, 4500, SMALL_RADIUS_480);
+    init_guage(win, 377, 77, width, height, small_image_480, -80, 80, 5000, SMALL_RADIUS_480);
+    init_guage(win, 357, 171, width, height, small_image_480, -86, 86, 4000, SMALL_RADIUS_480);
   }
 
   return RET_OK;

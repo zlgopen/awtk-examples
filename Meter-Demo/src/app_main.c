@@ -39,7 +39,6 @@ int main(void) {
 
   int lcd_w = 800;
   int lcd_h = 480;
-
 #if defined(LCD_W) && defined(LCD_H)
   lcd_w = LCD_W;
   lcd_h = LCD_H;

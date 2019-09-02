@@ -72,7 +72,7 @@ widget_t* bar_graph_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
   graph->zero_color = color_parse("#FFFFFF");
 
   graph->data = NULL;
-  srand(time(NULL));
+  // srand(time(NULL));
   return widget;
 }
 

@@ -35,7 +35,12 @@ os.environ['LIB_DIR'] = APP_LIB_DIR
 APP_LIBS = []
 APP_LIBPATH = [APP_LIB_DIR]
 
-DefaultEnvironment(
+if awtk.TOOLS_NAME == '' :
+  APP_TOOLS = None
+else:
+  APP_TOOLS = [awtk.TOOLS_NAME]
+
+DefaultEnvironment(TOOLS     = APP_TOOLS,
   CPPPATH   = APP_CPPPATH + awtk.CPPPATH,
   LINKFLAGS = awtk.LINKFLAGS,
   LIBS      = APP_LIBS + awtk.LIBS,

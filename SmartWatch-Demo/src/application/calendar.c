@@ -1,4 +1,4 @@
-﻿/**
+/**
  *
  *
  *
@@ -29,6 +29,15 @@ static const char* s_calendar_date = "calendar_date";
  * 计算日历
  */
 static void calendar_cal(widget_t* widget, date_time_t* date_toshow) {
+  if(date_toshow->year <= 0){
+    date_toshow->year = 1;
+  }
+  if(date_toshow->month <= 0){
+    date_toshow->month = 1;
+  }
+  if(date_toshow->day <= 0){
+    date_toshow->day = 1;
+  }
   // 更新年份/月份标签
   widget_t* label = widget_lookup(widget, s_calendar_date, TRUE);
   if (label) {
@@ -142,8 +151,14 @@ static ret_t on_calendar_up(void* ctx, event_t* e) {
   if (date_current.month == 1) {
     date_current.month = 12;
     date_current.year--;
+		if(date_current.year <= 0){
+      date_current.year = 1;
+    }
   } else {
     date_current.month -= 1;
+		if(date_current.month <= 0){
+      date_current.month = 1;
+    }
   }
 
   widget_t* window = widget_get_window(WIDGET(ctx));

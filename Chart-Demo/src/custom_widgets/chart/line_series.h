@@ -76,7 +76,7 @@ typedef struct _line_series_t {
 widget_t* line_series_create(widget_t* widget, xy_t x, xy_t y, wh_t w, wh_t h);
 
 /**
- * @method line_series_create
+ * @method line_series_colorful_create
  * 创建彩色line_series对象
  * @annotation ["constructor", "scriptable"]
  * @param {widget_t*} parent 父控件

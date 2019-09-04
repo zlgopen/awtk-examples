@@ -154,7 +154,7 @@ ret_t tooltip_subpart_set_style_color(widget_t* widget, const char* subpart,
                                       const char* state_and_name, uint32_t value);
 
 /**
- * @method series_subpart_set_style_str
+ * @method tooltip_subpart_set_style_str
  * 设置指定子部件的字符串类型style。
  * @annotation ["scriptable"]
  * @param {widget_t*} widget widget对象。

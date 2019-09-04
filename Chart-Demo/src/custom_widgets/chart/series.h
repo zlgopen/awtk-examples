@@ -66,7 +66,7 @@ typedef struct _series_t {
    */
   series_dispaly_mode_t display_mode;
   /**
-   * @property {bool_t} auto_play
+   * @property {bool_t} animation
    * @annotation ["set_prop","get_prop","readable","persitent","design","scriptable"]
    * 播放值更新动画。0表示禁止，非0表示动画持续事件。
    */

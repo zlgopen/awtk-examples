@@ -415,28 +415,25 @@ static ret_t chart_view_on_destroy(widget_t* widget) {
 
 static const char* s_chart_view_properties[] = {CHART_VIEW_PROP_TOP_SERIES, NULL};
 
-static const widget_vtable_t s_chart_view_vtable = {
-    .size = sizeof(chart_view_t),
-    .inputable = TRUE,
-    .type = WIDGET_TYPE_CHART_VIEW,
-    .clone_properties = s_chart_view_properties,
-    .persistent_properties = s_chart_view_properties,
-    .parent = TK_PARENT_VTABLE(widget),
-    .create = chart_view_create,
-    .on_layout_children = chart_view_on_layout_children,
-    .on_paint_children = chart_view_on_paint_children,
-    .on_paint_self = chart_view_on_paint_self,
-    .get_prop = chart_view_get_prop,
-    .set_prop = chart_view_set_prop,
-    .on_event = chart_view_on_event,
-    .on_destroy = chart_view_on_destroy};
+TK_DECL_VTABLE(chart_view) = {.size = sizeof(chart_view_t),
+                              .inputable = TRUE,
+                              .type = WIDGET_TYPE_CHART_VIEW,
+                              .clone_properties = s_chart_view_properties,
+                              .persistent_properties = s_chart_view_properties,
+                              .parent = TK_PARENT_VTABLE(widget),
+                              .create = chart_view_create,
+                              .on_layout_children = chart_view_on_layout_children,
+                              .on_paint_children = chart_view_on_paint_children,
+                              .on_paint_self = chart_view_on_paint_self,
+                              .get_prop = chart_view_get_prop,
+                              .set_prop = chart_view_set_prop,
+                              .on_event = chart_view_on_event,
+                              .on_destroy = chart_view_on_destroy};
 
 widget_t* chart_view_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
-  chart_view_t* chart_view = TKMEM_ZALLOC(chart_view_t);
-  widget_t* widget = WIDGET(chart_view);
+  widget_t* widget = widget_create(parent, TK_REF_VTABLE(chart_view), x, y, w, h);
+  chart_view_t* chart_view = CHART_VIEW(widget);
   return_value_if_fail(chart_view != NULL, NULL);
-
-  widget_init(widget, parent, &s_chart_view_vtable, x, y, w, h);
 
   chart_view->top_series = -1;
   chart_view->need_relayout_axes = TRUE;
@@ -445,7 +442,7 @@ widget_t* chart_view_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
 }
 
 widget_t* chart_view_cast(widget_t* widget) {
-  return_value_if_fail(widget != NULL && (widget->vt == &s_chart_view_vtable), NULL);
+  return_value_if_fail(WIDGET_IS_INSTANCE_OF(widget, chart_view), NULL);
 
   return widget;
 }

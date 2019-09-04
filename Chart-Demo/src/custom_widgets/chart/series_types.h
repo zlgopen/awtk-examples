@@ -325,10 +325,10 @@ typedef struct _series_vtable_t {
 #define SERIES_PROP_DISPLAY_MODE "display_mode"
 
 /**
- * @const SERIES_PROP_ANIMATION
+ * @const SERIES_PROP_VALUE_ANIMATION
  * 序列值动画的持续时间
  */
-#define SERIES_PROP_ANIMATION "animation"
+#define SERIES_PROP_VALUE_ANIMATION "value_animation"
 
 /**
  * @const SERIES_PROP_NEW_PERIOD

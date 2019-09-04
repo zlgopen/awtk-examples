@@ -459,7 +459,7 @@ ret_t axis_data_destroy(axis_data_t* data);
 #define AXIS_PROP_LINE_STYLE "line.style"
 
 /**
- * @const AXIS_PROP_TYPE
+ * @const AXIS_PROP_LINE_SHOW
  * 坐标轴的轴线是否显示
  */
 #define AXIS_PROP_LINE_SHOW "line.show"

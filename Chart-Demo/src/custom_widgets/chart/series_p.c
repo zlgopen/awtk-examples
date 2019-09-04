@@ -1498,7 +1498,7 @@ ret_t series_p_get_prop(widget_t* widget, const char* name, value_t* v) {
   } else if (tk_str_eq(name, SERIES_PROP_DISPLAY_MODE)) {
     value_set_int(v, series->display_mode);
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_ANIMATION)) {
+  } else if (tk_str_eq(name, SERIES_PROP_VALUE_ANIMATION)) {
     value_set_uint32(v, series->animation);
     return RET_OK;
   } else if (tk_str_eq(name, SERIES_PROP_NEW_PERIOD)) {
@@ -1535,14 +1535,13 @@ ret_t series_p_set_prop(widget_t* widget, const char* name, const value_t* v) {
       series->display_mode = (series_dispaly_mode_t)value_int(v);
     }
     return RET_OK;
-  } else if (tk_str_eq(name, SERIES_PROP_ANIMATION)) {
+  } else if (tk_str_eq(name, SERIES_PROP_VALUE_ANIMATION)) {
     series->animation = value_uint32(v);
     return RET_OK;
   } else if (tk_str_eq(name, SERIES_PROP_NEW_PERIOD)) {
     return series_p_set_new_period_internal(widget, value_uint32(v), FALSE);
   } else if (tk_str_eq(name, SERIES_PROP_TITLE)) {
     return series_set_title(widget, value_str(v));
-  } else if (tk_str_eq(name, SERIES_PROP_BAR)) {
   }
 
   return RET_NOT_FOUND;

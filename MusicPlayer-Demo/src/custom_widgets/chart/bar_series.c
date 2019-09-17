@@ -390,7 +390,7 @@ static ret_t bar_series_minmax_tooltip_format(void* ctx, const void* data, wstr_
 
 static const char* s_bar_series_properties[] = {
     SERIES_PROP_CAPACITY,     SERIES_PROP_UNIT_SIZE,   SERIES_PROP_COVERAGE,
-    SERIES_PROP_DISPLAY_MODE, SERIES_PROP_ANIMATION,   SERIES_PROP_TITLE,
+    SERIES_PROP_DISPLAY_MODE, SERIES_PROP_VALUE_ANIMATION,   SERIES_PROP_TITLE,
     SERIES_PROP_BAR_STYLE,    SERIES_PROP_BAR_OVERLAP, NULL};
 
 #define BAR_SERIES_VTABLE                                                                   \

@@ -30,13 +30,13 @@
 #include "x_axis.h"
 #include "y_axis.h"
 
+#define WITH_CANVAS_DRAW_LINE
+
 #ifdef WITH_CANVAS_DRAW_LINE
 #ifdef WITH_NANOVG_SOFT
-// base/wuxiaolin.inc, 该实现内部的for(y = ypxl1 + 1; y <= (ypxl2 - 1); y++)
-// 会有(ypxl2 - 1)溢出导致卡死的可能, 慎用
-#include "base/wuxiaolin.inc"
+#include "../base/wuxiaolin_draw_line.inc"
 #define _CANVAS_DRAW_LINE(c, x1, y1, x2, y2) \
-  draw_line(c, c->ox + (x1), c->oy + (y1), c->ox + (x2), c->oy + (y2))
+  wuxiaolin_draw_line(c, c->ox + (x1), c->oy + (y1), c->ox + (x2), c->oy + (y2))
 #endif /*WITH_NANOVG_SOFT*/
 #endif /*WITH_CANVAS_DRAW_LINE*/
 

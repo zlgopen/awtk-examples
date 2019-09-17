@@ -177,7 +177,7 @@ typedef struct _tooltip_tip_params_t {
 #define TOOLTIP_PROP_TIP_STYLE "tip.style"
 
 /**
- * @const TOOLTIP_PROP_TIP_STYLE
+ * @const TOOLTIP_PROP_TIP_SHOW
  * 提示文本是否显示
  */
 #define TOOLTIP_PROP_TIP_SHOW "tip.show"

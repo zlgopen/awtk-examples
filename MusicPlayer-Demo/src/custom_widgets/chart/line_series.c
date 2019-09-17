@@ -207,7 +207,7 @@ static ret_t line_series_draw_one_series(widget_t* widget, canvas_t* c, float_t 
       if (series->line.smooth) {
         draw_smooth_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size, vertical);
       } else {
-        draw_line(widget, vg, series->line.astyle, ox, oy, fifo, index, size);
+        draw_line(widget, c, vg, series->line.astyle, ox, oy, fifo, index, size);
       }
     }
 
@@ -351,7 +351,7 @@ ret_t line_series_colorful_set(widget_t* widget, uint32_t index, const void* dat
 
 static const char* s_line_series_properties[] = {
     SERIES_PROP_CAPACITY,        SERIES_PROP_UNIT_SIZE,      SERIES_PROP_COVERAGE,
-    SERIES_PROP_DISPLAY_MODE,    SERIES_PROP_ANIMATION,      SERIES_PROP_TITLE,
+    SERIES_PROP_DISPLAY_MODE,    SERIES_PROP_VALUE_ANIMATION,      SERIES_PROP_TITLE,
     SERIES_PROP_LINE_STYLE,      SERIES_PROP_LINE_SHOW,      SERIES_PROP_LINE_SMOOTH,
     SERIES_PROP_LINE_AREA_STYLE, SERIES_PROP_LINE_AREA_SHOW, SERIES_PROP_SYMBOL_STYLE,
     SERIES_PROP_SYMBOL_SIZE,     SERIES_PROP_SYMBOL_SHOW,    NULL};

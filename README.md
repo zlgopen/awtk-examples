@@ -14,7 +14,7 @@
 
 #### 入门文档：
 
-- docs/AWTK开发实践.pdf
+- zlgopen/awtk-docs/AWTK开发实践
 
 
 

@@ -312,14 +312,10 @@ static ret_t create_bg_labels(widget_t* win) {
  */
 ret_t application_init(void) {
   widget_t* win = window_create(NULL, 0, 0, 0, 0);
+  main_loop_t* loop = main_loop();
 
-#if defined(LCD_W) && defined(LCD_H)
-  int32_t lcd_w = LCD_W;
-  int32_t lcd_h = LCD_H;
-#else
-  int32_t lcd_w = 800;
-  int32_t lcd_h = 480;
-#endif
+  int32_t lcd_w = loop->wm->w;
+  int32_t lcd_h = loop->wm->h;
 
   widget_t* main_win = view_create(win, 0, 0, lcd_w, lcd_h);
   if (main_win) {

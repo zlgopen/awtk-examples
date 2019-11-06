@@ -20,7 +20,7 @@
 
 @set AWTK_DIR=../../awtk
 for %%i in (res_480_272, res_800_480) do (
-  python assets_gen.py %AWTK_DIR%/bin %%i/assets/raw %%i/assets/inc
+  python assets_gen.py %AWTK_DIR%/bin %%i/assets/default/raw %%i/assets/default/inc
   python assets_c_gen.py %%i/assets
 )
 

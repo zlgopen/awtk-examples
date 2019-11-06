@@ -1,18 +1,18 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
-#include "assets/inc/strings/en_US.data"
-#include "assets/inc/strings/zh_CN.data"
-#include "assets/inc/styles/default.data"
+#include "assets/default/inc/strings/en_US.data"
+#include "assets/default/inc/strings/zh_CN.data"
+#include "assets/default/inc/styles/default.data"
 #ifdef WITH_STB_IMAGE
-#include "assets/inc/images/bg.res"
-#include "assets/inc/images/bg_480_272.res"
-#include "assets/inc/images/pointer_big.res"
-#include "assets/inc/images/pointer_small.res"
+#include "assets/default/inc/images/bg.res"
+#include "assets/default/inc/images/bg_480_272.res"
+#include "assets/default/inc/images/pointer_big.res"
+#include "assets/default/inc/images/pointer_small.res"
 #else
 #endif/*WITH_STB_IMAGE*/
 #if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)
-#include "assets/inc/fonts/default.res"
+#include "assets/default/inc/fonts/default.res"
 #else/*WITH_STB_FONT or WITH_FT_FONT*/
 #endif/*WITH_STB_FONT or WITH_FT_FONT*/
 #endif/*WITH_FS_RES*/

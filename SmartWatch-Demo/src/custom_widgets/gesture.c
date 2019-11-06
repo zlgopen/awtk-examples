@@ -129,6 +129,8 @@ static ret_t gesture_on_event(widget_t* widget, event_t* e) {
       LOG("up:(%d, %d)", pointer_event->x, pointer_event->y);
       (void)pointer_event;
       if (gesture->child_graded) {
+        gesture->long_pressed = FALSE;
+        gesture_pointer_up_cleanup(widget);
         return RET_OK;
       }
       if (gesture->pressed) {

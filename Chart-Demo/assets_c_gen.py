@@ -21,7 +21,7 @@ def genIncludes(files, dir_name):
   str1 = ""
   for f in files:
     incf = copy.copy(f);
-    incf=incf.replace(dir_name, "assets/inc");
+    incf=incf.replace(dir_name, "assets/default/inc");
     incf=incf.replace('\\', '/');
     str1 += '#include "'+incf+'"\n'
   return str1
@@ -45,7 +45,7 @@ def genAssetsManagerAdd(assets_inc_dir, filter, dir_name, name, suffix):
   return result
 
 def gen_assets_c(assets_dir, assets_c_path):
-  assets_inc_dir = joinPath(assets_dir, 'inc')
+  assets_inc_dir = joinPath(assets_dir, 'default/inc')
   if not os.path.exists(assets_inc_dir) :
     print('assets inc dir not exist')
     exit()

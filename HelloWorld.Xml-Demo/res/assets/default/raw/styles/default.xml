@@ -1,0 +1,31 @@
+<window>
+  <style name="default">
+    <normal bg_color="#f0f0f0"/>
+  </style>
+</window>
+
+<button>
+  <style name="default" border_color="#a0a0a0" text_color="black">
+    <normal bg_color="#f0f0f0" />
+    <pressed bg_color="#c0c0c0" x_offset="1" y_offset="1"/>
+    <over bg_color="#e0e0e0" />
+    <disable bg_color="gray" text_color="#d0d0d0" />
+  </style>
+</button>
+
+<edit selected_fg_color="#020202" selected_text_color="#010101" selected_bg_color="#b5d7fd">
+  <style name="default" border_color="#a0a0a0" text_color="black" text_align_h="center">
+    <normal bg_color="#f0f0f0" />
+    <focused bg_color="#f0f0f0" border_color="black"/>
+    <disable bg_color="gray" text_color="#d0d0d0" />
+    <error bg_color="#f0f0f0" text_color="red" />
+    <empty bg_color="#f0f0f0" text_color="#a0a0a0" />
+    <empty_focus bg_color="#f0f0f0" text_color="#a0a0a0" border_color="black"/>
+  </style>
+</edit>
+
+<label>
+  <style name="default">
+    <normal text_color="black" />
+  </style>
+</label>

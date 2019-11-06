@@ -1,0 +1,12 @@
+<window anim_hint="htranslate">
+    <view x="c" y="m" w="60%" h="62%" children_layout="default(c=2,r=3,m=15,s=15)">
+        <button name="blue_btn" text="bg_blue" style="round"/>
+        <button name="green_btn" text="bg_green" style="round"/>
+        <button name="yellow_btn" text="bg_yellow" style="round"/>
+        <button name="default_btn" text="bg_default" style="round"/>
+        <button name="pic_1_btn" text="bg_pic1" style="round"/>
+        <button name="pic_2_btn" text="bg_pic2" style="round"/>
+    </view>
+    <image draw_type="icon" image="awtk_logo" x="right:10" y="10" w="100" h="26"/>
+    <button name="close" x="c" y="m:41%" w="20%" h="8%" text="close" style="round"/>
+</window>

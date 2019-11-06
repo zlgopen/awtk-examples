@@ -1,0 +1,8 @@
+<window anim_hint="htranslate">
+    <image name="move" image="logo" x="3%" y="m" w="160" h="40" animation="move(y_from=100, y_to=200, yoyo_times=1000, duration=1000)"/>
+    <image name="fade" image="logo" x="r:3%" y="m" w="160" h="40" opacity="0" animation="opacity(from=50, to=255, yoyo_times=1000, duration=1000)"/>
+    <image name="rotation" image="big_earth" x="c" y="m:21%" w="48" h="48" animation="rotation(from=0, to=6.28, yoyo_times=1000, duration=1000)"/>
+    <image name="scale" image="logo" x="c" y="m:-21%" w="160" h="40" animation="scale(x_from=0.5, x_to=1, y_from=0.5, y_to=1,yoyo_times=1000, duration=1000)"/>
+    <button name="close" x="c" y="m:41%" w="20%" h="8%" text="close"/>
+    <image draw_type="icon" image="awtk_logo" x="right:10" y="10" w="100" h="26"/>
+</window>

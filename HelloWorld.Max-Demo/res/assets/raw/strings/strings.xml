@@ -1,0 +1,24 @@
+<string name="ok">
+    <language name="en_US">OK</language>
+    <language name="zh_CN">确定</language>
+</string>
+<string name="Basic">
+    <language name="en_US">Basic</language>
+    <language name="zh_CN">基础</language>
+</string>
+<string name="Background Change">
+    <language name="en_US">Background Change</language>
+    <language name="zh_CN">背景切换</language>
+</string>
+<string name="List View">
+    <language name="en_US">List View</language>
+    <language name="zh_CN">列表</language>
+</string>
+<string name="Animate Widget">
+    <language name="en_US">Animate Widget</language>
+    <language name="zh_CN">控件动画</language>
+</string>
+<string name="cancel">
+    <language name="en_US">Cancel</language>
+    <language name="zh_CN">取消</language>
+</string>

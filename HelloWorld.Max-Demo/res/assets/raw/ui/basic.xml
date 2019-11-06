@@ -1,0 +1,14 @@
+<window anim_hint="htranslate">
+    <image x="right:10" y="10" w="100" h="26" draw_type="icon" image="awtk_logo"/>
+    <label name="edit_label" x="c" y="20%" w="30%" h="8%" text="hello awtk" />
+    <edit name="edit" x="c" y="m:-13%" w="60%" h="8%" text="hello awtk" input_type="text"/>
+    <progress_bar name="changing_bar" x="21%" y="m:14%" w="4%" h="29%" value="20" vertical="true"/>
+    <slider name="changing_slider" x="26%" y="m:14%" w="4%" h="29%" value="20" vertical="true" style="img_v"/>
+    <progress_bar name="changed_bar" x="32%" y="m:14%" w="4%" h="29%" value="20" vertical="true"/>
+    <slider name="changed_slider" x="37%" y="m:14%" w="4%" h="29%" value="20" vertical="true" style="img_v"/>
+    <progress_bar name="click_bar" x="right:20%" y="m:6%" w="30%" h="8%" value="40" show_text="true"/>
+    <label name="click_bar_label" x="60%" y="70%" w="10%" h="8%" text="40%"/>
+    <button name="dec_btn" x="50%" y="70%" w="10%" h="8%" text="dec"/>
+    <button name="inc_btn" x="70%" y="70%" w="10%" h="8%" text="inc"/>
+    <button name="close" x="c" y="m:41%" w="20%" h="8%" text="close"/>
+</window>

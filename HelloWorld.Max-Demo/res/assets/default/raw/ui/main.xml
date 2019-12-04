@@ -1,5 +1,5 @@
 <window anim_hint="htranslate">
-    <view x="c" y="m" w="70%" h="51%" children_layout="default(c=2,r=2,m=20,s=20)">
+    <view x="c" y="m" w="80%" h="51%" children_layout="default(c=2,r=2,m=20,s=20)">
         <button name="open:basic" tr_text="Basic" style="round"/>
         <button name="open:background" tr_text="Background Change" style="round"/>
         <button name="open:list_view" tr_text="List View" style="round"/>

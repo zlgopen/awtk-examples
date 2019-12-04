@@ -1,5 +1,5 @@
-<keyboard theme="keyboard" x="0" y="bottom" w="100%" h="40%">
-  <pages x="0" y="bottom" w="100%" h="-28" active="4">
+<keyboard theme="keyboard" x="0" y="bottom" w="100%" h="50%">
+  <pages x="0" y="bottom" w="100%" h="-28" active="1">
     <view name="upper" x="0" y="0" w="100%" h="100%" layout="rows:4 cols:1 spacing:2 margin:2">
       <group_box layout="rows:1 cols:10 spacing:2 margin:2">
         <button repeat="300" name="Q" text="Q"/>
@@ -35,6 +35,54 @@
         <button repeat="300" name="B" text="B"/>
         <button repeat="300" name="N" text="N"/>
         <button repeat="300" name="M" text="M"/>
+        <button repeat="300" name="key:backspace" style="highlight">
+          <image draw_type="icon" image="backspace" x="center" y="middle" w="100%" h="100%"/>
+        </button>
+      </group_box>
+      <group_box layout="rows:1 cols:0 spacing:2 margin:2">
+        <button name="page:symnum" style="highlight" w="15%" text="123"/>
+        <button name="page:chinese" style="highlight" w="10%">
+          <image draw_type="icon" image="language_en" x="center" y="middle" w="100%" h="100%"/>
+        </button>
+        <button repeat="300" name="space" w="55%" text="Space"/>
+        <button name="action" style="highlight" w="20%" text="Return"/>
+      </group_box>
+    </view>
+    <view name="lower" x="0" y="0" w="100%" h="100%" layout="rows:4 cols:1 spacing:2 margin:2">
+      <group_box layout="rows:1 cols:10 spacing:2 margin:2">
+        <button repeat="300" name="q" text="q"/>
+        <button repeat="300" name="w" text="w"/>
+        <button repeat="300" name="e" text="e"/>
+        <button repeat="300" name="r" text="r"/>
+        <button repeat="300" name="t" text="t"/>
+        <button repeat="300" name="y" text="y"/>
+        <button repeat="300" name="u" text="u"/>
+        <button repeat="300" name="i" text="i"/>
+        <button repeat="300" name="o" text="o"/>
+        <button repeat="300" name="p" text="p"/>
+      </group_box>
+      <group_box layout="rows:1 cols:9 spacing:2 x_margin:10 y_margin:2">
+        <button repeat="300" name="a" text="a"/>
+        <button repeat="300" name="s" text="s"/>
+        <button repeat="300" name="d" text="d"/>
+        <button repeat="300" name="f" text="f"/>
+        <button repeat="300" name="g" text="g"/>
+        <button repeat="300" name="h" text="h"/>
+        <button repeat="300" name="j" text="j"/>
+        <button repeat="300" name="k" text="k"/>
+        <button repeat="300" name="l" text="l"/>
+      </group_box>
+      <group_box layout="rows:1 cols:9 spacing:2 margin:2">
+        <button name="page:upper" style="highlight">
+          <image draw_type="icon" image="shift" x="center" y="middle" w="100%" h="100%"/>
+        </button>
+        <button repeat="300" name="z" text="z"/>
+        <button repeat="300" name="x" text="x"/>
+        <button repeat="300" name="c" text="c"/>
+        <button repeat="300" name="v" text="v"/>
+        <button repeat="300" name="b" text="b"/>
+        <button repeat="300" name="n" text="n"/>
+        <button repeat="300" name="m" text="m"/>
         <button repeat="300" name="key:backspace" style="highlight">
           <image draw_type="icon" image="backspace" x="center" y="middle" w="100%" h="100%"/>
         </button>
@@ -186,54 +234,6 @@
           <image draw_type="icon" image="language_zh" x="center" y="middle" w="100%" h="100%"/>
         </button>
         <button repeat="300" name="key:space" w="55%" text="Space"/>
-        <button name="action" style="highlight" w="20%" text="Return"/>
-      </group_box>
-    </view>
-    <view name="lower" x="0" y="0" w="100%" h="100%" layout="rows:4 cols:1 spacing:2 margin:2">
-      <group_box layout="rows:1 cols:10 spacing:2 margin:2">
-        <button repeat="300" name="q" text="q"/>
-        <button repeat="300" name="w" text="w"/>
-        <button repeat="300" name="e" text="e"/>
-        <button repeat="300" name="r" text="r"/>
-        <button repeat="300" name="t" text="t"/>
-        <button repeat="300" name="y" text="y"/>
-        <button repeat="300" name="u" text="u"/>
-        <button repeat="300" name="i" text="i"/>
-        <button repeat="300" name="o" text="o"/>
-        <button repeat="300" name="p" text="p"/>
-      </group_box>
-      <group_box layout="rows:1 cols:9 spacing:2 x_margin:10 y_margin:2">
-        <button repeat="300" name="a" text="a"/>
-        <button repeat="300" name="s" text="s"/>
-        <button repeat="300" name="d" text="d"/>
-        <button repeat="300" name="f" text="f"/>
-        <button repeat="300" name="g" text="g"/>
-        <button repeat="300" name="h" text="h"/>
-        <button repeat="300" name="j" text="j"/>
-        <button repeat="300" name="k" text="k"/>
-        <button repeat="300" name="l" text="l"/>
-      </group_box>
-      <group_box layout="rows:1 cols:9 spacing:2 margin:2">
-        <button name="page:upper" style="highlight">
-          <image draw_type="icon" image="shift" x="center" y="middle" w="100%" h="100%"/>
-        </button>
-        <button repeat="300" name="z" text="z"/>
-        <button repeat="300" name="x" text="x"/>
-        <button repeat="300" name="c" text="c"/>
-        <button repeat="300" name="v" text="v"/>
-        <button repeat="300" name="b" text="b"/>
-        <button repeat="300" name="n" text="n"/>
-        <button repeat="300" name="m" text="m"/>
-        <button repeat="300" name="key:backspace" style="highlight">
-          <image draw_type="icon" image="backspace" x="center" y="middle" w="100%" h="100%"/>
-        </button>
-      </group_box>
-      <group_box layout="rows:1 cols:0 spacing:2 margin:2">
-        <button name="page:symnum" style="highlight" w="15%" text="123"/>
-        <button name="page:chinese" style="highlight" w="10%">
-          <image draw_type="icon" image="language_en" x="center" y="middle" w="100%" h="100%"/>
-        </button>
-        <button repeat="300" name="space" w="55%" text="Space"/>
         <button name="action" style="highlight" w="20%" text="Return"/>
       </group_box>
     </view>

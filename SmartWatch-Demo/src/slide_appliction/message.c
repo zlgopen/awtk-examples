@@ -17,9 +17,9 @@ static ret_t window_message_item_on_drag_end(void* ctx, event_t* e);
 
 static ret_t widget_delay_destroy(widget_t* widget) {
   if (widget) {
-    widget->can_not_destroy++;
+    widget_ref(widget);
     widget_destroy(widget);
-    widget->can_not_destroy--;
+    widget_unref(widget);
   }
   return RET_OK;
 }

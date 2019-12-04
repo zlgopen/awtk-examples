@@ -21,11 +21,11 @@
                 <font color=&quota;white&quota; align_v=&quota;middle&quota; size=&quota;32&quota;>CO</font>
                 <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;18&quota;>2</font>" />
                 <label x="48" name="CO_2" w="65" h="100%" text="350" style="reading_pm_co"/>
-                <label x="113" w="-113" h="100%" text="ppm" style="top"/>
+                <label x="118" w="-113" h="100%" text="ppm" style="top"/>
             </view>
             <view x="200" y="85" w="159" h="57">
                 <label name="flow" w="120" h="100%" text="500" style="reading_flow"/>
-                <rich_text x="120" w="39" h="100%" text="
+                <rich_text x="120" w="50" h="100%" text="
                     <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>m</font>
                     <font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;12&quota;>3</font>
                     <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>/h</font>" />

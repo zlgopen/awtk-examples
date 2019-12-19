@@ -1,5 +1,4 @@
-<window anim_hint="slide_up" full_screen="false" style="pay" x="c" y="m" w="390" h="390"
-        theme="quick_styles">
+<window anim_hint="slide_up" full_screen="false" style="pay" self_layout="default(x=205,y=45,w=390,h=390)" theme="quick_styles">
     <gesture name="gesture" x="0" y="0" w="100%" h="100%">
         <slide_view x="m" y="c" w="100%" h="100%">
             <view x="c" y="m" w="100%" h="100%">

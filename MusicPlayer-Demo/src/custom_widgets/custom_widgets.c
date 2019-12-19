@@ -27,7 +27,7 @@
 #include "chart/bar_series.h"
 #include "chart/tooltip.h"
 #include "pie_slice/pie_slice.h"
-#include "photo_frame/frame_view.h"
+#include "photo_frame/cover_view.h"
 
 ret_t custom_widgets_init() {
   widget_factory_register(widget_factory(), WIDGET_TYPE_CHART_VIEW, chart_view_create);
@@ -41,7 +41,7 @@ ret_t custom_widgets_init() {
                           bar_series_minmax_create);
   widget_factory_register(widget_factory(), WIDGET_TYPE_TOOLTIP, tooltip_create_default);
   widget_factory_register(widget_factory(), WIDGET_TYPE_PIE_SLICE, pie_slice_create);
-  widget_factory_register(widget_factory(), WIDGET_TYPE_FRAME_VIEW, frame_view_create);
+  widget_factory_register(widget_factory(), WIDGET_TYPE_COVER_VIEW, cover_view_create);
 
   return RET_OK;
 }

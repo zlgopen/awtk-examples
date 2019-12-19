@@ -4,50 +4,50 @@
         <label name="sys_time" x="right:5" y="m" w="30" h="100%" style="right"/>
     </view>
 
-    <view  x="0" y="bottom" w="100%" h="36">
-        <view  x="2%" y="bottom:3" w="27%" h="36" layout="r:1 c:3">     
-            <button name="btn_prve"       style="s_play_prve"/>
-            <button name="btn_play"       style="s_play"/>
-            <button name="btn_next"       style="s_play_next"/>
-        </view>    
-        <view  x="82%" y="bottom:3" w="16%" h="36" layout="r:1 c:2">   
-            <button name="btn_play_mode"  style="s_play_mode_clicle"/>           
-            <button name="btn_play_list"  style="s_play_list"/> 
-        </view>  
+    <view x="0" y="bottom" w="100%" h="36">
+        <view x="2%" y="bottom:3" w="27%" h="36" layout="r:1 c:3">
+            <button name="btn_prve" style="s_play_prve"/>
+            <button name="btn_play" style="s_play"/>
+            <button name="btn_next" style="s_play_next"/>
+        </view>
+        <view x="82%" y="bottom:3" w="16%" h="36" layout="r:1 c:2">
+            <button name="btn_play_mode" style="s_play_mode_clicle"/>
+            <button name="btn_play_list" style="s_play_list"/>
+        </view>
     </view>
     <view x="32%" y="bottom:-3" w="50%" h="30">
-        <label name="slider_min" text="00:00" x="0"  w="6%" h="12"/>
-        <label name="slider_max" text="00:00" x="90%"  w="6%" h="12"/>
-        <slider name="play_slider" x="10%" y="-1" w="75%" h="15"  min="0" max="100" step="1" style="slider_h"/>
+        <label name="slider_min" text="00:00" x="0" w="6%" h="12"/>
+        <label name="slider_max" text="00:00" x="90%" w="6%" h="12"/>
+        <slider name="play_slider" x="10%" y="-1" w="75%" h="15" min="0" max="100" step="1" bar_size="2" style="slider_h"/>
     </view>
-    <frame_view name="frame_menu" x="-20" y="51" w="270" h="170" align_v="bottom" >
-        <view x="0" y="0" w="170" h="170">
-            <image name="song_y" w="107" h="107" image="yellow" draw_type="icon" />
-            <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
+    <cover_view name="cover_view" x="0" y="51" w="240" h="170">
+        <view x="c" y="m" w="240" h="170">
+            <image name="song_y" x="c" y="m" w="107" h="107" image="yellow" draw_type="icon" />
+            <image name="Vinyl" image="Vinyl" x="c" y="m" w="170" h="170" draw_type="default" />
         </view>
-        <view x="0" y="0" w="170" h="170">
-            <image name="song_q" w="107" h="107"  image="see_you_again" draw_type="icon" />
-            <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
+        <view x="400" y="m" w="240" h="170">
+            <image name="song_q" x="c" y="m" w="107" h="107" image="see_you_again" draw_type="icon" />
+            <image name="Vinyl" image="Vinyl" x="c" y="m" w="170" h="170" draw_type="default" />
         </view>
-        <view x="0" y="0" w="170" h="170">
-            <image name="song_n" w="107" h="107"  image="let_it_go" draw_type="icon" />
-            <image name="Vinyl" image="Vinyl" w="170" h="170" draw_type="default" />
+        <view x="400" y="m" w="240" h="170">
+            <image name="song_n" x="c" y="m" w="107" h="107" image="let_it_go" draw_type="icon" />
+            <image name="Vinyl" image="Vinyl" x="c" y="m" w="170" h="170" draw_type="default" />
         </view>
-    </frame_view>
-    <guage_pointer name="vinyl_head" x="89" y="28" w="29" h="72" angle="-70"  anchor_x="6px" anchor_y="5px" image="guage_pointer"/>
+    </cover_view>
+    <guage_pointer name="vinyl_head" x="89" y="28" w="29" h="72" angle="-35" anchor_x="6px" anchor_y="5px" image="pointer"/>
     <view x="53%" y="12%" w="40%" h="18%">
-        <label name="song_name" x="m" y="20%" text=""  w="100%" h="30%" style="s_song_name"/>
+        <label name="song_name" x="m" y="20%" text="" w="100%" h="30%" style="s_song_name"/>
         <label name="song_artist" x="m" y="50%" text="" w="100%" h="40%" style="s_artist_name"/>
     </view>
     <image name="lrc_rule" image="lrc_rule" x="240" y="79" w="210" h="1" draw_type="default" />
-    <list_view name="lrc_view" x="45%"  y="30%" w="55%" h="50%" item_height="15" style="empty">
+    <list_view name="lrc_view" x="45%" y="30%" w="55%" h="50%" item_height="15" style="empty">
         <scroll_view name="lrc_scroll" x="0" y="0" w="100%" h="100%" xslidable="FALSE" yslidable="TRUE" style="empty">
         </scroll_view>
         <scroll_bar name="bar" x="0" y="0" w="0" h="0" value="0"/>
-    </list_view>    
-    <view  name="view_set" x="right:4" y="13%" w="5%" h="30%">
-        <button name="btn_anim_switch" x="right" y="0" w="100%" h="30%" style="s_anim_switch_n"/>  
-        <button name="btn_equalizer" x="right" y="33%" w="100%" h="30%" style="s_eq"/>  
-        <button name="btn_advanced" x="right" y="66%" w="100%" h="30%" style="s_advanced"/>  
-    </view> 
+    </list_view>
+    <view name="view_set" x="right:4" y="13%" w="5%" h="30%">
+        <button name="btn_anim_switch" x="right" y="0" w="100%" h="30%" style="s_anim_switch_p"/>
+        <button name="btn_equalizer" x="right" y="33%" w="100%" h="30%" style="s_eq"/>
+        <button name="btn_advanced" x="right" y="66%" w="100%" h="30%" style="s_advanced"/>
+    </view>
 </window>     

@@ -1,47 +1,38 @@
-<dialog anim_hint="fade"  self_layout="default(x=400,y=53,w=400,h=355)" style="bg_setting">
+<dialog self_layout="default(x=800,y=53,w=400,h=355)" animation="move(x_from=800, x_to=400, duration=500)" style="bg_setting">
     <view x="0" y="0" w="100%" h="10%" style="dialog_title_gray">
         <button name="close" x="right:20" y="0" w="28" h="35" style="s_setting_close"/>
-        <label x="15" y="0" w="20%" h="100%" tr_text="Equalizer" style="title"/> 
+        <label x="15" y="0" w="20%" h="100%" tr_text="Equalizer" style="title"/>
     </view>
     <view name="equ_ord" x="5%" y="15%" w="100%" h="100%">
         <view x="0" y="0" w="6%" h="48%">
-            <label name="db_12_pos"  y="0" w="100%" h="5" text="+12db" style="eq_text"/>
+            <label name="db_12_pos" y="0" w="100%" h="5" text="+12db" style="eq_text"/>
             <label name="db_0" y="50%" w="100%" h="5" text="0db" style="eq_text"/>
             <label name="db_12_neg" y="95%" w="100%" h="5" text="-12db" style="eq_text"/>
         </view>
-        <view name="view" x="8%"  y="0" w="90%" h="60%">
-            <slider name="frequency_0" text="31" x="0" w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="31" x="0" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_1" text="63"  x="10%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="63" x="10%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_2" text="125"  x="20%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="125" x="20%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_3" text="250"  x="30%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="250" x="30%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_4" text="500"  x="40%" w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="500" x="41%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_5" text="1k"  x="50%" w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="1k" x="51%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_6" text="2k"  x="60%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="2k" x="61%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_7" text="4k"  x="70%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="4k" x="71%" y="bottom" w="20" h="20%"  style="eq_text"/>
-
-            <slider name="frequency_8" text="8k"  x="80%"  w="22" h="80%"  min="0" max="100" step="1" value="50" vertical="TRUE" style="slider_v"/>
-            <label  text="8k" x="81%" y="bottom" w="20" h="20%"  style="eq_text"/>
+        <view name="view" x="8%" y="0" w="90%" h="60%">
+            <slider name="frequency_0" text="31" x="0" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="31" x="0" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_1" text="63" x="10%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="63" x="10%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_2" text="125" x="20%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="125" x="20%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_3" text="250" x="30%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="250" x="30%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_4" text="500" x="40%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="500" x="41%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_5" text="1k" x="50%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="1k" x="51%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_6" text="2k" x="60%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="2k" x="61%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_7" text="4k" x="70%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="4k" x="71%" y="bottom" w="20" h="20%" style="eq_text"/>
+            <slider name="frequency_8" text="8k" x="80%" w="22" h="80%" min="0" max="100" step="1" bar_size="3" value="50" vertical="TRUE" style="slider_v"/>
+            <label text="8k" x="81%" y="bottom" w="20" h="20%" style="eq_text"/>
         </view>
     </view>
     <chart_view name="chartview" x="0" y="75%" w="100%" h="25%" style="default">
-        <x_axis name="x" w="100%" h="100%" axis_type="value"  min="0" max="8"  tick="{show:false}" split_line="{show:false}"  label="{show:false}"  data="[0,0,0,0,0,0,0,0,0]"/>
-        <y_axis name="y" w="100%" h="100%" axis_type="value"  min="-15" max="120" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,10,20,30,40,50,60,70,80]"/>
-        <line_series name="s1"  w="100%" h="100%" capacity="10" line="{style:s1, smooth:true}" area="{show:false}" symbol="{show:false}"/>
-
+        <x_axis name="x" w="100%" h="100%" axis_type="value" min="0" max="8" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,0,0,0,0,0,0,0,0]"/>
+        <y_axis name="y" w="100%" h="100%" axis_type="value" min="-15" max="120" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,10,20,30,40,50,60,70,80]"/>
+        <line_series name="s1" w="100%" h="100%" capacity="10" line="{style:s1, smooth:true}" area="{show:false}" symbol="{show:false}"/>
     </chart_view>
 </dialog>

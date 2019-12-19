@@ -138,6 +138,9 @@ def genUI(tools_dir, src_dir, dst_dir):
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', dst_dir, 'ui', '.data', '', 0)
   generate(tools_dir, 'xml_to_ui', src_dir, 'ui', '.xml', src_dir, 'ui', '.bin', 'bin', 0)
 
+def genBSVG(tools_dir, src_dir, dst_dir):
+  generate(tools_dir, 'bsvggen', src_dir, 'images/svg', '.svg', dst_dir, 'images', '.bsvg', '', 0)
+  generate(tools_dir, 'bsvggen', src_dir, 'images/svg', '.svg', src_dir, 'images/svg', '.bsvg', 'bin', 0)
 def check_python_version():
   major_version = sys.version_info[0]
   if major_version > 2:
@@ -182,5 +185,7 @@ def run():
     genUI(tools_dir, src_dir, dst_dir)
   if opt == '' or opt == '-data':
     genData(tools_dir, src_dir, dst_dir)
+  if opt == '' or opt == '-svg':
+    genBSVG(tools_dir, src_dir, dst_dir)
 
 run()

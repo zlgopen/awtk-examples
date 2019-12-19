@@ -1,5 +1,4 @@
-<window  style="app" full_screen="false" x="c" y="m" w="390" h="390"
-         children_layout="default(r=1,c=1)" theme="application_styles">
+<window style="app" full_screen="false" self_layout="default(x=205,y=45,w=390,h=390)" children_layout="default(r=1,c=1)" theme="application_styles">
     <gesture name="app_gesture" x="c" y="m" w="100%" h="100%">
         <slide_menu_v name="app_slide" x="c" y="m" align_h="center" w="100%" h="200%" xoffset="90" min_scale="1" item_height="200" item_width="200" spacing="10">
             <button name="app_calendar" style="app_calendar"/>

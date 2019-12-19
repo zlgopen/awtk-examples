@@ -1,22 +1,18 @@
-<window anim_hint="slide_left" style="music" full_screen="false" x="c" y="m" w="390" h="390"
-        theme="music_styles">
-    <gesture name="music:gesture" x="0" y="0" w="100%" h="100%" >
+<window anim_hint="slide_left" style="music" full_screen="false" self_layout="default(x=205,y=45,w=390,h=390)" theme="music_styles">
+    <gesture name="music:gesture" x="0" y="0" w="100%" h="100%">
         <button name="music:mode" style="music_loop" x="c" y="0" w="282" h="86" />
         <label name="music:song_name" style="song_name" x="c" y="90" w="100%" h="40" text="Shape Of You" />
-        <view x="c" y="172" w="282" h="98" >
-            <button name="music:pre" style="music_pre" x="0" y="m" w="68" h="68"  />
-            <health_circle name="music:progress" x="c" y="m" w="104" h="104"
-                     width="10" color_b="#CA11FF" only_big="true" draggable="true" no_beyond="true"
-                     draw_end_line_b="false" bg_color_b="#00000000"/>
-            <button name="music:pause_play" style="play_play" x="c" y="m" w="98" h="98"  />
+        <view x="c" y="172" w="282" h="98">
+            <button name="music:pre" style="music_pre" x="0" y="m" w="68" h="68" />
+            <health_circle name="music:progress" x="c" y="m" w="104" h="104" width="10" color_b="#CA11FF" only_big="true" draggable="true" no_beyond="true" draw_end_line_b="false" bg_color_b="#00000000"/>
+            <button name="music:pause_play" style="play_play" x="c" y="m" w="98" h="98" />
             <button name="music:next" style="music_next" x="right" y="m" w="68" h="68" />
         </view>
     </gesture>
     <row x="c" y="312" w="213" h="20">
         <image x="0" y="m" w="20" h="18" image="ico_sound"/>
         <view x="30" y="m" w="183" h="20">
-            <slider x="c" y="m" w="100%" h="100%" style="music_vol" name="music:vol" bar_size="20" sensitive="true"
-              min="0" max="100"/>
+            <slider x="c" y="m" w="100%" h="100%" style="music_vol" name="music:vol" bar_size="20" sensitive="true" min="0" max="100"/>
         </view>
     </row>
 </window>

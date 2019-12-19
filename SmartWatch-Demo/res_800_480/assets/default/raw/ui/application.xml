@@ -1,4 +1,4 @@
-<window anim_hint="slide_left" style="black" theme="application_styles" full_screen="false" x="c" y="m" w="390" h="390" >
+<window anim_hint="slide_left" style="black" theme="application_styles" full_screen="false" self_layout="default(x=205,y=45,w=390,h=390)">
     <!--<view name="gesture" x="0" y="0" w="100%" h="100%" children_layout="default(r=1,c=1)">-->
     <view name="gesture" w="100%" h="100%" children_layout="default(r=1,c=1)">
         <!--<view name="app_view" x="c" y="m" w="330" h="330">-->

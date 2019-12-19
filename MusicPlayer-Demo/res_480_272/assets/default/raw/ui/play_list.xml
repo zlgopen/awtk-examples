@@ -1,22 +1,22 @@
-<dialog anim_hint="fade"  self_layout="default(x=240,y=30,w=240,h=201)"  style="bg_setting">
+<dialog self_layout="default(x=480,y=30,w=240,h=201)" animation="move(x_from=480, x_to=240, duration=500)" style="bg_setting">
     <view x="0" y="0" w="100%" h="10%" style="dialog_title_gray">
         <button name="close" x="right:12" y="0" w="17" h="20" style="s_setting_close"/>
-        <label x="9" y="0" w="20%" h="100%" tr_text="PlayList" style="title"/> 
+        <label x="9" y="0" w="20%" h="100%" tr_text="PlayList" style="title"/>
     </view>
-    <list_view name="song_list_view" x="0"  y="16%" w="100%" h="83%" item_height="20" style="empty">
-     <scroll_view name="song_list_scroll" x="0" y="0" w="100%" h="100%" xslidable="FALSE" yslidable="TRUE" style="empty">
-        <list_item name="0_song"  style="empty_list" layout="r1 c0">
-            <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
-            <label w="90%" text="Yellow" style="left_list"/>
-        </list_item>
-        <list_item name="1_song"  style="empty_list" layout="r1 c0">
-            <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
-            <label w="90%" text="see you again" style="left_list"/>
-        </list_item>
-        <list_item name="2_song"  style="empty_list" layout="r1 c0" image="icon_list">
-            <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
-            <label w="90%" text="let it go" style="left_list"/>
-        </list_item>
-     </scroll_view>
+    <list_view name="song_list_view" x="0" y="10%" w="100%" h="83%" item_height="20" style="empty">
+        <scroll_view name="song_list_scroll" x="0" y="0" w="100%" h="100%" xslidable="FALSE" yslidable="TRUE" style="empty">
+            <list_item name="0_song" style="empty_list" layout="r1 c0">
+                <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
+                <label w="90%" text="Yellow" style="left_list"/>
+            </list_item>
+            <list_item name="1_song" style="empty_list" layout="r1 c0">
+                <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
+                <label w="90%" text="see you again" style="left_list"/>
+            </list_item>
+            <list_item name="2_song" style="empty_list" layout="r1 c0" image="icon_list">
+                <image draw_type="icon" w="10%" image="icon_list" visible="FALSE"/>
+                <label w="90%" text="let it go" style="left_list"/>
+            </list_item>
+        </scroll_view>
     </list_view>
 </dialog>

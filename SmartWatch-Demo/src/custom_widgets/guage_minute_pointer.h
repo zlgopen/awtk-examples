@@ -5,6 +5,8 @@ typedef struct _guage_minute_pointer_t {
   widget_t widget;
 
   str_t image;
+  float_t minute;
+
 } guage_minute_pointer_t;
 
 widget_t* guage_minute_pointer_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h);

@@ -69,6 +69,11 @@ def gen_assets_c(assets_dir, assets_c_path):
   result += genIncludes(files, assets_inc_dir)
   result += '#endif/*WITH_STB_IMAGE*/\n'
   
+  result += "#ifdef WITH_VGCANVAS\n"
+  files = glob.glob(joinPath(assets_inc_dir, 'images/*.bsvg'))
+  result += genIncludes(files, assets_inc_dir)
+  result += '#endif/*WITH_VGCANVAS*/\n'
+  
   result += "#if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)\n"
   files=glob.glob(joinPath(assets_inc_dir, 'fonts/*.res'))
   result += genIncludes(files, assets_inc_dir)
@@ -95,6 +100,11 @@ def gen_assets_c(assets_dir, assets_c_path):
   result += genAssetsManagerAdd(assets_inc_dir, 'ui/*.data', 'ui', 'ui_', '.data')
   result += genAssetsManagerAdd(assets_inc_dir, 'strings/*.data', 'strings', 'strings_', '.data')
   result += genAssetsManagerAdd(assets_inc_dir, 'data/*.res', 'data', 'data_', '.res')
+  
+  result += "#ifdef WITH_VGCANVAS\n"
+  result += genAssetsManagerAdd(assets_inc_dir, 'images/*.bsvg', 'images', 'image_', '.bsvg')
+  result += '#endif/*WITH_VGCANVAS*/\n'
+  
   result += '#endif\n'
 
   result += '\n'

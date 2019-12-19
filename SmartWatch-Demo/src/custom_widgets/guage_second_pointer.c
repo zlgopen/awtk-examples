@@ -11,6 +11,17 @@ ret_t guage_second_pointer_set_image(widget_t* widget, const char* name) {
   return RET_OK;
 }
 
+ret_t guage_second_pointer_set_second(widget_t* widget) {
+  date_time_t dt;
+  guage_second_pointer_t* pointer = GUAGE_SECOND_POINTER(widget);
+  return_value_if_fail(pointer != NULL, RET_BAD_PARAMS);
+
+  date_time_init(&dt);
+  pointer->second = dt.second / 60.0 * 360.0;
+
+  return RET_OK;
+}
+
 static ret_t guage_second_pointer_on_paint_self(widget_t* widget, canvas_t* c) {
   return_value_if_fail(widget != NULL && c != NULL, RET_BAD_PARAMS);
   vgcanvas_t* vg = canvas_get_vgcanvas(c);
@@ -24,15 +35,10 @@ static ret_t guage_second_pointer_on_paint_self(widget_t* widget, canvas_t* c) {
     float_t w = widget->w;
     float_t h = widget->h;
 
-    date_time_t dt;
-    date_time_init(&dt);
-
-    float_t second = dt.second / 60.0 * 360.0;
-
     vgcanvas_save(vg);
     vgcanvas_translate(vg, c->ox, c->oy);
     vgcanvas_translate(vg, w / 2.0, h / 2.0);
-    vgcanvas_rotate(vg, TK_D2R(second));
+    vgcanvas_rotate(vg, TK_D2R(pointer->second));
     vgcanvas_transform(vg, 1, 0, 0, 1, -(i_w / 2), -(i_h / 2));
     vgcanvas_draw_image(vg, &image, 0, 0, i_w, i_h, 0, 0, i_w, i_h);
     vgcanvas_restore(vg);
@@ -79,6 +85,9 @@ static const widget_vtable_t s_guage_second_pointer_vtable = {
 
 static ret_t on_timer(const timer_info_t* timer) {
   widget_t* widget = WIDGET(timer->ctx);
+
+  guage_second_pointer_set_second(widget);
+
   widget_invalidate_force(widget, NULL);
   return RET_REPEAT;
 }
@@ -89,6 +98,7 @@ widget_t* guage_second_pointer_create(widget_t* parent, xy_t x, xy_t y, wh_t w, 
   widget->sensitive = FALSE;
   guage_second_pointer_t* pointer = GUAGE_SECOND_POINTER(widget);
   str_init(&(pointer->image), 0);
+  guage_second_pointer_set_second(widget);
   widget_add_timer(widget, on_timer, 1000);
   return widget;
 }

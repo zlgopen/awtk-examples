@@ -24,12 +24,30 @@
 
 #define BUFF_LEN 32
 
+static int32_t g_evt_pointer_down_num;
 
 static ret_t on_close(void* ctx, event_t* e) {
   widget_t* dialog = (widget_t*)ctx;
   (void)e;
 
   return dialog_quit(dialog, RET_QUIT);
+}
+
+static ret_t on_quit_anim(void* ctx, event_t* e) {
+  widget_t* dialog = (widget_t*)ctx;
+  widget_animator_t* animator = NULL;
+  (void)e;
+
+#if LCD_W == 480
+  widget_create_animator(dialog, "move(x_from=240, x_to=480, duration=500)");
+#else
+  widget_create_animator(dialog, "move(x_from=400, x_to=800, duration=500)");
+#endif
+  animator = widget_find_animator(dialog, "move");
+  widget_animator_on(animator, EVT_ANIM_END, on_close, dialog);
+  widget_off(dialog, g_evt_pointer_down_num);
+
+  return RET_OK;
 }
 
 static ret_t on_dialog_state(void* ctx, event_t* e) {
@@ -59,7 +77,7 @@ static ret_t on_guage_pointer_leave(void* ctx, event_t* e) {
 static ret_t on_guage_pointer_up(void* ctx, event_t* e) {
   widget_t* widget_guage_pointer = WIDGET(ctx);
   value_t val;
-  
+
   widget_ungrab(widget_guage_pointer->parent, widget_guage_pointer);
   value_set_bool(&val, FALSE);
   widget_set_prop(widget_guage_pointer, "s_pmove", &val);
@@ -67,7 +85,7 @@ static ret_t on_guage_pointer_up(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static ret_t on_guage_pointer_move(void* ctx, event_t* e) { 
+static ret_t on_guage_pointer_move(void* ctx, event_t* e) {
   char buf_cir[BUFF_LEN] = {0};
   pointer_event_t* evt = (pointer_event_t*)e;
   point_t p = {evt->x, evt->y};
@@ -109,7 +127,7 @@ static ret_t init_widget(void* ctx, const void* iter) {
     const char* name = widget->name;
     if (tk_str_eq(name, "close")) {
       widget_t* dialog = widget_get_window(widget);
-      widget_on(widget, EVT_CLICK, on_close, dialog);
+      widget_on(widget, EVT_CLICK, on_quit_anim, dialog);
     } else if (tk_str_eq(name, "low_guage_pointer")) {
       widget_on(widget, EVT_POINTER_DOWN, on_guage_pointer_down, widget);
       widget_on(widget, EVT_POINTER_MOVE, on_guage_pointer_move, widget);
@@ -148,7 +166,7 @@ static void init_children_widget(widget_t* widget) {
 ret_t open_advanced_dialog() {
   widget_t* dialog = dialog_open("advanced");
   if (dialog) {
-    widget_on(dialog, EVT_POINTER_DOWN, on_dialog_state, dialog);
+    g_evt_pointer_down_num = widget_on(dialog, EVT_POINTER_UP, on_dialog_state, dialog);
     init_children_widget(dialog);
     return dialog_modal(dialog);
   }

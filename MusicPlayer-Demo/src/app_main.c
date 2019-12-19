@@ -48,16 +48,6 @@ int main(void) {
   lcd_h = LCD_H;
 #endif
 
-#if defined(WIN32)
-#if !defined(NDEBUG)
-  {
-    AllocConsole();
-    FILE* fp = NULL;
-    freopen_s(&fp, "CONOUT$", "w+t", stdout);
-  }
-#endif /*NDEBUG*/
-#endif /*WIN32*/
-
 #ifdef WITH_FS_RES
   char res_root[MAX_PATH + 1];
   char app_root[MAX_PATH + 1];
@@ -75,6 +65,8 @@ int main(void) {
 #endif
 
 #endif
+
+  TK_ENABLE_CONSOLE();
 
 //#define WITH_LCD_PORTRAIT 1
 #if defined(USE_GUI_MAIN) && defined(WITH_LCD_PORTRAIT)

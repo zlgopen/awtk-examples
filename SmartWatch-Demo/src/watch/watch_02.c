@@ -9,7 +9,7 @@
 static ret_t on_paint(void* ctx, event_t* e) {
   widget_t* widget = WIDGET(ctx);
   widget_t* window = widget_get_window(widget);
-  (void)window;
+
   paint_event_t* event = (paint_event_t*)e;
   assert(widget != NULL && event != NULL);
   canvas_t* c = event->c;
@@ -28,11 +28,12 @@ static ret_t on_paint(void* ctx, event_t* e) {
   system_info_t* sys_info = system_info();
   uint32_t lcd_w = sys_info->lcd_w;
   uint32_t lcd_h = sys_info->lcd_h;
-  if (lcd_w == 800) {
+
+  if (window->w == 390) {
     float_t d = 242 / 2 - 7;
     date_time_t dt;
     date_time_init(&dt);
-    vgcanvas_translate(vg, lcd_w / 2, lcd_h / 2);
+    vgcanvas_translate(vg, window->x + window->w / 2, window->y + window->h / 2);
 
     size_t i = 0;
     for (i = 0; i <= dt.second; i++) {
@@ -56,7 +57,7 @@ static ret_t on_paint(void* ctx, event_t* e) {
       vgcanvas_stroke(vg);
       vgcanvas_restore(vg);
     }
-  } else if (lcd_w == 480) {
+  } else if (window->w == 240) {
     float_t d = 149 / 2 - 4;
     date_time_t dt;
     date_time_init(&dt);

@@ -26,14 +26,33 @@
 #define BUFF_LEN 32
 
 static float_t val_slider[SLIDER_COUNT] = {50, 50, 50, 50, 50, 50, 50, 50, 50};
-
-
+static int32_t g_evt_pointer_down_num;
 
 static ret_t on_close(void* ctx, event_t* e) {
   widget_t* dialog = (widget_t*)ctx;
   (void)e;
 
   return dialog_quit(dialog, RET_QUIT);
+}
+
+/**
+ * 退出动画
+ */
+static ret_t on_quit_anim(void* ctx, event_t* e) {
+  widget_t* dialog = (widget_t*)ctx;
+  widget_animator_t* animator = NULL;
+  (void)e;
+
+#if LCD_W == 480
+  widget_create_animator(dialog, "move(x_from=240, x_to=480, duration=500)");
+#else
+  widget_create_animator(dialog, "move(x_from=400, x_to=800, duration=500)");
+#endif
+  animator = widget_find_animator(dialog, "move");
+  widget_animator_on(animator, EVT_ANIM_END, on_close, dialog);
+  widget_off(dialog, g_evt_pointer_down_num);
+
+  return RET_OK;
 }
 
 static ret_t on_dialog_state(void* ctx, event_t* e) {
@@ -50,13 +69,13 @@ static ret_t on_dialog_state(void* ctx, event_t* e) {
 }
 
 static ret_t set_series_data(float_t* slider_line, widget_t* widget, uint32_t count) {
-  void* buffer = TKMEM_CALLOC(count, sizeof(float_t)); 
+  void* buffer = TKMEM_CALLOC(count, sizeof(float_t));
   float_t* b = (float_t*)buffer;
 
-  for(int i = 0; i < count; i++){
+  for (int i = 0; i < count; i++) {
     b[i] = slider_line[i];
   }
-  
+
   widget_t* series = widget_lookup(widget, "s1", TRUE);
   series_set(series, 0, buffer, count);
   TKMEM_FREE(buffer);
@@ -95,7 +114,7 @@ static ret_t init_widget(void* ctx, const void* iter) {
       widget_t* dialog = widget_get_window(widget);
 
       if (dialog) {
-        widget_on(widget, EVT_CLICK, on_close, dialog);
+        widget_on(widget, EVT_CLICK, on_quit_anim, dialog);
       }
     } else if (tk_str_eq(name, "frequency_0")) {
       widget_t* dialog = widget_get_window(widget);
@@ -153,7 +172,7 @@ ret_t open_equalizer_dialog() {
   widget_t* dialog = dialog_open("equalizer");
   if (dialog) {
     init_children_widget(dialog);
-    widget_on(dialog, EVT_POINTER_DOWN, on_dialog_state, dialog);
+    g_evt_pointer_down_num = widget_on(dialog, EVT_POINTER_UP, on_dialog_state, dialog);
     widget_t* chart_view = widget_lookup(dialog, "chartview", TRUE);
     if (chart_view) {
       set_series_data(val_slider, chart_view, SLIDER_COUNT);

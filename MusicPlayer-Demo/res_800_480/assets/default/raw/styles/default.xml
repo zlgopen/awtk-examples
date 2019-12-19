@@ -15,23 +15,23 @@
     </style>
 </window>
 <switch>
-  <style name="default">
-    <normal  bg_image="switch" />
-  </style>
+    <style name="default">
+        <normal bg_image="switch" />
+    </style>
 </switch>
 <progress_circle>
     <style name="default">
         <normal text_color="green" fg_color="black" />
     </style>
     <style name="blue">
-        <normal text_color="green"  fg_color="#00fffc" />
+        <normal text_color="green" fg_color="#00fffc" />
     </style>
-     <style name="image">
+    <style name="image">
         <normal text_color="gold" fg_image="progress_circle" />
     </style>
-     <style name="cd_image">
+    <style name="cd_image">
         <normal text_color="gold" fg_image="cd_image" />
-    </style>    
+    </style>
 </progress_circle>
 
 <label>
@@ -139,12 +139,12 @@
         <normal icon = "eq_n" />
         <pressed icon = "eq_n"/>
         <over icon = "eq_n"/>
-    </style>    
+    </style>
     <style name="s_advanced">
         <normal icon = "advanced_n" />
         <pressed icon = "advanced_n"/>
         <over icon = "advanced_n"/>
-    </style>  
+    </style>
     <style name="s_setting">
         <normal icon = "setting_n" />
         <pressed icon = "setting_p"/>
@@ -158,7 +158,7 @@
     <style name="s_play_lyric">
         <normal icon = "CD_1" />
         <pressed icon = "CD_1"/>
-        <over icon = "CD_1"/> 
+        <over icon = "CD_1"/>
     </style>
     <style name="s_play_mode_clicle">
         <normal icon = "mode_circleall_n" />
@@ -179,7 +179,7 @@
         <normal icon = "play_list_n" />
         <pressed icon = "play_list_n"/>
         <over icon = "play_list_n"/>
-    </style>	
+    </style>
     <style name="s_play_prve">
         <normal icon = "play_prve_n" />
         <pressed icon = "play_prve_n"/>
@@ -199,7 +199,7 @@
         <normal icon = "play_pause_n" />
         <pressed icon = "play_pause_n"/>
         <over icon = "play_pause_n"/>
-    </style>   
+    </style>
     <style name="empty">
         <normal />
         <pressed />
@@ -276,12 +276,12 @@
         <pressed bg_color="#a0a0a0" border_color="#ffa700" fg_color="blue"/>
         <over bg_color="#a0a0a0" border_color="#ffe700" fg_color="blue"/>
     </style>
-    <style name="slider_h"  bg_image="slider_bg" fg_image="slider_fg">
+    <style name="slider_h" bg_color="#FFFFFF" fg_color="#00fffc">
         <normal icon="slider_drag" />
         <pressed icon="slider_drag" />
         <over icon="slider_drag" />
     </style>
-    <style name="slider_v" bg_image="slider_v_bg" bg_image_draw_type="patch3_y" fg_image="slider_v_fg" fg_image_draw_type="patch3_y"  >
+    <style name="slider_v" bg_color="#4b84e0" fg_color="#00fffc">
         <normal icon="slider_drag" />
         <pressed icon="slider_drag"/>
         <over icon="slider_drag"/>
@@ -341,7 +341,7 @@
 </radio_button>
 <image>
     <style name="default">
-        <normal   text_color="white"/>
+        <normal text_color="white"/>
     </style>
     <style name="border">
         <normal bg_color="#e0e0e0" border_color="#000000" text_color="black"/>
@@ -354,7 +354,7 @@
 </image>
 <dialog>
     <style name="default">
-        <normal bg_color="white"/>
+        <normal />
     </style>
     <style name="black">
         <normal bg_color="black"/>
@@ -363,7 +363,7 @@
         <normal bg_image="bg_play_list"/>
     </style>
     <style name="bg_setting">
-        <normal  bg_color="#313986"/>
+        <normal bg_color="#313986"/>
     </style>
 </dialog>
 <dialog_title>
@@ -459,8 +459,8 @@
         <over bg_color="#2a2d2e"/>
         <normal_of_active bg_color="#202020" text_color="white"/>
         <pressed_of_active bg_color="#202020" text_color="white"/>
-        <over_of_active  bg_color="#202020" text_color="white"/>
-    </style> 
+        <over_of_active bg_color="#202020" text_color="white"/>
+    </style>
 </tab_button>
 <tab_button_group>
     <style name="default">
@@ -519,7 +519,7 @@
         <normal/>
     </style>
     <style name="lrc_yellow" text_color="white">
-        <normal     bg_color="#fce6c4" />
+        <normal bg_color="#fce6c4" />
     </style>
 </list_view>
 <scroll_view>
@@ -535,22 +535,25 @@
 </scroll_view>
 <candidates>
     <style name="default">
-        <normal     bg_color="yellow" />
+        <normal bg_color="yellow" />
     </style>
 </candidates>
 <view>
     <style name="title_yellow">
-        <normal     bg_color="#f8b557" />
-    </style>    
+        <normal bg_color="#f8b557" />
+    </style>
     <style name="bg_main_left">
-        <normal     bg_color="#e3d6d5" />
-    </style> 
+        <normal bg_color="#e3d6d5" />
+    </style>
     <style name="bg_main_right">
-        <normal     bg_color="#fce6c4" />
-    </style>       
+        <normal bg_color="#fce6c4" />
+    </style>
     <style name="dialog_title_gray">
-        <normal     bg_color="#4061bd" />
-    </style>        
+        <normal bg_color="#4061bd" />
+    </style>
+    <style name="bg_setting">
+        <normal bg_color="#313986"/>
+    </style>
 </view>
 
 <chart_view>
@@ -560,36 +563,36 @@
 </chart_view>
 <bar_series>
     <style name="edge1">
-        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+        <normal margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
     </style>
     <style name="spacing">
-        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+        <normal margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
     </style>
     <style name="edge2">
-        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+        <normal margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
     </style>
     <style name="overlap">
-        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+        <normal margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
     </style>
     <style name="overlap_small">
-        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+        <normal margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
     </style>
 </bar_series>
 <bar_series_minmax>
     <style name="margin_left">
-        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+        <normal margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
     </style>
     <style name="spacing">
-        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+        <normal margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
     </style>
     <style name="margin_right">
-        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+        <normal margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
     </style>
     <style name="overlap">
-        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+        <normal margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
     </style>
     <style name="overlap_small">
-        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+        <normal margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
     </style>
 </bar_series_minmax>
 <axis_split_line>

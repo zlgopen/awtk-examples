@@ -42,6 +42,10 @@
 #include "assets/default/inc/images/yellow.res"
 #else
 #endif/*WITH_STB_IMAGE*/
+#ifdef WITH_VGCANVAS
+#include "assets/default/inc/images/pointer.bsvg"
+#include "assets/default/inc/images/round.bsvg"
+#endif/*WITH_VGCANVAS*/
 #if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)
 #include "assets/default/inc/fonts/default.res"
 #else/*WITH_STB_FONT or WITH_FT_FONT*/
@@ -94,6 +98,10 @@ ret_t assets_init(void) {
   assets_manager_add(rm, data_let_it_go_bin);
   assets_manager_add(rm, data_see_you_again_bin);
   assets_manager_add(rm, data_yellow_bin);
+#ifdef WITH_VGCANVAS
+  assets_manager_add(rm, image_pointer);
+  assets_manager_add(rm, image_round);
+#endif/*WITH_VGCANVAS*/
 #endif
 
   tk_init_assets();

@@ -152,21 +152,29 @@ static ret_t on_dial_long_pressed(void* ctx, event_t* e) {
 static ret_t on_paint_fg(void* ctx, event_t* e) {
   canvas_t* c = ((paint_event_t*)e)->c;
   bitmap_t img;
-  widget_load_image(WIDGET(ctx), "ico_background2", &img);
+  widget_t* wm = WIDGET(ctx);
+  widget_t* win = window_manager_get_top_window(WINDOW_MANAGER(wm), 0);
+
+    widget_load_image(wm, "ico_background2", &img);
 
   rect_t s = {0, 0, img.w, img.h};
 
   system_info_t* sys_info = system_info();
   uint32_t lcd_w = sys_info->lcd_w;
-  if (lcd_w == 800) {
+  uint32_t lcd_h = sys_info->lcd_h;
+
+  if (win->w == 390) {
     rect_t d = {189, 0, img.w, img.h};
     canvas_draw_image(c, &img, &s, &d);
     canvas_save(c);
     canvas_set_fill_color_str(c, "black");
-    canvas_fill_rect(c, 0, 0, 189, 480);
-    canvas_fill_rect(c, 629, 0, 171, 480);
+    canvas_fill_rect(c, 0, 0, 189, lcd_h);
+
+    canvas_fill_rect(c, 629, 0, lcd_w - 629, lcd_h);
+    canvas_fill_rect(c, 0, 480, lcd_w, lcd_h - 480);
+
     canvas_restore(c);
-  } else if (lcd_w == 480) {
+  } else if (win->w == 240) {
     rect_t d = {(480 - 272) / 2 + 6, 0, img.w, img.h};
     canvas_draw_image(c, &img, &s, &d);
     canvas_save(c);

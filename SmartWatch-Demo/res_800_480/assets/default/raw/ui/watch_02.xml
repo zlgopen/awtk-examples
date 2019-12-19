@@ -1,5 +1,4 @@
-<window style="watch_02" full_screen="false" x="c" y="m" w="390" h="390"
-        children_layout="default(r=1,c=1)" theme="watch_02_styles">
+<window style="watch_02" full_screen="false" self_layout="default(x=205,y=45,w=390,h=390)" children_layout="default(r=1,c=1)" theme="watch_02_styles">
     <gesture name="gesture" x="c" y="m" w="100%" h="100%">
         <view x="c" y="78" w="242" h="242">
             <digit_clock x="c" y="73" w="166" h="52" format="hh:mm" style="time"/>

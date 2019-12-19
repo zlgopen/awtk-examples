@@ -1,23 +1,15 @@
-<window full_screen="false" x="c" y="m" w="390" h="390"
-        children_layout="default(r=1,c=1)" theme="watch_01_styles"
-        style="watch_01">
+<window full_screen="false" self_layout="default(x=205,y=45,w=390,h=390)" children_layout="default(r=1,c=1)" theme="watch_01_styles" style="watch_01">
     <gesture name="gesture" x="c" y="m" w="100%" h="100%">
-        <guage x="c" y="m" w="100%" h="100%" image="ico_watch_background_01" >
+        <guage x="c" y="m" w="100%" h="100%" image="ico_watch_background_01">
             <button name="battery" x="87" y="118" w="88" h="88" style="disable">
-                <health_circle name="watch_01_battery" x="c" y="m" w="86" h="86" width="12" only_big="true"
-                       color_b="#FF6500" value_b="0" max_b="100" smooth_end="false" smooth_start="false"/>
+                <health_circle name="watch_01_battery" x="c" y="m" w="86" h="86" width="12" only_big="true" color_b="#FF6500" value_b="0" max_b="100" smooth_end="false" smooth_start="false"/>
                 <label name="watch_01_battery_value" x="c" y="47" w="29" h="14" text="" style="center_middle"/>
             </button>
-            <button name="weather" style="enable"
-              enable_long_press="true"
-              x="214" y="130" w="82" h="82">
+            <button name="weather" style="enable" enable_long_press="true" x="214" y="130" w="82" h="82">
                 <label name="day" style="center_middle" x="30%" y="47" w="54" h="17" text="18~24°"/>
             </button>
-            <button name="foot" style="enable"
-              enable_long_press="true"
-              x="142" y="217" w="106" h="106">
-                <health_circle name="watch_01_foot" x="c" y="m" w="104" h="104" width="12" only_big="true"
-                       color_b="#FF6500" value_b="0" max_b="20000" smooth_end="false" smooth_start="false"/>
+            <button name="foot" style="enable" enable_long_press="true" x="142" y="217" w="106" h="106">
+                <health_circle name="watch_01_foot" x="c" y="m" w="104" h="104" width="12" only_big="true" color_b="#FF6500" value_b="0" max_b="20000" smooth_end="false" smooth_start="false"/>
                 <label name="watch_01_foot_value" x="c" y="61" w="51" h="16" text="0" style="watch_01_foot_value"/>
             </button>
             <guage_hour_pointer sensitive="false" x="c" y="m" w="100%" h="100%" image="ico_watch_01_hour"/>

@@ -22,7 +22,6 @@
 #include "custom_widgets/custom_widgets.h"
 #include "custom_function/music_manager.h"
 #include "custom_function/player_timer_manager.h"
-#include "custom_widgets/photo_frame/frame_view.h"
 #include "ext_widgets/image_animation/image_animation.h"
 #include "widget_animators/widget_animator_opacity.h"
 #include "widget_animators/widget_animator_rotation.h"
@@ -32,9 +31,11 @@
 extern ret_t open_advanced_dialog();
 extern ret_t open_equalizer_dialog();
 extern ret_t open_play_list_window(widget_t* s_parent);
-extern ret_t swtich_frame_rotation_animator(widget_t* win, bool_t start_anim);
+extern ret_t swtich_rotation_animator(widget_t* win, bool_t start_anim);
 
 extern ret_t application_init(void);
+
+int32_t g_img_index = 0;
 
 static ret_t on_advanced_open(void* ctx, event_t* e) {
   (void)e;
@@ -51,33 +52,46 @@ static ret_t on_equalizer_open(void* ctx, event_t* e) {
 /**
  * 封面旋转动画
  */
-ret_t swtich_frame_rotation_animator(widget_t* win, bool_t start_anim) {
+ret_t swtich_rotation_animator(widget_t* win, bool_t start_anim) {
   return_value_if_fail(win != NULL, RET_BAD_PARAMS);
-  widget_t* frame_menu = widget_lookup(win, "frame_menu", TRUE);
-  frame_view_t* frame_view = FRAME_VIEW(frame_menu);
+  widget_t* cover_view = widget_lookup(win, "cover_view", TRUE);
   widget_t* btn_anim_switch = widget_lookup(win, "btn_anim_switch", TRUE);
 
-  widget_t* frame_child = frame_menu->children->elms[frame_view->value];
+  WIDGET_FOR_EACH_CHILD_BEGIN(cover_view, iter, i)
   if (start_anim && tk_str_eq(btn_anim_switch->style, "s_anim_switch_p")) {
-    widget_create_animator(frame_child->children->elms[0],
-                           "rotation(from=0, to=628,  duration=800000, repeat_times=0)");
+    widget_create_animator(
+        iter->children->elms[0],
+        "rotation(from=0, to=6.28,  duration=8000, repeat_times=0, easing=linear)");
   } else {
-    widget_stop_animator(frame_child->children->elms[0], "rotation");
-    widget_destroy_animator(frame_child->children->elms[0], "rotation");
+    widget_stop_animator(iter->children->elms[0], "rotation");
+    widget_destroy_animator(iter->children->elms[0], "rotation");
   }
+  WIDGET_FOR_EACH_CHILD_END()
+
   return RET_OK;
 }
 
 /**
  * 唱针动画
  */
-ret_t swtich_frame_vinyl_head_animator(widget_t* win, bool_t start_anim) {
-  return_value_if_fail(win != NULL, RET_BAD_PARAMS);
+ret_t swtich_vinyl_head_animator(widget_t* win, bool_t start_anim, bool_t is_yoyo) {
   widget_t* vinyl_head = widget_lookup(win, "vinyl_head", TRUE);
+  return_value_if_fail(vinyl_head != NULL, RET_BAD_PARAMS);
+
   if (start_anim) {
-    widget_create_animator(vinyl_head, "value(from=-70, to=-35, duration=300, delay=0)");
+    if (is_yoyo) {
+      widget_create_animator(vinyl_head,
+                             "value(from=-70, to=-35, duration=500, yoyo_times=2, delay=0)");
+    } else {
+      widget_create_animator(vinyl_head, "value(from=-70, to=-35, duration=500, delay=0)");
+    }
   } else {
-    widget_create_animator(vinyl_head, "value(from=-35, to=-70, duration=300, delay=0)");
+    if (is_yoyo) {
+      widget_create_animator(vinyl_head,
+                             "value(from=-35, to=-70, duration=500, yoyo_times=2, delay=0)");
+    } else {
+      widget_create_animator(vinyl_head, "value(from=-35, to=-70, duration=500, delay=0)");
+    }
   }
 
   return RET_OK;
@@ -89,23 +103,24 @@ ret_t swtich_frame_vinyl_head_animator(widget_t* win, bool_t start_anim) {
 static ret_t on_anim_switch(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
   widget_t* widget = WIDGET(e->target);
-  return_value_if_fail(widget != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(win != NULL && widget != NULL, RET_BAD_PARAMS);
   widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
 
   if (tk_str_eq(widget->style, "s_anim_switch_n")) {
     widget_use_style(widget, "s_anim_switch_p");
     if (tk_str_eq(btn_play->style, "s_play_pause")) {
-      swtich_frame_rotation_animator(win, TRUE);
+      swtich_rotation_animator(win, TRUE);
     }
   } else if (tk_str_eq(widget->style, "s_anim_switch_p")) {
     widget_use_style(widget, "s_anim_switch_n");
-    swtich_frame_rotation_animator(win, FALSE);
+    swtich_rotation_animator(win, FALSE);
   } else {
     return RET_FAIL;
   }
 
   return RET_OK;
 }
+
 static ret_t on_play_list(void* ctx, event_t* e) {
   (void)e;
   widget_t* win = (widget_t*)ctx;
@@ -138,7 +153,8 @@ static ret_t on_lrc_down(void* ctx, event_t* e) {
 static void time_now_str(char* str, size_t size) {
   date_time_t dt;
   date_time_init(&dt);
-  snprintf(str, size, "%04d/%02d/%02d %02d:%02d:%02d", dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second);
+  snprintf(str, size, "%04d/%02d/%02d %02d:%02d:%02d", dt.year, dt.month, dt.day, dt.hour,
+           dt.minute, dt.second);
 }
 
 /**
@@ -163,16 +179,17 @@ static ret_t on_systime_update(const timer_info_t* timer) {
 static ret_t on_music_play(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
   widget_t* btn_play = WIDGET(e->target);
+  return_value_if_fail(win != NULL && btn_play != NULL, RET_BAD_PARAMS);
 
   if (tk_str_eq(btn_play->style, "s_play_pause")) {
-    swtich_frame_vinyl_head_animator(win, FALSE);
-    swtich_frame_rotation_animator(win, FALSE);
+    swtich_vinyl_head_animator(win, FALSE, FALSE);
+    swtich_rotation_animator(win, FALSE);
     widget_use_style(btn_play, "s_play");
     player_timer_clear(win);
 
   } else if (tk_str_eq(btn_play->style, "s_play")) {
-    swtich_frame_vinyl_head_animator(win, TRUE);
-    swtich_frame_rotation_animator(win, TRUE);
+    swtich_vinyl_head_animator(win, TRUE, FALSE);
+    swtich_rotation_animator(win, TRUE);
     widget_use_style(btn_play, "s_play_pause");
     player_timer_clear(win);
     player_timer_start(win);
@@ -182,13 +199,74 @@ static ret_t on_music_play(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static ret_t on_frame_menu_vchange(void* ctx, event_t* e) {
-  widget_t* win = WIDGET(ctx);
-  widget_t* frame_menu = WIDGET(e->target);
-  frame_view_t* frame_view = FRAME_VIEW(frame_menu);
-  init_player(win);
-  swtich_frame_rotation_animator(win, TRUE);
-  load_song(win, frame_view->value, TRUE);
+static widget_t* get_prev_child(widget_t* widget, int32_t index) {
+  int32_t nr = widget_count_children(widget);
+  if (index == 0) {
+    return widget_get_child(widget, nr - 1);
+  } else {
+    return widget_get_child(widget, index - 1);
+  }
+}
+
+static widget_t* get_next_child(widget_t* widget, int32_t index) {
+  int32_t nr = widget_count_children(widget);
+  if (index == nr - 1) {
+    return widget_get_child(widget, 0);
+  } else {
+    return widget_get_child(widget, index + 1);
+  }
+}
+
+/**
+ * 封面切换
+ */
+static ret_t changed_cover(widget_t* widget, bool_t next) {
+  widget_t* child = widget_get_child(widget, g_img_index);
+  widget_t* prev_child = get_prev_child(widget, g_img_index);
+  widget_t* next_child = get_next_child(widget, g_img_index);
+  int32_t nr = widget_count_children(widget);
+  char anim_params[100] = {0};
+  widget_animator_t* wa = NULL;
+
+  WIDGET_FOR_EACH_CHILD_BEGIN(widget, child, index)
+  wa = widget_find_animator(child, "move");
+  if (wa != NULL) {
+    widget_destroy_animator(child, "move");
+    if (child == prev_child || child == next_child) {
+      child->x = widget->x + widget->w;
+    }
+  }
+  WIDGET_FOR_EACH_CHILD_END()
+
+  if (next) {
+    tk_snprintf(anim_params, sizeof(anim_params), "move(x_from=%d, x_to=%d, duration=1000)",
+                widget->x, widget->x - widget->w);
+    widget_create_animator(child, anim_params);
+
+    memset(anim_params, 0, sizeof(anim_params));
+    tk_snprintf(anim_params, sizeof(anim_params), "move(x_from=%d, x_to=%d, duration=1000)",
+                widget->x + widget->w, widget->x);
+    widget_create_animator(next_child, anim_params);
+
+    g_img_index++;
+    if (g_img_index == nr) {
+      g_img_index = 0;
+    }
+  } else {
+    tk_snprintf(anim_params, sizeof(anim_params), "move(x_from=%d, x_to=%d, duration=1000)",
+                widget->x, widget->x + widget->w);
+    widget_create_animator(child, anim_params);
+
+    memset(anim_params, 0, sizeof(anim_params));
+    tk_snprintf(anim_params, sizeof(anim_params), "move(x_from=%d, x_to=%d, duration=1000)",
+                widget->x - widget->w, widget->x);
+    widget_create_animator(prev_child, anim_params);
+
+    g_img_index--;
+    if (g_img_index < 0) {
+      g_img_index = nr - 1;
+    }
+  }
 
   return RET_OK;
 }
@@ -198,11 +276,20 @@ static ret_t on_frame_menu_vchange(void* ctx, event_t* e) {
  */
 static ret_t on_prve_music(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
-  widget_t* frame_menu = widget_lookup(win, "frame_menu", TRUE);
+  widget_t* cover_view = widget_lookup(win, "cover_view", TRUE);
+  widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
+  return_value_if_fail(win != NULL && cover_view != NULL && btn_play != NULL, RET_BAD_PARAMS);
 
-  swtich_frame_vinyl_head_animator(win, TRUE);
-  swtich_frame_rotation_animator(win, FALSE);
-  frame_view_set_then(frame_menu, FALSE);
+  if (tk_str_eq(btn_play->style, "s_play_pause")) {
+    swtich_vinyl_head_animator(win, FALSE, TRUE);
+  } else {
+    swtich_vinyl_head_animator(win, TRUE, FALSE);
+    swtich_rotation_animator(win, TRUE);
+  }
+
+  changed_cover(cover_view, FALSE);
+  init_player(win);
+  load_song(win, g_img_index, TRUE);
 
   return RET_OK;
 }
@@ -212,11 +299,20 @@ static ret_t on_prve_music(void* ctx, event_t* e) {
  */
 static ret_t on_next_music(void* ctx, event_t* e) {
   widget_t* win = (widget_t*)ctx;
-  widget_t* frame_menu = widget_lookup(win, "frame_menu", TRUE);
+  widget_t* cover_view = widget_lookup(win, "cover_view", TRUE);
+  widget_t* btn_play = widget_lookup(win, "btn_play", TRUE);
+  return_value_if_fail(win != NULL && cover_view != NULL && btn_play != NULL, RET_BAD_PARAMS);
 
-  swtich_frame_vinyl_head_animator(win, TRUE);
-  swtich_frame_rotation_animator(win, FALSE);
-  frame_view_set_then(frame_menu, TRUE);
+  if (tk_str_eq(btn_play->style, "s_play_pause")) {
+    swtich_vinyl_head_animator(win, FALSE, TRUE);
+  } else {
+    swtich_vinyl_head_animator(win, TRUE, FALSE);
+    swtich_rotation_animator(win, TRUE);
+  }
+
+  changed_cover(cover_view, TRUE);
+  init_player(win);
+  load_song(win, g_img_index, TRUE);
 
   return RET_OK;
 }
@@ -290,9 +386,6 @@ static ret_t init_widget(void* ctx, const void* iter) {
     } else if (tk_str_eq(name, "btn_play_mode")) {
       widget_t* win = widget_get_window(widget);
       widget_on(widget, EVT_CLICK, on_play_mode, win);
-    } else if (tk_str_eq(name, "frame_menu")) {
-      widget_t* win = widget_get_window(widget);
-      widget_on(widget, EVT_VALUE_CHANGED, on_frame_menu_vchange, win);
     }
   }
   return RET_OK;
@@ -309,15 +402,21 @@ static void init_children_widget(widget_t* widget) {
  * 打开主界面窗口
  */
 ret_t application_init(void) {
-  
   /* 初始化自定义控件 */
   custom_widgets_init();
 
   widget_t* win = window_open("main");
   if (win) {
     init_children_widget(win);
-    load_song(win, 0, FALSE);
+    load_song(win, 0, TRUE);
+    swtich_rotation_animator(win, TRUE);
     timer_add(on_systime_update, win, 1000);
+
+#if 0
+    widget_t* widget = window_manager();
+    window_manager_set_show_fps(widget, TRUE);
+#endif
+
     return RET_OK;
   }
 

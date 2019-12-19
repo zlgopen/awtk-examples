@@ -15,7 +15,7 @@
     <row x="c" y="192" w="131" h="12">
         <image x="0" y="m" w="12" h="11" image="ico_sound"/>
         <view x="18" y="m" w="113" h="12">
-            <slider x="c" y="m" w="100%" h="100%" style="music_vol" name="music:vol" bar_size="20" sensitive="true"
+            <slider x="c" y="m" w="100%" h="100%" style="music_vol" name="music:vol" bar_size="12" sensitive="true"
               min="0" max="100"/>
         </view>
     </row>

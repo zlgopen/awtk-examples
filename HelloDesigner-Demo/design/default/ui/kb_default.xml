@@ -1,0 +1,558 @@
+<keyboard theme="keyboard" x="0" y="bottom" w="100%" h="40%" name="kb_default">
+  <column style="placeholder" x="0" y="0" w="100%" h="15%">
+    <candidates x="0" y="0" w="-20" h="100%"/>
+    <button name="close" style="default" x="r:2" y="m" w="16" h="16" text="X"/>
+  </column>
+  <pages x="0" y="bottom" w="100%" h="85%" active="0">
+    <view name="upper" children_layout="default(r=4,c=1)" x="c" y="m" w="100%" h="96%">
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button repeat="300" name="Q" x="c" y="m" w="90%" h="90%" text="Q"/>
+        </view>
+        <view>
+          <button repeat="300" name="W" x="c" y="m" w="90%" h="90%" text="W"/>
+        </view>
+        <view>
+          <button repeat="300" name="E" x="c" y="m" w="90%" h="90%" text="E"/>
+        </view>
+        <view>
+          <button repeat="300" name="R" x="c" y="m" w="90%" h="90%" text="R"/>
+        </view>
+        <view>
+          <button repeat="300" name="T" x="c" y="m" w="90%" h="90%" text="T"/>
+        </view>
+        <view>
+          <button repeat="300" name="Y" x="c" y="m" w="90%" h="90%" text="Y"/>
+        </view>
+        <view>
+          <button repeat="300" name="U" x="c" y="m" w="90%" h="90%" text="U"/>
+        </view>
+        <view>
+          <button repeat="300" name="I" x="c" y="m" w="90%" h="90%" text="I"/>
+        </view>
+        <view>
+          <button repeat="300" name="O" x="c" y="m" w="90%" h="90%" text="O"/>
+        </view>
+        <view>
+          <button repeat="300" name="P" x="c" y="m" w="90%" h="90%" text="P"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=9)" x="c" y="m" w="90%" h="100%">
+        <view>
+          <button repeat="300" name="A" x="c" y="m" w="90%" h="84%" text="A"/>
+        </view>
+        <view>
+          <button repeat="300" name="S" x="c" y="m" w="90%" h="90%" text="S"/>
+        </view>
+        <view>
+          <button repeat="300" name="D" x="c" y="m" w="90%" h="90%" text="D"/>
+        </view>
+        <view>
+          <button repeat="300" name="F" x="c" y="m" w="90%" h="90%" text="F"/>
+        </view>
+        <view>
+          <button repeat="300" name="G" x="c" y="m" w="90%" h="90%" text="G"/>
+        </view>
+        <view>
+          <button repeat="300" name="H" x="c" y="m" w="90%" h="90%" text="H"/>
+        </view>
+        <view>
+          <button repeat="300" name="J" x="c" y="m" w="90%" h="90%" text="J"/>
+        </view>
+        <view>
+          <button repeat="300" name="K" x="c" y="m" w="90%" h="90%" text="K"/>
+        </view>
+        <view>
+          <button repeat="300" name="L" x="c" y="m" w="90%" h="90%" text="L"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0" x="c" y="m" w="98%" h="100%">
+        <view w="15%" h="100%">
+          <button name="page:lower" style="default" x="c" y="m" w="93%" h="90%" text="ShiftOff"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="Z" x="c" y="m" w="90%" h="90%" text="Z"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="X" x="c" y="m" w="90%" h="90%" text="X"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="C" x="c" y="m" w="90%" h="90%" text="C"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="V" x="c" y="m" w="90%" h="90%" text="V"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="B" x="c" y="m" w="90%" h="90%" text="B"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="N" x="c" y="m" w="90%" h="90%" text="N"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="M" x="c" y="m" w="90%" h="90%" text="M"/>
+        </view>
+        <view w="15%" h="100%">
+          <button repeat="300" name="key:backspace" style="default" x="c" y="m" w="93%" h="90%" text="Backspace"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:symnum" style="default" x="c" y="m" w="93%" h="90%" text="123"/>
+        </view>
+        <view w="18%" h="100%">
+          <button name="page:chinese" style="default" x="c" y="m" w="93%" h="90%">
+            <label style="text_align_right" x="0" w="50%" h="100%" style:normal:text_align_h="right" text="EN"/>
+            <label style="text_align_left" x="r" w="50%" h="100%" style:normal:text_align_h="left" text="/中"/>
+          </button>
+        </view>
+        <view w="39%" h="100%">
+          <button repeat="300" name="space" x="c" y="m" w="96%" h="90%" text="Space"/>
+        </view>
+        <view w="25%" h="100%">
+          <button name="action" style="default" x="c" y="m" w="95%" h="90%" text="Return"/>
+        </view>
+      </group_box>
+    </view>
+    <view name="lower" children_layout="default(r=4,c=1)" x="c" y="m" w="100%" h="96%">
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button repeat="300" name="q" x="c" y="m" w="90%" h="90%" text="q"/>
+        </view>
+        <view>
+          <button repeat="300" name="w" x="c" y="m" w="90%" h="90%" text="w"/>
+        </view>
+        <view>
+          <button repeat="300" name="e" x="c" y="m" w="90%" h="90%" text="e"/>
+        </view>
+        <view>
+          <button repeat="300" name="r" x="c" y="m" w="90%" h="90%" text="r"/>
+        </view>
+        <view>
+          <button repeat="300" name="t" x="c" y="m" w="90%" h="90%" text="t"/>
+        </view>
+        <view>
+          <button repeat="300" name="y" x="c" y="m" w="90%" h="90%" text="y"/>
+        </view>
+        <view>
+          <button repeat="300" name="u" x="c" y="m" w="90%" h="90%" text="u"/>
+        </view>
+        <view>
+          <button repeat="300" name="i" x="c" y="m" w="90%" h="90%" text="i"/>
+        </view>
+        <view>
+          <button repeat="300" name="o" x="c" y="m" w="90%" h="90%" text="o"/>
+        </view>
+        <view>
+          <button repeat="300" name="p" x="c" y="m" w="90%" h="90%" text="p"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=9)" x="c" y="m" w="90%" h="100%">
+        <view>
+          <button repeat="300" name="a" x="c" y="m" w="90%" h="84%" text="a"/>
+        </view>
+        <view>
+          <button repeat="300" name="s" x="c" y="m" w="90%" h="90%" text="s"/>
+        </view>
+        <view>
+          <button repeat="300" name="d" x="c" y="m" w="90%" h="90%" text="d"/>
+        </view>
+        <view>
+          <button repeat="300" name="f" x="c" y="m" w="90%" h="90%" text="f"/>
+        </view>
+        <view>
+          <button repeat="300" name="g" x="c" y="m" w="90%" h="90%" text="g"/>
+        </view>
+        <view>
+          <button repeat="300" name="h" x="c" y="m" w="90%" h="90%" text="h"/>
+        </view>
+        <view>
+          <button repeat="300" name="j" x="c" y="m" w="90%" h="90%" text="j"/>
+        </view>
+        <view>
+          <button repeat="300" name="k" x="c" y="m" w="90%" h="90%" text="k"/>
+        </view>
+        <view>
+          <button repeat="300" name="l" x="c" y="m" w="90%" h="90%" text="l"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="15%" h="100%">
+          <button name="page:upper" style="default" x="c" y="m" w="93%" h="90%" text="ShiftOn"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="z" x="c" y="m" w="90%" h="90%" text="z"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="x" x="c" y="m" w="90%" h="90%" text="x"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="c" x="c" y="m" w="90%" h="90%" text="c"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="v" x="c" y="m" w="90%" h="90%" text="v"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="b" x="c" y="m" w="90%" h="90%" text="b"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="n" x="c" y="m" w="90%" h="90%" text="n"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="m" x="c" y="m" w="90%" h="90%" text="m"/>
+        </view>
+        <view w="15%" h="100%">
+          <button repeat="300" name="key:backspace" style="default" x="c" y="m" w="93%" h="90%" text="Backspace"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:symnum" style="default" x="c" y="m" w="93%" h="90%" text="123"/>
+        </view>
+        <view w="18%" h="100%">
+          <button name="page:chinese" style="default" x="c" y="m" w="93%" h="90%">
+            <label style="text_align_right" x="0" w="50%" h="100%" style:normal:text_align_h="right" text="EN"/>
+            <label style="text_align_left" x="r" w="50%" h="100%" style:normal:text_align_h="left" text="/中"/>
+          </button>
+        </view>
+        <view w="39%" h="100%">
+          <button repeat="300" name="space" x="c" y="m" w="96%" h="90%" text="Space"/>
+        </view>
+        <view w="25%" h="100%">
+          <button name="action" style="default" x="c" y="m" w="95%" h="90%" text="Return"/>
+        </view>
+      </group_box>
+    </view>
+    <view name="symnum" children_layout="default(r=4,c=1)" x="c" y="m" w="100%" h="96%">
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button repeat="300" name="1" x="c" y="m" w="90%" h="90%" text="1"/>
+        </view>
+        <view>
+          <button repeat="300" name="2" x="c" y="m" w="90%" h="90%" text="2"/>
+        </view>
+        <view>
+          <button repeat="300" name="3" x="c" y="m" w="90%" h="90%" text="3"/>
+        </view>
+        <view>
+          <button repeat="300" name="4" x="c" y="m" w="90%" h="90%" text="4"/>
+        </view>
+        <view>
+          <button repeat="300" name="5" x="c" y="m" w="90%" h="90%" text="5"/>
+        </view>
+        <view>
+          <button repeat="300" name="6" x="c" y="m" w="90%" h="90%" text="6"/>
+        </view>
+        <view>
+          <button repeat="300" name="7" x="c" y="m" w="90%" h="90%" text="7"/>
+        </view>
+        <view>
+          <button repeat="300" name="8" x="c" y="m" w="90%" h="90%" text="8"/>
+        </view>
+        <view>
+          <button repeat="300" name="9" x="c" y="m" w="90%" h="90%" text="9"/>
+        </view>
+        <view>
+          <button repeat="300" name="0" x="c" y="m" w="90%" h="90%" text="0"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="94%" h="100%">
+        <view>
+          <button repeat="300" name="-" x="c" y="m" w="90%" h="84%" text="-"/>
+        </view>
+        <view>
+          <button repeat="300" name="/" x="c" y="m" w="90%" h="90%" text="/"/>
+        </view>
+        <view>
+          <button repeat="300" name=":" x="c" y="m" w="90%" h="90%" text=":"/>
+        </view>
+        <view>
+          <button repeat="300" name=";" x="c" y="m" w="90%" h="90%" text=";"/>
+        </view>
+        <view>
+          <button repeat="300" name="(" x="c" y="m" w="90%" h="90%" text="("/>
+        </view>
+        <view>
+          <button repeat="300" name=")" x="c" y="m" w="90%" h="90%" text=")"/>
+        </view>
+        <view>
+          <button repeat="300" name="$" x="c" y="m" w="90%" h="90%" text="$"/>
+        </view>
+        <view>
+          <button repeat="300" name="@" x="c" y="m" w="90%" h="90%" text="@"/>
+        </view>
+        <view>
+          <button repeat="300" name="'" x="c" y="m" w="90%" h="90%" text="'"/>
+        </view>
+        <view>
+          <button repeat="300" name="&quota;" x="c" y="m" w="90%" h="90%" text="&quota;"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button name="page:symbol" style="default" x="c" y="m" w="90%" h="90%" text="#+="/>
+        </view>
+        <view>
+          <button repeat="300" name="." x="c" y="m" w="90%" h="90%" text="."/>
+        </view>
+        <view>
+          <button repeat="300" name="," x="c" y="m" w="90%" h="90%" text=","/>
+        </view>
+        <view>
+          <button repeat="300" name="\" x="c" y="m" w="90%" h="90%" text="\"/>
+        </view>
+        <view>
+          <button repeat="300" name="?" x="c" y="m" w="90%" h="90%" text="?"/>
+        </view>
+        <view>
+          <button repeat="300" name="!" x="c" y="m" w="90%" h="90%" text="!"/>
+        </view>
+        <view>
+          <button repeat="300" name="<" x="c" y="m" w="90%" h="90%" text="<"/>
+        </view>
+        <view>
+          <button repeat="300" name=">" x="c" y="m" w="90%" h="90%" text=">"/>
+        </view>
+        <view>
+          <button repeat="300" name="#" x="c" y="m" w="90%" h="90%" text="#"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:backspace" style="default" x="c" y="m" w="90%" h="90%" text="Backspace"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:upper" style="default" x="c" y="m" w="93%" h="90%" text="ABC"/>
+        </view>
+        <view w="18%" h="100%">
+          <button name="page:chinese" style="default" x="c" y="m" w="93%" h="90%">
+            <label style="text_align_right" x="0" w="50%" h="100%" style:normal:text_align_h="right" text="EN"/>
+            <label style="text_align_left" x="r" w="50%" h="100%" style:normal:text_align_h="left" text="/中"/>
+          </button>
+        </view>
+        <view w="39%" h="100%">
+          <button repeat="300" name="space" x="c" y="m" w="96%" h="90%" text="Space"/>
+        </view>
+        <view w="25%" h="100%">
+          <button name="action" style="default" x="c" y="m" w="95%" h="90%" text="Return"/>
+        </view>
+      </group_box>
+    </view>
+    <view name="symbol" children_layout="default(r=4,c=1)" x="c" y="m" w="100%" h="96%">
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button repeat="300" name="[" x="c" y="m" w="90%" h="90%" text="["/>
+        </view>
+        <view>
+          <button repeat="300" name="]" x="c" y="m" w="90%" h="90%" text="]"/>
+        </view>
+        <view>
+          <button repeat="300" name="{" x="c" y="m" w="90%" h="90%" text="{"/>
+        </view>
+        <view>
+          <button repeat="300" name="}" x="c" y="m" w="90%" h="90%" text="}"/>
+        </view>
+        <view>
+          <button repeat="300" name="#" x="c" y="m" w="90%" h="90%" text="#"/>
+        </view>
+        <view>
+          <button repeat="300" name="%" x="c" y="m" w="90%" h="90%" text="%"/>
+        </view>
+        <view>
+          <button repeat="300" name="^" x="c" y="m" w="90%" h="90%" text="^"/>
+        </view>
+        <view>
+          <button repeat="300" name="*" x="c" y="m" w="90%" h="90%" text="*"/>
+        </view>
+        <view>
+          <button repeat="300" name="+" x="c" y="m" w="90%" h="90%" text="+"/>
+        </view>
+        <view>
+          <button repeat="300" name="=" x="c" y="m" w="90%" h="90%" text="="/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=9)" x="c" y="m" w="90%" h="100%">
+        <view>
+          <button repeat="300" name="_" x="c" y="m" w="90%" h="84%" text="_"/>
+        </view>
+        <view>
+          <button repeat="300" name="\" x="c" y="m" w="90%" h="90%" text="\"/>
+        </view>
+        <view>
+          <button repeat="300" name="|" x="c" y="m" w="90%" h="90%" text="|"/>
+        </view>
+        <view>
+          <button repeat="300" name="~" x="c" y="m" w="90%" h="90%" text="~"/>
+        </view>
+        <view>
+          <button repeat="300" name="<" x="c" y="m" w="90%" h="90%" text="<"/>
+        </view>
+        <view>
+          <button repeat="300" name=">" x="c" y="m" w="90%" h="90%" text=">"/>
+        </view>
+        <view>
+          <button repeat="300" name="$" x="c" y="m" w="90%" h="90%" text="$"/>
+        </view>
+        <view>
+          <button repeat="300" name="@" x="c" y="m" w="90%" h="90%" text="@"/>
+        </view>
+        <view>
+          <button repeat="300" name="`" x="c" y="m" w="90%" h="90%" text="`"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:symnum" style="default" x="c" y="m" w="93%" h="90%" text="123"/>
+        </view>
+        <view children_layout="default(r=1,c=6)" w="64%" h="100%">
+          <view>
+            <button repeat="300" name="." x="c" y="m" w="90%" h="90%" text="."/>
+          </view>
+          <view>
+            <button repeat="300" name="," x="c" y="m" w="90%" h="90%" text=","/>
+          </view>
+          <view>
+            <button repeat="300" name="?" x="c" y="m" w="90%" h="90%" text="?"/>
+          </view>
+          <view>
+            <button repeat="300" name="!" x="c" y="m" w="90%" h="90%" text="!"/>
+          </view>
+          <view>
+            <button repeat="300" name="'" x="c" y="m" w="90%" h="90%" text="'"/>
+          </view>
+          <view>
+            <button repeat="300" name="&quota;" x="c" y="m" w="90%" h="90%" text="&quota;"/>
+          </view>
+        </view>
+        <view w="18%" h="100%">
+          <button repeat="300" name="key:backspace" style="default" x="c" y="m" w="93%" h="90%" text="Backspace"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:upper" style="default" x="c" y="m" w="93%" h="90%" text="ABC"/>
+        </view>
+        <view w="18%" h="100%">
+          <button name="page:chinese" style="default" x="c" y="m" w="93%" h="90%">
+            <label style="text_align_right" x="0" w="50%" h="100%" style:normal:text_align_h="right" text="EN"/>
+            <label style="text_align_left" x="r" w="50%" h="100%" style:normal:text_align_h="left" text="/中"/>
+          </button>
+        </view>
+        <view w="39%" h="100%">
+          <button repeat="300" name="space" x="c" y="m" w="96%" h="90%" text="Space"/>
+        </view>
+        <view w="25%" h="100%">
+          <button name="action" style="default" x="c" y="m" w="95%" h="90%" text="Return"/>
+        </view>
+      </group_box>
+    </view>
+    <view name="chinese" children_layout="default(r=4,c=1)" x="c" y="m" w="100%" h="96%">
+      <group_box children_layout="default(r=1,c=10)" x="c" y="m" w="98%" h="100%">
+        <view>
+          <button repeat="300" name="key:q" x="c" y="m" w="90%" h="90%" text="q"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:w" x="c" y="m" w="90%" h="90%" text="w"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:e" x="c" y="m" w="90%" h="90%" text="e"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:r" x="c" y="m" w="90%" h="90%" text="r"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:t" x="c" y="m" w="90%" h="90%" text="t"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:y" x="c" y="m" w="90%" h="90%" text="y"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:u" x="c" y="m" w="90%" h="90%" text="u"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:i" x="c" y="m" w="90%" h="90%" text="i"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:o" x="c" y="m" w="90%" h="90%" text="o"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:p" x="c" y="m" w="90%" h="90%" text="p"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=9)" x="c" y="m" w="90%" h="100%">
+        <view>
+          <button repeat="300" name="key:a" x="c" y="m" w="90%" h="84%" text="a"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:s" x="c" y="m" w="90%" h="90%" text="s"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:d" x="c" y="m" w="90%" h="90%" text="d"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:f" x="c" y="m" w="90%" h="90%" text="f"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:g" x="c" y="m" w="90%" h="90%" text="g"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:h" x="c" y="m" w="90%" h="90%" text="h"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:j" x="c" y="m" w="90%" h="90%" text="j"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:k" x="c" y="m" w="90%" h="90%" text="k"/>
+        </view>
+        <view>
+          <button repeat="300" name="key:l" x="c" y="m" w="90%" h="90%" text="l"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="15%" h="100%">
+          <button name="page:upper" style="default" x="c" y="m" w="93%" h="90%" text="ShifOn"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:z" x="c" y="m" w="90%" h="90%" text="z"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:x" x="c" y="m" w="90%" h="90%" text="x"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:c" x="c" y="m" w="90%" h="90%" text="c"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:v" x="c" y="m" w="90%" h="90%" text="v"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:b" x="c" y="m" w="90%" h="90%" text="b"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:n" x="c" y="m" w="90%" h="90%" text="n"/>
+        </view>
+        <view w="10%" h="100%">
+          <button repeat="300" name="key:m" x="c" y="m" w="90%" h="90%" text="m"/>
+        </view>
+        <view w="15%" h="100%">
+          <button repeat="300" name="key:backspace" style="default" x="c" y="m" w="93%" h="90%" text="Backspace"/>
+        </view>
+      </group_box>
+      <group_box children_layout="default(r=1,c=0)" x="c" y="m" w="98%" h="100%">
+        <view w="18%" h="100%">
+          <button name="page:symnum" style="default" x="c" y="m" w="93%" h="90%" text="123"/>
+        </view>
+        <view w="18%" h="100%">
+          <button name="page:lower" style="default" x="c" y="m" w="93%" h="90%">
+            <label style="text_align_right" x="0" w="50%" h="100%" style:normal:text_align_h="right" text="中/"/>
+            <label style="text_align_left" x="r" w="50%" h="100%" style:normal:text_align_h="left" text="EN"/>
+          </button>
+        </view>
+        <view w="39%" h="100%">
+          <button repeat="300" name="space" x="c" y="m" w="96%" h="90%" text="Space"/>
+        </view>
+        <view w="25%" h="100%">
+          <button name="action" style="default" x="c" y="m" w="95%" h="90%" text="Return"/>
+        </view>
+      </group_box>
+    </view>
+  </pages>
+</keyboard>

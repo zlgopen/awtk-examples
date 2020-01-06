@@ -1,0 +1,17 @@
+{
+  "name": "HelloDesigner-Demo",
+  "appType": "APP_MOBILE",
+  "hardware": "RT1050",
+  "entry": "home_page",
+  "lcd.width": "800",
+  "lcd.height": "480",
+  "lcd.colorDepth": "16bit",
+  "lcd.colorFormat": "bgr(a)",
+  "assets.imageConst": "resource_data",
+  "assets.loadFrom": "any",
+  "assets.defaultLanguage": "zh",
+  "assets.defaultCountry": "CN",
+  "creator": "AWTK Designer",
+  "creator.version": "0.1.2.1",
+  "modifyTime": "2020/01/03"
+}

@@ -314,6 +314,8 @@ static uint32_t tooltip_calc_tip(widget_t* widget, canvas_t* c, int32_t spacer, 
   }
   WIDGET_FOR_EACH_CHILD_END()
 
+  wstr_reset(&temp);
+
   r->x = right_top.x + spacing;
   r->y = right_top.y + spacing;
   r->w = r->w + margin_left + margin_right;
@@ -588,6 +590,25 @@ ret_t tooltip_subpart_set_style_str(widget_t* widget, const char* subpart,
                                       tooltip_subpart_get_style_obj);
 }
 
+static ret_t tooltip_on_destroy(widget_t* widget) {
+  tooltip_t* tooltip = TOOLTIP(widget);
+  return_value_if_fail(tooltip != NULL, RET_BAD_PARAMS);
+
+  TKMEM_FREE(tooltip->line.style);
+  style_destroy(tooltip->line.astyle);
+  tooltip->line.astyle = NULL;
+
+  TKMEM_FREE(tooltip->symbol.style);
+  style_destroy(tooltip->symbol.astyle);
+  tooltip->symbol.astyle = NULL;
+
+  TKMEM_FREE(tooltip->tip.style);
+  style_destroy(tooltip->tip.astyle);
+  tooltip->tip.astyle = NULL;
+
+  return RET_OK;
+}
+
 TK_DECL_VTABLE(tooltip) = {.size = sizeof(tooltip_t),
                            .type = WIDGET_TYPE_TOOLTIP,
                            .parent = TK_PARENT_VTABLE(widget),
@@ -595,7 +616,8 @@ TK_DECL_VTABLE(tooltip) = {.size = sizeof(tooltip_t),
                            .set_prop = tooltip_set_prop,
                            .get_prop = tooltip_get_prop,
                            .on_paint_begin = tooltip_on_paint_begin,
-                           .on_paint_self = tooltip_on_paint_self};
+                           .on_paint_self = tooltip_on_paint_self,
+                           .on_destroy = tooltip_on_destroy};
 
 widget_t* tooltip_create(widget_t* parent, const widget_vtable_t* vt, xy_t x, xy_t y, wh_t w,
                          wh_t h) {

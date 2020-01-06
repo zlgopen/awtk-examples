@@ -76,6 +76,7 @@ widget_animator_t* chart_animator_create(widget_t* widget, uint32_t duration, ui
     v->should_free_to = should_free_to;
     v->should_free_cur = should_free_cur;
     v->update = update;
+    v->destroy = destroy;
     animator->update = chart_animator_update;
     animator->destroy = chart_animator_destroy;
   }

@@ -48,6 +48,8 @@ int main(void) {
   lcd_h = LCD_H;
 #endif
 
+  TK_ENABLE_CONSOLE();
+
 #ifdef WITH_FS_RES
   char res_root[MAX_PATH + 1];
   char app_root[MAX_PATH + 1];
@@ -66,7 +68,7 @@ int main(void) {
 
 #endif
 
-  TK_ENABLE_CONSOLE();
+
 
 //#define WITH_LCD_PORTRAIT 1
 #if defined(USE_GUI_MAIN) && defined(WITH_LCD_PORTRAIT)

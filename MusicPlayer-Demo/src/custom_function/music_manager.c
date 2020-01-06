@@ -130,15 +130,23 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
       widget_set_visible(lrc_scroll->children->elms[index], FALSE, FALSE);
     }
   }
+
   const asset_info_t* info = assets_manager_ref(assets_manager(), ASSET_TYPE_DATA, name);
   if (info == NULL) return RET_FAIL;
   if (info->size <= 0) return RET_FAIL;
+
   tokenizer_init(t, (const char*)(info->data), strlen((const char*)(info->data)), "\n");
   while (tokenizer_has_more(t)) {
     const char* token = tokenizer_next(t);
     p = (char*)token;
     left = strchr(p, '[');
     if (left == NULL) {
+      if (info != NULL) {
+        assets_manager_unref(assets_manager(), info);
+        info = NULL;
+        assets_manager_clear_cache(assets_manager(), ASSET_TYPE_DATA);
+      }
+      tokenizer_deinit(t);
       return RET_OK;
     }
     right = strchr(p, ']');
@@ -176,6 +184,7 @@ static ret_t parse_lrc_line(widget_t* win, const char* name) {
     assets_manager_clear_cache(assets_manager(), ASSET_TYPE_DATA);
   }
   tokenizer_deinit(t);
+
   return RET_OK;
 }
 

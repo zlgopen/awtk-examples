@@ -30,15 +30,14 @@
 #include "x_axis.h"
 #include "y_axis.h"
 
-#define WITH_CANVAS_DRAW_LINE
-
-#ifdef WITH_CANVAS_DRAW_LINE
 #ifdef WITH_NANOVG_SOFT
 #include "../base/wuxiaolin_draw_line.inc"
 #define _CANVAS_DRAW_LINE(c, x1, y1, x2, y2) \
   wuxiaolin_draw_line(c, c->ox + (x1), c->oy + (y1), c->ox + (x2), c->oy + (y2))
+#define WITH_CANVAS_DRAW_LINE
+#else
+#define _CANVAS_DRAW_LINE
 #endif /*WITH_NANOVG_SOFT*/
-#endif /*WITH_CANVAS_DRAW_LINE*/
 
 #define _COLOR_BLACK color_init(0, 0, 0, 0xff)
 #define _COLOR_TRANS color_init(0, 0, 0, 0)
@@ -352,6 +351,11 @@ ret_t series_p_draw_line(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t*
   float_t border_width;
   int32_t i;
   series_p_draw_data_t* d = NULL;
+#ifdef WITH_CANVAS_DRAW_LINE
+  bool_t use_canvas = TRUE;
+#else
+  bool_t use_canvas = FALSE;
+#endif
   assert(widget != NULL && style != NULL && fifo != NULL);
   assert(index < fifo->size && index + size - 1 < fifo->size);
   return_value_if_true(fifo->size == 0 || size == 0, RET_OK);
@@ -360,37 +364,37 @@ ret_t series_p_draw_line(widget_t* widget, canvas_t* c, vgcanvas_t* vg, style_t*
   border_width = (float_t)style_get_int(style, STYLE_ID_BORDER_WIDTH, 1);
 
   if (color.rgba.a) {
-#ifdef _CANVAS_DRAW_LINE
-    series_p_draw_data_t* dprev = NULL;
-    return_value_if_fail(c != NULL, RET_BAD_PARAMS);
+    if (use_canvas && border_width == 1) {
+      series_p_draw_data_t* dprev = NULL;
+      return_value_if_fail(c != NULL, RET_BAD_PARAMS);
 
-    d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
+      d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
 
-    canvas_set_stroke_color(c, color);
+      canvas_set_stroke_color(c, color);
 
-    for (i = index + size - 1; i > (int32_t)index; i--) {
-      dprev = (series_p_draw_data_t*)(fifo_at(fifo, i - 1));
-      _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
-      d = dprev;
+      for (i = index + size - 1; i > (int32_t)index; i--) {
+        dprev = (series_p_draw_data_t*)(fifo_at(fifo, i - 1));
+        _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
+        d = dprev;
+      }
+
+      canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
+    } else {
+      return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
+      d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
+
+      vgcanvas_set_line_width(vg, border_width);
+      vgcanvas_set_stroke_color(vg, color);
+      vgcanvas_begin_path(vg);
+      _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
+
+      for (i = index + size - 1; i >= (int32_t)index; i--) {
+        d = (series_p_draw_data_t*)(fifo_at(fifo, i));
+        _VGCANVAS_LINE_TO(vg, ox + d->x, oy + d->y);
+      }
+
+      vgcanvas_stroke(vg);
     }
-
-    canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
-#else
-    return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
-    d = (series_p_draw_data_t*)(fifo_at(fifo, index + size - 1));
-
-    vgcanvas_set_line_width(vg, border_width);
-    vgcanvas_set_stroke_color(vg, color);
-    vgcanvas_begin_path(vg);
-    _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
-
-    for (i = index + size - 1; i >= (int32_t)index; i--) {
-      d = (series_p_draw_data_t*)(fifo_at(fifo, i));
-      _VGCANVAS_LINE_TO(vg, ox + d->x, oy + d->y);
-    }
-
-    vgcanvas_stroke(vg);
-#endif
   }
 
   return RET_OK;
@@ -403,64 +407,69 @@ ret_t series_p_draw_line_colorful(widget_t* widget, canvas_t* c, vgcanvas_t* vg,
   int32_t i;
   series_p_colorful_draw_data_t* d = NULL;
   series_p_colorful_draw_data_t* dprev = NULL;
+#ifdef WITH_CANVAS_DRAW_LINE
+  bool_t use_canvas = TRUE;
+#else
+  bool_t use_canvas = FALSE;
+#endif
   assert(widget != NULL && style != NULL && fifo != NULL);
   assert(index < fifo->size && index + size - 1 < fifo->size);
   return_value_if_true(fifo->size == 0 || size == 0, RET_OK);
 
   border_width = style_get_int(style, STYLE_ID_BORDER_WIDTH, 1);
 
-#ifdef _CANVAS_DRAW_LINE
-  return_value_if_fail(c != NULL, RET_BAD_PARAMS);
+  if (use_canvas && border_width == 1) {
+    return_value_if_fail(c != NULL, RET_BAD_PARAMS);
 
-  d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, index + size - 1));
+    d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, index + size - 1));
 
-  for (i = index + size - 1; i > (int32_t)index; i--) {
-    dprev = (series_p_colorful_draw_data_t*)(fifo_at(fifo, i - 1));
+    for (i = index + size - 1; i > (int32_t)index; i--) {
+      dprev = (series_p_colorful_draw_data_t*)(fifo_at(fifo, i - 1));
+      canvas_set_stroke_color(c, d->c);
+      _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
+      d = dprev;
+    }
+
     canvas_set_stroke_color(c, d->c);
-    _CANVAS_DRAW_LINE(c, ox + d->x, oy + d->y, ox + dprev->x, oy + dprev->y);
-    d = dprev;
-  }
+    canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
+  } else {
+    return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
 
-  canvas_set_stroke_color(c, d->c);
-  canvas_draw_vline(c, ox + d->x, oy + d->y, 1);
-#else
-  return_value_if_fail(vg != NULL, RET_BAD_PARAMS);
+    vgcanvas_set_line_width(vg, border_width);
 
-  vgcanvas_set_line_width(vg, border_width);
-
-  dprev = d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, index + size - 1));
-  if (d->c.rgba.a) {
-    vgcanvas_set_stroke_color(vg, d->c);
-    vgcanvas_begin_path(vg);
-    _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
-  }
-
-  for (i = index + size - 2; i >= (int32_t)index; i--) {
-    d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, i));
-
-    if (dprev->c.rgba.a) {
-      _VGCANVAS_LINE_TO(vg, ox + d->x, oy + d->y);
+    dprev = d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, index + size - 1));
+    if (d->c.rgba.a) {
+      vgcanvas_set_stroke_color(vg, d->c);
+      vgcanvas_begin_path(vg);
+      _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
     }
 
-    if (d->c.color != dprev->c.color) {
+    for (i = index + size - 2; i >= (int32_t)index; i--) {
+      d = (series_p_colorful_draw_data_t*)(fifo_at(fifo, i));
+
       if (dprev->c.rgba.a) {
-        vgcanvas_stroke(vg);
+        _VGCANVAS_LINE_TO(vg, ox + d->x, oy + d->y);
       }
 
-      if (d->c.rgba.a) {
-        vgcanvas_set_stroke_color(vg, d->c);
-        vgcanvas_begin_path(vg);
-        _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
+      if (d->c.color != dprev->c.color) {
+        if (dprev->c.rgba.a) {
+          vgcanvas_stroke(vg);
+        }
+
+        if (d->c.rgba.a) {
+          vgcanvas_set_stroke_color(vg, d->c);
+          vgcanvas_begin_path(vg);
+          _VGCANVAS_MOVE_TO(vg, ox + d->x, oy + d->y);
+        }
       }
+
+      dprev = d;
     }
 
-    dprev = d;
+    if (d->c.rgba.a) {
+      vgcanvas_stroke(vg);
+    }
   }
-
-  if (d->c.rgba.a) {
-    vgcanvas_stroke(vg);
-  }
-#endif
 
   return RET_OK;
 }

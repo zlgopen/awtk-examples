@@ -385,17 +385,32 @@ void deinit_global() {
 
   if (global_data.bar_data->size > 0) {
     darray_destroy(global_data.bar_data);
+  } else {
+    TKMEM_FREE(global_data.bar_data);
   }
 
   if (global_active_data->bar_data->size > 0) {
     darray_destroy(global_active_data->bar_data);
+  } else {
+    TKMEM_FREE(global_active_data->bar_data);
   }
 
   if (global_stand_data->bar_data->size > 0) {
     darray_destroy(global_stand_data->bar_data);
+  } else {
+    TKMEM_FREE(global_stand_data->bar_data);
+  }
+
+  if (global_workout_data->bar_data->size > 0) {
+    darray_destroy(global_workout_data->bar_data);
+  } else {
+    TKMEM_FREE(global_workout_data->bar_data);
   }
 
   darray_deinit(&(global_data.watch_06.data));
+  TKMEM_FREE(global_active_data);
+  TKMEM_FREE(global_stand_data);
+  TKMEM_FREE(global_workout_data);
 
   // 窗口历史
   darray_deinit(&(global_data.window_history));

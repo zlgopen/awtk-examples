@@ -23,17 +23,17 @@
                     <view x="c" y="0%" w="100%" h="30%">
                         <label style="pink_22"  text="活动:" x="0%" y="m" w="30%" h="100%"/>
                         <label style="pink_22" name="health:label1" text="0" x="40%" y="m" w="30%" h="100%"/>
-                        <label style="pink_22"  text="卡路里" x="65%" y="m" w="30%" h="100%"/>
+                        <label style="pink_22"  text="卡路里" x="70%" y="m" w="30%" h="100%"/>
                     </view>
                     <view x="c" y="30%" w="100%" h="30%">
                         <label style="green_22" text="锻炼:" x="0%" y="m" w="30%" h="100%"/>
                         <label style="green_22" name="health:label2" text="0" x="40%" y="m" w="30%" h="100%"/>
-                        <label style="green_22" text="分钟" x="65%" y="m" w="30%" h="100%"/>
+                        <label style="green_22" text="分钟" x="70%" y="m" w="30%" h="100%"/>
                     </view>
                     <view x="c" y="60%" w="100%" h="30%">
                         <label style="blue_22" text="站立:" x="0%" y="m" w="30%" h="100%"/>
                         <label style="blue_22" name="health:label3" text="0" x="40%" y="m" w="30%" h="100%"/>
-                        <label style="blue_22" text="分钟" x="65%" y="m" w="30%" h="100%"/>
+                        <label style="blue_22" text="分钟" x="70%" y="m" w="30%" h="100%"/>
                     </view>
                 </view>
             </view>

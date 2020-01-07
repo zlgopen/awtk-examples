@@ -5,6 +5,7 @@
 #include "assets/default/inc/ui/animation/animation.data"
 #include "assets/default/inc/ui/basic/basic.data"
 #include "assets/default/inc/ui/home_page/home_page.data"
+#include "assets/default/inc/ui/kb_default.data"
 #ifdef WITH_STB_IMAGE
 #include "assets/default/inc/images/arrow_down_d.res"
 #include "assets/default/inc/images/arrow_down_f.res"

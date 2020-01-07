@@ -22,7 +22,6 @@
 
 static ret_t on_close(void* ctx, event_t* e) {
   widget_t* win = WIDGET(ctx);
-  value_t v;
   (void)e;
 
   return window_close(win);

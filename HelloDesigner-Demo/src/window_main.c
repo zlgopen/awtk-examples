@@ -1,5 +1,8 @@
 #include "awtk.h"
 extern ret_t application_init(void);
+extern ret_t open_basic_window(void);
+extern ret_t open_animation_window(void);
+
 static void init_children_widget(widget_t* widget);
 
 static ret_t on_basic_click(void* ctx, event_t* e) {
@@ -52,8 +55,6 @@ static void init_children_widget(widget_t* widget) {
  * 初始化
  */
 ret_t application_init() {
-  widget_t* system_bar = window_open("system_bar/system_bar");
-  widget_t* system_bar_b = window_open("system_bar_b/system_bar_b");
   widget_t* win = window_open("home_page/home_page");
 
   if (win) {

@@ -153,7 +153,7 @@ static ret_t on_paint_fg(void* ctx, event_t* e) {
   canvas_t* c = ((paint_event_t*)e)->c;
   bitmap_t img;
   widget_t* wm = WIDGET(ctx);
-  widget_t* win = window_manager_get_top_window(WINDOW_MANAGER(wm));
+  widget_t* win = window_manager_get_top_window(wm);
 
   widget_load_image(wm, "ico_background2", &img);
 

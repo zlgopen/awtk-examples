@@ -38,8 +38,8 @@
                     </view>
                     <view x="18" y="0" w="24" h="100%" layout="r:3 c:1" >
                         <label />
-                        <label name="fan1" w="100%" h="100%" text="80" style="reading_temp_hum"/>
-                        <label name="fan2" w="100%" h="100%" text="80" style="reading_temp_hum"/>
+                        <label name="fan1" text="80" style="reading_temp_hum"/>
+                        <label name="fan2" text="80" style="reading_temp_hum"/>
                     </view>
                     <view x="42" y="0" w="12" h="100%" layout="r:3 c:1" >
                         <label />

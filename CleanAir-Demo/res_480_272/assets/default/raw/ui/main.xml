@@ -1,4 +1,4 @@
-<window anim_hint="htranslate" style="black"  x="0%" y="0%" w="480" h="272">
+<window anim_hint="htranslate" style="black" x="0%" y="0%" w="480" h="272">
     <label name="bkgnd" x="0" y="0" w="100%" h="100%" style="bg0"/>
     <app_bar x="0" y="0" w="100%" h="25">
         <label name="dev_name" x="0" y="0" w="120" h="100%" tr_text="CleanAir Demo" style="title_left"/>
@@ -12,94 +12,87 @@
     <view x="37" y="83" w="180" h="25">
         <label text="PM2.5" w="48" h="100%" style="reading_pm_co_t"/>
         <label name="PM2_5" x="48" w="65" h="100%" text="18" style="reading_pm_co"/>
-        <rich_text x="113" w="-113" h="100%" text="
-            <font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;18&quota;>μg/m</font>
-            <font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;10&quota;>3</font>" />
+        <rich_text x="113" w="-113" h="100%" text="<font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;18&quota;>μg/m</font><font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;10&quota;>3</font>" />
+    </view>
+    <view x="37" y="109" w="135" h="30">
+        <rich_text w="48" h="100%" text="<font color=&quota;white&quota; align_v=&quota;middle&quota; size=&quota;32&quota;>CO</font><font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;18&quota;>2</font>" />
+        <label x="48" name="CO_2" w="65" h="100%" text="350" style="reading_pm_co"/>
+        <label x="118" w="-113" h="100%" text="ppm" style="top"/>
+    </view>
+    <view x="200" y="85" w="159" h="57">
+        <label name="flow" w="120" h="100%" text="500" style="reading_flow"/>
+        <rich_text x="120" w="50" h="100%" text="<font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>m</font><font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;12&quota;>3</font><font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>/h</font>" />
+    </view>
+    <view x="29" y="145" w="234" h="57">
+        <view x="0" y="0" w="18" h="100%" layout="r:3 c:1">
+            <label />
+            <image_animation name="fan_1" image="fan_1" sequence="ab" auto_play="false" interval="500" delay="100" />
+            <image name="fan_2" image="fan_2" draw_type="icon"/>
         </view>
-        <view x="37" y="109" w="135" h="30">
-            <rich_text w="48" h="100%" text="
-                <font color=&quota;white&quota; align_v=&quota;middle&quota; size=&quota;32&quota;>CO</font>
-                <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;18&quota;>2</font>" />
-                <label x="48" name="CO_2" w="65" h="100%" text="350" style="reading_pm_co"/>
-                <label x="118" w="-113" h="100%" text="ppm" style="top"/>
-            </view>
-            <view x="200" y="85" w="159" h="57">
-                <label name="flow" w="120" h="100%" text="500" style="reading_flow"/>
-                <rich_text x="120" w="50" h="100%" text="
-                    <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>m</font>
-                    <font color=&quota;white&quota; align_v=&quota;top&quota; size=&quota;12&quota;>3</font>
-                    <font color=&quota;white&quota; align_v=&quota;bottom&quota; size=&quota;22&quota;>/h</font>" />
-                </view>
-                <view x="29" y="145" w="234" h="57">
-                    <view x="0" y="0" w="18" h="100%" layout="r:3 c:1" >
-                        <label />
-                        <image_animation name="fan_1" image="fan_1" sequence="ab" auto_play="false" interval="500" delay="100" />
-                        <image name="fan_2" image="fan_2" draw_type="icon"/>
-                    </view>
-                    <view x="18" y="0" w="24" h="100%" layout="r:3 c:1" >
-                        <label />
-                        <label name="fan1" text="80" style="reading_temp_hum"/>
-                        <label name="fan2" text="80" style="reading_temp_hum"/>
-                    </view>
-                    <view x="42" y="0" w="12" h="100%" layout="r:3 c:1" >
-                        <label />
-                        <label text="%"/>
-                        <label text="%"/>
-                    </view>
-                    <view x="54" y="0" w="65" h="100%" layout="r:3 c:1" >
-                        <label name="humidity_in" text="50" style="reading_temp_hum"/>
-                        <label name="temperature_in1" text="22.0" style="reading_temp_hum"/>
-                        <label name="temperature_in2" text="23.0" style="reading_temp_hum"/>
-                    </view>
-                    <view x="119" y="0" w="18" h="100%" layout="r:3 c:1" >
-                        <label text="%"/>
-                        <label text="℃"/>
-                        <label text="℃"/>
-                    </view>
-                    <view x="137" y="0" w="51" h="100%" layout="r:3 c:1" >
-                        <label />
-                        <image name="wind_out" image="wind_out" draw_type="center"/>
-                        <image name="wind_in" image="wind_in" draw_type="center"/>
-                    </view>
-                    <view x="193" y="0" w="30" h="100%" layout="r:3 c:1" >
-                        <label name="humidity_out" text="50" style="reading_temp_hum"/>
-                        <label name="temperature_out1" text="20.0" style="reading_temp_hum"/>
-                        <label name="temperature_out2" text="18.0" style="reading_temp_hum"/>
-                    </view>
-                    <view x="223" y="0" w="18" h="100%" layout="r:3 c:1" >
-                        <label text="%"/>
-                        <label text="℃"/>
-                        <label text="℃"/>
-                    </view>
-                </view>
-                <view x="370" y="25" w="-370" h="171">
-                    <label x="21" w="100%" h="23" text="Frequency" style="left"/>
-                    <view x="0" y="23" w="100%" h="34">
-                        <button name="frequency_dec" w="20%" h="100%" style="dec_btn"/>
-                        <label name="frequency" x="20%" w="45%" h="100%" text="50" style="setting"/>
-                        <label text="Hz" x="65%" w="15%" h="100%" style="setting_unit"/>
-                        <button name="frequency_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
-                    </view>
-                    <label x="21" y="63" w="100%" h="23" text="Temperature" style="left"/>
-                    <view x="0" y="87" w="100%" h="34">
-                        <button name="temperature_dec" w="20%" h="100%" style="dec_btn"/>
-                        <label name="temperature" x="20%" w="45%" h="100%" text="25" style="setting"/>
-                        <label text="℃" x="65%" w="15%" h="100%" style="setting_unit"/>
-                        <button name="temperature_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
-                    </view>
-                    <label x="21" y="128" w="100%" h="23" text="Humidity" style="left"/>
-                    <view x="0" y="146" w="100%" h="34">
-                        <button name="humidity_dec" w="20%" h="100%" style="dec_btn"/>
-                        <label name="humidity" x="20%" w="45%" h="100%" text="45" style="setting"/>
-                        <label text="%" x="65%" w="15%" h="100%" style="setting_unit"/>
-                        <button name="humidity_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
-                    </view>
-                </view>
-                <view x="0" y="bottom:0" w="100%" h="50">
-                    <button name="switch" x="0" w="88" h="100%" style="switch_btn"/>
-                    <button name="auto" x="89" w="99" h="100%" style="auto_btn_2a"/>
-                    <button name="timing" x="190" w="99" h="100%" style="timing_btn"/>
-                    <button name="record" x="290" w="99" h="100%" style="record_btn"/>
-                    <button name="setting" x="392" w="87" h="100%" style="setting_btn"/>
-                </view>
-            </window>
+        <view x="18" y="0" w="24" h="100%" layout="r:3 c:1">
+            <label />
+            <label name="fan1" text="80" style="reading_temp_hum"/>
+            <label name="fan2" text="80" style="reading_temp_hum"/>
+        </view>
+        <view x="42" y="0" w="12" h="100%" layout="r:3 c:1">
+            <label />
+            <label text="%"/>
+            <label text="%"/>
+        </view>
+        <view x="54" y="0" w="65" h="100%" layout="r:3 c:1">
+            <label name="humidity_in" text="50" style="reading_temp_hum"/>
+            <label name="temperature_in1" text="22.0" style="reading_temp_hum"/>
+            <label name="temperature_in2" text="23.0" style="reading_temp_hum"/>
+        </view>
+        <view x="119" y="0" w="18" h="100%" layout="r:3 c:1">
+            <label text="%"/>
+            <label text="℃"/>
+            <label text="℃"/>
+        </view>
+        <view x="137" y="0" w="51" h="100%" layout="r:3 c:1">
+            <label />
+            <image name="wind_out" image="wind_out" draw_type="center"/>
+            <image name="wind_in" image="wind_in" draw_type="center"/>
+        </view>
+        <view x="193" y="0" w="30" h="100%" layout="r:3 c:1">
+            <label name="humidity_out" text="50" style="reading_temp_hum"/>
+            <label name="temperature_out1" text="20.0" style="reading_temp_hum"/>
+            <label name="temperature_out2" text="18.0" style="reading_temp_hum"/>
+        </view>
+        <view x="223" y="0" w="18" h="100%" layout="r:3 c:1">
+            <label text="%"/>
+            <label text="℃"/>
+            <label text="℃"/>
+        </view>
+    </view>
+    <view x="370" y="25" w="-370" h="171">
+        <label x="21" w="100%" h="23" text="Frequency" style="left"/>
+        <view x="0" y="23" w="100%" h="34">
+            <button name="frequency_dec" w="20%" h="100%" style="dec_btn"/>
+            <label name="frequency" x="20%" w="45%" h="100%" text="50" style="setting"/>
+            <label text="Hz" x="65%" w="15%" h="100%" style="setting_unit"/>
+            <button name="frequency_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
+        </view>
+        <label x="21" y="63" w="100%" h="23" text="Temperature" style="left"/>
+        <view x="0" y="87" w="100%" h="34">
+            <button name="temperature_dec" w="20%" h="100%" style="dec_btn"/>
+            <label name="temperature" x="20%" w="45%" h="100%" text="25" style="setting"/>
+            <label text="℃" x="65%" w="15%" h="100%" style="setting_unit"/>
+            <button name="temperature_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
+        </view>
+        <label x="21" y="128" w="100%" h="23" text="Humidity" style="left"/>
+        <view x="0" y="146" w="100%" h="34">
+            <button name="humidity_dec" w="20%" h="100%" style="dec_btn"/>
+            <label name="humidity" x="20%" w="45%" h="100%" text="45" style="setting"/>
+            <label text="%" x="65%" w="15%" h="100%" style="setting_unit"/>
+            <button name="humidity_inc" x="80%" w="20%" h="100%" style="inc_btn"/>
+        </view>
+    </view>
+    <view x="0" y="bottom:0" w="100%" h="50">
+        <button name="switch" x="0" w="88" h="100%" style="switch_btn"/>
+        <button name="auto" x="89" w="99" h="100%" style="auto_btn_2a"/>
+        <button name="timing" x="190" w="99" h="100%" style="timing_btn"/>
+        <button name="record" x="290" w="99" h="100%" style="record_btn"/>
+        <button name="setting" x="392" w="87" h="100%" style="setting_btn"/>
+    </view>
+</window>

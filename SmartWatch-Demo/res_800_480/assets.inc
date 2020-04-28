@@ -154,7 +154,6 @@
 #include "assets/default/inc/images/ico_plus_normal.res"
 #include "assets/default/inc/images/ico_plus_pressed.res"
 #include "assets/default/inc/images/ico_sound.res"
-#include "assets/default/inc/images/ico_switch_normal.res"
 #include "assets/default/inc/images/ico_switch_pressed.res"
 #include "assets/default/inc/images/ico_training_normal.res"
 #include "assets/default/inc/images/ico_training_over.res"
@@ -189,8 +188,6 @@
 #include "assets/default/inc/images/ico_weather_top.res"
 #include "assets/default/inc/images/ico_wechart_normal.res"
 #include "assets/default/inc/images/ico_wechart_over.res"
-#include "assets/default/inc/images/vol_bar_bg.res"
-#include "assets/default/inc/images/vol_bar_fg.res"
 #else
 #endif/*WITH_STB_IMAGE*/
 #if defined(WITH_STB_FONT) || defined(WITH_FT_FONT)
@@ -312,7 +309,6 @@ ret_t assets_init(void) {
   assets_manager_add(rm, image_ico_plus_normal);
   assets_manager_add(rm, image_ico_plus_pressed);
   assets_manager_add(rm, image_ico_sound);
-  assets_manager_add(rm, image_ico_switch_normal);
   assets_manager_add(rm, image_ico_switch_pressed);
   assets_manager_add(rm, image_ico_training_normal);
   assets_manager_add(rm, image_ico_training_over);
@@ -347,8 +343,6 @@ ret_t assets_init(void) {
   assets_manager_add(rm, image_ico_weather_top);
   assets_manager_add(rm, image_ico_wechart_normal);
   assets_manager_add(rm, image_ico_wechart_over);
-  assets_manager_add(rm, image_vol_bar_bg);
-  assets_manager_add(rm, image_vol_bar_fg);
   assets_manager_add(rm, style_alarm_clock_styles);
   assets_manager_add(rm, style_application_styles);
   assets_manager_add(rm, style_button);

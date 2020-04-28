@@ -1227,9 +1227,9 @@ ret_t series_p_get_current(widget_t* widget, uint32_t* begin, uint32_t* end, uin
     b = m;
   }
 
-  begin != NULL ? (*begin = b) : ((void)begin);
-  end != NULL ? (*end = e) : ((void)end);
-  middle != NULL ? (*middle = m) : ((void)middle);
+  begin != NULL ? (*begin = b) : 0;
+  end != NULL ? (*end = e) : 0;
+  middle != NULL ? (*middle = m) : 0;
 
   return RET_OK;
 }

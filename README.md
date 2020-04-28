@@ -52,7 +52,7 @@
 
 
 
-#### AWorks 使用方法：
+#### AWorksOS 使用方法：
 
 1. 打开已经配置好的 AWTK（Eclipse） 工程
 

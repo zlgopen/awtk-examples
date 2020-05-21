@@ -2,13 +2,15 @@
 
 #### 项目介绍：
 
-- HelloDesigner-Demo
-- HelloWorld.Xml.d-Demo
-- HelloWorld.Max.d-Demo
-- Chart.d-Demo
-- CleanAir.d-Demo
-- MusicPlayer.d-Demo
-- SmartWatch.d-Demo
+- HelloDesigner-Demo：最简单的入门 Demo，包含基本的文本和按钮控件使用方法
+- Chart.v2-Demo：图表演示 Demo，包含仪表、饼图、曲线图、柱状图
+- Meter.v2-Demo：普通工业仪表演示 Demo
+- CleanAir.v2-Demo：新风系统演示 Demo
+- MusicPlayer.v2-Demo：音乐播放器演示 Demo
+- SmartWatch.v2-Demo：智能手表演示 Demo
+- SmartWatch.Lite-Demo：小资源智能手表演示 Demo，可适配 1MB Flash 和 256kB RAM
+
+> awtk-examples.v2 与 awtk-examples 的区别是： v2 所有例子对 Designer 做了适配，可以用 Designer 打开工程文件 project.json 并编辑 UI 界面
 
 
 

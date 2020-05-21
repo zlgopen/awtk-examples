@@ -1,0 +1,42 @@
+<button>
+  <style name="heart_rate_bottom" bg_image="ico_heart_bottom_pressed" font_size="40" icon="" text_color="#FFFFFF">
+    <normal bg_image="ico_heart_bottom_normal"/>
+    <over/>
+    <pressed/>
+  </style>
+</button>
+<digit_clock>
+  <style name="heart_rate_top">
+    <normal bg_image="ico_heart_top" font_size="38" text_color="#FFFFFF"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="check_bottom">
+    <normal font_size="40" text_color="#A9A9A9"/>
+  </style>
+  <style name="check_top">
+    <normal font_size="50" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="heart_rate_number">
+    <normal font_size="75" text_align_h="right" text_align_v="bottom" text_color="#FFFFFF"/>
+  </style>
+  <style name="heart_rate_unit">
+    <normal font_size="28" text_align_h="left" text_align_v="bottom" text_color="#B6B6B6"/>
+  </style>
+  <style name="mid">
+    <normal bg_color="#6CA5C0" text_color="#00000000"/>
+  </style>
+  <style name="red">
+    <normal font_size="35" text_align_h="left" text_color="#FF0338"/>
+  </style>
+  <style name="white">
+    <normal font_size="30" text_align_h="left" text_color="#B6B6B6"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<window>
+  <style name="heart_rate">
+    <normal bg_color="#010101" border="none" border_color="#00000000"/>
+  </style>
+</window>

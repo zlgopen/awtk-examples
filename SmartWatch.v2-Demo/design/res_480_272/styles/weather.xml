@@ -1,0 +1,51 @@
+<label>
+  <style name="aqi">
+    <normal font_size="25" text_align_h="left" text_color="#00D0E3"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="aqi_text">
+    <normal font_size="25" text_align_h="right" text_color="#00D0E3"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="center_hour">
+    <normal font_size="48" text_align_h="right" text_color="#00FFED"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="day">
+    <normal font_size="25" text_align_h="left" text_color="#00FFEF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="update">
+    <normal text_align_h="left" text_color="#B9D1E5"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="update_text">
+    <normal text_align_h="center" text_color="#B9D1E5"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_temp">
+    <normal font_size="62" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_top">
+    <normal bg_image="ico_weather_top" font_size="31" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_white">
+    <normal font_size="25" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_white_l">
+    <normal font_size="22" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_white_r">
+    <normal font_size="22" text_align_h="right" text_color="#ACFEF7"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<view>
+  <style name="weather_bottom">
+    <normal bg_image="ico_weather_bottom"/>
+  </style>
+</view>

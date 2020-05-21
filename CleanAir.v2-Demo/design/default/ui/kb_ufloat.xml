@@ -1,0 +1,28 @@
+<keyboard theme="keyboard" x="0" y="bottom" w="100%" h="40%" name="kb_ufloat">
+  <view name="candidates" x="0" w="100%" h="15%">
+    <candidates x="0" w="100%" h="100%"/>
+    <button name="close" x="right" w="16" h="100%" style="close" text="X"/>
+  </view>
+  <pages name="panel" x="0" y="bottom" w="100%" h="85%" active="0">
+    <clip_view name="ufloat" x="0" w="100%" h="100%">
+      <view x="0" w="75%" h="100%" children_layout="default(r=4,c=3)">
+        <button repeat="300" name="1" text="1"/>
+        <button repeat="300" name="2" text="2"/>
+        <button repeat="300" name="3" text="3"/>
+        <button repeat="300" name="4" text="4"/>
+        <button repeat="300" name="5" text="5"/>
+        <button repeat="300" name="6" text="6"/>
+        <button repeat="300" name="7" text="7"/>
+        <button repeat="300" name="8" text="8"/>
+        <button repeat="300" name="9" text="9"/>
+        <button repeat="300" name="+" text="+"/>
+        <button repeat="300" name="0" text="0"/>
+        <button repeat="300" name="." text="."/>
+      </view>
+      <view x="75%" w="25%" h="100%" children_layout="default(r=2,c=1)">
+        <button repeat="300" name="key:backspace" style="highlight"  text="backspace"/>
+        <button name="action" style="highlight"  text="return"/>
+      </view>
+    </clip_view>
+  </pages>
+</keyboard>

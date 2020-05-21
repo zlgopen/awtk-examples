@@ -1,0 +1,66 @@
+<button>
+  <style name="watch_06_calendar" icon="icon_app_calendar_pressed_88">
+    <normal bg_color="#00000000" icon="icon_app_calendar_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_health" icon="icon_app_training_pressed_88">
+    <normal bg_color="#00000000" icon="icon_app_training_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_music" icon="icon_app_music_pressed_88">
+    <normal icon="icon_app_music_normal_88" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_00" icon="icon_app_cloudy_pressed_88">
+    <normal bg_color="#00000000" bg_image="" icon="icon_app_cloudy_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_01" icon="icon_app_rainy_pressed_88">
+    <normal icon="icon_app_rainy_normal_88" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_02" icon="icon_app_sunny_pressed_88">
+    <normal icon="icon_app_sunny_normal_88" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_03" icon="app_thunderstorm_pressed_88">
+    <normal icon="app_thunderstorm_normal_88" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_wechart" icon="icon_app_wechart_pressed_88">
+    <normal bg_color="#00000000" icon="icon_app_wechart_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+</button>
+<digit_clock>
+  <style name="date">
+    <normal font_size="28" text_color="#26FFED"/>
+  </style>
+  <style name="time">
+    <normal font_size="90" text_align_h="right" text_color="#26FFED"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="heart_number">
+    <normal font_size="52" text_color="#26FFED"/>
+  </style>
+  <style name="heart_text">
+    <normal font_size="30" text_color="#999999"/>
+  </style>
+  <style name="week">
+    <normal font_size="28" text_align_h="right" text_color="#26FFED"/>
+  </style>
+</label>
+<window>
+  <style name="watch_06">
+    <normal bg_color="#000000" bg_image="ico_watch_background_06"/>
+  </style>
+</window>

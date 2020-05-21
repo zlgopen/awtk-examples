@@ -1,0 +1,198 @@
+<label>
+  <style name="message_white_18">
+    <normal text_color="#ffffff" font_size="18" />
+  </style>
+  <style name="song_name_white_25">
+    <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="25" />
+  </style>
+  <style name="watch_main_01_orange_18">
+    <normal text_align_h="center" text_align_v="middle" text_color="#FF6500" font_size="18" />
+  </style>
+  <style name="watch_main_01_orange_11">
+    <normal text_align_h="center" text_align_v="middle" text_color="#FF6500" font_size="11" />
+  </style>
+  <style name="calendar_white_18">
+    <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="18" />
+  </style>
+  <style name="weather_sky_blue_18">
+    <normal text_align_h="center" text_align_v="middle" text_color="#93C8E7" font_size="18" />
+  </style>
+  <style name="weather_white_18">
+    <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="18" />
+  </style>
+  <style name="weather_white_left_18">
+    <normal text_align_h="left" text_align_v="middle" text_color="white" font_size="18" />
+  </style>
+  <style name="weather_white_right_18">
+    <normal text_align_h="right" text_align_v="middle" text_color="white" font_size="18" />
+  </style>
+  <style name="weather_sky_blue_left_18">
+    <normal text_align_h="left" text_align_v="middle" text_color="#00D0E3" font_size="18" />
+  </style>
+  <style name="weather_sky_blue_right_18">
+    <normal text_align_h="right" text_align_v="middle" text_color="#00D0E3" font_size="18" />
+  </style>
+  <style name="weather_white_25">
+    <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="25" />
+  </style>
+  <style name="weather_white_43">
+    <normal text_align_h="right" text_align_v="middle" text_color="white" font_size="43" />
+  </style>
+  <style name="training_white_43">
+    <normal text_align_h="center" text_align_v="middle" text_color="white" font_size="43" />
+  </style>
+</label>
+
+<view>
+  <style name="bg_black">
+    <normal bg_color="#000000"/>
+  </style>
+  <style name="buttom_bg_color">
+    <normal bg_color="#183039"/>
+  </style>
+  <style name="message_bg_color">
+    <normal bg_color="#001820"/>
+  </style>
+  <style name="music_bg_color">
+    <normal bg_color="#4E1879"/>
+  </style>
+  <style name="calendar_bg_color">
+    <normal bg_color="#161616"/>
+  </style>
+  <style name="weather_bg_color">
+    <normal bg_color="#0AA2EB"/>
+  </style>
+</view>
+
+<slide_indicator_arc>
+  <style name="default">
+    <normal  fg_color="#51697C" selected_fg_color="#00FFEF"/>
+  </style>
+</slide_indicator_arc>
+
+<slider>
+  <style name="music_vol" bg_color="#999999" fg_color="#CA12FF" border_color="#CA12FF00" round_radius="5">
+    <normal/>
+    <pressed/>
+    <over/>
+  </style>
+</slider>
+
+<digit_clock>
+  <style name="time_skyblue_18">
+    <normal text_color="#00e1d3" font_size="18" />
+  </style>
+  <style name="weather_sky_blue_18">
+    <normal text_color="#93C8E7" font_size="18" />
+  </style>
+</digit_clock>
+
+<list_item>
+  <style name="message_bg_color">
+    <normal     bg_color="#001820" />
+  </style>
+</list_item>
+
+<color_button>
+  <style name="music_loop">
+    <normal bg_color="#350E6C" fg_image="music_loop_normal" bg_image="music_top_button_normal" />
+    <pressed bg_color="#270B49" fg_image="music_loop_pressed" bg_image="music_top_button_pressed" />
+    <over bg_color="#270B49" fg_image="music_loop_pressed" bg_image="music_top_button_pressed" />
+  </style>
+  <style name="music_loop_single">
+    <normal bg_color="#350E6C" fg_image="music_loop_single_normal" bg_image="music_top_button_normal" />
+    <pressed bg_color="#270B49" fg_image="music_loop_single_pressed" bg_image="music_top_button_pressed" />
+    <over bg_color="#270B49" fg_image="music_loop_single_pressed" bg_image="music_top_button_pressed" />
+  </style>
+  <style name="music_immeditately">
+    <normal bg_color="#350E6C" fg_image="music_immeditately_normal" bg_image="music_top_button_normal" />
+    <pressed bg_color="#270B49" fg_image="music_immeditately_pressed" bg_image="music_top_button_pressed" />
+    <over bg_color="#270B49" fg_image="music_immeditately_pressed" bg_image="music_top_button_pressed" />
+  </style>
+  <style name="calendar_bg_top" bg_color="#23C1AA" bg_image="calendar_top" >
+    <normal />
+    <pressed />
+    <over />
+  </style>
+  <style name="calendar_bg_bottom" bg_color="#23C1AA" bg_image="calendar_bottom" >
+    <normal />
+    <pressed />
+    <over />
+  </style>
+  <style name="weather_bg_top"  bg_color="#2FB0EE" bg_image="weather_top" >
+    <normal />
+    <pressed />
+    <over />
+  </style>
+  <style name="weather_bg_bottom"  bg_color="#2FB0EE" bg_image="weather_bottom" >
+    <normal />
+    <pressed />
+    <over />
+  </style>
+</color_button>
+  
+<music_play_button>
+  <style name="stop">
+    <normal bg_image="music_play_normal"/>
+    <pressed bg_image="music_play_pressed"/>
+    <over bg_image="music_play_pressed"/>
+  </style>
+  <style name="play">
+    <normal bg_image="music_stop_normal"/>
+    <pressed bg_image="music_stop_pressed"/>
+    <over bg_image="music_stop_pressed"/>
+  </style>
+</music_play_button>
+
+<button>
+  <style name="calendar">
+    <normal bg_image="calendar_button_normal"/>
+    <pressed bg_image="calendar_button_pressed"/>
+    <over bg_image="calendar_button_pressed"/>
+  </style>
+  <style name="music">
+    <normal bg_image="music_button_normal"/>
+    <pressed bg_image="music_button_pressed"/>
+    <over bg_image="music_button_pressed"/>
+  </style>
+  <style name="training">
+    <normal bg_image="training_button_normal"/>
+    <pressed bg_image="training_button_pressed"/>
+    <over bg_image="training_button_pressed"/>
+  </style>
+  <style name="weather">
+    <normal bg_image="weather_button_normal"/>
+    <pressed bg_image="weather_button_pressed"/>
+    <over bg_image="weather_button_pressed"/>
+  </style>
+  <style name="calendar">
+    <normal bg_image="calendar_button_normal"/>
+    <pressed bg_image="calendar_button_pressed"/>
+    <over bg_image="calendar_button_pressed"/>
+  </style>
+  <style name="music_prev">
+    <normal bg_image="music_perv_normal"/>
+    <pressed bg_image="music_perv_pressed"/>
+    <over bg_image="music_perv_pressed"/>
+  </style>
+  <style name="music_next">
+    <normal bg_image="music_next_normal"/>
+    <pressed bg_image="music_next_pressed"/>
+    <over bg_image="music_next_pressed"/>
+  </style>
+  <style name="calender_up">
+    <normal bg_image="calender_up_normal"/>
+    <pressed bg_image="calender_up_pressed"/>
+    <over bg_image="calender_up_pressed"/>
+  </style>
+  <style name="calender_down">
+    <normal bg_image="calender_down_normal"/>
+    <pressed bg_image="calender_down_pressed"/>
+    <over bg_image="calender_down_pressed"/>
+  </style>
+  <style name="calender_current">
+    <normal bg_image="calendar_current"/>
+    <pressed bg_image="calendar_current"/>
+    <over bg_image="calendar_current"/>
+  </style>
+</button>

@@ -1,0 +1,168 @@
+#include "awtk.h"
+#include "base/assets_manager.h"
+#ifndef WITH_FS_RES
+#include "assets/res_480_272/inc/ui/home_page/home_page.data"
+#include "assets/res_480_272/inc/styles/default.data"
+#ifdef WITH_STB_IMAGE
+#include "assets/res_480_272/inc/images/arrow_down_d.res"
+#include "assets/res_480_272/inc/images/arrow_down_f.res"
+#include "assets/res_480_272/inc/images/arrow_down_n.res"
+#include "assets/res_480_272/inc/images/arrow_down_o.res"
+#include "assets/res_480_272/inc/images/arrow_down_p.res"
+#include "assets/res_480_272/inc/images/arrow_left_d.res"
+#include "assets/res_480_272/inc/images/arrow_left_f.res"
+#include "assets/res_480_272/inc/images/arrow_left_n.res"
+#include "assets/res_480_272/inc/images/arrow_left_o.res"
+#include "assets/res_480_272/inc/images/arrow_left_p.res"
+#include "assets/res_480_272/inc/images/arrow_right_d.res"
+#include "assets/res_480_272/inc/images/arrow_right_f.res"
+#include "assets/res_480_272/inc/images/arrow_right_n.res"
+#include "assets/res_480_272/inc/images/arrow_right_o.res"
+#include "assets/res_480_272/inc/images/arrow_right_p.res"
+#include "assets/res_480_272/inc/images/arrow_up_d.res"
+#include "assets/res_480_272/inc/images/arrow_up_f.res"
+#include "assets/res_480_272/inc/images/arrow_up_n.res"
+#include "assets/res_480_272/inc/images/arrow_up_o.res"
+#include "assets/res_480_272/inc/images/arrow_up_p.res"
+#include "assets/res_480_272/inc/images/bg_480_272.res"
+#include "assets/res_480_272/inc/images/check_checked_d.res"
+#include "assets/res_480_272/inc/images/check_checked_f.res"
+#include "assets/res_480_272/inc/images/check_checked_n.res"
+#include "assets/res_480_272/inc/images/check_checked_o.res"
+#include "assets/res_480_272/inc/images/check_checked_p.res"
+#include "assets/res_480_272/inc/images/check_d.res"
+#include "assets/res_480_272/inc/images/check_f.res"
+#include "assets/res_480_272/inc/images/check_n.res"
+#include "assets/res_480_272/inc/images/check_o.res"
+#include "assets/res_480_272/inc/images/check_p.res"
+#include "assets/res_480_272/inc/images/clock_bg.res"
+#include "assets/res_480_272/inc/images/clock_hour.res"
+#include "assets/res_480_272/inc/images/clock_minute.res"
+#include "assets/res_480_272/inc/images/clock_second.res"
+#include "assets/res_480_272/inc/images/cross.res"
+#include "assets/res_480_272/inc/images/guage_bg.res"
+#include "assets/res_480_272/inc/images/guage_pointer.res"
+#include "assets/res_480_272/inc/images/led_gray.res"
+#include "assets/res_480_272/inc/images/led_green.res"
+#include "assets/res_480_272/inc/images/led_red.res"
+#include "assets/res_480_272/inc/images/led_yellow.res"
+#include "assets/res_480_272/inc/images/num0.res"
+#include "assets/res_480_272/inc/images/num1.res"
+#include "assets/res_480_272/inc/images/num2.res"
+#include "assets/res_480_272/inc/images/num3.res"
+#include "assets/res_480_272/inc/images/num4.res"
+#include "assets/res_480_272/inc/images/num5.res"
+#include "assets/res_480_272/inc/images/num6.res"
+#include "assets/res_480_272/inc/images/num7.res"
+#include "assets/res_480_272/inc/images/num8.res"
+#include "assets/res_480_272/inc/images/num9.res"
+#include "assets/res_480_272/inc/images/numdot.res"
+#include "assets/res_480_272/inc/images/radio_checked_d.res"
+#include "assets/res_480_272/inc/images/radio_checked_f.res"
+#include "assets/res_480_272/inc/images/radio_checked_n.res"
+#include "assets/res_480_272/inc/images/radio_checked_o.res"
+#include "assets/res_480_272/inc/images/radio_checked_p.res"
+#include "assets/res_480_272/inc/images/radio_d.res"
+#include "assets/res_480_272/inc/images/radio_f.res"
+#include "assets/res_480_272/inc/images/radio_n.res"
+#include "assets/res_480_272/inc/images/radio_o.res"
+#include "assets/res_480_272/inc/images/radio_p.res"
+#include "assets/res_480_272/inc/images/rounded_n.res"
+#include "assets/res_480_272/inc/images/rounded_o.res"
+#include "assets/res_480_272/inc/images/rounded_p.res"
+#include "assets/default/inc/images/bg.res"
+#else
+#endif /*WITH_STB_IMAGE*/
+#ifdef WITH_VGCANVAS
+#endif /*WITH_VGCANVAS*/
+#if defined(WITH_TRUETYPE_FONT)
+#include "assets/res_480_272/inc/fonts/default.res"
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_FS_RES*/
+
+ret_t assets_init(void) {
+  assets_manager_t* am = assets_manager();
+  assets_manager_set_theme(am, "res_480_272");
+
+#ifdef WITH_FS_RES
+  assets_manager_preload(am, ASSET_TYPE_FONT, "default");
+  assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
+#else
+  assets_manager_add(am, ui_home_page_home_page_res_480_272);
+  assets_manager_add(am, style_default_res_480_272);
+  assets_manager_add(am, image_arrow_down_d_res_480_272);
+  assets_manager_add(am, image_arrow_down_f_res_480_272);
+  assets_manager_add(am, image_arrow_down_n_res_480_272);
+  assets_manager_add(am, image_arrow_down_o_res_480_272);
+  assets_manager_add(am, image_arrow_down_p_res_480_272);
+  assets_manager_add(am, image_arrow_left_d_res_480_272);
+  assets_manager_add(am, image_arrow_left_f_res_480_272);
+  assets_manager_add(am, image_arrow_left_n_res_480_272);
+  assets_manager_add(am, image_arrow_left_o_res_480_272);
+  assets_manager_add(am, image_arrow_left_p_res_480_272);
+  assets_manager_add(am, image_arrow_right_d_res_480_272);
+  assets_manager_add(am, image_arrow_right_f_res_480_272);
+  assets_manager_add(am, image_arrow_right_n_res_480_272);
+  assets_manager_add(am, image_arrow_right_o_res_480_272);
+  assets_manager_add(am, image_arrow_right_p_res_480_272);
+  assets_manager_add(am, image_arrow_up_d_res_480_272);
+  assets_manager_add(am, image_arrow_up_f_res_480_272);
+  assets_manager_add(am, image_arrow_up_n_res_480_272);
+  assets_manager_add(am, image_arrow_up_o_res_480_272);
+  assets_manager_add(am, image_arrow_up_p_res_480_272);
+  assets_manager_add(am, image_bg_480_272_res_480_272);
+  assets_manager_add(am, image_check_checked_d_res_480_272);
+  assets_manager_add(am, image_check_checked_f_res_480_272);
+  assets_manager_add(am, image_check_checked_n_res_480_272);
+  assets_manager_add(am, image_check_checked_o_res_480_272);
+  assets_manager_add(am, image_check_checked_p_res_480_272);
+  assets_manager_add(am, image_check_d_res_480_272);
+  assets_manager_add(am, image_check_f_res_480_272);
+  assets_manager_add(am, image_check_n_res_480_272);
+  assets_manager_add(am, image_check_o_res_480_272);
+  assets_manager_add(am, image_check_p_res_480_272);
+  assets_manager_add(am, image_clock_bg_res_480_272);
+  assets_manager_add(am, image_clock_hour_res_480_272);
+  assets_manager_add(am, image_clock_minute_res_480_272);
+  assets_manager_add(am, image_clock_second_res_480_272);
+  assets_manager_add(am, image_cross_res_480_272);
+  assets_manager_add(am, image_guage_bg_res_480_272);
+  assets_manager_add(am, image_guage_pointer_res_480_272);
+  assets_manager_add(am, image_led_gray_res_480_272);
+  assets_manager_add(am, image_led_green_res_480_272);
+  assets_manager_add(am, image_led_red_res_480_272);
+  assets_manager_add(am, image_led_yellow_res_480_272);
+  assets_manager_add(am, image_num0_res_480_272);
+  assets_manager_add(am, image_num1_res_480_272);
+  assets_manager_add(am, image_num2_res_480_272);
+  assets_manager_add(am, image_num3_res_480_272);
+  assets_manager_add(am, image_num4_res_480_272);
+  assets_manager_add(am, image_num5_res_480_272);
+  assets_manager_add(am, image_num6_res_480_272);
+  assets_manager_add(am, image_num7_res_480_272);
+  assets_manager_add(am, image_num8_res_480_272);
+  assets_manager_add(am, image_num9_res_480_272);
+  assets_manager_add(am, image_numdot_res_480_272);
+  assets_manager_add(am, image_radio_checked_d_res_480_272);
+  assets_manager_add(am, image_radio_checked_f_res_480_272);
+  assets_manager_add(am, image_radio_checked_n_res_480_272);
+  assets_manager_add(am, image_radio_checked_o_res_480_272);
+  assets_manager_add(am, image_radio_checked_p_res_480_272);
+  assets_manager_add(am, image_radio_d_res_480_272);
+  assets_manager_add(am, image_radio_f_res_480_272);
+  assets_manager_add(am, image_radio_n_res_480_272);
+  assets_manager_add(am, image_radio_o_res_480_272);
+  assets_manager_add(am, image_radio_p_res_480_272);
+  assets_manager_add(am, image_rounded_n_res_480_272);
+  assets_manager_add(am, image_rounded_o_res_480_272);
+  assets_manager_add(am, image_rounded_p_res_480_272);
+  assets_manager_add(am, image_bg);
+  assets_manager_add(am, font_default_res_480_272);
+#ifdef WITH_VGCANVAS
+#endif /*WITH_VGCANVAS*/
+#endif
+
+  tk_init_assets();
+  return RET_OK;
+}

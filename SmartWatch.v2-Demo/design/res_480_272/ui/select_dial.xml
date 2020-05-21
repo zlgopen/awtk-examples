@@ -1,0 +1,18 @@
+<window anim_hint="slide_right" x="c" y="m" w="240" h="240" name="select_dial" open_anim_hint="slide_right(easing=sin_inout)" style:normal:bg_color="#061B26">
+  <view name="select:gesture" x="c" y="m" w="240" h="240">
+    <slide_menu name="select:slidemenu" x="-168" y="36" w="576" h="168" min_scale="1">
+      <view name="watch_04_view" style="default">
+        <button name="watch_04" x="c" y="m" w="159" h="159" repeat="0" enable_long_press="false" style="watch_04" tr_text="Button"/>
+      </view>
+      <view name="watch_01_view" style="default">
+        <button name="watch_01" x="c" y="m" w="159" h="159" repeat="0" enable_long_press="false" style="watch_01" tr_text="Button"/>
+      </view>
+      <view name="watch_02_view" style="default">
+        <button name="watch_02" x="c" y="m" w="159" h="159" repeat="0" enable_long_press="false" style="watch_02" tr_text="Button"/>
+      </view>
+      <view name="watch_06_view" style="default">
+        <button name="watch_06" x="c" y="m" w="159" h="159" repeat="0" enable_long_press="false" style="watch_06" tr_text="Button"/>
+      </view>
+    </slide_menu>
+  </view>
+</window>

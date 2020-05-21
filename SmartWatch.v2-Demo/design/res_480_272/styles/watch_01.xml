@@ -1,0 +1,14 @@
+<label>
+  <style name="center_middle">
+    <normal font_size="15" text_color="#FF6500"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="watch_01_foot_value">
+    <normal text_color="#FF6500"/>
+  </style>
+</label>
+<window>
+  <style name="watch_01">
+    <normal bg_color="#000000"/>
+  </style>
+</window>

@@ -1,0 +1,18 @@
+<button>
+  <style name="alipay">
+    <normal icon="ico_pay_bar" text_color="#00000000"/>
+  </style>
+  <style name="gongshang">
+    <normal icon="ico_pay_card" text_color="#00000000"/>
+  </style>
+</button>
+<label>
+  <style name="text">
+    <normal font_size="50" text_color="#FFFFFF"/>
+  </style>
+</label>
+<window>
+  <style name="pay">
+    <normal bg_color="#000000" bg_image="ico_pay_background"/>
+  </style>
+</window>

@@ -1,0 +1,32 @@
+<button>
+  <style name="current">
+    <normal icon="calendar_current" text_color="#00000000"/>
+  </style>
+  <style name="down" icon="ico_down_pressed">
+    <normal border_color="#00000000" icon="ico_down_normal"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="up" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="ico_up_normal"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="ico_up_pressed"/>
+    <pressed icon="ico_up_pressed"/>
+  </style>
+</button>
+<label>
+  <style name="calendar">
+    <normal font_size="15" text_color="#FFFFFF"/>
+  </style>
+  <style name="calendar_title">
+    <normal bg_image="ico_calendar_top" font_size="25" text_color="#FFFFFF"/>
+  </style>
+  <style name="calendar_today">
+    <normal font_size="15" text_color="#23C1AA"/>
+  </style>
+  <style name="calendar_weekend">
+    <normal font_size="15" text_color="#FF0000"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>

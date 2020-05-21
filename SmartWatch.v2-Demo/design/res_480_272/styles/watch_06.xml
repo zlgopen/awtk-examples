@@ -1,0 +1,59 @@
+<button>
+  <style name="watch_06_calendar" icon="icon_app_calendar_pressed_88">
+    <normal border_color="#00000000" icon="icon_app_calendar_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_health" icon="icon_app_training_pressed_88">
+    <normal border_color="#00000000" icon="icon_app_training_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_music" icon="icon_app_music_pressed_88">
+    <normal border_color="#00000000" icon="icon_app_music_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_00" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="icon_app_cloudy_normal_88"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="icon_app_cloudy_pressed_88"/>
+    <pressed icon="icon_app_cloudy_pressed_88"/>
+  </style>
+  <style name="watch_06_weather_01" icon="icon_app_rainy_pressed_88">
+    <normal border_color="#00000000" icon="icon_app_rainy_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_02" icon="icon_app_sunny_pressed_88">
+    <normal bg_color="#00000000" icon="icon_app_sunny_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="watch_06_weather_03" icon="app_thunderstorm_pressed_88">
+    <normal bg_color="#00000000" icon="app_thunderstorm_normal_88"/>
+    <over/>
+    <pressed/>
+  </style>
+</button>
+<digit_clock>
+  <style name="date">
+    <normal font_size="17" text_color="#26FFED"/>
+  </style>
+  <style name="time">
+    <normal font_size="55" text_align_h="right" text_color="#26FFED"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="heart_number">
+    <normal font_size="32" text_color="#26FFED"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="heart_text">
+    <normal text_color="#999999"/>
+  </style>
+  <style name="week">
+    <normal font_size="17" text_align_h="right" text_color="#26FFED"/>
+  </style>
+</label>

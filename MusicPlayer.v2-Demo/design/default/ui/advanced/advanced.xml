@@ -1,0 +1,36 @@
+<dialog w="400" h="355" name="advanced" style="bg_setting" animation="move(easing=sin_inout,x_from=800,x_to=400,y_from=0,y_to=0)" x="c" y="m" highlight="">
+  <view name="guage_pointer_view" x="c" y="10%" w="100%" h="90%" children_layout="default(c=2,r=2,x=25)">
+    <view name="guage_low">
+      <label name="min" x="20%" y="m:23%" w="10" h="10" tr_text="-"/>
+      <label name="title" x="c" y="b:15%" w="22" h="14" tr_text="Low"/>
+      <label name="max" x="r:20%" y="m:23%" w="10" h="10" tr_text="+"/>
+      <progress_circle name="circle_low" x="c" y="m" w="120" h="120" start_angle="150" line_width="2" max="360" value="120"/>
+      <guage_pointer name="low_guage_pointer" x="c" y="m" w="86" h="86" image="round"/>
+    </view>
+    <view name="guage_high">
+      <label name="min" x="20%" y="m:23%" w="10" h="10" tr_text="-"/>
+      <label name="title" x="c" y="b:15%" w="22" h="14" tr_text="High"/>
+      <label name="max" x="r:20%" y="m:23%" w="10" h="10" tr_text="+"/>
+      <progress_circle name="circle_high" x="c" y="m" w="120" h="120" start_angle="150" line_width="2" max="360" value="120"/>
+      <guage_pointer name="high_guage_pointer" x="c" y="m" w="86" h="86" image="round"/>
+    </view>
+    <view name="guage_round" style="default">
+      <label name="min" x="20%" y="m:23%" w="10" h="10" tr_text="-"/>
+      <label name="title" x="c" y="b:15%" w="80" h="14" tr_text="SURR-Strenth"/>
+      <label name="max" x="r:20%" y="m:23%" w="10" h="10" tr_text="+"/>
+      <progress_circle name="circle_round" x="c" y="m" w="120" h="120" start_angle="150" line_width="2" max="360" value="120"/>
+      <guage_pointer name="round_guage_pointer" x="c" y="m" w="86" h="86" image="round"/>
+    </view>
+    <view name="guage_deep">
+      <label name="min" x="20%" y="m:23%" w="10" h="10" tr_text="-"/>
+      <label name="title" x="c" y="b:15%" w="80" h="14" tr_text="SURR-Depth"/>
+      <label name="max" x="r:20%" y="m:23%" w="10" h="10" tr_text="+"/>
+      <progress_circle name="circle_deep" x="c" y="m" w="120" h="120" start_angle="150" line_width="2" max="360" value="120"/>
+      <guage_pointer name="deep_guage_pointer" x="c" y="m" w="86" h="86" image="round"/>
+    </view>
+  </view>
+  <view name="view4" x="0" y="0" w="100%" h="10%" style="dialog_title">
+    <label name="title" x="15" y="0" w="93" h="100%" style:text_color="black" style:text_align_h="left" style="title" style:normal:text_color="#FFFFFF" style:normal:font_size="28" tr_text="Advanced"/>
+    <button name="close" x="r:20" y="0" w="28" h="35" style:border_color="#00000000" style:bg_color="#00000000" style:over:border_color="#00000000" style:pressed:border_color="#00000000" style="s_setting_close" text=""/>
+  </view>
+</dialog>

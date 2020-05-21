@@ -1,0 +1,259 @@
+<window name="setting" anim_hint="htranslate(easing=cubic_out)" style:normal:bg_color="#000000">
+  <button name="close" x="4" y="4" w="60" h="30" repeat="0" enable_long_press="false" style="back" style:normal:font_size="24" style:pressed:font_size="24" style:over:font_size="24">
+    <property name="style:disable:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="style:focused:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="tr_text">
+      <![CDATA[Back]]>
+    </property>
+  </button>
+  <list_view name="list_view" x="0" y="40" w="20%" h="440" default_item_height="60" auto_hide_scroll_bar="true" style:normal:bg_color="#292929" item_height="40" style:normal:border="none">
+    <scroll_bar_d name="scroll_bar" x="r" y="0" w="10" h="100%" visible="false"/>
+    <tab_button name="tab_button" x="0" y="0" w="100%" h="40" style:normal:font_size="24" style:normal:bg_color="#393939" style:normal:text_color="#FFFFFF" style:pressed:font_size="24" style:pressed:bg_color="#202020" style:pressed:text_color="#FFFFFF">
+      <property name="style:over:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:over:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:over:bg_color">
+        <![CDATA[#2A2D2E]]>
+      </property>
+      <property name="style:normal_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:normal_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:normal_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:pressed_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:pressed_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:pressed_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:over_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:over_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:over_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:over_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:over_of_active:border_width">
+        <![CDATA[0]]>
+      </property>
+      <property name="style:over_of_active:border_color">
+        <![CDATA[#292929]]>
+      </property>
+      <property name="style:normal:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:pressed:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:over:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:normal_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:pressed_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="value">
+        <![CDATA[true]]>
+      </property>
+      <property name="tr_text">
+        <![CDATA[Control Setting]]>
+      </property>
+    </tab_button>
+    <tab_button name="tab_button1" x="0" y="40" w="160" h="40" style:normal:font_size="24" style:normal:bg_color="#393939" style:normal:text_color="#FFFFFF" style:pressed:font_size="24" style:pressed:bg_color="#202020" style:pressed:text_color="#FFFFFF">
+      <property name="style:over:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:over:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:over:bg_color">
+        <![CDATA[#2A2D2E]]>
+      </property>
+      <property name="style:normal_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:normal_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:normal_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:pressed_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:pressed_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:pressed_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:over_of_active:font_size">
+        <![CDATA[24]]>
+      </property>
+      <property name="style:over_of_active:text_color">
+        <![CDATA[#FFFFFF]]>
+      </property>
+      <property name="style:over_of_active:bg_color">
+        <![CDATA[#202020]]>
+      </property>
+      <property name="style:over_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:over_of_active:border_width">
+        <![CDATA[0]]>
+      </property>
+      <property name="style:over_of_active:border_color">
+        <![CDATA[#292929]]>
+      </property>
+      <property name="style:normal:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:pressed:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:over:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:normal_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="style:pressed_of_active:border">
+        <![CDATA[none]]>
+      </property>
+      <property name="tr_text">
+        <![CDATA[Alarm Setting]]>
+      </property>
+    </tab_button>
+  </list_view>
+  <pages name="pages" x="r" y="40" w="80%" h="440" style:normal:bg_color="#202020" style:normal:border="none">
+    <view name="view" x="0" y="0" w="100%" h="60%">
+      <label name="label" x="0" y="0" w="34%" h="60" style="setting_page" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Indoor Temp"/>
+      <edit name="edit" x="34%" y="0" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[22.0]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <edit name="edit1" x="67%" y="0" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[2.5]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label" x="0" y="60" w="34%" h="60" style="setting_page" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Wind In/out"/>
+      <edit name="edit" x="34%" y="60" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[23.1]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <edit name="edit1" x="67%" y="60" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[2.0]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label" x="0" y="120" w="34%" h="60" style="setting_page" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Outside Hum"/>
+      <edit name="edit" x="34%" y="120" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[26.3]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <edit name="edit1" x="67%" y="120" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[3.3]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label" x="0" y="180" w="34%" h="60" style="setting_page" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Cycle Delay"/>
+      <edit name="edit" x="34%" y="180" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[22.5]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <edit name="edit1" x="67%" y="180" w="33%" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[2.1]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+    </view>
+    <view name="view1" x="0" y="0" w="100%" h="60%">
+      <label name="label1" x="0" y="0" w="50%" h="60" style="default" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="High Temp Alarm"/>
+      <edit name="edit2" x="50%" y="0" w="318" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[10.0]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label1" x="0" y="60" w="50%" h="60" style="default" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Low Temp Alarm"/>
+      <edit name="edit2" x="50%" y="60" w="318" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[3.0]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label1" x="0" y="120" w="50%" h="60" style="default" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="High Hum Alarm"/>
+      <edit name="edit2" x="50%" y="120" w="318" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[60.0]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+      <label name="label1" x="0" y="180" w="50%" h="60" style="default" style:normal:font_size="24" style:normal:text_color="#FFFFFF" tr_text="Low Hum Alarm"/>
+      <edit name="edit2" x="50%" y="180" w="318" h="60" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" input_type="ufloat" min="0">
+        <property name="text">
+          <![CDATA[58.3]]>
+        </property>
+        <property name="max">
+          <![CDATA[1024]]>
+        </property>
+      </edit>
+    </view>
+  </pages>
+</window>

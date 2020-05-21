@@ -1,0 +1,77 @@
+<button>
+  <style name="empty" font_size="25" text_color="#FFFFFF">
+    <normal/>
+    <over/>
+  </style>
+  <style name="s_advanced">
+    <normal border_color="#00000000" icon="advanced_n"/>
+  </style>
+  <style name="s_anim_switch_n">
+    <normal border_color="#00000000" icon="b_anim_n"/>
+  </style>
+  <style name="s_anim_switch_p">
+    <normal border_color="#00000000" icon="b_anim_p"/>
+  </style>
+  <style name="s_eq">
+    <normal border_color="#00000000" icon="eq_n"/>
+  </style>
+  <style name="s_play">
+    <normal icon="play_n" spacer=""/>
+  </style>
+  <style name="s_play_list">
+    <normal border_color="#00000000" border_width="" icon="play_list_n"/>
+  </style>
+  <style name="s_play_mode_clicle" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal border_width="" icon="mode_circleall_n" round_radius=""/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="mode_circleall_n"/>
+    <pressed icon="mode_circleall_n"/>
+  </style>
+  <style name="s_play_mode_one">
+    <normal border_color="#00000000" border_width="" icon="mode_circleone_n"/>
+  </style>
+  <style name="s_play_mode_rand">
+    <normal border_color="#00000000" border_width="" icon="mode_circlerand_n"/>
+  </style>
+  <style name="s_play_next">
+    <normal icon="play_next_n" spacer=""/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" round_radius="4" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" round_radius="4" text_color="#444444"/>
+  </style>
+  <style name="s_play_pause">
+    <normal border_color="#00000000" icon="play_pause_n"/>
+  </style>
+  <style name="s_play_prev">
+    <normal icon="play_prev_n" spacer=""/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" round_radius="4" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" round_radius="4" text_color="#444444"/>
+  </style>
+</button>
+<digit_clock>
+  <style name="right">
+    <normal font_size="25" margin="4" text_align_h="right" text_color="#FFFFFF"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="left">
+    <normal font_size="33" margin="4" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="s_artist_name">
+    <normal font_size="18" text_color="#FFFFFF"/>
+  </style>
+  <style name="s_song_name">
+    <normal font_size="32" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<slider>
+  <style name="slider_h" bg_color="#FFFFFF" fg_color="#00FFFC" icon="slider_drag">
+    <normal/>
+    <disable bg_color="#D8D8D866" fg_color="#338FFF66" icon="rounded_n" round_radius="5"/>
+    <focused bg_color="#D8D8D8" fg_color="#338FFF" icon="rounded_o" round_radius="5"/>
+    <over round_radius=""/>
+    <pressed round_radius=""/>
+  </style>
+</slider>

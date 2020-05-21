@@ -1,0 +1,23 @@
+<button>
+  <style name="watch_01">
+    <normal icon="ico_watch_01" text_color="#00000000"/>
+  </style>
+  <style name="watch_02">
+    <normal bg_color="#00000000" icon="ico_watch_02"/>
+  </style>
+  <style name="watch_04" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="ico_watch_04"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="ico_watch_04"/>
+    <pressed icon="ico_watch_04"/>
+  </style>
+  <style name="watch_06">
+    <normal bg_color="#00000000" icon="ico_watch_06"/>
+  </style>
+</button>
+<window>
+  <style name="select_dial">
+    <normal bg_color="#061B26" border="none" border_color="#00000000"/>
+  </style>
+</window>

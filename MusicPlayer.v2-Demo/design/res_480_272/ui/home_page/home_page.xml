@@ -1,0 +1,50 @@
+<window name="home_page" style="bg_main">
+  <view name="title_view" x="0" y="0" w="100%" h="11%">
+    <label name="dev_name" x="5" y="m" w="84" h="100%" style="left" tr_text="Music Player"/>
+    <digit_clock name="sys_time" x="351" y="m" w="124" h="100%" format="YYYY-MM-DD hh:mm:ss" style="right"/>
+  </view>
+  <view name="control_view" x="0" y="b" w="100%" h="40">
+    <view name="view" x="2%" y="b" w="27%" h="100%" children_layout="default(c=3,r=1)">
+      <button name="btn_prve" repeat="0" enable_long_press="false" style="s_play_prev" tr_text=""/>
+      <button name="btn_play" repeat="0" enable_long_press="false" style="s_play" tr_text=""/>
+      <button name="btn_next" repeat="0" enable_long_press="false" style="s_play_next" tr_text=""/>
+    </view>
+    <view name="view" x="82%" y="m" w="16%" h="100%" children_layout="default(c=2,r=1)">
+      <button name="btn_play_mode" repeat="0" enable_long_press="false" style="s_play_mode_clicle" tr_text=""/>
+      <button name="btn_play_list" repeat="0" enable_long_press="false" style="s_play_list" tr_text=""/>
+    </view>
+    <view name="view" x="30%" y="m" w="50%" h="100%">
+      <label name="slider_min" x="0" y="m" w="26" h="100%" tr_text="00:00"/>
+      <label name="slider_max" x="r:5" y="0" w="26" h="40" tr_text="00:00"/>
+      <slider name="play_slider" x="12%" y="m" w="75%" h="100%" bar_size="2" dragger_size="10" style="slider_h" value="0"/>
+    </view>
+  </view>
+  <clip_view name="cover_view" x="0" y="51" w="240" h="170">
+    <view name="view" x="c" y="m" w="240" h="170">
+      <image name="song_y" x="c" y="m" w="107" h="107" image="yellow"/>
+      <image name="Vinyl" x="c" y="m" w="170" h="170" image="Vinyl"/>
+    </view>
+    <view name="view" x="-240" y="m" w="240" h="170">
+      <image name="song_q" x="c" y="m" w="107" h="107" image="see_you_again"/>
+      <image name="Vinyl" x="c" y="m" w="170" h="170" image="Vinyl"/>
+    </view>
+    <view name="view" x="-240" y="m" w="240" h="170">
+      <image name="song_n" x="c" y="m" w="107" h="107" image="let_it_go"/>
+      <image name="Vinyl" x="c" y="m" w="170" h="170" image="Vinyl"/>
+    </view>
+  </clip_view>
+  <guage_pointer name="vinyl_head" x="89" y="28" w="29" h="72" image="pointer" angle="-35" anchor_x="6px" anchor_y="5px"/>
+  <view name="view" x="53%" y="12%" w="40%" h="18%">
+    <label name="song_name" x="0" y="m:-8" w="100%" h="30%" style="s_song_name" tr_text="Label"/>
+    <label name="song_artist" x="0" y="m:10" w="100%" h="40%" style="s_artist_name" tr_text="Label"/>
+  </view>
+  <image name="lrc_rule" x="240" y="79" w="210" h="1" image="lrc_rule"/>
+  <list_view name="lrc_view" x="240" y="30%" w="216" h="50%" default_item_height="60" item_height="15" style="empty">
+    <scroll_view name="lrc_scroll" x="0" y="0" w="216" h="100%" style="empty" yslidable="true"/>
+  </list_view>
+  <view name="setting_view" x="r:4" y="12%" w="5%" h="30%" children_layout="default(c=1,r=3)">
+    <button name="btn_anim_switch" repeat="0" enable_long_press="false" style="s_anim_switch_p" tr_text=""/>
+    <button name="btn_equalizer" repeat="0" enable_long_press="false" style="s_eq" tr_text=""/>
+    <button name="btn_advanced" repeat="0" enable_long_press="false" style="s_advanced" enable="true" tr_text=""/>
+  </view>
+</window>

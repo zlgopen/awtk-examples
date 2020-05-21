@@ -1,0 +1,10 @@
+import os
+import sys
+
+env=DefaultEnvironment().Clone()
+BIN_DIR=os.environ['BIN_DIR']
+CCFLAGS=os.environ['CCFLAGS']
+
+src_files=['main.cpp', 'clock_point_save/clock_point_save.cpp']
+
+env.Program(os.path.join(BIN_DIR, 'clock_pinter_gen'), src_files, CCFLAGS = CCFLAGS);

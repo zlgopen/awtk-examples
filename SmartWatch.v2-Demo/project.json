@@ -1,0 +1,54 @@
+{
+  "name": "SmartWatch.d-Demo",
+  "appType": "APP_MOBILE",
+  "hardware": "RT1050",
+  "entry": "home_page/home_page",
+  "modifyTime": "2020/05/18",
+  "creator": {
+    "name": "AWTK Designer",
+    "version": "0.1.5"
+  },
+  "assets": {
+    "loadFrom": "any",
+    "const": "resource_data",
+    "defaultLanguage": "zh",
+    "defaultCountry": "CN",
+    "themes": {
+      "default": {
+        "activedSystemBar": "system_bar",
+        "activedBottomSystemBar": "system_bar_b",
+        "packaged": true,
+        "fonts": {
+          "default": {
+            "text": "﻿ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~°\n支付宝付款码请靠近读卡器广州市最后更新:风力紫外线强度相对湿体感温气压活动卡路里锻炼分钟站立目标周日一二三四五六前次当心率开始检测正在未实现小时刚结果即将关闭请保持手腕平衡明天晴朗你好啊在干嘛？多久没运了星期微未实现\n"
+          }
+        },
+        "lcd": {
+          "width": "800",
+          "height": "480",
+          "colorDepth": "16bit",
+          "colorFormat": "bgr(a)"
+        }
+      },
+      "res_480_272": {
+        "activedSystemBar": "system_bar",
+        "activedBottomSystemBar": "system_bar_b",
+        "packaged": true,
+        "fonts": {
+          "default": {
+            "text": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+          }
+        },
+        "lcd": {
+          "width": "480",
+          "height": "272",
+          "colorDepth": "16bit",
+          "colorFormat": "bgr(a)"
+        }
+      }
+    },
+    "screenDPR": "x1",
+    "activedTheme": "default",
+    "outputDir": "res"
+  }
+}

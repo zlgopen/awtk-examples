@@ -1,0 +1,24 @@
+<digit_clock>
+  <style name="time">
+    <normal font_size="26" text_align_h="left" text_color="#00E1D3"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="text">
+    <normal font_size="23" text_align_h="left" text_align_v="top" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<list_item>
+  <style name="a" border_color="#00000000" text_color="#00000000">
+    <normal bg_color="#00000000"/>
+    <disable border_color="#E9E9E966" text_color="#44444466"/>
+    <over bg_color="#00000000"/>
+    <pressed bg_color="#00000000"/>
+  </style>
+</list_item>
+<view>
+  <style name="dragger">
+    <normal bg_color="#FFFFFF20"/>
+  </style>
+</view>

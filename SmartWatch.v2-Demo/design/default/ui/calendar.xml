@@ -1,0 +1,61 @@
+<window  x="c" y="m" w="390" h="390" name="calendar" anim_hint="slide_left(easing=sin_inout)" style="calendar">
+  <gesture name="calendar:gesture" x="c" y="m" w="390" h="390">
+    <view name="calendar_labels" x="c" y="92" w="280" h="233" children_layout="default(c=7,r=7)">
+      <label name="label" style="calendar_weekend" tr_text="周日"/>
+      <label name="label" style="calendar" tr_text="周一"/>
+      <label name="label" style="calendar" tr_text="周二"/>
+      <label name="label" style="calendar" tr_text="周三"/>
+      <label name="label" style="calendar" tr_text="周四"/>
+      <label name="label" style="calendar" tr_text="周五"/>
+      <label name="label" style="calendar_weekend" tr_text="周六"/>
+      <label name="calendar_day00" style="calendar" tr_text=""/>
+      <label name="calendar_day01" style="calendar" tr_text=""/>
+      <label name="calendar_day02" style="calendar" tr_text=""/>
+      <label name="calendar_day03" style="calendar" tr_text=""/>
+      <label name="calendar_day04" style="calendar" tr_text=""/>
+      <label name="calendar_day05" style="calendar" tr_text=""/>
+      <label name="calendar_day06" style="calendar" tr_text=""/>
+      <label name="calendar_day07" style="calendar" tr_text=""/>
+      <label name="calendar_day08" style="calendar" tr_text=""/>
+      <label name="calendar_day09" style="calendar" tr_text=""/>
+      <label name="calendar_day10" style="calendar" tr_text=""/>
+      <label name="calendar_day11" style="calendar" tr_text=""/>
+      <label name="calendar_day12" style="calendar" tr_text=""/>
+      <label name="calendar_day13" style="calendar" tr_text=""/>
+      <label name="calendar_day14" style="calendar" tr_text=""/>
+      <label name="calendar_day15" style="calendar" tr_text=""/>
+      <label name="calendar_day16" style="calendar" tr_text=""/>
+      <label name="calendar_day17" style="calendar" tr_text=""/>
+      <label name="calendar_day18" style="calendar" tr_text=""/>
+      <label name="calendar_day19" style="calendar" tr_text=""/>
+      <label name="calendar_day20" style="calendar" tr_text=""/>
+      <label name="calendar_day21" style="calendar" tr_text=""/>
+      <label name="calendar_day22" style="calendar" tr_text=""/>
+      <label name="calendar_day23" style="calendar" tr_text=""/>
+      <label name="calendar_day24" style="calendar" tr_text=""/>
+      <label name="calendar_day25" style="calendar" tr_text=""/>
+      <label name="calendar_day26" style="calendar" tr_text=""/>
+      <label name="calendar_day27" style="calendar" tr_text=""/>
+      <label name="calendar_day28" style="calendar" tr_text=""/>
+      <label name="calendar_day29" style="calendar" tr_text=""/>
+      <label name="calendar_day30" style="calendar" tr_text=""/>
+      <label name="calendar_day31" style="calendar" tr_text=""/>
+      <label name="calendar_day32" style="calendar" tr_text=""/>
+      <label name="calendar_day33" style="calendar" tr_text=""/>
+      <label name="calendar_day34" style="calendar" tr_text=""/>
+      <label name="calendar_day35" style="calendar" tr_text=""/>
+      <label name="calendar_day36" style="calendar" tr_text=""/>
+      <label name="calendar_day37" style="calendar" tr_text=""/>
+      <label name="calendar_day38" style="calendar" tr_text=""/>
+      <label name="calendar_day39" style="calendar" tr_text=""/>
+      <label name="calendar_day40" style="calendar" tr_text=""/>
+      <label name="calendar_day41" style="calendar" tr_text=""/>
+    </view>
+    <label name="calendar_date" x="c" y="0" w="288" h="92" style="calendar_title" tr_text=""/>
+    <view name="calendar_ctrl" x="c" y="b" w="268" h="78" style="calendar_ctrl">
+      <button name="calendar:up" x="65" y="m" w="47" h="47" repeat="0" enable_long_press="false" style="up" tr_text=""/>
+      <button name="calendar:current" x="c" y="m" w="47" h="47" repeat="0" enable_long_press="false" style="current" tr_text=""/>
+      <button name="calendar:down" x="r:65" y="m" w="47" h="47" repeat="0" enable_long_press="false" style="down" tr_text=""/>
+    </view>
+  </gesture>
+</window>

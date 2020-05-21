@@ -1,0 +1,28 @@
+<window  x="c" y="m" w="390" h="390" name="watch_01" style="watch_01">
+  <gesture name="gesture" x="c" y="m" w="390" h="390">
+    <guage name="guage" x="c" y="m" w="100%" h="100%" image="ico_watch_background_01">
+      <button name="battery" x="87" y="118" w="88" h="88" repeat="0" enable_long_press="false" style="disable" enable="true" tr_text="">
+        <health_circle name="watch_01_battery" x="c" y="m" w="86" h="86" width="12" only_big="true" color_b="#FF6500" value_b="0" max_b="100" smooth_end="false">
+          <property name="smooth_start">
+            <![CDATA[false]]>
+          </property>
+        </health_circle>
+        <label name="watch_01_battery_value" x="c" y="47" w="29" h="14" style="center_middle" text=""/>
+      </button>
+      <button name="weather" x="215" y="124" w="88" h="88" repeat="0" enable_long_press="true" style="enable" tr_text="">
+        <label name="day" style="center_middle" x="22%" y="57" w="54" h="17" text="18~24°"/>
+      </button>
+      <button name="foot" x="142" y="217" w="106" h="106" repeat="0" enable_long_press="true" style="enable" tr_text="">
+        <health_circle name="watch_01_foot" x="c" y="m" w="104" h="104" width="12" only_big="true" color_b="#FF6500" value_b="0" max_b="20000" smooth_end="false">
+          <property name="smooth_start">
+            <![CDATA[false]]>
+          </property>
+        </health_circle>
+        <label name="watch_01_foot_value" x="c" y="61" w="51" h="16" style="watch_01_foot_value" text="0"/>
+      </button>
+      <guage_hour_pointer sensitive="false" x="c" y="m" w="100%" h="100%" image="ico_watch_01_hour"/>
+      <guage_minute_pointer sensitive="false" x="c" y="m" w="100%" h="100%" image="ico_watch_01_minute"/>
+      <guage_second_pointer sensitive="false" x="c" y="m" w="100%" h="100%" image="ico_watch_01_second"/>
+    </guage>
+  </gesture>
+</window>

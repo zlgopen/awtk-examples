@@ -1,0 +1,121 @@
+<dialog x="66" y="78" w="347" h="115" highlight="" name="timing" anim_hint="center_scale(easing=cubic_out)" style:normal:bg_color="#292929" style:normal:border="none">
+  <view w="100%" h="27" style:bg_color="gray">
+    <label name="title" x="0" y="0" w="100%" h="100%" style:text_color="black" style:text_align_h="left" style:normal:text_align_h="center" style:normal:bg_color="#000000" style:normal:text_color="#E7E6E6" style:normal:font_size="20">
+      <property name="tr_text">
+        <![CDATA[Timing Setting]]>
+      </property>
+    </label>
+  </view>
+  <label name="label" x="13" y="30" w="35" h="20" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="hour"/>
+  <label name="label1" x="60" y="31" w="35" h="20" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="min"/>
+  <label name="label2" x="107" y="30" w="35" h="20" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="sec"/>
+  <text_selector name="hour_selector" x="13" y="52" w="35" h="55" visible_nr="3" style:normal:fg_color="#A0A0A0" style:normal:bg_color="#292929" style:normal:text_color="#FFFFFF" style:normal:border_width="0" style:normal:border_color="#292929">
+    <property name="style:normal:mask_color">
+      <![CDATA[#595959]]>
+    </property>
+    <property name="style:normal:border">
+      <![CDATA[none]]>
+    </property>
+    <property name="style:normal:font_size">
+      <![CDATA[14]]>
+    </property>
+    <property name="options">
+      <![CDATA[1-24]]>
+    </property>
+    <property name="selected_index">
+      <![CDATA[7]]>
+    </property>
+  </text_selector>
+  <text_selector name="min_selector" x="60" y="52" w="35" h="55" visible_nr="3" style:normal:fg_color="#A0A0A0" style:normal:bg_color="#292929" style:normal:text_color="#FFFFFF" style:normal:border_width="0" style:normal:border_color="#292929">
+    <property name="style:normal:mask_color">
+      <![CDATA[#595959]]>
+    </property>
+    <property name="style:normal:border">
+      <![CDATA[none]]>
+    </property>
+    <property name="style:normal:font_size">
+      <![CDATA[14]]>
+    </property>
+    <property name="options">
+      <![CDATA[0-59]]>
+    </property>
+    <property name="selected_index">
+      <![CDATA[10]]>
+    </property>
+  </text_selector>
+  <text_selector name="sec_selector" x="107" y="52" w="35" h="55" visible_nr="3" style:normal:fg_color="#A0A0A0" style:normal:bg_color="#292929" style:normal:text_color="#FFFFFF" style:normal:border_width="0" style:normal:border_color="#292929">
+    <property name="style:normal:mask_color">
+      <![CDATA[#595959]]>
+    </property>
+    <property name="style:normal:border">
+      <![CDATA[none]]>
+    </property>
+    <property name="style:normal:font_size">
+      <![CDATA[14]]>
+    </property>
+    <property name="options">
+      <![CDATA[0-59]]>
+    </property>
+    <property name="selected_index">
+      <![CDATA[16]]>
+    </property>
+  </text_selector>
+  <button name="ok" x="224" y="48" w="90" h="20" repeat="0" enable_long_press="false" style:normal:font_size="20" style:normal:text_color="#FFFFFF" style:normal:bg_color="#393939" style:normal:border_color="#484848">
+    <property name="style:pressed:bg_color">
+      <![CDATA[#202020]]>
+    </property>
+    <property name="style:pressed:border_color">
+      <![CDATA[#393939]]>
+    </property>
+    <property name="style:over:bg_color">
+      <![CDATA[#3f3f46]]>
+    </property>
+    <property name="style:over:border_color">
+      <![CDATA[#007acc]]>
+    </property>
+    <property name="style:pressed:font_size">
+      <![CDATA[20]]>
+    </property>
+    <property name="style:over:font_size">
+      <![CDATA[20]]>
+    </property>
+    <property name="style:pressed:text_color">
+      <![CDATA[#FFFFFF]]>
+    </property>
+    <property name="style:over:text_color">
+      <![CDATA[#FFFFFF]]>
+    </property>
+    <property name="tr_text">
+      <![CDATA[On]]>
+    </property>
+  </button>
+  <button name="cancle" x="224" y="82" w="90" h="20" repeat="0" enable_long_press="false" style:normal:font_size="20" style:normal:text_color="#FFFFFF" style:normal:bg_color="#393939" style:normal:border_color="#484848">
+    <property name="style:pressed:bg_color">
+      <![CDATA[#202020]]>
+    </property>
+    <property name="style:pressed:border_color">
+      <![CDATA[#393939]]>
+    </property>
+    <property name="style:over:bg_color">
+      <![CDATA[#3f3f46]]>
+    </property>
+    <property name="style:over:border_color">
+      <![CDATA[#007acc]]>
+    </property>
+    <property name="style:pressed:font_size">
+      <![CDATA[20]]>
+    </property>
+    <property name="style:over:font_size">
+      <![CDATA[20]]>
+    </property>
+    <property name="style:pressed:text_color">
+      <![CDATA[#FFFFFF]]>
+    </property>
+    <property name="style:over:text_color">
+      <![CDATA[#FFFFFF]]>
+    </property>
+    <property name="tr_text">
+      <![CDATA[Off]]>
+    </property>
+  </button>
+</dialog>

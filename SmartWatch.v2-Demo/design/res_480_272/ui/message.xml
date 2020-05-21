@@ -1,0 +1,40 @@
+<window x="c" y="m" w="240" h="240" name="message" style:normal:bg_color="#061B26" open_anim_hint="slide_down(easing=sin_inout)">
+  <gesture name="message_window" x="c" y="m" w="240" h="240">
+    <list_view name="list_view" x="c" y="-34" w="100%" h="120%" default_item_height="" item_height="62" style:normal:border_color="#00000000" style:normal:bg_color="#00000000">
+      <scroll_view name="scroll_view" x="c" y="m" w="100%" h="100%" yslidable="true">
+        <list_item name="list_item" style="a"/>
+        <list_item name="list_item" style="a">
+          <view name="view" x="c" y="m" w="100%" h="95%" style="dragger">
+            <image name="image" image="app_cloudy_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
+            <view name="row" x="86" y="m" w="123" h="100%">
+              <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="天气晴朗"/>
+            </view>
+            <draggable left="-250" horizontal_only="true"/>
+          </view>
+        </list_item>
+        <list_item name="list_item" style="a">
+          <view name="view" x="c" y="m" w="100%" h="95%" style="dragger">
+            <image name="image" image="app_message_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
+            <view name="row" x="86" y="m" w="123" h="100%">
+              <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="你好啊在干嘛？"/>
+            </view>
+            <draggable left="-250" horizontal_only="true"/>
+          </view>
+        </list_item>
+        <list_item name="list_item" style="a">
+          <view name="view" x="c" y="m" w="100%" h="95%" style="dragger">
+            <image name="image" image="app_training_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
+            <view name="row" x="86" y="m" w="123" h="100%">
+              <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="多久没运动了"/>
+            </view>
+            <draggable left="-250" horizontal_only="true"/>
+          </view>
+        </list_item>
+        <list_item name="list_item" style="a"/>
+      </scroll_view>
+    </list_view>
+  </gesture>
+</window>

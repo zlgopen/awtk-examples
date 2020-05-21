@@ -1,0 +1,10 @@
+<window name="main_title" style:normal:bg_image="bg_main" style:normal:border_color="#1e455d" style:normal:border="top" anim_hint="htranslate(easing=cubic_out)" tr_text="main_title">
+  <image name="meter_image" x="18" y="32" w="107" h="179" clickable="true"/>
+  <image name="pie_image" x="132" y="32" w="107" h="179" clickable="true"/>
+  <image name="graph_image" x="242" y="32" w="107" h="179" clickable="true"/>
+  <image name="histogram_image" x="356" y="32" w="107" h="179" clickable="true"/>
+  <button name="meter" x="37" y="b:50" w="75" h="23" repeat="0" enable_long_press="false" style="main_meter" tr_text=""/>
+  <button name="pie" x="148" y="b:50" w="75" h="23" repeat="0" enable_long_press="false" style="main_pie" tr_text=""/>
+  <button name="window_line_series" x="261" y="b:50" w="75" h="23" repeat="0" enable_long_press="false" style="main_graph" tr_text=""/>
+  <button name="window_bar_series" x="372" y="b:50" w="75" h="23" repeat="0" enable_long_press="false" style="main_histogram" tr_text=""/>
+</window>

@@ -1,0 +1,9 @@
+<view w="100%" h="100%" name="round_menu" style="buttom_bg_color">
+  <round_menu w="100%" h="100%" interval_yoffset="10" item_h="100">
+    <button name="open:calendar" style="calendar" w="100" h="100" />
+    <button name="open:music" style="music" w="100" h="100" />
+    <button name="open:training" style="training" w="100" h="100" />
+    <button name="open:weather" style="weather" w="100" h="100" />
+  </round_menu>
+</view>
+

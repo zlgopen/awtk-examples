@@ -1,0 +1,14 @@
+<window name="basic" anim_hint="htranslate(duration=500,easing=cubic_out)">
+  <progress_bar name="changing_bar" x="137" y="226" w="32" h="141" vertical="true" style:normal:round_radius="5" value="40"/>
+  <slider name="changing_slider" x="194" y="226" w="25" h="141" vertical="true" style:normal:round_radius="5" style:pressed:round_radius="5" style:over:round_radius="5" value="40"/>
+  <progress_bar name="changed_bar" x="275" y="226" w="32" h="141" vertical="true" style:normal:round_radius="5" value="40"/>
+  <slider name="changed_slider" x="332" y="226" w="25" h="141" vertical="true" style:normal:round_radius="5" style:pressed:round_radius="5" style:over:round_radius="5" value="40"/>
+  <progress_bar name="click_bar" x="468" y="226" w="195" h="30" show_text="true" style:normal:round_radius="5" value="40"/>
+  <button name="dec_btn" x="468" y="300" w="67" h="46" text="dec"/>
+  <button name="inc_btn" x="603" y="300" w="60" h="46" text="inc"/>
+  <label name="click_bar_label" x="548" y="300" w="34" h="46" text="40%"/>
+  <edit name="edit" x="c" y="140" w="526" h="41" auto_fix="true" tips="Please enter your text" step="2" max="1024"/>
+  <label name="edit_label" x="222" y="72" w="354" h="28" text="Hello Designer"/>
+  <button name="close" x="346" y="401" w="101" h="36" text="close"/>
+  <image name="image" x="674" y="10" w="116" h="37" image="awtk_logo"/>
+</window>

@@ -1,0 +1,463 @@
+<window name="record" anim_hint="htranslate(easing=cubic_out)" style:normal:bg_color="#000000">
+  <label name="label" x="4" y="36" w="160" h="40" style:normal:font_size="32" style:normal:text_color="#FFFFFF" tr_text="Status"/>
+  <button name="close" x="4" y="4" w="60" h="30" repeat="0" enable_long_press="false" style:over:text_color="#FFFFFF" style:normal:text_color="#FFFFFF" style:normal:bg_color="#393939" style:normal:border_color="#484848">
+    <property name="style:pressed:bg_color">
+      <![CDATA[#202020]]>
+    </property>
+    <property name="style:pressed:border_color">
+      <![CDATA[#393939]]>
+    </property>
+    <property name="style:over:bg_color">
+      <![CDATA[#3f3f46]]>
+    </property>
+    <property name="style:over:border_color">
+      <![CDATA[#007acc]]>
+    </property>
+    <property name="style">
+      <![CDATA[back]]>
+    </property>
+    <property name="style:normal:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="style:pressed:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="style:over:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="style:disable:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="style:focused:font_size">
+      <![CDATA[24]]>
+    </property>
+    <property name="tr_text">
+      <![CDATA[Back]]>
+    </property>
+  </button>
+  <label name="label1" x="159" y="36" w="160" h="40" style:normal:font_size="32" style:normal:text_color="#FFFFFF" tr_text="Indoor Temp"/>
+  <label name="label2" x="318" y="36" w="160" h="40" style:normal:font_size="32" style:normal:text_color="#FFFFFF" tr_text="Outside Temp"/>
+  <label name="label3" x="477" y="36" w="160" h="40" style:normal:font_size="32" style:normal:text_color="#FFFFFF" tr_text="Indoor Hum"/>
+  <label name="label4" x="636" y="36" w="160" h="40" style:normal:font_size="32" style:normal:text_color="#FFFFFF" tr_text="Outside Hum"/>
+  <list_view name="list_view" x="4" y="76" w="-8" h="400" default_item_height="60" item_height="40" style:normal:bg_color="#292929" style:normal:border="none">
+    <scroll_view name="scroll_view" x="0" y="0" w="100%" h="100%" style:normal:bg_color="#292929" style:normal:border="none" style:normal:border_width="0">
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40" x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+      <list_item name="list_item" h="40" style="odd_clickable" style:pressed:border="bottom" style:pressed:border_color="#313131" style:pressed:text_color="#BBBBBB" style:pressed:bg_color="#191919" style:over:border="bottom" style:over:border_color="#313131" style:over:text_color="#BBBBBB" style:over:bg_color="#484848">
+        <property name="style:normal:text_color">
+          <![CDATA[#BBBBBB]]>
+        </property>
+        <property name="style:normal:border_color">
+          <![CDATA[#313131]]>
+        </property>
+        <property name="style:normal:bg_color">
+          <![CDATA[#282828]]>
+        </property>
+        <image name="image" h="40"  x="0" y="0" w="20%" style:normal:icon="bell"/>
+        <label name="label5" h="40" x="158" y="0" w="20%" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="24.4℃"/>
+        <label name="label6" h="40" x="316" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="26.4℃"/>
+        <label name="label7" h="40" x="464" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="20%"/>
+        <label name="label8" h="40" x="622" y="0" w="158" style:normal:text_color="#FFFFFF" style:normal:font_size="18" tr_text="30%"/>
+      </list_item>
+    </scroll_view>
+    <scroll_bar_m name="scroll_bar" x="r" y="0" w="6" h="100%"/>
+  </list_view>
+</window>

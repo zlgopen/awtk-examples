@@ -1,0 +1,16 @@
+<label>
+  <style name="blue_22">
+    <normal font_size="35" text_align_h="left" text_color="#18C7FA"/>
+  </style>
+  <style name="green_22">
+    <normal font_size="35" text_align_h="left" text_color="#6DEF37"/>
+  </style>
+  <style name="pink_22">
+    <normal font_size="35" text_align_h="left" text_color="#E60778"/>
+  </style>
+</label>
+<window>
+  <style name="health">
+    <normal bg_color="#080808"/>
+  </style>
+</window>

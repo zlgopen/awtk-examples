@@ -1,0 +1,5 @@
+<window name="main">
+  <gesture name="gesture_manager" x="0" y="0" w="400" h="400" disg:custom="container">
+    <window_anim_menu name="window_anim_menu" x="0" y="0" w="400" h="400" disg:custom="container" animating_time="300"/>
+  </gesture>
+</window>

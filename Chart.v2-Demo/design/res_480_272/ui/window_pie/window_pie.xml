@@ -1,0 +1,33 @@
+<window name="window_meter" anim_hint="htranslate(easing=cubic_out)" tr_text="pie_title">
+    <view name="pie_view" x="4%" y="m" w="59.5%" h="80%">
+        <pie_slice name="pie1_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie1"/>
+        <pie_slice name="pie2_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie2"/>
+        <pie_slice name="pie3_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie3"/>
+        <pie_slice name="pie4_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie4"/>
+        <pie_slice name="pie5_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie5"/>
+        <pie_slice name="pie6_slice" w="100%" h="100%" max="360" start_angle="0" value="0" show_text="false" inner_radius="550" style="pie6"/>
+    </view>
+    <view x="right:75" y="9%" w="18%" h="80%">
+        <view name="color_view" x="0" y="0" w="19" h="200" layout="m:1 r:6 c:1 s:19">
+            <label name="pie1" text="" style="pie1"/>
+            <label name="pie2" text="" style="pie2"/>
+            <label name="pie3" text="" style="pie3"/>
+            <label name="pie4" text="" style="pie4"/>
+            <label name="pie5" text="" style="pie5"/>
+            <label name="pie6" text="" style="pie6"/>
+        </view>
+        <view name="color_view" x="30" y="0" w="41" h="200" layout="r:6 c:1 s:18">
+            <button name="pie1_label" text="pie1" style="pie_label"/>
+            <button name="pie2_label" text="pie2" style="pie_label"/>
+            <button name="pie3_label" text="pie3" style="pie_label"/>
+            <button name="pie4_label" text="pie4" style="pie_label"/>
+            <button name="pie5_label" text="pie5" style="pie_label"/>
+            <button name="pie6_label" text="pie6" style="pie_label"/>
+        </view>
+    </view>
+  <view name="right_menu" x="r" y="0" w="57" h="100%" children_layout="" style="function_view">
+    <button name="function_new_pie" repeat="0" enable_long_press="false" x="c" y="10" w="37" h="28" style="new" style:normal:icon_at="auto" tr_text=""/>
+    <button name="function_arch" repeat="0" enable_long_press="false" x="10" y="48" w="37" h="28" style="pie_annular" style:normal:icon_at="auto" tr_text=""/>
+    <button name="close" repeat="0" enable_long_press="false" x="c" y="b:10" w="37" h="28" style="back" style:normal:icon_at="auto" tr_text=""/>
+  </view>
+</window>

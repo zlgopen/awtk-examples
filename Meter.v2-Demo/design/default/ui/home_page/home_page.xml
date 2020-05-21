@@ -1,0 +1,7 @@
+<window name="home_page" style="bg" theme="default" style:normal:bg_image="bg">
+  <label name="label0" x="301" y="433" w="32" h="32" style="led_red" text=""/>
+  <label name="label1" x="342" y="433" w="32" h="32" style="led_green" text=""/>
+  <label name="label2" x="385" y="433" w="32" h="32" style="led_green" text=""/>
+  <label name="label3" x="428" y="433" w="32" h="32" style="led_gray" text=""/>
+  <label name="label4" x="471" y="433" w="32" h="32" style="led_yellow" text=""/>
+</window>

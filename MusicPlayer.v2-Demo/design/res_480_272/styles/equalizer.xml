@@ -1,0 +1,23 @@
+<label>
+  <style name="eq_text">
+    <normal font_size="12" text_color="#4B84E0"/>
+  </style>
+</label>
+<slider>
+  <style name="slider_v">
+    <normal bg_color="#4B84E0" fg_color="#00FFFC" icon="slider_drag"/>
+  </style>
+</slider>
+<chart_view>
+    <style name="default">
+        <normal margin_left="0" margin_right="0" margin_top="0" margin_bottom="0" bg_color="#2a327b"/>
+    </style>
+</chart_view>
+<series_line>
+    <style name="default">
+        <normal border_color="#00fffc" border_width="3"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#00fffc"/>
+    </style>
+</series_line>

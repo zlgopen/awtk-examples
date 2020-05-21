@@ -1,0 +1,7 @@
+<window name="home_page" style:normal:bg_image="bg_480_272">
+  <label name="label0" x="180" y="244" w="20" h="20" style="led_red" tr_text=""/>
+  <label name="label1" x="205" y="244" w="20" h="20" style="led_green" tr_text=""/>
+  <label name="label2" x="231" y="245" w="20" h="20" style="led_yellow" tr_text=""/>
+  <label name="label3" x="257" y="245" w="20" h="20" style="led_gray" tr_text=""/>
+  <label name="label4" x="283" y="245" w="20" h="20" style="led_red" style:normal:bg_image="led_red" tr_text=""/>
+</window>

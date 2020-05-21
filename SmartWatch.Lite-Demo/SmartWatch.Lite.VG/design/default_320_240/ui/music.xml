@@ -1,0 +1,14 @@
+<view w="100%" h="100%" name="round_menu" style="music_bg_color">
+  <color_button name="music_state" style="music_loop" x="0" y="0" w="100%" h="55" l="30" yoffset="5" orientation_top="false" button="true" />
+  <label name="song_name" style="song_name_white_25" x="c" y="65" w="100%" h="25" />
+  <view x="c" y="106" w="173" h="60">
+    <button name="prev" style="music_prev" x="0" y="m" w="42" h="42" />
+    <music_play_button name="play" style="play" x="c" y="m" w="60" h="60" line_width="6" start_angle="270" line_color="#CA11FF" />
+    <button name="next" style="music_next" x="right" y="m" w="42" h="42" />
+  </view>
+  <row x="c" y="192" w="131" h="12">
+    <image x="3" y="m" w="12" h="11" image="music_sound"/>
+    <slider x="18" y="m" w="113" h="12" style="music_vol" name="vol" bar_size="12" sensitive="true" min="0" max="100"/>
+  </row>
+</view>
+

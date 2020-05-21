@@ -1,0 +1,46 @@
+<button>
+  <style name="default" border_color="#E1E1E1" border_width="4" font_size="20" margin="4" round_radius="4" text_color="#FFFFFF">
+    <normal bg_color="#393939"/>
+    <disable bg_color="#FFFFFF66"/>
+    <over bg_color="#3F3F46"/>
+    <pressed bg_color="#202020"/>
+  </style>
+  <style name="close">
+    <normal text_color="#666666"/>
+    <over text_color="#338FFF"/>
+    <pressed text_color="#1971DD"/>
+  </style>
+  <style name="highlight" border_color="#E1E1E1" border_width="4" font_size="24" round_radius="4" text_color="#FFFFFF">
+    <normal bg_color="#424242"/>
+    <disable bg_color="#3B3B3B"/>
+    <over bg_color="#338FFF"/>
+    <pressed bg_color="#1971DD"/>
+  </style>
+  <style name="phone_backspace">
+    <normal text_color="#666666"/>
+    <disable text_color="#66666666"/>
+    <over text_color="#338FFF"/>
+    <pressed text_color="#1971DD"/>
+  </style>
+  <style name="shifton" bg_color="#338FFF" border_color="#E1E1E1" border_width="4" round_radius="4" text_color="#FFFFFF">
+    <normal/>
+    <disable bg_color="#FFFFFF66" text_color="#FFFFFF66"/>
+    <over/>
+    <pressed bg_color="#1971DD"/>
+  </style>
+</button>
+<candidates>
+  <style name="default">
+    <normal bg_color="#FFFFFF"/>
+  </style>
+</candidates>
+<keyboard>
+  <style name="default">
+    <normal bg_color="#252525" border_color="#CBCBCB"/>
+  </style>
+</keyboard>
+<pages>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</pages>

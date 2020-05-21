@@ -1,0 +1,56 @@
+<dialog x="c" y="m" w="240" h="200" highlight="" name="equalizer" style="bg_setting" animation="move(easing=sin_inout,x_from=480,x_to=240,y_from=0,y_to=0)">
+  <view name="title_view" x="0" y="0" w="100%" h="10%" style="dialog_title">
+    <button name="close" y="0" w="17" h="20" repeat="0" enable_long_press="false" style="s_setting_close" x="r:12" tr_text=""/>
+    <label name="label" x="9" y="0" w="22%" h="100%" style="title" tr_text="Equalizer"/>
+  </view>
+  <view name="control_view" x="0%" y="15%" w="100%" h="85%">
+    <view name="db_view" x="5%" y="0" w="10%" h="48%" style="default">
+      <label name="db_12_pos" x="0" y="0" w="100%" h="6" style="eq_text" tr_text="+12db"/>
+      <label name="db_0" x="0" y="50%" w="24" h="6" style="eq_text" tr_text="0db"/>
+      <label name="db_12_neg" x="0" y="95%" w="24" h="6" style="eq_text" tr_text="-12db"/>
+    </view>
+    <view name="slider_view" x="16%" y="0" w="84%" h="60%" children_layout="default(c=9,r=1,x=0)">
+      <view name="view">
+        <slider name="frequency_0" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="31"/>
+      </view>
+      <view name="view1">
+        <slider name="frequency_1" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label1" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="63"/>
+      </view>
+      <view name="view2">
+        <slider name="frequency_2" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label2" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="125"/>
+      </view>
+      <view name="view3">
+        <slider name="frequency_3" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label3" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="250"/>
+      </view>
+      <view name="view4">
+        <slider name="frequency_4" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label4" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="500"/>
+      </view>
+      <view name="view5">
+        <slider name="frequency_5" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label5" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="1k"/>
+      </view>
+      <view name="view6">
+        <slider name="frequency_6" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label6" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="2k"/>
+      </view>
+      <view name="view7">
+        <slider name="frequency_7" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label7" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="4k"/>
+      </view>
+      <view name="view8">
+        <slider name="frequency_8" x="0" y="0" w="100%" h="80%" bar_size="2" dragger_size="10" vertical="true" style="slider_v" value="50"/>
+        <label name="label8" x="0" y="b" w="100%" h="20%" style="eq_text" tr_text="8k"/>
+      </view>
+    </view>
+    <chart_view name="chart_view" x="0" y="b" w="100%" h="36%">
+      <x_axis name="x" w="100%" h="100%" axis_type="value" min="0" max="8" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,0,0,0,0,0,0,0,0]"/>
+      <y_axis name="y" w="100%" h="100%" axis_type="value" min="-12" max="120" tick="{show:false}" split_line="{show:false}" label="{show:false}"/>
+      <line_series name="s1" w="100%" h="100%" capacity="1000" line="{style:s1, smooth:true, show:true}" area="{show:false}" symbol="{show:false}"/>
+    </chart_view>
+  </view>
+</dialog>

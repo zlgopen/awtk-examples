@@ -1,0 +1,60 @@
+<label>
+  <style name="aqi">
+    <normal font_size="40" text_align_h="left" text_color="#00D0E3"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="aqi_text">
+    <normal font_size="40" text_align_h="right" text_color="#00D0E3"/>
+  </style>
+  <style name="center_hour">
+    <normal font_size="90" text_align_h="right" text_color="#00FFED"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="day">
+    <normal font_size="40" text_align_h="left" text_color="#00FFEF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="update">
+    <normal font_size="30" text_align_h="left" text_color="#B9D1E5"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="update_text">
+    <normal font_size="30" text_align_h="right" text_color="#B9D1E5"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_temp">
+    <normal font_size="100" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_top">
+    <normal bg_image="ico_weather_top" font_size="50" text_align_v="middle" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_white">
+    <normal font_size="40" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="weather_white_l">
+    <normal font_size="35" text_align_h="left" text_color="#FFFFFF"/>
+  </style>
+  <style name="weather_white_r">
+    <normal font_size="35" text_align_h="right" text_color="#ACFEF7"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<window>
+  <style name="weather">
+    <normal bg_color="#0AA2EB" border="none" border_color="#C2C2C2"/>
+  </style>
+</window>
+<progress_circle>
+  <style name="circle">
+    <normal fg_color="#042745" text_color="#00000000"/>
+    <disable fg_color="#338FFF66" text_color="#44444466"/>
+  </style>
+</progress_circle>
+<view>
+  <style name="weather_bottom">
+    <normal bg_image="ico_weather_bottom"/>
+  </style>
+</view>

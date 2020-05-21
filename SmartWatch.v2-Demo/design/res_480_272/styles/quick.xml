@@ -1,0 +1,18 @@
+<button>
+  <style name="alipay" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="ico_pay_bar"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="ico_pay_bar"/>
+    <pressed icon="ico_pay_bar"/>
+  </style>
+  <style name="gongshang">
+    <normal border_color="#00000000" icon="ico_pay_card"/>
+  </style>
+</button>
+<label>
+  <style name="text">
+    <normal font_size="31" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>

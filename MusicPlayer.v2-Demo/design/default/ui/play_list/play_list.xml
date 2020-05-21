@@ -1,0 +1,22 @@
+<dialog x="c" y="m" w="400" h="355" name="play_list" style="bg_setting" animation="move(easing=sin_inout,x_from=800,x_to=400,y_from=0,y_to=0)">
+  <view name="view" x="0" y="0" w="100%" h="15%" style="dialog_title">
+    <button name="close" x="r:20" y="10" w="28" h="35" repeat="0" enable_long_press="false" style="s_setting_close" tr_text=""/>
+    <label name="title" x="15" y="0" w="20%" h="100%" style="title" tr_text="PlayList"/>
+  </view>
+  <list_view name="song_list_view" x="0" y="16%" w="100%" h="83%" default_item_height="35" item_height="35">
+    <scroll_view name="song_list_scroll" x="0" y="0" w="-10" h="100%" yslidable="true">
+      <list_item name="0_song" style="empty_list" children_layout="default(r=1,c=0)">
+        <image name="image" w="39" image="icon_list" visible="true"/>
+        <label name="label1" w="90%" style="left_list" tr_text="Yellow"/>
+      </list_item>
+      <list_item name="1_song" style="empty_list" children_layout="default(r=1,c=0)">
+        <image name="image1" w="39" image="icon_list" visible="true"/>
+        <label name="label2" w="351" style="left_list" tr_text="see you again"/>
+      </list_item>
+      <list_item name="2_song" style="empty_list" children_layout="default(r=1,c=0)">
+        <image name="image2" image="icon_list" visible="true" w="39"/>
+        <label name="label3" w="351" style="left_list" tr_text="let it go"/>
+      </list_item>
+    </scroll_view>
+  </list_view>
+</dialog>

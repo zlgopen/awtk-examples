@@ -1,0 +1,66 @@
+<button>
+  <style name="icon_app_heart" icon="icon_app_heart_s_01">
+    <normal bg_color="#00000000" icon="icon_app_heart_s_02"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="icon_app_heart_pressed">
+    <normal bg_color="#00000000" icon="icon_app_heart_s_01"/>
+  </style>
+  <style name="icon_app_phone" icon="icon_app_phone_s_01">
+    <normal bg_color="#00000000" icon="icon_app_phone_s_02"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="icon_app_phone_pressed">
+    <normal bg_color="#00000000" icon="icon_app_phone_s_01"/>
+  </style>
+  <style name="icon_app_run" icon="icon_app_run_s_01">
+    <normal bg_color="#00000000" icon="icon_app_run_s_02"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="icon_app_run_pressed">
+    <normal bg_color="#00000000" icon="icon_app_run_s_01"/>
+  </style>
+  <style name="icon_app_training" icon="icon_app_training_s_01">
+    <normal bg_color="#00000000" icon="icon_app_training_s_02"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="icon_app_training_pressed">
+    <normal bg_color="#00000000" icon="icon_app_training_s_01"/>
+  </style>
+  <style name="icon_app_wechart" icon="icon_app_wechart_s_01">
+    <normal icon="icon_app_wechart_s_02" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="icon_app_wechart_pressed">
+    <normal icon="icon_app_wechart_s_01" text_color="#00000000"/>
+  </style>
+</button>
+<label>
+  <style name="c">
+    <normal font_size="30" text_align_h="left" text_color="#3FFCFF"/>
+  </style>
+  <style name="day">
+    <normal font_size="35" text_color="#3FFCFF"/>
+  </style>
+  <style name="weather_now">
+    <normal font_size="30" text_color="#2BBCC0"/>
+  </style>
+  <style name="week">
+    <normal font_size="35" text_color="#2BBCC0"/>
+  </style>
+</label>
+<window>
+  <style name="watch_04">
+    <normal bg_color="#000000"/>
+  </style>
+</window>
+<view>
+  <style name="cloud_sun">
+    <normal bg_image="ico_weather_02"/>
+  </style>
+</view>

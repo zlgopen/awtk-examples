@@ -1,0 +1,27 @@
+<window name="window_meter" anim_hint="htranslate(easing=cubic_out)" tr_text="line_title">
+  <view x="r:105" y="2%" w="136" h="10%" layout="r1 c2 m0 s30">
+    <image name="typeie" clickable="true">
+      <label name="typeie_icon" x="0" y="m" w="10" h="10" style="typeie"/>
+      <label x="14" y="m" w="50" h="100%" style="series_label" text="data1"/>
+    </image>
+    <image name="dayas" clickable="true">
+      <label name="dayas_icon" y="m" w="10" h="10" style="dayas"/>
+      <label x="14" y="m" w="50" h="100%" style="series_label" text="data2"/>
+    </image>
+  </view>
+  <chart_view name="chartview" x="6%" y="13%" w="82%" h="80%">
+    <x_axis name="x" axis_type="value" min="0" max="11" tick="{show:false}" split_line="{show:false}" label="{show:false}" data="[0,20,40,60,80,100,120,140]"/>
+    <y_axis name="y" axis_type="value" min="0" max="140" data="[0,20,40,60,80,100,120,140]"/>
+    <line_series name="s1" capacity="24"/>
+    <line_series name="s2" capacity="24"/>
+    <tooltip/>
+  </chart_view>
+  <view name="right_menu" x="r" y="0" w="57" h="100%" children_layout="" style="function_view">
+    <button name="new_graph" repeat="0" enable_long_press="false" x="c" y="10" w="37" h="28" style="new" style:normal:icon_at="auto" tr_text=""/>
+    <button name="line" repeat="0" enable_long_press="false" x="10" y="48" w="37" h="28" style="line_select" style:normal:icon_at="auto" tr_text=""/>
+    <button name="smooth" repeat="0" enable_long_press="false" x="10" y="126" w="37" h="28" style="smooth_select" style:normal:icon_at="auto" tr_text=""/>
+    <button name="area" repeat="0" enable_long_press="false" x="10" y="87" w="37" h="28" style="area_select" style:normal:icon_at="auto" tr_text=""/>
+    <button name="symbol" repeat="0" enable_long_press="false" x="10" y="165" w="37" h="28" style="symbol_select" style:normal:icon_at="auto" tr_text=""/>
+    <button name="close" repeat="0" enable_long_press="false" x="10" y="b:10" w="37" h="28" style="back" style:normal:icon_at="auto" tr_text=""/>
+  </view>
+</window>

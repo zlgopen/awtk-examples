@@ -1,0 +1,15 @@
+<window name="window_meter" anim_hint="htranslate(easing=cubic_out)" tr_text="meter_title" >
+  <guage name="guage" x="30" y="53" w="272" h="272" image="guage_bg_1">
+    <guage_pointer name="left_pointer" x="c" y="m" w="12" h="160" value="0" image="guage_pointer_1" animation="value(delay=1000,duration=3000,yoyo_times=0,easing=linear,from=-128,to=128)"/>
+  </guage>
+  <guage name="guage_bg_2" x="392" y="53" w="272" h="272" image="guage_bg_2">
+    <guage_pointer name="left_pointer1" x="c" y="m" w="12" h="160" value="0" image="guage_pointer_2" animation="value(delay=1000,duration=3000,yoyo_times=0,easing=linear,from=-128,to=128)"/>
+  </guage>
+  <label name="meter_a" x="136" y="b:45" w="60" h="40" style="meter_name" tr_text="meter_a"/>
+  <label name="meter_b" x="498" y="342" w="60" h="40" style="meter_name" tr_text="meter_b"/>
+  <view name="right_menu" x="r" y="0" w="100" h="100%" children_layout="" style="function_view">
+    <button name="function_start" repeat="0" enable_long_press="false" x="c" y="20" w="61" h="50" style="meter_start" style:normal:icon_at="auto" tr_text=""/>
+    <button name="function_stop" repeat="0" enable_long_press="false" x="19" y="90" w="61" h="50" style="meter_stop" style:normal:icon_at="auto" tr_text=""/>
+    <button name="close" repeat="0" enable_long_press="false" x="19" y="b:20" w="61" h="50" style="back" style:normal:icon_at="auto" tr_text=""/>
+  </view>
+</window>

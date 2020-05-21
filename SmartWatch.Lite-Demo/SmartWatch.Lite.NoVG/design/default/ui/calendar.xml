@@ -1,0 +1,12 @@
+<view w="100%" h="100%" style="calendar_bg_color">
+  <color_button style="calendar_bg_top" x="c" y="0" w="159" h="60" l="14" orientation_top="false" button="false">
+    <label name="date_label" style="calendar_white_18" x="m" y="m:10" w="100%" h="100%" text="2020/02/02"/>
+  </color_button>
+  <calendar_month x="c" y="65" w="160" h="130" font_size="11" animating_time="700" Monday="周一" Tuesday="周二" Wednesday="周三" Thursday="周四" Friday="周五" Saturday="周六" Sunday="周日"/>
+  <color_button style="calendar_bg_bottom" x="c" y="b" w="156" h="55" l="13" orientation_top="true" button="false">
+    <button name="prev" x="38" y="m:-8" w="29" h="29" style="calender_up" />
+    <button name="curr" x="c" y="m:-8" w="29" h="29" style="calender_current" />
+    <button name="next" x="r:38" y="m:-8" w="29" h="29" style="calender_down" />
+  </color_button>
+</view>
+

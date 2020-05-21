@@ -1,0 +1,5 @@
+<window x="c" y="m" w="240" h="240" name="app_default" open_anim_hint="slide_left(easing=sin_inout)" style:normal:bg_color="#000000">
+  <gesture name="gesture" x="c" y="m" w="240" h="240">
+    <label name="label" x="c" y="m" w="100%" h="100%" style="app_default" tr_text="未实现"/>
+  </gesture>
+</window>

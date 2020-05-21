@@ -1,0 +1,27 @@
+<window name="window_meter" anim_hint="htranslate(easing=cubic_out)" tr_text="bar_title">
+  <view x="346" y="7%" w="284" h="7%" layout="r1 c3 m4 s10" name="data_type">
+    <image name="typeie" clickable="true">
+      <label name="typeie_icon" y="m" w="10" h="10" style="typeie"/>
+      <label x="14" y="m" w="80%" h="100%" style="series_label" text="data1"/>
+    </image>
+    <image name="dayas" clickable="true">
+      <label name="dayas_icon" y="m" w="10" h="10" style="dayas"/>
+      <label x="14" y="m" w="80%" h="100%" style="series_label" text="data2"/>
+    </image>
+    <image name="drean" clickable="true">
+      <label name="drean_icon" y="m" w="10" h="10" style="drean"/>
+      <label x="14" y="m" w="80%" h="100%" style="series_label" style:normal:border_width="1" text="data3"/>
+    </image>
+  </view>
+  <chart_view name="chartview" x="6%" y="13%" w="81%" h="80%" disg:custom="container">
+    <x_axis name="x" axis_type="category" data="[Mon,Tues,Wed,Thur,Fri,Sat,Sun]" disg:custom="container"/>
+    <y_axis name="y" axis_type="value" min="0" max="140" data="[0,20,40,60,80,100,120,140]" disg:custom="container"/>
+    <bar_series name="s1" capacity="7" bar="style:s1" style="edge1" disg:custom="container"/>
+    <bar_series name="s2" capacity="7" bar="style:s2" style="spacing" disg:custom="container"/>
+    <bar_series name="s3" capacity="7" bar="style:s3" style="edge2" disg:custom="container"/>
+  </chart_view>
+  <view name="right_menu" x="r" y="0" w="100" h="100%" children_layout="" style="function_view">
+    <button name="new_graph" repeat="0" enable_long_press="false" x="c" y="20" w="61" h="50" style="new" style:normal:icon_at="auto" tr_text=""/>
+    <button name="close" repeat="0" enable_long_press="false" x="19" y="b:20" w="61" h="50" style="back" style:normal:icon_at="auto" tr_text=""/>
+  </view>
+</window>

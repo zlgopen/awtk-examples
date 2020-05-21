@@ -1,0 +1,9 @@
+/.sconsign.dblite
+
+/src/*.obj
+/src/*/*.obj
+/src/*/*/*.obj
+/bin/*.exp
+/bin/*.ilk
+/bin/*.lib
+/bin/*.pdb

@@ -1,0 +1,14 @@
+<button>
+  <style name="watch_01">
+    <normal border_color="#00000000" icon="ico_watch_01"/>
+  </style>
+  <style name="watch_02">
+    <normal border_color="#00000000" icon="ico_watch_02"/>
+  </style>
+  <style name="watch_04">
+    <normal border_color="#00000000" icon="ico_watch_04"/>
+  </style>
+  <style name="watch_06">
+    <normal border_color="#00000000" icon="ico_watch_06"/>
+  </style>
+</button>

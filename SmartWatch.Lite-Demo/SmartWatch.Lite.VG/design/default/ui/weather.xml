@@ -1,0 +1,51 @@
+<view w="100%" h="100%" style="weather_bg_color">
+  <view x="0" y="0" w="100%" h="100%">
+    <label name="weather_degree" style="weather_white_76" x="56" y="110" w="90" h="60" text="28"/>
+    <image x="148" y="100" w="22" h="24" image="weather_degree"/>
+    <image x="158" y="135" w="41" h="35" image="weather_sun"/>
+    <row x="56" y="206" w="160" h="96">
+      <column x="0" y="0" w="100%" h="50%">
+        <label style="weather_white_38" x="0" y="0" w="50%" h="100%" text="明天"/>
+        <image x="65%" y="-3" w="41" h="35" image="weather_cloudy"/>
+      </column>
+      <column x="0" y="50%" w="100%" h="50%">
+        <label style="weather_white_38" x="0" y="0" w="50%" h="100%" text="后天"/>
+        <image x="64%" y="0" w="41" h="35" image="weather_rain"/>
+      </column>
+    </row>
+    <column x="220" y="100" w="140" h="40">
+      <label style="weather_sky_blue_left_38" x="0" y="0" w="50%" h="100%" text="AQI"/>
+      <label name="aqi" style="weather_sky_blue_right_38" x="50%" y="0" w="50%" h="100%" text="200"/>
+    </column>
+    <column x="220" y="138" w="140" h="40">
+      <label name="now_min_temp" style="weather_white_right_38" x="0" y="0" w="30%" h="100%" text="20"/>
+      <image x="30%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+      <label style="weather_white_38" x="38%" y="0" w="30%" h="100%" text="~"/>
+      <label name="now_max_temp" style="weather_white_right_38" x="65%" y="0" w="30%" h="100%" text="30"/>
+      <image x="95%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+    </column>
+    <column x="220" y="206" w="140" h="40">
+      <label name="tom_min_temp" style="weather_white_right_38" x="0" y="0" w="30%" h="100%" text="20"/>
+      <image x="30%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+      <label style="weather_white_38" x="38%" y="0" w="30%" h="100%" text="~"/>
+      <label name="tom_max_temp" style="weather_white_right_38" x="65%" y="0" w="30%" h="100%" text="30"/>
+      <image x="95%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+    </column>
+    <column x="220" y="251" w="140" h="40">
+      <label name="after_tom_min_temp" style="weather_white_right_38" x="0" y="0" w="30%" h="100%" text="20"/>
+      <image x="30%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+      <label style="weather_white_38" x="38%" y="0" w="30%" h="100%" text="~"/>
+      <label name="after_tom_max_temp" style="weather_white_right_38" x="65%" y="0" w="30%" h="100%" text="30"/>
+      <image x="95%" y="0" w="14" h="14" image="weather_degree" draw_type="scale_auto"/>
+    </column>
+  </view>
+  <color_button style="weather_bg" x="0" y="0" w="100%" h="80" l="60" orientation_top="false" button="false" disg:custom="container">
+    <label style="weather_white_43" x="m" y="m:10" w="100%" h="100%" text="广州市"/>
+  </color_button>
+  <color_button style="weather_bg" x="0" y="b" w="100%" h="80" l="60" orientation_top="true" button="false" disg:custom="container">
+    <column x="c:10" y="m" w="150" h="100%">
+      <label style="weather_sky_blue_26" x="0" y="0" w="50%" h="100%" text="更新时间:"/>
+      <digit_clock style="weather_sky_blue_26" x="50%" y="0" w="50%" h="100%" format="hh:mm"/>
+    </column>
+  </color_button>
+</view>

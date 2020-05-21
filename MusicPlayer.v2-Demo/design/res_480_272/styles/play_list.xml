@@ -1,0 +1,9 @@
+<label>
+  <style name="left_list">
+    <normal font_size="14" margin="4" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="left_list_click">
+    <normal font_size="14" margin="4" text_align_h="left" text_color="#00FFFC"/>
+  </style>
+</label>

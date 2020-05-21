@@ -1,0 +1,17 @@
+import os
+import sys
+
+env=DefaultEnvironment().Clone()
+BIN_DIR=os.environ['BIN_DIR']
+CCFLAGS=os.environ['CCFLAGS']
+
+# 设置启用动画模式
+CCFLAGS = CCFLAGS + " -DWATCH_ANIMATOR "
+
+src_files=[]
+for root,dirs,files in os.walk(".") :
+    for file in files :
+        if os.path.splitext(file)[1] == ".c" :
+            src_files.append(os.path.join(root, file))
+
+env.Program(os.path.join(BIN_DIR, 'demo'), src_files, CCFLAGS = CCFLAGS);

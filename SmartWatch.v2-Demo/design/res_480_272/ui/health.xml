@@ -1,0 +1,60 @@
+<window x="c" y="m" w="240" h="240" name="health" style:normal:bg_color="#080808" open_anim_hint="slide_left(easing=sin_inout)">
+  <gesture name="health:gesture" x="c" y="m" w="240" h="240">
+    <slide_indicator_arc name="slide_indicator_arc" x="r" y="m" w="10" h="100%" size="8" auto_hide="0" spacing="8" default_paint="stroke_dot" style:normal:selected_fg_color="#00FFEF" style:normal:fg_color="#51697C"/>
+    <slide_view name="slide_view" x="0" y="0" w="100%" h="100%" vertical="true">
+      <view name="view" x="0" y="0" w="100%" h="100%">
+        <bar_graph name="activity_bar" x="c" y="0%" w="90%" h="12%" size="24" spacing="2" color="#E60778" zero_color="#3B0430" arc="true"/>
+        <bar_graph name="workout_bar" x="c" y="15%" w="90%" h="12%" size="24" spacing="2" color="#6DEF37" zero_color="#303B04" arc="true"/>
+        <bar_graph name="stand_bar" x="c" y="30%" w="90%" h="12%" size="24" spacing="2" color="#18C7FA" zero_color="#02313D" arc="true"/>
+        <view name="view" x="0" y="b" w="50%" h="50%">
+          <view name="view" x="r:6" y="0" w="76%" h="78%">
+            <health_circle name="health:all" x="c" y="m" w="100%" h="100%" width="9" color_b="#E60778" color_m="#6DEF37" color_s="#18C7FA" only_big="true"/>
+            <health_circle name="health:all_m" x="c" y="m" w="75%" h="75%" width="9" color_b="#6DEF37" only_big="true"/>
+            <health_circle name="health:all_s" x="c" y="m" w="51%" h="51%" width="9" color_b="#18C7FA" only_big="true"/>
+          </view>
+        </view>
+        <view name="view" x="117" y="47%" w="102" h="40%" children_layout="default(c=1,r=3)">
+          <view name="view">
+            <label name="label" x="0" y="m" w="35" h="100%" style="pink_22" tr_text="活动:"/>
+            <label name="health:label1" x="32" y="m" w="30" h="100%" style="pink_22" style:normal:text_align_h="center" tr_text="0"/>
+            <label name="label" x="r" y="m" w="42" h="32" style="pink_22" tr_text="卡路里"/>
+          </view>
+          <view name="view">
+            <label name="label" x="0" y="m" w="35" h="100%" style="green_22" tr_text="锻炼:"/>
+            <label name="health:label2" x="32" y="m" w="30" h="100%" style="green_22" style:normal:text_align_h="center" tr_text="0"/>
+            <label name="label" x="r" y="m" w="42" h="32" style="green_22" tr_text="分钟"/>
+          </view>
+          <view name="view">
+            <label name="label" x="0" y="m" w="35" h="100%" style="blue_22" tr_text="站立:"/>
+            <label name="health:label3" x="32" y="m" w="30" h="100%" style="blue_22" style:normal:text_align_h="center" tr_text="0"/>
+            <label name="label" x="r" y="m" w="42" h="32" style="blue_22" tr_text="分钟"/>
+          </view>
+        </view>
+      </view>
+      <view name="activity:gesture" x="0" y="0" w="100%" h="100%">
+        <health_circle name="activity:hc" x="c" y="m" w="80%" h="80%" width="25" only_big="true" draggable="true" max_b="240" color_b="#E60778" end_color_b="#CF00FF"/>
+        <view name="view" x="c" y="m" w="148" h="98" children_layout="default(c=1,r=3)">
+          <label name="label" style="health_text" children_layout="" tr_text="活动目标"/>
+          <label name="activity:label" style="health_big" tr_text="0"/>
+          <label name="label" style="health_text" children_layout="" tr_text="卡路里"/>
+        </view>
+      </view>
+      <view name="workout:gesture" x="0" y="0" w="100%" h="100%">
+        <health_circle name="workout:hc" x="c" y="m" w="80%" h="80%" width="25" color_b="#6DEF37" only_big="true" draggable="true" max_b="240" end_color_b="#C2E200"/>
+        <view name="view" x="c" y="m" w="148" h="98" children_layout="default(c=1,r=3)">
+          <label name="label" style="health_text" tr_text="锻炼目标"/>
+          <label name="workout:label" style="health_big" tr_text="0"/>
+          <label name="label" style="health_text" tr_text="分钟"/>
+        </view>
+      </view>
+      <view name="stand:gesture" x="0" y="0" w="100%" h="100%">
+        <health_circle name="stand:hc" x="c" y="m" w="80%" h="80%" width="25" color_b="#18C7FA" only_big="true" draggable="true" max_b="240" end_color_b="#0080E4"/>
+        <view name="view" x="c" y="m" w="148" h="98" children_layout="default(c=1,r=3)">
+          <label name="label" style="health_text" tr_text="站立目标"/>
+          <label name="stand:label" style="health_big" tr_text="0"/>
+          <label name="label" style="health_text" tr_text="分钟"/>
+        </view>
+      </view>
+    </slide_view>
+  </gesture>
+</window>

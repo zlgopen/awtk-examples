@@ -1,0 +1,12 @@
+<window x="c" y="m" w="390" h="390" name="app" style="app">
+  <gesture name="app_gesture" x="c" y="m" w="390" h="390" style:normal:bg_color="#061B26">
+    <slide_menu_v name="app_slide" x="c" y="m" w="100%" h="200%" align_h="center" xoffset="90" min_scale="1" item_height="200" item_width="200" spacing="10">
+      <button name="app_calendar" h="200" repeat="0" enable_long_press="false" style="app_calendar" tr_text=""/>
+      <button name="app_cloudy" h="200" repeat="0" enable_long_press="false" style="app_cloudy" tr_text=""/>
+      <button name="app_heart" h="200" repeat="0" enable_long_press="false" style="app_heart" tr_text=""/>
+      <button name="app_mail" h="200" repeat="0" enable_long_press="false" style="app_mail" tr_text=""/>
+      <button name="app_music" h="200" repeat="0" enable_long_press="false" style="app_music" tr_text=""/>
+      <button name="app_training" h="200" repeat="0" enable_long_press="false" style="app_training" tr_text=""/>
+    </slide_menu_v>
+  </gesture>
+</window>

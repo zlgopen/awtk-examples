@@ -1,0 +1,5 @@
+<system_bar h="30" name="system_bar" style:normal:bg_color="#132634" style:normal:border_color="#000000" style:normal:border="bottom">
+  <label x="20" y="0" w="166" h="100%" name="title" style:normal:text_align_h="left" style:normal:font_size="22" style:normal:text_color="#FFFFFF" tr_text="title"/>
+  <digit_clock x="218" y="0" w="216" h="100%" format="Y-MM-DD hh:mm:ss" style:normal:text_align_h="right" style:normal:font_size="22" style:normal:text_color="#FFFFFF"/>
+  <button name="language_btn" x="r:10" y="m" w="25" h="25" repeat="0" enable_long_press="false" style="language_zh" tr_text=""/>
+</system_bar>

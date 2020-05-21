@@ -1,0 +1,22 @@
+<chart_view>
+  <style name="default">
+    <normal margin_left="0" margin_right="0" margin_top="0" margin_bottom="0" bg_color="#2a327b"/>
+  </style>
+</chart_view>
+<series_line>
+  <style name="default">
+    <normal border_color="#00fffc" border_width="3"/>
+  </style>
+  <style name="s1">
+    <normal border_color="#00fffc"/>
+  </style>
+</series_line>
+<slider>
+  <style name="slider_v" bg_color="#4B84E0" fg_color="#00FFFC" icon="slider_drag" round_radius="">
+    <normal/>
+    <disable bg_color="#D8D8D866" fg_color="#338FFF66" icon="rounded_n"/>
+    <focused bg_color="#D8D8D8" fg_color="#338FFF" icon="rounded_o"/>
+    <over/>
+    <pressed/>
+  </style>
+</slider>

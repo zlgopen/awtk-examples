@@ -1,0 +1,7 @@
+<window name="animation" anim_hint="htranslate(duration=500,easing=cubic_out)">
+  <image name="move" x="67" y="184" w="179" h="100" image="logo" animation="move(duration=1000,yoyo_times=0,easing=linear,x_from=0,x_to=0,y_from=100,y_to=200)"/>
+  <image name="scale" x="c" y="53" w="179" h="100" image="logo" animation="scale(duration=1000,yoyo_times=0,easing=linear,x_from=0.5,x_to=1,y_from=0.5,y_to=1)"/>
+  <image name="fade" x="563" y="184" w="179" h="100" image="logo" animation="opacity(duration=1000,yoyo_times=0,easing=linear,from=50,to=255)"/>
+  <image name="rotation" x="365" y="294" w="69" h="66" image="big_earth" animation="rotation(duration=1000,yoyo_times=0,easing=linear,from=0,to=6.28)"/>
+  <button name="close" x="349" y="396" w="101" h="36" text="close"/>
+</window>

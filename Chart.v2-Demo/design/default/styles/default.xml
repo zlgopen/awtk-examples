@@ -1,0 +1,724 @@
+<window>
+    <style name="default">
+        <normal bg_color="#1c3445" border_color="#1e455d"  border="top"/>
+    </style>
+    <style name="main">
+        <normal bg_image="bg_main" border_color="#1e455d"  border="top"/>
+    </style>
+    <style name="dark">
+        <normal bg_color="#664d74" bg_image="bg_other"/>
+    </style>
+    <style name="bricks">
+        <normal bg_image="bricks"  bg_image_draw_type="repeat"/>
+    </style>
+    <style name="sky">
+        <normal bg_image="bg800x480"/>
+    </style>
+</window>
+<chart_view>
+    <style name="default">
+        <normal margin_left="55" margin_right="55" margin_top="20" margin_bottom="20"/>
+    </style>
+</chart_view>
+<bar_series>
+    <style name="edge1">
+        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+    </style>
+    <style name="spacing">
+        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+    </style>
+    <style name="edge2">
+        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+    </style>
+    <style name="overlap">
+        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+    </style>
+    <style name="overlap_small">
+        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+    </style>
+</bar_series>
+<bar_series_minmax>
+    <style name="margin_left">
+        <normal  margin_left="20" margin_right="2" margin_top="3" margin_bottom="1"/>
+    </style>
+    <style name="spacing">
+        <normal  margin_left="2" margin_right="2" margin_top="1" margin_bottom="1"/>
+    </style>
+    <style name="margin_right">
+        <normal  margin_right="20" margin_left="2" margin_top="1" margin_bottom="3"/>
+    </style>
+    <style name="overlap">
+        <normal  margin_right="20" margin_left="20" margin_top="10" margin_bottom="10"/>
+    </style>
+    <style name="overlap_small">
+        <normal  margin_right="5" margin_left="5" margin_top="2" margin_bottom="2"/>
+    </style>
+</bar_series_minmax>
+<axis_split_line>
+    <style name="default">
+        <normal fg_color="#213b4d"/>
+    </style>
+</axis_split_line>
+<axis_line>
+    <style name="default">
+        <normal fg_color="#294b63"/>
+    </style>
+    <style name="x">
+        <normal fg_image="x_axis"/>
+    </style>
+    <style name="y">
+        <normal fg_image="y_axis"/>
+    </style>
+</axis_line>
+<axis_tick>
+    <style name="default">
+        <normal fg_color="#294b63"/>
+    </style>
+</axis_tick>
+<axis_label>
+    <style name="default">
+        <normal text_color="#a1d8ef"/>
+    </style>
+</axis_label>
+<series_line>
+    <style name="default">
+        <normal border_color="#36b3c3" border_width="3"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal border_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal border_color="#327ad3"/>
+    </style>
+</series_line>
+<series_bar>
+    <style name="default">
+        <normal fg_color="#FF0138" round_radius="8"/>
+    </style>
+    <style name="s1">
+        <normal fg_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal fg_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal fg_color="#327ad3"/>
+    </style>
+</series_bar>
+<series_symbol>
+    <style name="default">
+        <normal border_color="#ffc393" fg_color="#69cf5c"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#ffc393" fg_color="#69cf5c"/>
+    </style>
+    <style name="s2">
+        <normal border_color="#ffc393" fg_color="#36b3c3"/>
+    </style>
+    <style name="s3">
+        <normal border_color="#ffc393" fg_color="#327ad3"/>
+    </style>
+</series_symbol>
+<series_line_area>
+    <style name="default">
+        <normal fg_color="#69cf5c66"/>
+    </style>
+    <style name="s1">
+        <normal fg_color="#69cf5c66"/>
+    </style>
+    <style name="s2">
+        <normal fg_color="#36b3c366"/>
+    </style>
+    <style name="s3">
+        <normal fg_color="#327ad366"/>
+    </style>
+</series_line_area>
+<tooltip_line>
+    <style name="default">
+        <normal fg_color="#ffffff"/>
+    </style>
+</tooltip_line>
+<tooltip_symbol>
+    <style name="default">
+        <normal fg_color="#ffffff" border_color="#007acc" border_width="3"/>
+    </style>
+</tooltip_symbol>
+<tooltip_tip>
+    <style name="default">
+        <normal margin="4" bg_color="#ffffff80" text_color="#ffffff" border_color="#ffffff" border_width="3"/>
+    </style>
+</tooltip_tip>
+<calibration_win>
+    <style name="default" fg_color="black"  text_color="black">
+        <normal bg_color="#f0f0f0"/>
+    </style>
+</calibration_win>
+<popup>
+    <style name="default" border_color="#a0a0a0">
+        <normal bg_color="#f0f0f0"/>
+    </style>
+</popup>
+<button>
+    <style name="default" border_color="#040b11" bg_color="#2c556b" text_color="#a5def9">
+        <normal      />
+        <pressed    border_color="#132a3c" bg_color="#132a3c" />
+        <over        />
+        <disable     />
+    </style>
+    <style name="back">
+        <normal     icon="back_normal" />
+        <pressed    icon="back_pressed" />
+        <over       icon="back_normal" />
+        <disable     />
+    </style>
+    <style name="new">
+        <normal     icon="new_normal" />
+        <pressed    icon="new_pressed" />
+        <over       icon="new_normal" />
+        <disable    icon="new_normal" />
+    </style>
+    <style name="line">
+        <normal     icon="icon_1_normal" />
+        <pressed    icon="icon_1_normal" />
+        <over       icon="icon_1_normal" />
+        <disable     />
+    </style>
+    <style name="line_select">
+        <normal     icon="icon_1_pressed" />
+        <pressed    icon="icon_1_pressed" />
+        <over       icon="icon_1_pressed" />
+        <disable     />
+    </style>
+    <style name="symbol">
+        <normal     icon="icon_2_normal" />
+        <pressed    icon="icon_2_normal" />
+        <over       icon="icon_2_normal" />
+        <disable     />
+    </style>
+    <style name="symbol_select">
+        <normal     icon="icon_2_pressed" />
+        <pressed    icon="icon_2_pressed" />
+        <over       icon="icon_2_pressed" />
+        <disable     />
+    </style>
+    <style name="area">
+        <normal     icon="icon_3_normal" />
+        <pressed    icon="icon_3_normal" />
+        <over       icon="icon_3_normal" />
+        <disable     />
+    </style>
+    <style name="area_select">
+        <normal     icon="icon_3_pressed" />
+        <pressed    icon="icon_3_pressed" />
+        <over       icon="icon_3_pressed" />
+        <disable     />
+    </style>
+    <style name="smooth">
+        <normal     icon="icon_4_normal" />
+        <pressed    icon="icon_4_normal" />
+        <over       icon="icon_4_normal" />
+        <disable     />
+    </style>
+    <style name="smooth_select">
+        <normal     icon="icon_4_pressed" />
+        <pressed    icon="icon_4_pressed" />
+        <over       icon="icon_4_pressed" />
+        <disable     />
+    </style>
+    <style name="pie_circle">
+        <normal     icon="icon_5_normal" />
+        <pressed    icon="icon_5_pressed" />
+        <over       icon="icon_5_normal" />
+        <disable    icon="icon_5_normal"  />
+    </style>
+    <style name="pie_annular">
+        <normal     icon="icon_6_normal" />
+        <pressed    icon="icon_6_pressed" />
+        <over       icon="icon_6_normal" />
+        <disable    icon="icon_6_normal" />
+    </style>
+    <style name="pie_label" text_color="#a5def9" text_align_h="center">
+        <normal     bg_image="pie_label_normal" />
+        <pressed    bg_image="pie_label_normal"/>
+        <over       bg_image="pie_label_normal" />
+        <disable     />
+    </style>
+    <style name="pie_label_press" text_color="#a5def9" text_align_h="center">
+        <normal     bg_image="pie_label_select" />
+        <pressed    bg_image="pie_label_select" />
+        <over       bg_image="pie_label_select"/>
+        <disable     />
+    </style>
+    <style name="meter_start">
+        <normal     icon="play_normal" />
+        <pressed    icon="play_pressed" />
+        <over       icon="play_normal" />
+        <disable    icon="play_normal" />
+    </style>
+    <style name="meter_start_pressed">
+        <normal     icon="play_pressed" />
+        <pressed    icon="play_pressed" />
+        <over       icon="play_pressed" />
+        <disable    icon="play_pressed" />
+    </style>
+    <style name="meter_stop">
+        <normal     icon="pause_mormal" />
+        <pressed    icon="pause_pressed" />
+        <over       icon="pause_mormal" />
+        <disable    icon="pause_mormal" />
+    </style>
+    <style name="meter_stop_pressed">
+        <normal     icon="pause_pressed" />
+        <pressed    icon="pause_pressed" />
+        <over       icon="pause_pressed" />
+        <disable    icon="pause_pressed" />
+    </style>
+    <style name="main_meter" >
+        <normal     icon="meter_normal" />
+        <pressed    icon="meter_pressed"/>
+        <over       icon="meter_normal" />
+        <disable     />
+    </style>
+    <style name="main_meter_en" >
+        <normal     icon="meter_normal_en" />
+        <pressed    icon="meter_pressed_en"/>
+        <over       icon="meter_normal_en" />
+        <disable     />
+    </style>
+    <style name="main_pie" >
+        <normal     icon="pie_normal" />
+        <pressed    icon="pie_pressed"/>
+        <over       icon="pie_normal" />
+        <disable     />
+    </style>
+    <style name="main_pie_en" >
+        <normal     icon="pie_normal_en" />
+        <pressed    icon="pie_pressed_en"/>
+        <over       icon="pie_normal_en" />
+        <disable     />
+    </style>
+    <style name="main_graph" >
+        <normal     icon="graph_normal" />
+        <pressed    icon="graph_pressed"/>
+        <over       icon="graph_normal" />
+        <disable     />
+    </style>
+    <style name="main_graph_en" >
+        <normal     icon="graph_normal_en" />
+        <pressed    icon="graph_pressed_en"/>
+        <over       icon="graph_normal_en" />
+        <disable     />
+    </style>
+    <style name="main_histogram" >
+        <normal     icon="histogram_normal" />
+        <pressed    icon="histogram_pressed"/>
+        <over       icon="histogram_normal" />
+        <disable     />
+    </style>
+    <style name="main_histogram_en" >
+        <normal     icon="histogram_normal_en" />
+        <pressed    icon="histogram_pressed_en"/>
+        <over       icon="histogram_normal_en" />
+        <disable     />
+    </style>
+    <style name="language_zh" >
+        <normal     icon="language_zh" />
+        <pressed    icon="language_zh"/>
+        <over       icon="language_zh" />
+        <disable     />
+    </style>
+    <style name="language_en" >
+        <normal     icon="language_en" />
+        <pressed    icon="language_en"/>
+        <over       icon="language_en" />
+        <disable     />
+    </style>
+</button>
+<edit selected_fg_color="#020202" selected_text_color="#010101" selected_bg_color="#b5d7fd">
+    <style name="default" border_color="#a0a0a0"  text_color="black" text_align_h="left">
+        <normal     bg_color="#f0f0f0" />
+        <focused    bg_color="#f0f0f0" border_color="black"/>
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+        <error      bg_color="#f0f0f0" text_color="red" />
+        <empty      bg_color="#f0f0f0" text_color="#a0a0a0" />
+    </style>
+    <style name="number" border_color="#a0a0a0"  text_color="black" text_align_h="right">
+        <normal     bg_color="#f0f0f0" />
+        <focused    bg_color="#f0f0f0" border_color="black"/>
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+        <error      bg_color="#f0f0f0" text_color="red" />
+        <empty      bg_color="#f0f0f0" text_color="#a0a0a0" />
+    </style>
+    <style name="line" border="bottom" border_color="#a0a0a0"  text_color="black" text_align_h="left" text_align_v="bottom">
+        <normal     bg_color="#f0f0f0" />
+        <focused    bg_color="#f0f0f0" border_color="black"/>
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+        <error      bg_color="#f0f0f0" text_color="red" />
+        <empty      bg_color="#f0f0f0" text_color="#a0a0a0" />
+    </style>
+</edit>
+<spin_box>
+    <style name="default" border_color="#a0a0a0"  text_color="black" text_align_h="left">
+        <normal     bg_color="#f0f0f0" />
+        <focused    bg_color="#f0f0f0" border_color="black"/>
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+        <error      bg_color="#f0f0f0" text_color="red" />
+        <empty      bg_color="#f0f0f0" text_color="#a0a0a0" />
+    </style>
+</spin_box>
+<digit_clock>
+    <style name="default">
+        <normal text_color="black" text_align_h="right"/>
+    </style>
+</digit_clock>
+<label>
+    <style name="default">
+        <normal text_color="#a5aaae" />
+    </style>
+    <style name="series_label">
+        <normal text_color="#a1d8ef" text_align_h="left"/>
+    </style>
+    <style name="typeie">
+        <normal bg_color="#69cf5c" />
+    </style>
+    <style name="dayas">
+        <normal bg_color="#36b3c3" />
+    </style>
+    <style name="drean">
+        <normal bg_color="#327ad4" />
+    </style>
+    <style name="series_hide">
+        <normal bg_color="#808080" />
+    </style>
+    <style name="typeie_focus">
+        <normal bg_color="#69cf5c" border_color="blue" />
+    </style>
+    <style name="dayas_focus">
+        <normal bg_color="#36b3c3" border_color="blue" />
+    </style>
+    <style name="drean_focus">
+        <normal bg_color="#327ad4" border_color="blue" />
+    </style>
+    <style name="pie1">
+        <normal bg_color="#4e7ccc" />
+    </style>
+    <style name="pie2">
+        <normal bg_color="#36b3c3" />
+    </style>
+    <style name="pie3">
+        <normal bg_color="#4ecda5" />
+    </style>
+    <style name="pie4">
+        <normal bg_color="#94e08a" />
+    </style>
+    <style name="pie5">
+        <normal bg_color="#e2f194" />
+    </style>
+    <style name="pie6">
+        <normal bg_color="#edcc72" />
+    </style>
+    <style name="meter_name">
+        <normal text_color="#8bc3da" font_size="32" font_style="bold"/>
+    </style>
+</label>
+<progress_bar>
+    <style>
+        <normal bg_color="#f0f0f0" text_color="gold" fg_color="#c0c0c0" border_color="#a0a0a0" />
+    </style>
+    <style name="img" bg_image="slider_bg" fg_image="slider_fg">
+        <normal icon="slider_drag"/>
+    </style>
+    <style name="img_v"  bg_image="slider_v_bg" fg_image="slider_v_fg" bg_image_draw_type="patch3_y" fg_image_draw_type="patch3_y">
+        <normal icon="slider_drag"/>
+    </style>
+</progress_bar>
+<slider>
+    <style>
+        <normal bg_color="#a0a0a0" fg_color="blue" border_color="#ffd700"/>
+        <pressed bg_color="#a0a0a0" fg_color="blue" border_color="#ffa700"/>
+        <over bg_color="#a0a0a0" fg_color="blue" border_color="#ffe700"/>
+    </style>
+    <style name="img" bg_image="slider_bg" fg_image="slider_fg">
+        <normal icon="slider_drag"/>
+        <pressed icon="slider_drag_p"/>
+        <over icon="slider_drag_o"/>
+    </style>
+    <style name="img_v"  bg_image="slider_v_bg" fg_image="slider_v_fg" bg_image_draw_type="patch3_y" fg_image_draw_type="patch3_y">
+        <normal icon="slider_drag"/>
+        <pressed icon="slider_drag_p"/>
+        <over icon="slider_drag_o"/>
+    </style>
+</slider>
+<group_box>
+    <style>
+        <normal />
+    </style>
+    <style name="box">
+        <normal bg_color="#f0f0f0" border_color="#a0a0a0" />
+    </style>
+</group_box>
+<check_button bg_color="#f0f0f0" text_color="black">
+    <style name="default">
+        <normal  icon="unchecked" />
+        <pressed icon="unchecked" />
+        <over    icon="unchecked" text_color="green"/>
+        <normal_of_checked icon="checked" text_color="blue"/>
+        <pressed_of_checked icon="checked" text_color="blue"/>
+        <over_of_checked icon="checked" text_color="green"/>
+    </style>
+    <style name="typeie" bg_color="#000000">
+        <normal  />
+        <pressed />
+        <over    />
+        <normal_of_checked bg_color="#f0f0f0" />
+        <pressed_of_checked />
+        <over_of_checked    />
+    </style>
+    <style name="even_icon_right" icon_at="right" text_color="black" margin="4" bg_color="#eaeaea">
+        <normal  />
+        <pressed />
+        <over    />
+        <normal_of_checked icon="check" />
+        <pressed_of_checked icon="check" />
+        <over_of_checked icon="check" />
+    </style>
+</check_button>
+<radio_button>
+    <style name="default" bg_color="#f0f0f0" text_color="black">
+        <normal  icon="radio_unchecked" />
+        <pressed icon="radio_unchecked" />
+        <over    icon="radio_unchecked" text_color="green"/>
+        <normal_of_checked icon="radio_checked" text_color="red"/>
+        <pressed_of_checked icon="radio_checked" text_color="red"/>
+        <over_of_checked icon="radio_checked" text_color="green"/>
+    </style>
+    <style name="left">
+        <normal  icon="left_off" />
+        <pressed icon="left_off" />
+        <over    icon="left_off" />
+        <normal_of_checked icon="left_on" />
+        <pressed_of_checked icon="left_on" />
+        <over_of_checked icon="left_on" />
+    </style>
+    <style name="middle">
+        <normal  icon="middle_off" />
+        <pressed icon="middle_off" />
+        <over    icon="middle_off" />
+        <normal_of_checked icon="middle_on" />
+        <pressed_of_checked icon="middle_on" />
+        <over_of_checked icon="middle_on" />
+    </style>
+    <style name="right">
+        <normal  icon="right_off" />
+        <pressed icon="right_off" />
+        <over    icon="right_off" />
+        <normal_of_checked icon="right_on" />
+        <pressed_of_checked icon="right_on" />
+        <over_of_checked icon="right_on" />
+    </style>
+    <style name="odd_icon_right" text_color="black" margin="4" icon_at="right" bg_color="#f5f5f5">
+        <normal  />
+        <pressed />
+        <over    />
+        <normal_of_checked icon="check" />
+        <pressed_of_checked icon="check" />
+        <over_of_checked icon="check" />
+    </style>
+    <style name="even_icon_right" text_color="black" margin="4" icon_at="right" bg_color="#eaeaea">
+        <normal  />
+        <pressed />
+        <over    />
+        <normal_of_checked icon="check" />
+        <pressed_of_checked icon="check" />
+        <over_of_checked icon="check" />
+    </style>
+</radio_button>
+<image>
+    <style name="border">
+        <normal border_color="#000000" bg_color="#e0e0e0" text_color="black"/>
+    </style>
+    <style name="selectable">
+        <normal text_color="black"/>
+        <pressed border_color="#000000" bg_color="#e0e0e0" text_color="black"/>
+        <selected icon="check" border_color="#000000" bg_color="#e0e0e0" text_color="black"/>
+    </style>
+    <style name="trans">
+        <normal />
+    </style>
+</image>
+<dialog>
+    <style name="default">
+        <normal border_color="#606060" />
+    </style>
+    <style name="notitle">
+        <normal border_color="#606060" bg_color="#ededed"/>
+    </style>
+</dialog>
+<dialog_title icon="info" text_color="black">
+    <style name="default">
+        <normal bg_color="#a9a9a0" />
+    </style>
+</dialog_title>
+<dialog_title>
+    <style name="empty">
+        <normal bg_color="#a9a9a0" />
+    </style>
+</dialog_title>
+<dialog_client>
+    <style name="default">
+        <normal bg_color="#ededed" />
+    </style>
+</dialog_client>
+<scroll_bar>
+    <style name="default">
+        <normal bg_color="#c0c0c0" fg_color="#808080"/>
+        <over bg_color="#c0c0c0" fg_color="#808080"/>
+        <pressed bg_color="#c0c0c0" fg_color="#808080"/>
+    </style>
+    <style name="destkop" border_color="gray">
+        <normal bg_color="#f0f0f0"/>
+        <over bg_color="#f0f0f0" />
+        <pressed bg_color="#f0f0f0" />
+    </style>
+</scroll_bar>
+<dragger>
+    <style name="scroll_bar" >
+        <normal     bg_color="#d0d0d0" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#c0c0c0" />
+    </style>
+</dragger>
+<list_item>
+    <style name="default" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#f0f0f0" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#f0f0f0" />
+    </style>
+    <style name="odd_clickable" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#f5f5f5" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#f5f5f5" />
+    </style>
+    <style name="even_clickable" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#eaeaea" />
+        <pressed    bg_color="#c0c0c0" />
+        <over       bg_color="#eaeaea" />
+    </style>
+    <style name="odd" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#f5f5f5" />
+        <pressed    bg_color="#f5f5f5" />
+        <over       bg_color="#f5f5f5" />
+    </style>
+    <style name="even" border_color="#a0a0a0"  border="bottom" text_color="black">
+        <normal     bg_color="#eaeaea" />
+        <pressed    bg_color="#eaeaea" />
+        <over       bg_color="#eaeaea" />
+    </style>
+    <style name="empty" >
+        <normal  />
+        <pressed />
+        <over  />
+    </style>
+</list_item>
+<tab_button>
+    <style name="default" border_color="#a0a0a0"  text_color="black">
+        <normal     bg_color="#d0d0d0" />
+        <pressed    bg_color="#f0f0f0" />
+        <over       bg_color="#e0e0e0" />
+        <normal_of_active     bg_color="#f0f0f0" />
+        <pressed_of_active    bg_color="#f0f0f0" />
+        <over_of_active       bg_color="#f0f0f0" />
+    </style>
+</tab_button>
+<tab_button_group>
+    <style name="default">
+        <normal/>
+    </style>
+</tab_button_group>
+<combo_box>
+    <style name="default" border_color="#a0a0a0"  text_color="black" text_align_h="left">
+        <normal     bg_color="#f0f0f0" />
+        <focused    bg_color="#f0f0f0" border_color="black"/>
+        <disable    bg_color="gray" text_color="#d0d0d0" />
+        <error      bg_color="#f0f0f0" text_color="red" />
+        <empty      bg_color="#f0f0f0" text_color="#a0a0a0" />
+    </style>
+</combo_box>
+<combo_box_item>
+    <style name="default" icon_at="left" text_color="black" bg_color="#f0f0f0">
+        <normal  icon="empty"/>
+        <pressed icon="empty" bg_color="#1296db" text_color="white" />
+        <over    icon="empty" bg_color="#1296db" text_color="white" />
+        <normal_of_checked  icon="check"/>
+        <pressed_of_checked icon="check" bg_color="#1296db" text_color="white" />
+        <over_of_checked    icon="check" bg_color="#1296db" text_color="white" />
+    </style>
+</combo_box_item>
+<text_selector>
+    <style name="default" fg_color="#a0a0a0"  text_color="black" text_align_h="center">
+        <normal     bg_color="#f0f0f0" />
+    </style>
+</text_selector>
+<switch>
+    <style name="default">
+        <normal  bg_image="switch" />
+    </style>
+</switch>
+<slide_view>
+    <style name="default">
+        <normal  fg_color="red" />
+    </style>
+    <style name="dot">
+        <normal  icon="dot" active_icon="active_dot"/>
+    </style>
+</slide_view>
+<progress_circle>
+    <style name="default">
+        <normal text_color="green" fg_color="black" />
+    </style>
+    <style name="image">
+        <normal text_color="gold" fg_image="progress_circle" />
+    </style>
+</progress_circle>
+<svg_image>
+    <style name="default">
+        <normal border_color="green" fg_color="red" />
+    </style>
+</svg_image>
+<view>
+    <style name="function_view">
+        <normal  bg_color="#122a3c" border_color="#000000"  border="left"/>
+    </style>
+    <style name="seperate">
+        <normal  border_color="#1e455d"  border="left"/>
+    </style>
+</view>
+<pie_slice>
+    <style name="default">
+        <normal fg_color="black" text_color="green"/>
+    </style>
+    <style name="pie1">
+        <normal fg_color="#4e7ccc" text_color="green"/>
+    </style>
+    <style name="pie2">
+        <normal fg_color="#36b3c3" text_color="green"/>
+    </style>
+    <style name="pie3">
+        <normal fg_color="#4ecda5" text_color="green"/>
+    </style>
+    <style name="pie4">
+        <normal fg_color="#94e08a" text_color="green"/>
+    </style>
+    <style name="pie5">
+        <normal fg_color="#e2f194" text_color="green"/>
+    </style>
+    <style name="pie6">
+        <normal fg_color="#edcc72" text_color="green"/>
+    </style>
+    <style name="image">
+        <normal fg_image="progress_circle" text_color="gold"/>
+    </style>
+</pie_slice>

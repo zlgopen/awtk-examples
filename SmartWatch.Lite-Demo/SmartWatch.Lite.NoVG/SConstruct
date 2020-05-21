@@ -1,0 +1,83 @@
+import os
+import sys
+import platform
+
+def getAwtkRoot():
+    awtk_root = '../../../awtk'
+    return os.path.abspath(awtk_root)
+
+sys.path.insert(0, getAwtkRoot())
+import awtk_config as awtk
+
+LCD_WIDTH = '320'
+LCD_HEIGHT = '240'
+APP_DEFAULT_FONT = 'default'
+APP_THEME = 'default'
+APP_RES_ROOT = '../res'
+APP_DEFAULT_LANGUAGE = 'zh'
+APP_DEFAULT_COUNTRY = 'CN'
+
+LCD = ARGUMENTS.get('LCD', '')
+if len(LCD) > 0:
+  wh = LCD.split('_')
+  if len(wh) >= 1:
+    LCD_WIDTH = wh[0]
+  if len(wh) >= 2:
+    LCD_HEIGHT = wh[1]
+
+FONT = ARGUMENTS.get('FONT', '')
+if len(FONT) > 0:
+  APP_DEFAULT_FONT = FONT
+
+THEME = ARGUMENTS.get('THEME', '')
+if len(THEME) > 0:
+  APP_THEME = THEME
+
+LANGUAGE = ARGUMENTS.get('LANGUAGE', '')
+if len(LANGUAGE) > 0:
+  lan = LANGUAGE.split('_')
+  if len(lan) >= 1:
+    APP_DEFAULT_LANGUAGE = lan[0]
+  if len(lan) >= 2:
+    APP_DEFAULT_COUNTRY = lan[1]
+
+APP_CPPPATH = []
+APP_CCFLAGS = ' -DLCD_WIDTH=' + LCD_WIDTH + ' -DLCD_HEIGHT=' + LCD_HEIGHT + ' ' 
+APP_CCFLAGS = APP_CCFLAGS + ' -DAPP_DEFAULT_FONT=\\\"' + APP_DEFAULT_FONT + '\\\" '
+APP_CCFLAGS = APP_CCFLAGS + ' -DAPP_THEME=\\\"' + APP_THEME + '\\\" ' 
+APP_CCFLAGS = APP_CCFLAGS + ' -DAPP_RES_ROOT=\\\"' + APP_RES_ROOT + '\\\" ' 
+APP_CCFLAGS = APP_CCFLAGS + ' -DAPP_DEFAULT_LANGUAGE=\\\"' + APP_DEFAULT_LANGUAGE + '\\\" ' 
+APP_CCFLAGS = APP_CCFLAGS + ' -DAPP_DEFAULT_COUNTRY=\\\"' + APP_DEFAULT_COUNTRY + '\\\" ' 
+
+APP_ROOT    = os.path.normpath(os.getcwd())
+APP_BIN_DIR = os.path.join(APP_ROOT, 'bin')
+APP_LIB_DIR = os.path.join(APP_ROOT, 'lib')
+
+os.environ['APP_ROOT'] = APP_ROOT
+os.environ['BIN_DIR'] = APP_BIN_DIR
+os.environ['LIB_DIR'] = APP_LIB_DIR
+os.environ['CCFLAGS'] = APP_CCFLAGS + awtk.CCFLAGS
+
+APP_LIBS = []
+APP_LIBPATH = [APP_LIB_DIR]
+
+APP_TOOLS = None
+if hasattr(awtk, 'TOOLS_NAME') and awtk.TOOLS_NAME != '' :
+  APP_TOOLS = [awtk.TOOLS_NAME]
+
+DefaultEnvironment(TOOLS     = APP_TOOLS,
+  CPPPATH   = APP_CPPPATH + awtk.CPPPATH,
+  LINKFLAGS = awtk.LINKFLAGS,
+  LIBS      = APP_LIBS + awtk.LIBS,
+  LIBPATH   = APP_LIBPATH + awtk.LIBPATH,
+  CCFLAGS   = APP_CCFLAGS + awtk.CCFLAGS, 
+  TARGET_ARCH = awtk.TARGET_ARCH,
+  OS_SUBSYSTEM_CONSOLE=awtk.OS_SUBSYSTEM_CONSOLE,
+  OS_SUBSYSTEM_WINDOWS=awtk.OS_SUBSYSTEM_WINDOWS)
+
+SConscriptFiles=[
+  'src/SConscript',
+  'tool/clock_pinter_gen/SConscript'
+  ]
+  
+SConscript(SConscriptFiles)

@@ -1,0 +1,383 @@
+<button>
+  <style name="default" font_size="30" text_color="#FFFFFF">
+    <normal bg_color="#393939" border_color="#484848"/>
+    <over bg_color="#3F3F46" border_color="#007ACC"/>
+    <pressed bg_color="#202020" border_color="#393939"/>
+  </style>
+  <style name="back" text_color="#FFFFFF">
+    <normal bg_color="#393939" border_color="#484848"/>
+    <over bg_color="#3F3F46" border_color="#007ACC"/>
+    <pressed bg_color="#202020" border_color="#393939"/>
+  </style>
+  <style name="combobox_down" border_color="#CBCBCB">
+    <normal icon="arrow_down_n"/>
+    <over icon="arrow_down_o"/>
+    <pressed icon="arrow_down_p"/>
+  </style>
+  <style name="language_en">
+    <normal bg_image="language_en" />
+  </style>
+  <style name="language_zh">
+    <normal bg_image="language_zh" />
+  </style>
+  <style name="scroll_down" border_color="#A0A0A0">
+    <normal bg_color="#F0F0F0" icon="arrow_down_n"/>
+    <over bg_color="#E0E0E0" icon="arrow_down_o"/>
+    <pressed bg_color="#C0C0C0" icon="arrow_down_p"/>
+  </style>
+  <style name="scroll_left" border_color="#A0A0A0">
+    <normal bg_color="#F0F0F0" icon="arrow_left_n"/>
+    <over bg_color="#E0E0E0" icon="arrow_left_o"/>
+    <pressed bg_color="#C0C0C0" icon="arrow_left_p"/>
+  </style>
+  <style name="scroll_right" border_color="#A0A0A0">
+    <normal bg_color="#F0F0F0" icon="arrow_right_n"/>
+    <over bg_color="#E0E0E0" icon="arrow_right_o"/>
+    <pressed bg_color="#C0C0C0" icon="arrow_right_p"/>
+  </style>
+  <style name="scroll_up" border_color="#A0A0A0">
+    <normal bg_color="#F0F0F0" icon="arrow_up_n"/>
+    <over bg_color="#E0E0E0" icon="arrow_up_o"/>
+    <pressed bg_color="#C0C0C0" icon="arrow_up_p"/>
+  </style>
+  <style name="spinbox_down" bg_color="#F7F7F7" border_color="#CBCBCB">
+    <normal icon="arrow_down_n"/>
+    <disable icon="arrow_down_d"/>
+    <over icon="arrow_down_o"/>
+    <pressed icon="arrow_down_p"/>
+  </style>
+  <style name="spinbox_left" bg_color="#F7F7F7" border_color="#CBCBCB">
+    <normal icon="arrow_left_n"/>
+    <disable icon="arrow_left_d"/>
+    <over icon="arrow_left_o"/>
+    <pressed icon="arrow_left_p"/>
+  </style>
+  <style name="spinbox_right" bg_color="#F7F7F7" border_color="#CBCBCB">
+    <normal icon="arrow_right_n"/>
+    <disable icon="arrow_right_d"/>
+    <over icon="arrow_right_o"/>
+    <pressed icon="arrow_right_p"/>
+  </style>
+  <style name="spinbox_up" bg_color="#F7F7F7" border_color="#CBCBCB">
+    <normal icon="arrow_up_n"/>
+    <disable icon="arrow_up_d"/>
+    <over icon="arrow_up_o"/>
+    <pressed icon="arrow_up_p"/>
+  </style>
+</button>
+<calibration_win>
+  <style name="default">
+    <normal bg_color="#F7F7F7" border_color="#CBCBCB" fg_color="#444444" text_color="#000000"/>
+  </style>
+</calibration_win>
+<check_button>
+  <style name="default" icon_at="left" text_color="#444444">
+    <normal icon="check_n"/>
+    <disable icon="check_d"/>
+    <focused icon="check_f"/>
+    <focused_of_checked icon="check_checked_f"/>
+    <normal_of_checked icon="check_checked_n"/>
+    <over icon="check_o"/>
+    <over_of_checked icon="check_checked_o"/>
+    <pressed icon="check_p"/>
+    <pressed_of_checked icon="check_checked_p"/>
+  </style>
+  <style name="ddddd">
+    <has_value has_value="1"/>
+  </style>
+</check_button>
+<color_component>
+  <style name="default">
+    <normal border_color="#70AC47"/>
+  </style>
+</color_component>
+<color_picker>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</color_picker>
+<color_tile>
+  <style name="default">
+    <normal border_color="#CBCBCB"/>
+    <focused border_color="#E6E6E6"/>
+    <over border_color="#338FFF"/>
+  </style>
+</color_tile>
+<combo_box>
+  <style name="default" bg_color="#F7F7F7" border_color="#CBCBCB" text_align_h="left" text_color="#444444">
+    <normal/>
+    <disable bg_color="#BEBEBE" text_color="#D0D0D0"/>
+    <empty text_color="#A0A0A0"/>
+    <empty_focus text_color="#959494"/>
+    <error text_color="#FF0000"/>
+    <focused/>
+  </style>
+</combo_box>
+<combo_box_item>
+  <style name="default" bg_color="#338FFF" icon_at="left" text_color="#FFFFFF">
+    <normal bg_color="#FFFFFF" icon="empty" text_color="#444444"/>
+    <focused bg_color="#1296DB"/>
+    <focused_of_checked icon="empty"/>
+    <normal_of_checked icon="empty"/>
+    <over bg_color="#1971DD" icon="empty"/>
+    <over_of_checked bg_color="#1971DD" icon="empty"/>
+    <pressed icon="empty"/>
+    <pressed_of_checked icon="empty"/>
+  </style>
+</combo_box_item>
+<dialog>
+  <style name="default">
+    <normal bg_color="#FFFFFF" border_color="#CBCBCB"/>
+  </style>
+</dialog>
+<digit_clock>
+  <style name="default">
+    <normal text_color="#444444"/>
+  </style>
+</digit_clock>
+<dragger>
+  <style name="default" border_color="#9E9E9E">
+    <normal/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="scroll_bar" bg_color="#C0C0C0">
+    <normal bg_color="#D0D0D0"/>
+    <over/>
+    <pressed/>
+  </style>
+</dragger>
+<edit>
+  <style name="default" bg_color="#202020" selected_bg_color="#B5D7FD" selected_fg_color="#A1C0E6" selected_text_color="#010101" text_align_h="center" text_color="#FFFFFF">
+    <normal border="none" border_color="#CBCBCB" font_size="24"/>
+    <disable border_color="#E6E6E6" text_color="#BDBDBD"/>
+    <empty border="none" font_size="24" text_color="#959494"/>
+    <empty_focus bg_color="#F0F0F0" border_color="#000000" font_size="24" text_color="#A0A0A0"/>
+    <error bg_color="#F7F7F7" border_color="#FF0000" text_align_h="left" text_color="#444444"/>
+    <focused border_color="#FFFFFF" font_size="24"/>
+    <over bg_color="#F7F7F7" border_color="#338FFF" text_align_h="left" text_color="#444444"/>
+  </style>
+</edit>
+<group_box>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</group_box>
+<hscroll_label>
+  <style name="default">
+    <normal text_color="#444444"/>
+  </style>
+</hscroll_label>
+<image>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</image>
+<keyboard>
+  <style name="default">
+    <normal bg_color="#CFD4DA" border_color="#CBCBCB"/>
+  </style>
+</keyboard>
+<label>
+  <style name="default">
+    <normal font_size="46" text_color="#F4B284"/>
+  </style>
+  <style name="bg0">
+    <normal bg_image="bg0_mix"/>
+  </style>
+  <style name="bg1">
+    <normal bg_image="bg1_mix"/>
+  </style>
+  <style name="reading_temp_hum_alarm">
+    <normal font_size="46" text_color="#FF0000"/>
+  </style>
+  <style name="reading_temp_hum_black">
+    <normal font_size="46" text_color="#000000"/>
+  </style>
+  <style name="setting_page">
+    <normal font_size="46" text_color="#F4B284"/>
+  </style>
+</label>
+<line_number>
+  <style name="default">
+    <normal bg_color="#D0D0D0" text_align_h="center" text_color="#444444"/>
+  </style>
+</line_number>
+<list_item>
+  <style name="default" bg_color="#FFFFFF" border_color="#E9E9E9" text_color="#444444">
+    <normal/>
+    <over border_color="#338FFF"/>
+    <pressed bg_color="#338FFF" text_color="#FFFFFF"/>
+  </style>
+</list_item>
+<list_view>
+  <style name="default">
+    <normal bg_color="#F4F4F4" border_color="#CBCBCB"/>
+  </style>
+</list_view>
+<list_view_h>
+  <style name="default">
+    <normal bg_color="#F4F4F4" border_color="#CBCBCB"/>
+  </style>
+</list_view_h>
+<mledit>
+  <style name="default" bg_color="#FFFFFF" border_color="#A0A0A0" selected_bg_color="#B5D7FD" selected_fg_color="#020202" selected_text_color="#010101" text_align_h="left" text_color="#000000">
+    <normal/>
+    <disable bg_color="#BEBEBE" text_color="#444444"/>
+    <empty text_color="#A0A0A0"/>
+    <empty_focus border_color="#000000" text_color="#A0A0A0"/>
+    <error text_color="#FF0000"/>
+    <focused border_color="#000000"/>
+  </style>
+</mledit>
+<overlay>
+  <style name="default">
+    <normal bg_color="#FFFFFF" border_color="#CBCBCB"/>
+  </style>
+</overlay>
+<pages>
+  <style name="default">
+    <normal border_color="#CBCBCB"/>
+  </style>
+</pages>
+<popup>
+  <style name="default">
+    <normal bg_color="#FFFFFF" border_color="#CBCBCB"/>
+  </style>
+</popup>
+<progress_bar>
+  <style name="default">
+    <normal bg_color="#D8D8D8" border_color="#D8D8D8" fg_color="#338FFF" round_radius="4" text_color="#444444"/>
+  </style>
+</progress_bar>
+<progress_circle>
+  <style name="default">
+    <normal fg_color="#338FFF" text_color="#444444"/>
+  </style>
+</progress_circle>
+<radio_button>
+  <style name="default" icon_at="left" text_color="#000000">
+    <normal icon="radio_n"/>
+    <disable icon="radio_d"/>
+    <focused icon="radio_f"/>
+    <focused_of_checked icon="radio_checked_f"/>
+    <normal_of_checked icon="radio_checked_n"/>
+    <over icon="radio_o"/>
+    <over_of_checked icon="radio_checked_o"/>
+    <pressed icon="radio_p"/>
+    <pressed_of_checked icon="radio_checked_p"/>
+  </style>
+</radio_button>
+<scroll_bar_d>
+  <style name="default" bg_color="#F0F0F0" border_color="#BEBEBE">
+    <normal/>
+    <over/>
+    <pressed/>
+  </style>
+</scroll_bar_d>
+<scroll_bar_m>
+  <style name="default">
+    <normal fg_color="#808080"/>
+  </style>
+</scroll_bar_m>
+<scroll_view>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</scroll_view>
+<slide_indicator>
+  <style name="default">
+    <normal fg_color="#338FFF40" selected_fg_color="#338FFF"/>
+  </style>
+</slide_indicator>
+<slide_indicator_arc>
+  <style name="default">
+    <normal fg_color="#338FFF40" selected_fg_color="#338FFF"/>
+  </style>
+</slide_indicator_arc>
+<slide_menu>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</slide_menu>
+<slide_view>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</slide_view>
+<slider>
+  <style name="default" bg_color="#D8D8D8" fg_color="#338FFF" icon="rounded_o" round_radius="4">
+    <normal icon="rounded_n"/>
+    <focused/>
+    <over/>
+    <pressed icon="rounded_p"/>
+  </style>
+  <style name="img" bg_image="slider_bg" fg_image="slider_fg">
+    <normal icon="rounded_n"/>
+    <over icon="rounded_o"/>
+    <pressed icon="rounded_p"/>
+  </style>
+</slider>
+<spin_box>
+  <style name="default" bg_color="#F7F7F7" border_color="#CBCBCB" text_align_h="left" text_color="#000000">
+    <normal/>
+    <disable bg_color="#BEBEBE" text_color="#D0D0D0"/>
+    <empty text_color="#CBCBCB"/>
+    <empty_focus text_color="#959494"/>
+    <error text_color="#FF0000"/>
+    <focused border_color="#338FFF"/>
+  </style>
+</spin_box>
+<svg_image>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</svg_image>
+<switch>
+  <style name="default">
+    <normal bg_color="#828282" fg_color="#FFFFFF" margin="2" round_radius="11" selected_bg_color="#338FFF"/>
+  </style>
+</switch>
+<system_bar>
+  <style name="default">
+    <normal bg_color="#FFFFFF" border="bottom" border_color="#CBCBCB"/>
+  </style>
+</system_bar>
+<tab_button>
+  <style name="default" bg_color="#FFFFFF" border_color="#CBCBCB" text_color="#444444">
+    <normal bg_color="#F4F4F4"/>
+    <normal_of_active border="left|right|top"/>
+    <over text_color="#1971DD"/>
+    <over_of_active border="left|right|top" text_color="#1971DD"/>
+    <pressed bg_color="#CECDCD"/>
+    <pressed_of_active border="left|right|top" text_color="#1971DD"/>
+  </style>
+</tab_button>
+<tab_button_group>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+  <style name="scrollable">
+    <normal border="left|right" border_color="#A0A0A0"/>
+  </style>
+</tab_button_group>
+<tab_control>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</tab_control>
+<text_selector>
+  <style name="default">
+    <normal bg_color="#FFFFFF" border_color="#CBCBCB" fg_color="#CBCBCB" mask_color="#404040" text_align_h="center" text_color="#000000"/>
+  </style>
+</text_selector>
+<view>
+  <style name="default">
+    <has_value has_value="1"/>
+  </style>
+</view>
+<window>
+  <style name="default">
+    <normal bg_color="#FFFFFF"/>
+  </style>
+</window>

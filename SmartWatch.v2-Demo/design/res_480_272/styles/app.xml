@@ -1,0 +1,32 @@
+<button>
+  <style name="app_calendar" icon="icon_app_calendar_pressed">
+    <normal icon="icon_app_calendar_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="app_cloudy" icon="icon_app_cloudy_pressed">
+    <normal icon="icon_app_cloudy_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="app_heart" icon="icon_app_heart_pressed">
+    <normal icon="icon_app_heart_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="app_mail" icon="icon_app_mail_pressed">
+    <normal icon="icon_app_mail_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="app_music" icon="icon_app_music_pressed">
+    <normal icon="icon_app_music_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="app_training" icon="icon_app_training_pressed">
+    <normal icon="icon_app_training_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+</button>

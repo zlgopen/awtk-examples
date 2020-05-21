@@ -1,0 +1,20 @@
+<window x="c" y="m" w="240" h="240" name="music" open_anim_hint="slide_left(easing=sin_inout)" style:normal:bg_color="#4E1879">
+  <gesture name="music:gesture" x="c" y="m" w="240" h="240" style="default">
+    <button name="music:mode" x="33" y="0" w="174" h="53" repeat="0" enable_long_press="false" style="music_rand" tr_text=""/>
+    <label name="music:song_name" x="c" y="55" w="100%" h="25" style="song_name" tr_text="Shape Of You"/>
+    <view name="view" x="c" y="106" w="173" h="60">
+      <button name="music:pre" x="0" y="m" w="42" h="42" repeat="0" enable_long_press="false" style="music_pre" tr_text=""/>
+      <health_circle name="music:progress" x="c" y="m" w="64" h="64" width="6" color_b="#CA11FF" only_big="true" draggable="true" no_beyond="true" draw_end_line_b="false">
+        <property name="bg_color_b">
+          <![CDATA[#00000000]]>
+        </property>
+      </health_circle>
+      <button name="music:pause_play" x="c" y="m" w="60" h="60" repeat="0" enable_long_press="false" style="music_play" tr_text=""/>
+      <button name="music:next" x="r" y="m" w="42" h="42" repeat="0" enable_long_press="false" style="music_next" tr_text=""/>
+    </view>
+  </gesture>
+  <view name="row" x="c" y="192" w="131" h="12">
+    <image name="image" x="0" y="m" w="12" h="11" image="ico_sound"/>
+    <slider name="music:vol" x="r" y="m" w="113" h="12" bar_size="12" dragger_size="10" style="music_vol" value="40"/>
+  </view>
+</window>

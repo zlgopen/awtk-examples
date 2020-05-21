@@ -1,0 +1,19 @@
+<digit_clock>
+  <style name="date">
+    <normal font_size="16" text_color="#56F391"/>
+  </style>
+  <style name="time">
+    <normal font_size="62" text_color="#56F391"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="text">
+    <normal font_size="16" text_color="#56F391"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<window>
+  <style name="watch_02">
+    <normal bg_color="#000000" bg_image="ico_watch_background_02"/>
+  </style>
+</window>

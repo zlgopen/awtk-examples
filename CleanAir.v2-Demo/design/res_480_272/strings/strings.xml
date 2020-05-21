@@ -1,0 +1,75 @@
+<string name="CleanAir Demo">
+  <language name="zh_CN">洁净新风系统</language>
+</string>
+<string name="Time">
+  <language name="zh_CN">定时</language>
+</string>
+<string name="Auto">
+  <language name="zh_CN">自动</language>
+</string>
+<string name="Record">
+  <language name="zh_CN">记录</language>
+</string>
+<string name="Setting">
+  <language name="zh_CN">设置</language>
+</string>
+<string name="Timing Setting">
+  <language name="zh_CN">定时设置</language>
+</string>
+<string name="hour">
+  <language name="zh_CN">时</language>
+</string>
+<string name="min">
+  <language name="zh_CN">分</language>
+</string>
+<string name="sec">
+  <language name="zh_CN">秒</language>
+</string>
+<string name="Off">
+  <language name="zh_CN">关</language>
+</string>
+<string name="On">
+  <language name="zh_CN">开</language>
+</string>
+<string name="Status">
+  <language name="zh_CN">状态</language>
+</string>
+<string name="Back">
+  <language name="zh_CN">返回</language>
+</string>
+<string name="Control Setting">
+  <language name="zh_CN">控制参数设定</language>
+</string>
+<string name="Alarm Setting">
+  <language name="zh_CN">报警设置</language>
+</string>
+<string name="Wind In/out">
+  <language name="zh_CN">送风温差</language>
+</string>
+<string name="Cycle Delay">
+  <language name="zh_CN">循环延时</language>
+</string>
+<string name="High Temp Alarm">
+  <language name="zh_CN">高温报警</language>
+</string>
+<string name="Low Temp Alarm">
+  <language name="zh_CN">低温报警</language>
+</string>
+<string name="High Hum Alarm">
+  <language name="zh_CN">高湿报警</language>
+</string>
+<string name="Low Hum Alarm">
+  <language name="zh_CN">低湿报警</language>
+</string>
+<string name="Indoor Temp">
+  <language name="zh_CN">室内温度</language>
+</string>
+<string name="Outside Temp">
+  <language name="zh_CN">室外温度</language>
+</string>
+<string name="Indoor Hum">
+  <language name="zh_CN">室内湿度</language>
+</string>
+<string name="Outside Hum">
+  <language name="zh_CN">室外湿度</language>
+</string>

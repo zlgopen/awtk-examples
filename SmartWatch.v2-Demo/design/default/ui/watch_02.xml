@@ -1,0 +1,12 @@
+<window name="watch_02" x="c" y="m" w="390" h="390" style="watch_02">
+  <gesture name="gesture" x="c" y="m" w="390" h="390">
+    <view name="view" x="c" y="74" w="242" h="242">
+      <digit_clock name="digit_clock" x="c" y="73" w="166" h="52" format="hh:mm" style="time"/>
+      <digit_clock name="digit_clock1" x="49" y="148" w="100" h="15" format="YYYY-MM-DD" style="date"/>
+      <label name="wday" x="149" y="146" w="58" h="17" style="text" tr_text="星期五"/>
+      <label name="label" x="108" y="183" w="27" h="16" style="text" tr_text="24°"/>
+      <label name="label" x="150" y="182" w="32" h="17" style="text" tr_text="微风"/>
+      <canvas name="canvas" x="c" y="m" w="100%" h="100%"/>
+    </view>
+  </gesture>
+</window>

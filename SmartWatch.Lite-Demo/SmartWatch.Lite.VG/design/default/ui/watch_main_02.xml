@@ -1,0 +1,25 @@
+<?xml parent="default(x=0,y=0,w=100%,h=100%)"?>
+<view w="100%" h="100%" name="watch_main_02">
+  <watch_clock x="0" y="0" w="100%" h="100%" start_animator="true" bg_image="watch_main_background_2" hour_image="watch_main_hour" minute_image="watch_main_minute" second_image="watch_main_second" hour_anchor_x="0.5" hour_anchor_y="93px" name="watch_clock">
+    <property name="minute_anchor_x">
+      <![CDATA[0.5]]>
+    </property>
+    <property name="minute_anchor_y">
+      <![CDATA[136px]]>
+    </property>
+    <property name="second_anchor_x">
+      <![CDATA[0.5]]>
+    </property>
+    <property name="second_anchor_y">
+      <![CDATA[153px]]>
+    </property>
+    <property name="disg:custom">
+      <![CDATA[container]]>
+    </property>
+    <music_play_button name="music_button" x="c:-1" y="m:54" w="84" h="84" line_width="8" start_angle="270" max="1000" value="0" line_color="#F63862" disg:custom="container"/>
+    <label name="weather_label" x="c:66" y="m:-6" w="90" h="90" style="watch_main_02_sky_blue_26" text="28-30"/>
+    <label name="week_label" x="c:-63" y="m:-6" w="85" h="85" style="watch_main_02_sky_blue_26" text="1"/>
+    <label name="week_label1" x="c:-63" y="m:-35" w="85" h="85" style="watch_main_02_sky_blue_26" text="Mon"/>
+    <digit_clock x="c" y="m:-110" w="150" h="30" format="YY/MM/DD" style="watch_main_02_sky_blue_38"/>
+  </watch_clock>
+</view>

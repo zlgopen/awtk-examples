@@ -1,0 +1,20 @@
+<window x="c" y="m" w="390" h="390" name="watch_06" style="watch_06">
+  <gesture name="gesture" x="c" y="m" w="390" h="390">
+    <label name="minute" x="57" y="160" w="15" h="25" style="heart_number" tr_text="2"/>
+    <label name="label" x="77" y="166" w="58" h="19" style="heart_text" tr_text="分钟前"/>
+    <label name="number" x="150" y="160" w="36" h="25" style="heart_number" tr_text="68"/>
+    <label name="label" x="190" y="166" w="47" h="21" style="heart_text" tr_text="次/分"/>
+    <view name="row" x="151" y="61" w="165" h="77">
+      <digit_clock name="digit_clock" x="r" y="0" w="100%" h="52" format="hh:mm" style="time"/>
+      <view name="column" x="0" y="63" w="100%" h="17">
+        <digit_clock name="digit_clock1" x="84" y="m" w="37" h="17" format="M/D" style="date"/>
+        <label name="wday" x="r" y="m" w="36" h="16" style="week" tr_text="周五"/>
+      </view>
+    </view>
+    <bar_graph x="c" y="193" w="274" h="50" name="heart_rate_bar" size="15" spacing="4" color="#FF0138" arc="true"/>
+    <button name="weather" x="55" y="51" w="88" h="88" repeat="0" enable_long_press="true" style="watch_06_weather_00" tr_text=""/>
+    <button name="calendar" x="59" y="257" w="88" h="88" repeat="0" enable_long_press="true" style="watch_06_calendar" tr_text=""/>
+    <button name="health" x="150" y="287" w="88" h="88" repeat="0" enable_long_press="true" style="watch_06_health" tr_text=""/>
+    <button name="music" x="242" y="258" w="88" h="88" repeat="0" enable_long_press="true" style="watch_06_music" tr_text=""/>
+  </gesture>
+</window>

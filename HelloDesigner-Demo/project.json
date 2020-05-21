@@ -1,0 +1,38 @@
+{
+  "name": "HelloDesigner-Demo",
+  "appType": "APP_MOBILE",
+  "hardware": "RT1050",
+  "entry": "home_page/home_page",
+  "modifyTime": "2020/05/21",
+  "creator": {
+    "name": "AWTK Designer",
+    "version": "0.1.5"
+  },
+  "assets": {
+    "loadFrom": "any",
+    "const": "resource_data",
+    "defaultLanguage": "zh",
+    "defaultCountry": "CN",
+    "themes": {
+      "default": {
+        "activedSystemBar": "system_bar",
+        "activedBottomSystemBar": "system_bar_b",
+        "packaged": true,
+        "fonts": {
+          "default": {
+            "text": "﻿ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~\n中"
+          }
+        },
+        "lcd": {
+          "width": "800",
+          "height": "480",
+          "colorDepth": "16bit",
+          "colorFormat": "bgr(a)"
+        }
+      }
+    },
+    "screenDPR": "x1",
+    "activedTheme": "default",
+    "outputDir": "res"
+  }
+}

@@ -1,0 +1,72 @@
+<button>
+  <style name="empty">
+    <normal text_color="#FFFFFF"/>
+  </style>
+  <style name="s_advanced">
+    <normal icon="advanced_n" text_color="#00000000"/>
+  </style>
+  <style name="s_anim_switch_n">
+    <normal icon="b_anim_n" text_color="#00000000"/>
+  </style>
+  <style name="s_anim_switch_p">
+    <normal bg_color="#00000000" icon="b_anim_p"/>
+  </style>
+  <style name="s_eq">
+    <normal icon="eq_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play">
+    <normal icon="play_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_list">
+    <normal icon="play_list_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_mode_clicle" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="mode_circleall_n"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="mode_circleall_n"/>
+    <pressed icon="mode_circleall_n"/>
+  </style>
+  <style name="s_play_mode_one">
+    <normal icon="mode_circleone_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_mode_rand">
+    <normal icon="mode_circlerand_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_next">
+    <normal icon="play_next_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_pause">
+    <normal icon="play_pause_n" text_color="#00000000"/>
+  </style>
+  <style name="s_play_prev" bg_color="#00000000" border_color="#00000000" round_radius="4" text_color="#00000000">
+    <normal icon="play_prve_n"/>
+    <disable bg_color="#F4F4F466" border_color="#C2C2C266" text_color="#44444466"/>
+    <focused bg_color="#F4F4F4" border_color="#338FFF" text_color="#444444"/>
+    <over icon="play_prve_n"/>
+    <pressed bg_image="play_prve_n"/>
+  </style>
+</button>
+<digit_clock>
+  <style name="right">
+    <normal margin="4" text_align_h="right" text_color="#FFFFFF"/>
+  </style>
+</digit_clock>
+<label>
+  <style name="left">
+    <normal font_size="19" margin="4" text_align_h="left" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="s_artist_name">
+    <normal font_size="10" text_color="#FFFFFF"/>
+  </style>
+  <style name="s_song_name">
+    <normal font_size="19" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<window>
+  <style name="bg_main">
+    <normal bg_color="#FFFFFF" bg_image="bg_main"/>
+  </style>
+</window>

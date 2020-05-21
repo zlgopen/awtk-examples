@@ -1,0 +1,20 @@
+<label>
+  <style name="blue_22">
+    <normal font_size="22" text_align_h="left" text_color="#18C7FA"/>
+  </style>
+  <style name="green_22">
+    <normal font_size="22" text_align_h="left" text_color="#6DEF37"/>
+  </style>
+  <style name="health_big">
+    <normal font_size="62" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="health_text">
+    <normal font_size="31" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+  <style name="pink_22">
+    <normal font_size="22" text_align_h="left" text_color="#E60778"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>

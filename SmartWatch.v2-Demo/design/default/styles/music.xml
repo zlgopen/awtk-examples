@@ -1,0 +1,53 @@
+<button>
+  <style name="music_circle_all" bg_image="ico_music_top_pressed" icon="ico_musicmudel_03_pressed">
+    <normal bg_image="ico_music_top" icon="ico_musicmudel_03_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_circle_one" bg_image="ico_music_top_pressed" icon="ico_musicmudel_02_pressed">
+    <normal bg_image="ico_music_top" icon="ico_musicmudel_02_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_next" icon="ico_music_next_pressed">
+    <normal bg_color="#00000000" icon="ico_music_next_normal"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_play" icon="ico_music_play_pressed">
+    <normal bg_color="#00000000" icon="ico_music_play_normal"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_pre" icon="ico_music_back_pressed">
+    <normal bg_color="#00000000" icon="ico_music_back_normal"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_rand" bg_image="ico_music_top_pressed" icon="ico_musicmudel_01_pressed">
+    <normal bg_image="ico_music_top" icon="ico_musicmudel_01_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+  <style name="music_pause" icon="ico_music_stop_pressed">
+    <normal icon="ico_music_stop_normal" text_color="#00000000"/>
+    <over/>
+    <pressed/>
+  </style>
+</button>
+<label>
+  <style name="song_name">
+    <normal bg_color="#00000000" font_size="40" text_color="#FFFFFF"/>
+    <disable text_color="#44444466"/>
+  </style>
+</label>
+<window>
+  <style name="music">
+    <normal bg_color="#4E1879" border="none" border_color="#00000000"/>
+  </style>
+</window>
+<slider>
+  <style name="music_vol">
+    <normal bg_color="#999999" fg_color="#CA12FF" round_radius="20"/>
+  </style>
+</slider>

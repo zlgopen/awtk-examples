@@ -1,0 +1,69 @@
+<window  x="c" y="m" w="390" h="390" name="weather" style="weather" open_anim_hint="slide_left(easing=sin_inout)">
+  <gesture name="weather:gesture" x="c" y="m" w="390" h="390">
+    <slide_view name="weather:slideview" x="0" y="0" w="390" h="390" vertical="true">
+      <view name="view" x="0" y="0" w="100%" h="100%">
+        <label name="label" x="c" y="0" w="282" h="86" style="weather_top" tr_text="广州市"/>
+        <view name="row" x="67" y="111" w="275" h="62">
+          <label name="weather:temp" x="0" y="0" w="106" h="100%" style="weather_temp" tr_text="16°"/>
+          <view name="column" x="163" y="0" w="112" h="100%" children_layout="default(c=1,r=2)">
+            <view name="row" children_layout="default(c=2,r=1)">
+              <label name="label" style="aqi" tr_text="AQI"/>
+              <label name="weather:aqi" style="aqi_text" tr_text="31"/>
+            </view>
+            <view name="row" children_layout="default(c=3,r=1)">
+              <label name="weather:temp_min" style="weather_white" style:normal:text_align_h="left" tr_text="12°"/>
+              <label name="label" style="weather_white" tr_text="~"/>
+              <label name="weather:temp_max" style="weather_white" style:normal:text_align_h="left" tr_text="23°"/>
+            </view>
+          </view>
+        </view>
+        <view name="column" x="67" y="210" w="275" h="80" children_layout="default(c=1,r=2,s=5)">
+          <view name="row">
+            <label name="label" x="0" y="m" w="53" h="100%" style="day" tr_text="明天"/>
+            <view name="row" children_layout="default(c=3,r=1)" x="163" y="0" w="112" h="100%">
+              <label name="weather:temp_n_min" style="weather_white" style:normal:text_align_h="left" tr_text="12°"/>
+              <label name="label" style="weather_white" tr_text="~"/>
+              <label name="weather:temp_n_max" style="weather_white" style:normal:text_align_h="left" tr_text="23°"/>
+            </view>
+            <image name="image" x="94" y="2" w="35" h="35" image="ico_weather_02"/>
+          </view>
+          <view name="row">
+            <label name="label" x="0" y="m" w="53" h="100%" style="day" tr_text="后天"/>
+            <view name="row" children_layout="default(c=3,r=1)" x="163" y="0" w="112" h="100%">
+              <label name="weather:temp_nn_min" style="weather_white" style:normal:text_align_h="left" tr_text="12°"/>
+              <label name="label" style="weather_white" tr_text="~"/>
+              <label name="weather:temp_nn_max" style="weather_white" style:normal:text_align_h="left" tr_text="23°"/>
+            </view>
+            <image name="image" x="92" y="2" w="35" h="35" image="ico_weather_04"/>
+          </view>
+        </view>
+        <view name="row" x="c" y="b" w="272" h="79" style="weather_bottom">
+          <label name="label" x="0" y="m" w="150" h="100%" style="update_text" tr_text="最后更新"/>
+          <label name="weather:update" x="160" y="m" w="90" h="100%" style="update" tr_text="--"/>
+        </view>
+        <image name="image" x="161" y="141" w="35" h="35" image="ico_weather_01"/>
+      </view>
+      <view name="view" x="c" y="m" w="100%" h="100%">
+        <progress_circle name="progress_circle" x="c" y="m" w="100%" h="100%" style="circle" show_text="false" line_width="30" value="100"/>
+        <label name="temperature" x="c" y="41%" w="100" h="60" style="center_hour" tr_text="24°"/>
+        <hour_weather name="hour_weather" x="c" y="m" w="300" h="300"/>
+      </view>
+      <view name="view" x="0" y="0" w="100%" h="100%">
+        <progress_circle name="progress_circle" x="c" y="m" w="100%" h="100%" style="circle" show_text="false" line_width="30" value="100"/>
+        <view name="view" x="c" y="m" w="80%" h="60%" children_layout="default(c=2,r=5,s=10)">
+          <label name="label" style="weather_white_r" tr_text="风力"/>
+          <label name="weather:wind" style="weather_white_l" tr_text="--"/>
+          <label name="label" style="weather_white_r" tr_text="紫外线强度"/>
+          <label name="weather:uvi" style="weather_white_l" tr_text="--"/>
+          <label name="label" style="weather_white_r" tr_text="相对湿度"/>
+          <label name="weather:humi" style="weather_white_l" tr_text="--"/>
+          <label name="label" style="weather_white_r" tr_text="体感温度"/>
+          <label name="weather:temp_feel" style="weather_white_l" tr_text="--"/>
+          <label name="label" style="weather_white_r" tr_text="气压"/>
+          <label name="weather:air_p" style="weather_white_l" tr_text="--"/>
+        </view>
+      </view>
+    </slide_view>
+    <slide_indicator name="slide_indicator" x="370" y="0" w="20" h="390" default_paint="stroke_dot" margin="7" style:normal:selected_fg_color="#00FFEF" style:normal:fg_color="#51697C"/>
+  </gesture>
+</window>

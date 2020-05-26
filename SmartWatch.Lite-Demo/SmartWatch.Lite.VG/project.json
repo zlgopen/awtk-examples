@@ -32,7 +32,7 @@
           "width": "400",
           "height": "400",
           "colorDepth": "16bit",
-          "colorFormat": "bgr(a)"
+          "colorFormat": "BGR(A)"
         }
       },
       "default_320_240": {
@@ -52,7 +52,7 @@
           "width": "320",
           "height": "240",
           "colorDepth": "16bit",
-          "colorFormat": "bgr(a)"
+          "colorFormat": "BGR(A)"
         }
       }
     },

@@ -65,6 +65,9 @@
 #include "default_320_240/inc/fonts/default_18.data"
 #include "default_320_240/inc/fonts/default_25.data"
 #include "default_320_240/inc/fonts/default_43.data"
+extern TK_CONST_DATA_ALIGN(const unsigned char font_default_26[]);
+extern TK_CONST_DATA_ALIGN(const unsigned char font_default_38[]);
+extern TK_CONST_DATA_ALIGN(const unsigned char font_default_76[]);
 #endif /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_FS_RES*/
 
@@ -132,6 +135,9 @@ ret_t assets_init_default_320_240(void) {
   assets_manager_add(am, font_default_18_default_320_240);
   assets_manager_add(am, font_default_25_default_320_240);
   assets_manager_add(am, font_default_43_default_320_240);
+  assets_manager_add(am, font_default_26);
+  assets_manager_add(am, font_default_38);
+  assets_manager_add(am, font_default_76);
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
 #endif

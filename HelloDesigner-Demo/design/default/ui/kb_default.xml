@@ -216,9 +216,9 @@
       <view y="75%" w="100%" h="25%">
         <button name="page:symbol" text="@&amp;$" w="15%" h="100%" style="highlight"/>
         <button name="page:symnum" text="123" x="15%" w="15%" h="100%" style="highlight"/>
-        <button repeat="300" name="," text="," x="30%" w="10%" h="100%"/>
+        <button repeat="300" name="，" text="，" x="30%" w="10%" h="100%"/>
         <button repeat="300" name="space" text="space" x="40%" w="-80%" h="100%"/>
-        <button repeat="300" name="." text="." x="60%" w="10%" h="100%"/>
+        <button repeat="300" name="。" text="。" x="60%" w="10%" h="100%"/>
         <button name="page:lower" text="中" x="70%" w="15%" h="100%" style="highlight"/>
         <button name="action" text="return" x="85%" w="15%" h="100%" style="highlight"/>
       </view>

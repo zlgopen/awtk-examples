@@ -57,6 +57,11 @@
 #endif /*WITH_VGCANVAS*/
 #if defined(WITH_TRUETYPE_FONT)
 #else /*WITH_TRUETYPE_FONT*/
+#include "assets/default/inc/fonts/default_18.data"
+#include "assets/default/inc/fonts/default_26.data"
+#include "assets/default/inc/fonts/default_38.data"
+#include "assets/default/inc/fonts/default_43.data"
+#include "assets/default/inc/fonts/default_76.data"
 #endif /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_FS_RES*/
 
@@ -117,6 +122,11 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_weather_rain);
   assets_manager_add(am, image_weather_sun);
   assets_manager_add(am, image_weather_thunder);
+  assets_manager_add(am, font_default_18);
+  assets_manager_add(am, font_default_26);
+  assets_manager_add(am, font_default_38);
+  assets_manager_add(am, font_default_43);
+  assets_manager_add(am, font_default_76);
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
 #endif

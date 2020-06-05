@@ -11,6 +11,8 @@
 - SmartWatch.Lite-Demo：小资源智能手表演示 Demo，可适配 1MB Flash 和 256kB RAM
 
 > awtk-examples.v2 与 awtk-examples 的区别是： v2 所有例子对 Designer 做了适配，可以用 Designer 打开工程文件 project.json 并编辑 UI 界面
+>
+> HelloWorld.Xml-Demo：用传统手写 XML 方式开发的工程模板，可以用 assets_gen.bat 生成资源，但不能用 Designer 打开工程，也不依赖 Designer 生成资源
 
 
 

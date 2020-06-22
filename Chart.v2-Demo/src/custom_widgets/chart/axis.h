@@ -230,10 +230,11 @@ ret_t axis_set_range(widget_t* widget, float_t min, float_t max);
  * 获取坐标轴的刻度范围。
  * @annotation ["scriptable"]
  * @param {widget_t*} widget widget对象。
+ * @param {bool_t} is_series_axis 是否为指示序列位置的轴
  *
  * @return {float_t} 刻度范围。
  */
-float_t axis_get_range(widget_t* widget);
+float_t axis_get_range(widget_t* widget, bool_t is_series_axis);
 
 /**
  * @method axis_set_data

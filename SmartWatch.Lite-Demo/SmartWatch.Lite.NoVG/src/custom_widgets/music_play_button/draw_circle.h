@@ -17,8 +17,9 @@ typedef struct _draw_circle_t {
   darray_t line1_point_list;
   darray_t line2_point_list;
 
-  darray_t tmp_point1_list_45;
-  darray_t tmp_point2_list_45;
+  void *point_pix_cache1_list;
+  void *point_pix_cache2_list;
+
 } draw_circle_t;
 
 draw_circle_t *draw_circle_fill_create(int32_t radius, int32_t line_width);

@@ -28,6 +28,7 @@
 >
 > 1. watch_clock_pointer 控件中的 image 属性是设置使用 clock_pinter_gen 工具生成的资源，该资源一定需要放在 data 文件夹中。
 > 2. 指针贴图资源一定是需要8张图片，不能缺少否则界面显示不正常。
+> 3. 可以调用 python ./scripts/update_res.py all 生成所有资源同时也会调用 clock_pinter_gen 工具生成的资源
 
 ### 3.手表项目 rom 和 ram 问题
 

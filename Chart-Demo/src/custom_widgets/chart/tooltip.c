@@ -654,6 +654,6 @@ bool_t widget_is_tooltip(widget_t* widget) {
 #ifdef WITH_WIDGET_TYPE_CHECK
   return WIDGET_IS_INSTANCE_OF(widget, tooltip);
 #else
-  return (widget != NULL && strstr(widget->vt->type, "_tooltip") != NULL);
+  return (widget != NULL && strstr(widget->vt->type, "tooltip") != NULL);
 #endif
 }

@@ -55,11 +55,22 @@ static void init_children_widget(widget_t* widget) {
  * 初始化
  */
 ret_t application_init() {
+  system_info_set_default_font(system_info(), "default");
+  window_manager_set_cursor(window_manager(), NULL);
+  
   widget_t* win = window_open("home_page/home_page");
 
   if (win) {
     init_children_widget(win);
   }
 
+  return RET_OK;
+}
+
+/**
+* 退出
+*/
+ret_t application_exit(void) {
+  log_debug("application_exit");
   return RET_OK;
 }

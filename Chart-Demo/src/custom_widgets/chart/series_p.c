@@ -1066,7 +1066,7 @@ ret_t series_p_set_with_animator(widget_t* widget, uint32_t index, const void* d
   axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
   return_value_if_fail(axis != NULL, RET_BAD_PARAMS);
 
-  range = (uint32_t)(axis_get_range(axis));
+  range = (uint32_t)(axis_get_range(axis, TRUE));
   return_value_if_fail(range != 0, RET_BAD_PARAMS);
 
   if (index + nr > fifo->size) {
@@ -1133,7 +1133,7 @@ ret_t series_p_push(widget_t* widget, const void* data, uint32_t nr) {
   axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
   return_value_if_fail(axis != NULL, RET_BAD_PARAMS);
 
-  range = (uint32_t)(axis_get_range(axis));
+  range = (uint32_t)(axis_get_range(axis, TRUE));
   return_value_if_fail(range != 0, RET_BAD_PARAMS);
 
   series->new_period = (series->new_period + nr) % range;
@@ -1215,7 +1215,7 @@ ret_t series_p_get_current(widget_t* widget, uint32_t* begin, uint32_t* end, uin
   saxis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
   return_value_if_fail(saxis != NULL, RET_BAD_PARAMS);
 
-  srange = axis_get_range(saxis);
+  srange = axis_get_range(saxis, TRUE);
 
   if (series->display_mode == SERIES_DISPLAY_COVER) {
     e = fifo->size - series->offset - 1;
@@ -1252,7 +1252,7 @@ bool_t series_p_is_point_in(widget_t* widget, xy_t x, xy_t y, bool_t is_local) {
   }
 
   sinterval = axis_measure_series_interval(WIDGET(saxis));
-  srange = axis_get_range(WIDGET(saxis));
+  srange = axis_get_range(WIDGET(saxis), TRUE);
 
   if (tk_str_eq(widget_get_type(WIDGET(saxis)), WIDGET_TYPE_X_AXIS)) {
     if (saxis->inverse) {
@@ -1380,7 +1380,7 @@ ret_t series_p_to_local(widget_t* widget, uint32_t index, point_t* p) {
   return_value_if_fail(draw_data != NULL, RET_BAD_PARAMS);
 
   sinterval = axis_measure_series_interval(saxis);
-  vrange = axis_get_range(vaxis);
+  vrange = axis_get_range(vaxis, FALSE);
   vmin = v->min * v->max < 0 ? 0 : v->min;
   if (s->type == AXIS_TYPE_CATEGORY) {
     soffset = sinterval / 2;
@@ -1417,7 +1417,7 @@ uint32_t series_p_get_offset_max(widget_t* widget) {
 
   axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
   return_value_if_fail(axis != NULL, 0);
-  range = axis_get_range(axis);
+  range = axis_get_range(axis, TRUE);
 
   if (fifo->size > range) {
     if (series->display_mode == SERIES_DISPLAY_COVER) {
@@ -1454,7 +1454,7 @@ static ret_t series_p_set_new_period_internal(widget_t* widget, uint32_t period,
   axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
   return_value_if_fail(axis != NULL, RET_BAD_PARAMS);
 
-  range = (uint32_t)(axis_get_range(axis));
+  range = (uint32_t)(axis_get_range(axis, TRUE));
   return_value_if_fail(range != 0 && period <= range, RET_BAD_PARAMS);
 
   if (series->new_period != period) {
@@ -1590,7 +1590,7 @@ ret_t series_p_get_origin_point(widget_t* widget, widget_t* saxis, widget_t* vax
   inverse = s->inverse ^ inverse;
 
   if (v->type == AXIS_TYPE_VALUE && v->max * v->min < 0) {
-    voffset = -v->min / axis_get_range(vaxis);
+    voffset = -v->min / axis_get_range(vaxis, FALSE);
   }
 
   if (tk_str_eq(widget_get_type(saxis), WIDGET_TYPE_X_AXIS)) {
@@ -1721,7 +1721,7 @@ ret_t series_p_on_paint_self_push(widget_t* widget, canvas_t* c) {
   vertical = tk_str_eq(widget_get_type(vaxis), WIDGET_TYPE_Y_AXIS);
   interval = axis_measure_series_interval(saxis);
   interval = AXIS(saxis)->inverse ? -interval : interval;
-  nr = axis_get_range(saxis);
+  nr = axis_get_range(saxis, TRUE);
   return_value_if_fail(nr > 0, RET_BAD_PARAMS);
 
   fifo = fifo_create(nr, series->vt->draw_data_info->size, NULL, NULL);
@@ -1763,7 +1763,7 @@ ret_t series_p_on_paint_self_cover(widget_t* widget, canvas_t* c) {
   vertical = tk_str_eq(widget_get_type(vaxis), WIDGET_TYPE_Y_AXIS);
   interval = axis_measure_series_interval(saxis);
   interval = AXIS(saxis)->inverse ? -interval : interval;
-  nr = range = axis_get_range(saxis);
+  nr = range = axis_get_range(saxis, TRUE);
   return_value_if_fail(nr > 0, RET_BAD_PARAMS);
 
   if (series->fifo->size > range) {

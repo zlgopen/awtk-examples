@@ -1,167 +1,79 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
-#ifndef WITH_FS_RES
-#include "assets/default/inc/styles/default.data"
-#include "assets/default/inc/ui/animation/animation.data"
-#include "assets/default/inc/ui/basic/basic.data"
-#include "assets/default/inc/ui/home_page/home_page.data"
-#include "assets/default/inc/ui/kb_default.data"
-#ifdef WITH_STB_IMAGE
-#include "assets/default/inc/images/arrow_down_d.res"
-#include "assets/default/inc/images/arrow_down_f.res"
-#include "assets/default/inc/images/arrow_down_n.res"
-#include "assets/default/inc/images/arrow_down_o.res"
-#include "assets/default/inc/images/arrow_down_p.res"
-#include "assets/default/inc/images/arrow_left_d.res"
-#include "assets/default/inc/images/arrow_left_f.res"
-#include "assets/default/inc/images/arrow_left_n.res"
-#include "assets/default/inc/images/arrow_left_o.res"
-#include "assets/default/inc/images/arrow_left_p.res"
-#include "assets/default/inc/images/arrow_right_d.res"
-#include "assets/default/inc/images/arrow_right_f.res"
-#include "assets/default/inc/images/arrow_right_n.res"
-#include "assets/default/inc/images/arrow_right_o.res"
-#include "assets/default/inc/images/arrow_right_p.res"
-#include "assets/default/inc/images/arrow_up_d.res"
-#include "assets/default/inc/images/arrow_up_f.res"
-#include "assets/default/inc/images/arrow_up_n.res"
-#include "assets/default/inc/images/arrow_up_o.res"
-#include "assets/default/inc/images/arrow_up_p.res"
-#include "assets/default/inc/images/awtk_logo.res"
-#include "assets/default/inc/images/big_earth.res"
-#include "assets/default/inc/images/check_checked_d.res"
-#include "assets/default/inc/images/check_checked_f.res"
-#include "assets/default/inc/images/check_checked_n.res"
-#include "assets/default/inc/images/check_checked_o.res"
-#include "assets/default/inc/images/check_checked_p.res"
-#include "assets/default/inc/images/check_d.res"
-#include "assets/default/inc/images/check_f.res"
-#include "assets/default/inc/images/check_n.res"
-#include "assets/default/inc/images/check_o.res"
-#include "assets/default/inc/images/check_p.res"
-#include "assets/default/inc/images/clock_bg.res"
-#include "assets/default/inc/images/clock_hour.res"
-#include "assets/default/inc/images/clock_minute.res"
-#include "assets/default/inc/images/clock_second.res"
-#include "assets/default/inc/images/cross.res"
-#include "assets/default/inc/images/guage_bg.res"
-#include "assets/default/inc/images/guage_pointer.res"
-#include "assets/default/inc/images/logo.res"
-#include "assets/default/inc/images/num0.res"
-#include "assets/default/inc/images/num1.res"
-#include "assets/default/inc/images/num2.res"
-#include "assets/default/inc/images/num3.res"
-#include "assets/default/inc/images/num4.res"
-#include "assets/default/inc/images/num5.res"
-#include "assets/default/inc/images/num6.res"
-#include "assets/default/inc/images/num7.res"
-#include "assets/default/inc/images/num8.res"
-#include "assets/default/inc/images/num9.res"
-#include "assets/default/inc/images/num_dot.res"
-#include "assets/default/inc/images/radio_checked_d.res"
-#include "assets/default/inc/images/radio_checked_f.res"
-#include "assets/default/inc/images/radio_checked_n.res"
-#include "assets/default/inc/images/radio_checked_o.res"
-#include "assets/default/inc/images/radio_checked_p.res"
-#include "assets/default/inc/images/radio_d.res"
-#include "assets/default/inc/images/radio_f.res"
-#include "assets/default/inc/images/radio_n.res"
-#include "assets/default/inc/images/radio_o.res"
-#include "assets/default/inc/images/radio_p.res"
-#include "assets/default/inc/images/rounded_n.res"
-#include "assets/default/inc/images/rounded_o.res"
-#include "assets/default/inc/images/rounded_p.res"
-#else
-#endif/*WITH_STB_IMAGE*/
-#ifdef WITH_VGCANVAS
-#endif/*WITH_VGCANVAS*/
-#if defined(WITH_TRUETYPE_FONT)
-#include "assets/default/inc/fonts/default.res"
-#else/*WITH_TRUETYPE_FONT*/
-#endif/*WITH_TRUETYPE_FONT*/
-#endif/*WITH_FS_RES*/
+#include "assets/__assets_default.inc"
+
+#ifndef APP_THEME
+#define APP_THEME "default"
+#endif /*APP_THEME*/
+
+bool_t assets_has_theme(const char* name) {
+  return_value_if_fail(name != NULL, FALSE);
+
+  if (tk_str_eq(name, "default")) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+static ret_t assets_init_internal(const char* theme) {
+  assets_manager_t* am = assets_manager();
+  return_value_if_fail(theme != NULL && am != NULL, RET_BAD_PARAMS);
+
+  assets_manager_set_theme(am, theme);
+
+  if (tk_str_eq(theme, "default")) { 
+    return assets_init_default();
+  }  else { 
+    log_debug("%s not support.\n", theme);
+    return RET_NOT_IMPL;
+  }
+}
 
 ret_t assets_init(void) {
-  assets_manager_t* rm = assets_manager();
+  return assets_init_internal(APP_THEME);
+}
 
-#ifdef WITH_FS_RES
-  assets_manager_preload(rm, ASSET_TYPE_FONT, "default");
-  assets_manager_preload(rm, ASSET_TYPE_STYLE, "default");
-#else
-  assets_manager_add(rm, style_default);
-  assets_manager_add(rm, ui_kb_default);
-  assets_manager_add(rm, font_default);
-  assets_manager_add(rm, image_arrow_down_d);
-  assets_manager_add(rm, image_arrow_down_f);
-  assets_manager_add(rm, image_arrow_down_n);
-  assets_manager_add(rm, image_arrow_down_o);
-  assets_manager_add(rm, image_arrow_down_p);
-  assets_manager_add(rm, image_arrow_left_d);
-  assets_manager_add(rm, image_arrow_left_f);
-  assets_manager_add(rm, image_arrow_left_n);
-  assets_manager_add(rm, image_arrow_left_o);
-  assets_manager_add(rm, image_arrow_left_p);
-  assets_manager_add(rm, image_arrow_right_d);
-  assets_manager_add(rm, image_arrow_right_f);
-  assets_manager_add(rm, image_arrow_right_n);
-  assets_manager_add(rm, image_arrow_right_o);
-  assets_manager_add(rm, image_arrow_right_p);
-  assets_manager_add(rm, image_arrow_up_d);
-  assets_manager_add(rm, image_arrow_up_f);
-  assets_manager_add(rm, image_arrow_up_n);
-  assets_manager_add(rm, image_arrow_up_o);
-  assets_manager_add(rm, image_arrow_up_p);
-  assets_manager_add(rm, image_awtk_logo);
-  assets_manager_add(rm, image_big_earth);
-  assets_manager_add(rm, image_check_checked_d);
-  assets_manager_add(rm, image_check_checked_f);
-  assets_manager_add(rm, image_check_checked_n);
-  assets_manager_add(rm, image_check_checked_o);
-  assets_manager_add(rm, image_check_checked_p);
-  assets_manager_add(rm, image_check_d);
-  assets_manager_add(rm, image_check_f);
-  assets_manager_add(rm, image_check_n);
-  assets_manager_add(rm, image_check_o);
-  assets_manager_add(rm, image_check_p);
-  assets_manager_add(rm, image_clock_bg);
-  assets_manager_add(rm, image_clock_hour);
-  assets_manager_add(rm, image_clock_minute);
-  assets_manager_add(rm, image_clock_second);
-  assets_manager_add(rm, image_cross);
-  assets_manager_add(rm, image_guage_bg);
-  assets_manager_add(rm, image_guage_pointer);
-  assets_manager_add(rm, image_logo);
-  assets_manager_add(rm, image_num0);
-  assets_manager_add(rm, image_num1);
-  assets_manager_add(rm, image_num2);
-  assets_manager_add(rm, image_num3);
-  assets_manager_add(rm, image_num4);
-  assets_manager_add(rm, image_num5);
-  assets_manager_add(rm, image_num6);
-  assets_manager_add(rm, image_num7);
-  assets_manager_add(rm, image_num8);
-  assets_manager_add(rm, image_num9);
-  assets_manager_add(rm, image_num_dot);
-  assets_manager_add(rm, image_radio_checked_d);
-  assets_manager_add(rm, image_radio_checked_f);
-  assets_manager_add(rm, image_radio_checked_n);
-  assets_manager_add(rm, image_radio_checked_o);
-  assets_manager_add(rm, image_radio_checked_p);
-  assets_manager_add(rm, image_radio_d);
-  assets_manager_add(rm, image_radio_f);
-  assets_manager_add(rm, image_radio_n);
-  assets_manager_add(rm, image_radio_o);
-  assets_manager_add(rm, image_radio_p);
-  assets_manager_add(rm, image_rounded_n);
-  assets_manager_add(rm, image_rounded_o);
-  assets_manager_add(rm, image_rounded_p);
-  assets_manager_add(rm, ui_animation_animation);
-  assets_manager_add(rm, ui_basic_basic);
-  assets_manager_add(rm, ui_home_page_home_page);
-#ifdef WITH_VGCANVAS
-#endif/*WITH_VGCANVAS*/
-#endif
+static ret_t widget_set_theme_without_file_system(widget_t* widget, const char* name) {
+#ifndef WITH_FS_RES
+  const asset_info_t* info = NULL;
+  event_t e = event_init(EVT_THEME_CHANGED, NULL);
+  widget_t* wm = widget_get_window_manager(widget);
+  font_manager_t* fm = widget_get_font_manager(widget);
+  image_manager_t* imm = widget_get_image_manager(widget);
+  assets_manager_t* am = widget_get_assets_manager(widget);
 
-  tk_init_assets();
+  return_value_if_fail(am != NULL && name != NULL, RET_BAD_PARAMS);
+  return_value_if_fail(assets_has_theme(name), RET_BAD_PARAMS);
+
+  locale_info_t* locale_info = widget_get_locale_info(widget);
+  font_manager_unload_all(fm);
+  image_manager_unload_all(imm);
+  assets_manager_clear_all(am);
+  widget_reset_canvas(widget);
+
+  assets_init_internal(name);
+  locale_info_reload(locale_info);
+
+  info = assets_manager_ref(am, ASSET_TYPE_STYLE, "default");
+  theme_init(theme(), info->data);
+  assets_manager_unref(assets_manager(), info);
+
+  widget_dispatch(wm, &e);
+  widget_invalidate_force(wm, NULL);
+
+  log_debug("theme changed: %s\n", name);
+
   return RET_OK;
+#else  /*WITH_FS_RES*/
+  return RET_NOT_IMPL;
+#endif /*WITH_FS_RES*/
+}
+
+ret_t assets_set_global_theme(const char* name) {
+#ifdef WITH_FS_RES
+  return widget_set_theme(window_manager(), name);
+#else  /*WITH_FS_RES*/
+  return widget_set_theme_without_file_system(window_manager(), name);
+#endif /*WITH_FS_RES*/
 }

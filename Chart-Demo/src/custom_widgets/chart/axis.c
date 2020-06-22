@@ -193,12 +193,12 @@ ret_t axis_set_range(widget_t* widget, float_t min, float_t max) {
   return widget_invalidate(widget, NULL);
 }
 
-float_t axis_get_range(widget_t* widget) {
+float_t axis_get_range(widget_t* widget, bool_t is_series_axis) {
   axis_t* axis = AXIS(widget);
   return_value_if_fail(axis != NULL, 0.0);
 
   if (axis->type == AXIS_TYPE_VALUE && axis->max != axis->min) {
-    return tk_abs(axis->max - axis->min) + 1;
+    return tk_abs(axis->max - axis->min) + (is_series_axis ? 1 : 0);
   } else {
     return (float_t)(axis->data->size);
   }

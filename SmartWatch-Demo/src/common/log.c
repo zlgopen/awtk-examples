@@ -34,17 +34,6 @@ void log_print(const char* _file, const char* _func, int _line, const char* _fmt
   strtail(str, _file, size);
   printf("[%*.*s] ", size, size, str);
 
-  // 函数名和行号
-  memset(str, '\0', sizeof(str));
-  strtail(str, _func, size);
-  // 内存状态
-  mem_stat_t mem_stat = tk_mem_stat();
-  if (max_mem < mem_stat.used_bytes) {
-    max_mem = mem_stat.used_bytes;
-  }
-  printf("[%*.*s:% 4d] [max:% 9d] [byte:% 9d] [block:% 4d] ", size, size, str, _line, (int)max_mem,
-         (int)mem_stat.used_bytes, (int)mem_stat.used_block_nr);
-
   // 其他参数
   va_list arg;
   va_start(arg, _fmt);

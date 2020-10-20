@@ -402,6 +402,7 @@ static ret_t watch_clock_pointer_on_paint_self(widget_t *widget, canvas_t *c) {
         watch_clock_pointer->bitmap.w = w;
         watch_clock_pointer->bitmap.h = h;
         bitmap_set_line_length(&watch_clock_pointer->bitmap, 0);
+        graphic_buffer_attach(watch_clock_pointer->bitmap.buffer, watch_clock_pointer->point_image_data, w, h);
 
         watch_clock_pointer_set_point_image_data(
             watch_clock_pointer, quadrant_type, &watch_clock_pointer->bitmap,

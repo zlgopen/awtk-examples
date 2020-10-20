@@ -1,5 +1,6 @@
 __docs__
 __images__
+bin/
 *.o
 *.a
 *.so

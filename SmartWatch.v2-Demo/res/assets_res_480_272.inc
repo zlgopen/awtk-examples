@@ -1,6 +1,20 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
+#include "assets/res_480_272/inc/styles/app.data"
+#include "assets/res_480_272/inc/styles/calendar.data"
+#include "assets/res_480_272/inc/styles/default.data"
+#include "assets/res_480_272/inc/styles/health.data"
+#include "assets/res_480_272/inc/styles/heart_rate.data"
+#include "assets/res_480_272/inc/styles/message.data"
+#include "assets/res_480_272/inc/styles/music.data"
+#include "assets/res_480_272/inc/styles/quick.data"
+#include "assets/res_480_272/inc/styles/select_dial.data"
+#include "assets/res_480_272/inc/styles/watch_01.data"
+#include "assets/res_480_272/inc/styles/watch_02.data"
+#include "assets/res_480_272/inc/styles/watch_04.data"
+#include "assets/res_480_272/inc/styles/watch_06.data"
+#include "assets/res_480_272/inc/styles/weather.data"
 #include "assets/res_480_272/inc/ui/app.data"
 #include "assets/res_480_272/inc/ui/app_default.data"
 #include "assets/res_480_272/inc/ui/calendar.data"
@@ -16,20 +30,6 @@
 #include "assets/res_480_272/inc/ui/watch_04.data"
 #include "assets/res_480_272/inc/ui/watch_06.data"
 #include "assets/res_480_272/inc/ui/weather.data"
-#include "assets/res_480_272/inc/styles/app.data"
-#include "assets/res_480_272/inc/styles/calendar.data"
-#include "assets/res_480_272/inc/styles/default.data"
-#include "assets/res_480_272/inc/styles/health.data"
-#include "assets/res_480_272/inc/styles/heart_rate.data"
-#include "assets/res_480_272/inc/styles/message.data"
-#include "assets/res_480_272/inc/styles/music.data"
-#include "assets/res_480_272/inc/styles/quick.data"
-#include "assets/res_480_272/inc/styles/select_dial.data"
-#include "assets/res_480_272/inc/styles/watch_01.data"
-#include "assets/res_480_272/inc/styles/watch_02.data"
-#include "assets/res_480_272/inc/styles/watch_04.data"
-#include "assets/res_480_272/inc/styles/watch_06.data"
-#include "assets/res_480_272/inc/styles/weather.data"
 #ifdef WITH_STB_IMAGE
 #include "assets/res_480_272/inc/images/0.res"
 #include "assets/res_480_272/inc/images/1.res"
@@ -177,7 +177,7 @@
 #endif /*WITH_STB_IMAGE*/
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
-#if defined(WITH_TRUETYPE_FONT)
+#ifdef WITH_TRUETYPE_FONT
 #include "assets/res_480_272/inc/fonts/default.res"
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
@@ -185,12 +185,25 @@
 
 ret_t assets_init(void) {
   assets_manager_t* am = assets_manager();
-  assets_manager_set_theme(am, "res_480_272");
 
 #ifdef WITH_FS_RES
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");
   assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
 #else
+  assets_manager_add(am, style_app_res_480_272);
+  assets_manager_add(am, style_calendar_res_480_272);
+  assets_manager_add(am, style_default_res_480_272);
+  assets_manager_add(am, style_health_res_480_272);
+  assets_manager_add(am, style_heart_rate_res_480_272);
+  assets_manager_add(am, style_message_res_480_272);
+  assets_manager_add(am, style_music_res_480_272);
+  assets_manager_add(am, style_quick_res_480_272);
+  assets_manager_add(am, style_select_dial_res_480_272);
+  assets_manager_add(am, style_watch_01_res_480_272);
+  assets_manager_add(am, style_watch_02_res_480_272);
+  assets_manager_add(am, style_watch_04_res_480_272);
+  assets_manager_add(am, style_watch_06_res_480_272);
+  assets_manager_add(am, style_weather_res_480_272);
   assets_manager_add(am, ui_app_res_480_272);
   assets_manager_add(am, ui_app_default_res_480_272);
   assets_manager_add(am, ui_calendar_res_480_272);
@@ -206,20 +219,6 @@ ret_t assets_init(void) {
   assets_manager_add(am, ui_watch_04_res_480_272);
   assets_manager_add(am, ui_watch_06_res_480_272);
   assets_manager_add(am, ui_weather_res_480_272);
-  assets_manager_add(am, style_app_res_480_272);
-  assets_manager_add(am, style_calendar_res_480_272);
-  assets_manager_add(am, style_default_res_480_272);
-  assets_manager_add(am, style_health_res_480_272);
-  assets_manager_add(am, style_heart_rate_res_480_272);
-  assets_manager_add(am, style_message_res_480_272);
-  assets_manager_add(am, style_music_res_480_272);
-  assets_manager_add(am, style_quick_res_480_272);
-  assets_manager_add(am, style_select_dial_res_480_272);
-  assets_manager_add(am, style_watch_01_res_480_272);
-  assets_manager_add(am, style_watch_02_res_480_272);
-  assets_manager_add(am, style_watch_04_res_480_272);
-  assets_manager_add(am, style_watch_06_res_480_272);
-  assets_manager_add(am, style_weather_res_480_272);
   assets_manager_add(am, image_0_res_480_272);
   assets_manager_add(am, image_1_res_480_272);
   assets_manager_add(am, image_10_res_480_272);
@@ -362,9 +361,12 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_ico_wechart_over_res_480_272);
   assets_manager_add(am, image_vol_bar_bg_res_480_272);
   assets_manager_add(am, image_vol_bar_fg_res_480_272);
-  assets_manager_add(am, font_default_res_480_272);
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
+#ifdef WITH_TRUETYPE_FONT
+  assets_manager_add(am, font_default_res_480_272);
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
 #endif
 
   tk_init_assets();

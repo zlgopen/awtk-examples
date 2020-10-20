@@ -1,13 +1,6 @@
 {
   "name": "SmartWatch.Lite.vg",
-  "appType": "APP_MOBILE",
-  "hardware": "RT1050",
   "entry": "main",
-  "modifyTime": "2020/05/18",
-  "creator": {
-    "name": "AWTK Designer",
-    "version": "0.1.5"
-  },
   "assets": {
     "loadFrom": "any",
     "const": "bitmap_data",
@@ -49,8 +42,8 @@
           }
         },
         "lcd": {
-          "width": "320",
-          "height": "240",
+          "width": "400",
+          "height": "400",
           "colorDepth": "16bit",
           "colorFormat": "BGR(A)"
         }
@@ -59,5 +52,10 @@
     "screenDPR": "x1",
     "activedTheme": "default_320_240",
     "outputDir": "res"
-  }
+  },
+  "creator": {
+    "name": "AWTK Designer",
+    "version": "1.0.0"
+  },
+  "awtkRoot": "${DesignerPath}/SDK/awtk"
 }

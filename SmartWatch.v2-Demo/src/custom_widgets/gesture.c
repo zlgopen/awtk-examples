@@ -34,25 +34,21 @@ static ret_t gesture_pointer_up_cleanup(widget_t* widget) {
 
 static ret_t gesture_on_long_press(const timer_info_t* info) {
   LOG("");
-  pointer_event_t evt;
   widget_t* widget = WIDGET(info->ctx);
   gesture_t* gesture = GESTURE(widget);
-
-  evt.x = 0;
-  evt.y = 0;
   widget_t* window = widget_get_window(widget);
 
   if (gesture->pressed) {
-    evt.e = event_init(EVT_LONG_PRESS, widget);
+    pointer_event_t evt;
+    pointer_event_init(&evt, EVT_LONG_PRESS, widget, 0, 0);
     LOG("loog press enable");
 
     gesture_pointer_up_cleanup(widget);
     widget_dispatch(widget, (event_t*)&evt);
 
     gesture->long_pressed = TRUE;
-
-    event_t event = event_init(EVT_POINTER_DOWN_ABORT, window);
-    widget_dispatch(window, &event);
+    pointer_event_init(&evt, EVT_POINTER_DOWN_ABORT, window, 0, 0);
+    widget_dispatch(window, (event_t*)&evt);
   }
 
   return RET_REMOVE;
@@ -147,11 +143,11 @@ static ret_t gesture_on_event(widget_t* widget, event_t* e) {
             }
             if (evt.x > gesture->press_point.x) {
               log_debug("slide right\n");
-              evt.e = event_init(EVT_SLIDE_RIGHT, widget);
+              pointer_event_init(&evt, EVT_SLIDE_RIGHT, widget, evt.x, evt.y);
               widget_dispatch(widget, (event_t*)&evt);
             } else {
               log_debug("slide left\n");
-              evt.e = event_init(EVT_SLIDE_LEFT, widget);
+              pointer_event_init(&evt, EVT_SLIDE_LEFT, widget, evt.x, evt.y);
               widget_dispatch(widget, (event_t*)&evt);
             }
           } else {
@@ -161,11 +157,11 @@ static ret_t gesture_on_event(widget_t* widget, event_t* e) {
             }
             if (evt.y > gesture->press_point.y) {
               log_debug("slide down\n");
-              evt.e = event_init(EVT_SLIDE_DOWN, widget);
+              pointer_event_init(&evt, EVT_SLIDE_DOWN, widget, evt.x, evt.y);
               widget_dispatch(widget, (event_t*)&evt);
             } else {
               log_debug("slide up\n");
-              evt.e = event_init(EVT_SLIDE_UP, widget);
+              pointer_event_init(&evt, EVT_SLIDE_UP, widget, evt.x, evt.y);
               widget_dispatch(widget, (event_t*)&evt);
             }
           }

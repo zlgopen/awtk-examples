@@ -1,4 +1,4 @@
-<window x="c" y="m" w="390" h="390" name="music" style="music">
+<window x="c" y="m" w="390" h="390" name="music" open_anim_hint="slide_left(easing=sin_inout)" style="music">
   <gesture name="music:gesture" x="c" y="m" w="390" h="390" disg:custom="container">
     <button name="music:mode" x="c" y="0" w="282" h="86" repeat="0" enable_long_press="false" style="music_circle_one" tr_text=""/>
     <label name="music:song_name" x="c" y="90" w="100%" h="40" style="song_name" tr_text="Shape Of You"/>

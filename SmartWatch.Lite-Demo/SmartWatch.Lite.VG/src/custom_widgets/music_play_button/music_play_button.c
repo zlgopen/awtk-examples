@@ -112,6 +112,7 @@ static ret_t music_play_button_on_event(widget_t *widget, event_t *e) {
     if (music_play_button->pressed &&
         widget_is_point_in(widget, evt.x, evt.y, FALSE)) {
       evt.e = event_init(EVT_CLICK, widget);
+      evt.e.size = sizeof(evt);
       music_play_button_pointer_up_cleanup(widget);
       widget_dispatch(widget, (event_t *)&evt);
     } else {

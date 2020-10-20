@@ -45,7 +45,10 @@ ret_t play_mode_choose(widget_t* win) {
   widget_t* cover_view = widget_lookup(win, "cover_view", TRUE);
   widget_t* child = NULL;
   int32_t value = rand() % 3;
-  event_t evt = event_init(EVT_CLICK, btn_next);
+
+  pointer_event_t evt;
+  pointer_event_init(&evt, EVT_CLICK, btn_next, 0, 0);
+  
   if (tk_str_eq(btn_play_mode->style, "s_play_mode_one")) {
     init_player(win);
     swtich_rotation_animator(win, TRUE);
@@ -64,7 +67,7 @@ ret_t play_mode_choose(widget_t* win) {
     load_song(win, g_img_index, TRUE);
 
   } else if (tk_str_eq(btn_play_mode->style, "s_play_mode_clicle")) {
-    widget_dispatch(btn_next, &evt);
+    widget_dispatch(btn_next, (event_t*)&evt);
     widget_invalidate(btn_next, NULL);
   }
 

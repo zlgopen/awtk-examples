@@ -150,7 +150,8 @@ static ret_t pie_slice_on_event(widget_t* widget, event_t* e) {
     case EVT_POINTER_UP: {
       pointer_event_t evt = *(pointer_event_t*)e;
       if (pie_slice->pressed && widget_is_point_in(widget, evt.x, evt.y, FALSE)) {
-        evt.e = event_init(EVT_CLICK, widget->parent);
+        evt.e = event_init(EVT_CLICK,widget->parent);
+        evt.e.size = sizeof(evt);
         widget_dispatch(widget, (event_t*)&evt);
         pie_slice->pressed = FALSE;
       }
@@ -330,11 +331,17 @@ ret_t pie_slice_set_value(widget_t* widget, float_t value) {
   return_value_if_fail(pie_slice != NULL, RET_BAD_PARAMS);
 
   if (pie_slice->value != value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
-    pie_slice->value = value;
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_float(&(evt.old_value), pie_slice->value);
+    value_set_float(&(evt.new_value), value);
+
+    if(widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      pie_slice->value = value;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+      widget_invalidate(widget, NULL);
+    }
     widget_invalidate(widget, NULL);
   }
 

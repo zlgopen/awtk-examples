@@ -53,12 +53,13 @@ static ret_t on_quit_anim(void* ctx, event_t* e) {
 
 static ret_t on_dialog_state(void* ctx, event_t* e) {
   widget_t* dialog = (widget_t*)ctx;
-  pointer_event_t* evt = (pointer_event_t*)e;
+  pointer_event_t evt = *(pointer_event_t*)e;
   widget_t* close = widget_lookup(dialog, "close", TRUE);
-  if (evt->x > (dialog->x + dialog->w) || evt->x < dialog->x || evt->y < dialog->y ||
-      evt->y > (dialog->y + dialog->h)) {
-    event_t et = event_init(EVT_CLICK, close);
-    widget_dispatch(close, &et);
+  if (evt.x > (dialog->x + dialog->w) || evt.x < dialog->x || evt.y < dialog->y ||
+      evt.y > (dialog->y + dialog->h)) {
+    evt.e = event_init(EVT_CLICK, close);
+    evt.e.size = sizeof(evt);
+    widget_dispatch(close, (event_t*)&evt);
     widget_invalidate(close, NULL);
   }
 

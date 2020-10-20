@@ -225,13 +225,15 @@ static ret_t round_menu_set_value_only(round_menu_t *round_menu,
   widget_t *widget = WIDGET(round_menu);
 
   if (index != round_menu->value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
-
-    round_menu->value = index;
-
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_int32(&(evt.old_value), round_menu->value);
+    value_set_int32(&(evt.new_value), index);
+    if (widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      round_menu->value = index;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+    }
   }
 
   return RET_OK;

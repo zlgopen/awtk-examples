@@ -424,7 +424,7 @@ static void draw_circle_draw_circluar_point_to_quadrant_hline(
 	canvas_t *c = draw_image_info->c;
 	frr_image_info_t* image_info = &draw_image_info->image_info;
 	if (w > 0) {
-		if (widget_get_circluar_point_to_quadrant(xc, yc, px, py, type, &x, &y)) {
+		if (ffr_get_circluar_point_to_quadrant(xc, yc, px, py, type, &x, &y)) {
 			x1 = x;
 			if (is_left) {
 				int32_t tmp = x - w;
@@ -452,14 +452,14 @@ static void draw_circle_draw_circluar_point_to_quadrant_point(
 	canvas_t *c = draw_image_info->c;
 	frr_image_info_t* image_info = &draw_image_info->image_info;
 
-	if (widget_get_circluar_point_to_quadrant(draw_image_info->xc, draw_image_info->yc, px, py, type, &x, &y)) {
+	if (ffr_get_circluar_point_to_quadrant(draw_image_info->xc, draw_image_info->yc, px, py, type, &x, &y)) {
 		if (!is_left) {
 			x--;
 		}
-		p = widget_frr_image_get_buff_point(image_info, x + c->ox, y + c->oy);
+		p = frr_image_get_buff_point(image_info, x + c->ox, y + c->oy);
 		if (p > 0) {
-			widget_image_data2color(image_info->dst + p, x + c->ox, y + c->oy, image_info->w, image_info->h, image_info->format, &o_color_1);
-			widget_draw_antialiasing_for_point(image_info, c, x + c->ox, y + c->oy, e, *draw_image_info->color, o_color_1);
+			ffr_image_data2color(image_info->dst + p, x + c->ox, y + c->oy, image_info->w, image_info->h, image_info->format, &o_color_1);
+			ffr_draw_antialiasing_for_point(image_info, c, x + c->ox, y + c->oy, e, *draw_image_info->color, o_color_1);
 		}
 	}
 }
@@ -1336,7 +1336,7 @@ void draw_circle_fill_arc_width(draw_circle_t *ctx, canvas_t *c, int32_t xc,
 
 		canvas_set_fill_color(c, tmp_color);
 
-		widget_image_info_create(&image_info.image_info, c);
+		ffr_image_info_create(&image_info.image_info, c);
 
 		image_info.c = c;
 		image_info.xc = xc;

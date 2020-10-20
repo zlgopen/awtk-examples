@@ -55,12 +55,13 @@ static ret_t on_quit_anim(void* ctx, event_t* e) {
 
 static ret_t on_dialog_state(void* ctx, event_t* e) {
   widget_t* dialog = (widget_t*)ctx;
-  pointer_event_t* evt = (pointer_event_t*)e;
+  pointer_event_t evt = *(pointer_event_t*)e;
   widget_t* close = widget_lookup(dialog, "close", TRUE);
-  if (evt->x > (dialog->x + dialog->w) || evt->x < dialog->x || evt->y < dialog->y ||
-      evt->y > (dialog->y + dialog->h)) {
-    event_t et = event_init(EVT_CLICK, close);
-    widget_dispatch(close, &et);
+  if (evt.x > (dialog->x + dialog->w) || evt.x < dialog->x || evt.y < dialog->y ||
+      evt.y > (dialog->y + dialog->h)) {
+    evt.e = event_init(EVT_CLICK, close);
+    evt.e.size = sizeof(evt);
+    widget_dispatch(close, (event_t*)&evt);
     widget_invalidate(close, NULL);
   }
 
@@ -127,8 +128,8 @@ static ret_t on_song_item_down(void* ctx, event_t* e) {
 static ret_t init_choose_item(widget_t* widget) {
   return_value_if_fail(widget != NULL && m_win != NULL, RET_BAD_PARAMS);
   if (g_img_index == widget_index_of(widget)) {
-    event_t evt = event_init(EVT_POINTER_DOWN, widget);
-    widget_dispatch(widget, &evt);
+    pointer_event_t evt;
+    widget_dispatch(widget, pointer_event_init(&evt, EVT_POINTER_DOWN, widget, widget->x, widget->y));
     widget_invalidate(widget, NULL);
   }
 

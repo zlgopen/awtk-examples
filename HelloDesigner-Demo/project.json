@@ -1,13 +1,6 @@
 {
   "name": "HelloDesigner-Demo",
-  "appType": "APP_MOBILE",
-  "hardware": "RT1050",
   "entry": "home_page/home_page",
-  "modifyTime": "2020/06/16",
-  "creator": {
-    "name": "AWTK Designer",
-    "version": "0.1.5"
-  },
   "assets": {
     "loadFrom": "any",
     "const": "resource_data",
@@ -34,5 +27,10 @@
     "screenDPR": "x1",
     "activedTheme": "default",
     "outputDir": "res"
-  }
+  },
+  "creator": {
+    "name": "AWTK Designer",
+    "version": "1.0.0"
+  },
+  "awtkRoot": "${DesignerPath}/SDK/awtk"
 }

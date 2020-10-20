@@ -508,13 +508,16 @@ static ret_t slide_menu_v_set_value_only(slide_menu_v_t* slide_menu_v, int32_t i
   widget_t* widget = WIDGET(slide_menu_v);
 
   if (index != slide_menu_v->value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_int32(&(evt.old_value), slide_menu_v->value);
+    value_set_int32(&(evt.new_value), index);
 
-    slide_menu_v->value = index;
-
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
+    if (widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      slide_menu_v->value = index;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+    }
   }
 
   return RET_OK;

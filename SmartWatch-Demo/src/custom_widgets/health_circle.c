@@ -16,12 +16,17 @@ ret_t health_circle_set_value_b(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   if (health_circle->value_b != value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
-    health_circle->value_b = value;
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
-    widget_invalidate(widget, NULL);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_float(&(evt.old_value), health_circle->value_b);
+    value_set_float(&(evt.new_value), value);
+
+    if (widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      health_circle->value_b = value;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+      widget_invalidate(widget, NULL);
+    } 
   }
 
   return RET_OK;
@@ -32,12 +37,17 @@ ret_t health_circle_set_value_m(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   if (health_circle->value_m != value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
-    health_circle->value_m = value;
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
-    widget_invalidate(widget, NULL);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_float(&(evt.old_value), health_circle->value_m);
+    value_set_float(&(evt.new_value), value);
+
+    if (widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      health_circle->value_m = value;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+      widget_invalidate(widget, NULL);
+    } 
   }
 
   return RET_OK;
@@ -48,12 +58,17 @@ ret_t health_circle_set_vlaue_s(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   if (health_circle->value_s != value) {
-    event_t e = event_init(EVT_VALUE_WILL_CHANGE, widget);
-    widget_dispatch(widget, &e);
-    health_circle->value_s = value;
-    e = event_init(EVT_VALUE_CHANGED, widget);
-    widget_dispatch(widget, &e);
-    widget_invalidate(widget, NULL);
+    value_change_event_t evt;
+    value_change_event_init(&evt, EVT_VALUE_WILL_CHANGE, widget);
+    value_set_float(&(evt.old_value), health_circle->value_s);
+    value_set_float(&(evt.new_value), value);
+
+    if (widget_dispatch(widget, (event_t*)&evt) != RET_STOP) {
+      health_circle->value_s = value;
+      evt.e.type = EVT_VALUE_CHANGED;
+      widget_dispatch(widget, (event_t*)&evt);
+      widget_invalidate(widget, NULL);
+    } 
   }
 
   return RET_OK;
@@ -64,8 +79,11 @@ ret_t health_circle_set_value_max_b(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   health_circle->max_b = value;
-  event_t e = event_init(EVT_VALUE_CHANGED, widget);
-  widget_dispatch(widget, &e);
+  value_change_event_t evt;
+  value_change_event_init(&evt, EVT_VALUE_CHANGED, widget);
+  value_set_float(&(evt.old_value), value);
+  value_set_float(&(evt.new_value), value);
+  widget_dispatch(widget, (event_t*)&evt);
 
   return widget_invalidate(widget, NULL);
 }
@@ -75,8 +93,11 @@ ret_t health_circle_set_value_max_m(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   health_circle->max_m = value;
-  event_t e = event_init(EVT_VALUE_CHANGED, widget);
-  widget_dispatch(widget, &e);
+  value_change_event_t evt;
+  value_change_event_init(&evt, EVT_VALUE_CHANGED, widget);
+  value_set_float(&(evt.old_value), value);
+  value_set_float(&(evt.new_value), value);
+  widget_dispatch(widget, (event_t*)&evt);
 
   return widget_invalidate(widget, NULL);
 }
@@ -86,8 +107,11 @@ ret_t health_circle_set_value_max_s(widget_t* widget, float_t value) {
   return_value_if_fail(health_circle != NULL, RET_BAD_PARAMS);
 
   health_circle->max_s = value;
-  event_t e = event_init(EVT_VALUE_CHANGED, widget);
-  widget_dispatch(widget, &e);
+  value_change_event_t evt;
+  value_change_event_init(&evt, EVT_VALUE_CHANGED, widget);
+  value_set_float(&(evt.old_value), value);
+  value_set_float(&(evt.new_value), value);
+  widget_dispatch(widget, (event_t*)&evt);
 
   return widget_invalidate(widget, NULL);
 }
@@ -266,8 +290,9 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
       // hc->dragging = 0;
       pointer_event_t evt = *(pointer_event_t*)e;
       if (hc->pressed == TRUE && widget_is_point_in(widget, evt.x, evt.y, FALSE) &&
-          widget_get_prop_bool(widget, "_no_move", FALSE)) {
+        widget_get_prop_bool(widget, "_no_move", FALSE)) {
         evt.e = event_init(EVT_CLICK, widget->parent);
+        evt.e.size = sizeof(evt);
         widget_dispatch(widget, (event_t*)&evt);
         hc->pressed = FALSE;
         return RET_OK;
@@ -317,6 +342,7 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
       if (hc->pressed == TRUE && widget_is_point_in(widget, evt.x, evt.y, FALSE) &&
           widget_get_prop_bool(widget, "_no_move", FALSE)) {
         evt.e = event_init(EVT_CLICK, widget->parent);
+        evt.e.size = sizeof(evt);
         widget_dispatch(widget, (event_t*)&evt);
         hc->pressed = FALSE;
         return RET_OK;
@@ -346,6 +372,7 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
         value_t v;
         widget_get_prop(widget, "_p_r", &v);
         float_t pre_r = value_float(&v);
+        float_t value;
 
         if (result < 0.5) {
           if (pre_r > 5.5) {
@@ -385,6 +412,7 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
           if (hc->no_beyond && hc->value_b > hc->max_b) {
             hc->value_b = hc->max_b;
           }
+          value = hc->value_b;
           log_debug("value_b -> %f\n", hc->value_b);
         } else if (hc->dragging == 'm') {
           result = (result - pre_r) / 6.2831852 * hc->max_m;
@@ -395,6 +423,7 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
           if (hc->no_beyond && hc->value_m > hc->max_m) {
             hc->value_m = hc->max_m;
           }
+          value = hc->value_m;
           log_debug("value_m -> %f\n", hc->value_m);
           // hc->value_m = hc->max_m * (result / (2.0*M_PI));
         } else {
@@ -406,11 +435,15 @@ static ret_t health_circle_on_event(widget_t* widget, event_t* e) {
           if (hc->no_beyond && hc->value_s > hc->max_s) {
             hc->value_s = hc->max_s;
           }
+          value = hc->value_s;
           log_debug("value_s -> %f\n", hc->value_s);
           // hc->value_s = hc->max_s * (result / (2.0*M_PI));
         }
-        evt.e = event_init(EVT_VALUE_CHANGED, widget);
-        widget_dispatch(widget, (event_t*)&evt);
+        value_change_event_t v_evt;
+        value_change_event_init(&v_evt, EVT_VALUE_CHANGED, widget);
+        value_set_float(&(v_evt.old_value), value);
+        value_set_float(&(v_evt.new_value), value);
+        widget_dispatch(widget, (event_t*)&v_evt);
         widget_invalidate_force(widget, NULL);
       }
       break;

@@ -20,6 +20,11 @@ import awtk_config as awtk
 APP_CPPPATH = []
 APP_CCFLAGS = ' '
 
+LINUX_FB = ARGUMENTS.get('LINUX_FB', '') != ''
+if LINUX_FB:
+  print('!!! ERROR: This APP not support LINUX_FB option, scons script will stop!')
+  sys.exit(1)
+
 LCD_FLAG = ARGUMENTS.get('LCD', 0)
 if LCD_FLAG == '480_272':
   APP_CCFLAGS = APP_CCFLAGS + ' -DLCD_W=480 -DLCD_H=272 '

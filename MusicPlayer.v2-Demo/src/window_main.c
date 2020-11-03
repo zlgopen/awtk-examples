@@ -79,14 +79,14 @@ ret_t swtich_vinyl_head_animator(widget_t* win, bool_t start_anim, bool_t is_yoy
   if (start_anim) {
     if (is_yoyo) {
       widget_create_animator(vinyl_head,
-                             "value(from=-70, to=-35, duration=500, yoyo_times=2, delay=0)");
+                             "value(from=-70, to=-35, duration=500, yoyo_times=1, delay=0)");
     } else {
       widget_create_animator(vinyl_head, "value(from=-70, to=-35, duration=500, delay=0)");
     }
   } else {
     if (is_yoyo) {
       widget_create_animator(vinyl_head,
-                             "value(from=-35, to=-70, duration=500, yoyo_times=2, delay=0)");
+                             "value(from=-35, to=-70, duration=500, yoyo_times=1, delay=0)");
     } else {
       widget_create_animator(vinyl_head, "value(from=-35, to=-70, duration=500, delay=0)");
     }

@@ -2,8 +2,8 @@
 
 #### 项目介绍：
 
-- HelloWorld-Demo：最简单的入门 Demo，包含基本的文本和按钮控件使用方法
 - HelloWorld.Xml-Demo：最简单的入门 Demo，演示如何使用 XML 方式设计界面
+- HelloDesigner-Demo：最简单的入门 Demo，可以用AWTK Designer打开
 - CleanAir-Demo：新风系统演示 Demo
 - Chart-Demo：图表演示 Demo，包含仪表、饼图、曲线图、柱状图
 - MusicPlayer-Demo：音乐播放器演示 Demo
@@ -79,8 +79,6 @@
 
 
 #### 运行效果截图：
-
-![HelloWorld-Demo](docs/images/helloworld_main.png)
 
 ![CleanAir-Demo](docs/images/cleanair_main.png)
 

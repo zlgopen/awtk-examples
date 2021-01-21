@@ -30,6 +30,8 @@ typedef struct _watch_clock_pointer_t {
   bool_t is_oom;
   char *pointer_image;
 
+  asset_info_t *asset_image_info;
+
 } watch_clock_pointer_t;
 
 /**

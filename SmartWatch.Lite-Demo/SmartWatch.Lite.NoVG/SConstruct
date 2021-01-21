@@ -6,5 +6,5 @@ ARGUMENTS['IDL_DEF'] = 'False'
 helper = app.Helper(ARGUMENTS)
 helper.call(DefaultEnvironment)
 
-SConscriptFiles = ['src/SConscript']
+SConscriptFiles = ['src/SConscript', 'tool/clock_pinter_gen/SConscript']
 SConscript(SConscriptFiles)

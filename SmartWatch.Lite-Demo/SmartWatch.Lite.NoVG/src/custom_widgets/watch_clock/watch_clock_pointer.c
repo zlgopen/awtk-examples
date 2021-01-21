@@ -360,10 +360,13 @@ static ret_t watch_clock_pointer_on_paint_self(widget_t *widget, canvas_t *c) {
 
   return_value_if_fail(watch_clock_pointer != NULL && widget != NULL,
                        RET_BAD_PARAMS);
-
-  asset_image_info = (asset_info_t *)assets_manager_ref(
-      assets_manager(), ASSET_TYPE_DATA, watch_clock_pointer->pointer_image);
-  asset_info_unref(asset_image_info);
+  if (watch_clock_pointer->asset_image_info == NULL) {
+    asset_image_info = (asset_info_t *)assets_manager_ref(
+        assets_manager(), ASSET_TYPE_DATA, watch_clock_pointer->pointer_image);
+    watch_clock_pointer->asset_image_info = asset_image_info;
+  } else {
+    asset_image_info = watch_clock_pointer->asset_image_info;
+  }
 
   return_value_if_fail(asset_image_info != NULL, RET_BAD_PARAMS);
 
@@ -425,6 +428,11 @@ static ret_t watch_clock_pointer_on_destroy(widget_t *widget) {
   return_value_if_fail(widget != NULL && watch_clock_pointer != NULL,
                        RET_BAD_PARAMS);
 
+  if (watch_clock_pointer->asset_image_info != NULL) {
+    asset_info_unref(watch_clock_pointer->asset_image_info);
+    watch_clock_pointer->asset_image_info = NULL;
+  }
+
   if (watch_clock_pointer->point_image_data != NULL) {
     TKMEM_FREE(watch_clock_pointer->point_image_data);
   }
@@ -436,7 +444,7 @@ static ret_t watch_clock_pointer_on_destroy(widget_t *widget) {
   if (watch_clock_pointer->bitmap.buffer != NULL) {
     graphic_buffer_destroy(watch_clock_pointer->bitmap.buffer);
   }
-
+  
   return RET_OK;
 }
 

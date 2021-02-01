@@ -1,0 +1,10 @@
+<button>
+  <style name="en" icon="language_en">
+    <normal/>
+    <over bg_image=""/>
+    <pressed bg_image=""/>
+  </style>
+  <style name="zh">
+    <normal icon="language_zh"/>
+  </style>
+</button>

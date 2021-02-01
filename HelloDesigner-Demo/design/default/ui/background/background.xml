@@ -1,0 +1,11 @@
+<window name="background" style="default" anim_hint="htranslate(duration=500,easing=cubic_out)">
+  <view name="view" x="c" y="m" w="60%" h="60%" children_layout="default(c=2,r=3,x=15,y=15,s=15)">
+    <button name="default_btn" repeat="0" enable_long_press="false" tr_text="bg_default"/>
+    <button name="blue_btn" repeat="0" enable_long_press="false" tr_text="bg_blue"/>
+    <button name="green_btn" repeat="0" enable_long_press="false" tr_text="bg_green"/>
+    <button name="yellow_btn" repeat="0" enable_long_press="false" tr_text="bg_yellow"/>
+    <button name="pic_1_btn" repeat="0" enable_long_press="false" tr_text="bg_pic1"/>
+    <button name="pic_2_btn" repeat="0" enable_long_press="false" tr_text="bg_pic2"/>
+  </view>
+  <button name="close" x="c" y="84%" w="20%" h="10%" repeat="0" enable_long_press="false" tr_text="close"/>
+</window>

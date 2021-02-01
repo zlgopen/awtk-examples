@@ -1,14 +1,14 @@
 <window name="basic" anim_hint="htranslate(duration=500,easing=cubic_out)">
-  <progress_bar name="changing_bar" x="15%" y="50%" w="30" h="30%" vertical="true" style:normal:round_radius="5" value="40"/>
-  <slider name="changing_slider" x="22%" y="50%" w="25" h="30%" vertical="true" style:normal:round_radius="5" style:pressed:round_radius="5" style:over:round_radius="5" value="40"/>
-  <progress_bar name="changed_bar" x="35%" y="50%" w="30" h="30%" vertical="true" style:normal:round_radius="5" value="40"/>
-  <slider name="changed_slider" x="42%" y="50%" w="25" h="30%" vertical="true" style:normal:round_radius="5" style:pressed:round_radius="5" style:over:round_radius="5" value="40"/>
-  <progress_bar name="click_bar" x="r:15%" y="50%" w="30%" h="30" show_text="true" style:normal:round_radius="5" value="40"/>
-  <button name="dec_btn" x="r:35%" y="65%" w="10%" h="40" text="dec"/>
-  <button name="inc_btn" x="r:15%" y="65%" w="10%" h="40" text="inc"/>
-  <label name="click_bar_label" x="r:25%" y="65%" w="10%" h="40" text="40%"/>
-  <edit name="edit" x="c" y="30%" w="70%" h="40" auto_fix="true" tips="Please&nbsp;enter&nbsp;your&nbsp;text" step="2" max="1024"/>
-  <label name="edit_label" x="c" y="15%" w="45%" h="30" text="Hello&nbsp;Designer"/>
-  <button name="close" x="c" y="b:5%" w="15%" h="30" text="close"/>
-  <image name="image" x="674" y="10" w="116" h="37" image="awtk_logo"/>
+  <label name="edit_label" x="c" y="13%" w="30%" h="8%" tr_text="hello awtk"/>
+  <edit name="edit" x="c" y="29%" w="60%" h="8%" password_visible="false" auto_fix="true" tips="Please enter your text" step="2" min="0" max="1024"/>
+  <progress_bar name="changing_bar" x="20%" y="m:14%" w="5%" h="30%" vertical="true" value="40"/>
+  <slider name="changing_slider" x="27%" y="m:14%" w="3%" h="30%" bar_size="0" dragger_size="10" vertical="true" value="40"/>
+  <button name="dec_btn" x="50%" y="70%" w="10%" h="10%" repeat="0" enable_long_press="false" tr_text="dec"/>
+  <image name="image" x="r:10" y="10" w="100" h="26" image="awtk_logo"/>
+  <progress_bar name="changed_bar" x="34%" y="m:14%" w="5%" h="30%" vertical="true" value="40"/>
+  <slider name="changed_slider" x="41%" y="m:14%" w="3%" h="30%" bar_size="0" dragger_size="10" vertical="true" value="40"/>
+  <button name="inc_btn" x="70%" y="70%" w="10%" h="10%" repeat="0" enable_long_press="false" tr_text="inc"/>
+  <label name="click_bar_label" x="60%" y="70%" w="10%" h="10%" tr_text="40%"/>
+  <progress_bar name="click_bar" x="r:20%" y="m:6%" w="32%" h="8%" show_text="true" value="40"/>
+  <button name="close" x="c" y="b:7%" w="12%" h="8%" repeat="0" enable_long_press="false" tr_text="close"/>
 </window>

@@ -1,11 +1,39 @@
-#include "awtk.h"
+﻿#include "awtk.h"
 extern ret_t application_init(void);
-extern ret_t open_basic_window(void);
-extern ret_t open_animation_window(void);
-
 static void init_children_widget(widget_t* widget);
+/**
+ * 中英文互译
+ */
+static ret_t change_locale(const char* str) {
+  char country[3];
+  char language[3];
 
-static ret_t on_basic_click(void* ctx, event_t* e) {
+  strncpy(language, str, 2);
+  strncpy(country, str + 3, 2);
+  locale_info_change(locale_info(), language, country);
+
+  return RET_OK;
+}
+
+/**
+ * 点击中英文互译按钮
+ */
+static ret_t on_language(void* ctx, event_t* e) {
+  widget_t* language_btn = WIDGET(ctx);
+  (void)e;
+
+  const char* language = locale_info()->language;
+  if (tk_str_eq(language, "en")) {
+    change_locale("zh_CN");
+    widget_use_style(language_btn, "zh");
+  } else {
+    change_locale("en_US");
+    widget_use_style(language_btn, "en");
+  }
+  return RET_OK;
+}
+
+static ret_t on_open_basic_window(void* ctx, event_t* e) {
   (void)ctx;
   (void)e;
 
@@ -13,16 +41,31 @@ static ret_t on_basic_click(void* ctx, event_t* e) {
 
   return RET_OK;
 }
-
-static ret_t on_animation_click(void* ctx, event_t* e) {
+static ret_t on_open_background_window(void* ctx, event_t* e) {
   (void)ctx;
   (void)e;
 
-  open_animation_window();
+  open_background_window();
+
+  return RET_OK;
+}
+static ret_t on_open_listview_window(void* ctx, event_t* e) {
+  (void)ctx;
+  (void)e;
+
+  open_listview_window();
 
   return RET_OK;
 }
 
+static ret_t on_open_animator_window(void* ctx, event_t* e) {
+  (void)ctx;
+  (void)e;
+
+  open_animator_window();
+
+  return RET_OK;
+}
 /**
  * 子控件初始化(主要是设置click回调、初始显示信息)
  */
@@ -34,10 +77,20 @@ static ret_t init_widget(void* ctx, const void* iter) {
   if (widget->name != NULL) {
     const char* name = widget->name;
 
-    if (strstr(name, "basic") != NULL) {
-      widget_on(widget, EVT_CLICK, on_basic_click, win);
-    } else if (strstr(name, "animation") != NULL) {
-      widget_on(widget, EVT_CLICK, on_animation_click, win);
+    if (tk_str_eq(name, "language_btn")) {
+      widget_on(widget, EVT_CLICK, on_language, widget);
+    } else if (tk_str_eq(name, "basic_btn")) {
+      widget_on(widget, EVT_CLICK, on_open_basic_window, widget);
+      widget_on(widget, EVT_LONG_PRESS, on_open_basic_window, widget);
+    } else if (tk_str_eq(name, "background_btn")) {
+      widget_on(widget, EVT_CLICK, on_open_background_window, widget);
+      widget_on(widget, EVT_LONG_PRESS, on_open_background_window, widget);
+    } else if (tk_str_eq(name, "listview_btn")) {
+      widget_on(widget, EVT_CLICK, on_open_listview_window, widget);
+      widget_on(widget, EVT_LONG_PRESS, on_open_listview_window, widget);
+    } else if (tk_str_eq(name, "animator_btn")) {
+      widget_on(widget, EVT_CLICK, on_open_animator_window, widget);
+      widget_on(widget, EVT_LONG_PRESS, on_open_animator_window, widget);
     }
   }
 
@@ -55,9 +108,6 @@ static void init_children_widget(widget_t* widget) {
  * 初始化
  */
 ret_t application_init() {
-  system_info_set_default_font(system_info(), "default");
-  window_manager_set_cursor(window_manager(), NULL);
-  
   widget_t* win = window_open("home_page/home_page");
 
   if (win) {

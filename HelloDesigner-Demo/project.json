@@ -4,8 +4,8 @@
   "assets": {
     "loadFrom": "any",
     "const": "resource_data",
-    "defaultLanguage": "zh",
-    "defaultCountry": "CN",
+    "defaultLanguage": "en",
+    "defaultCountry": "US",
     "themes": {
       "default": {
         "activedSystemBar": "system_bar",
@@ -13,7 +13,7 @@
         "packaged": true,
         "fonts": {
           "default": {
-            "text": "﻿ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~\n中"
+            "text": "﻿ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~\n基础背景切换列表控件动画中"
           }
         },
         "lcd": {
@@ -30,7 +30,8 @@
   },
   "creator": {
     "name": "AWTK Designer",
-    "version": "1.0.0"
+    "version": "1.0.2"
   },
-  "awtkRoot": "${DesignerPath}/SDK/awtk"
+  "awtkRoot": "${DesignerPath}/SDK/awtk",
+  "modifyTime": "2020/12/23"
 }

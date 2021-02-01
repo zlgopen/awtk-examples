@@ -21,7 +21,7 @@
     </property>
   </button>
   <rich_text x="456" y="148" w="56" h="30" text="<font color=&quot;black&quot; align_v=&quot;top&quot; size=&quot;28&quot;>μg/m</font><font color=&quot;black&quot; align_v=&quot;top&quot; size=&quot;16&quot;>3</font>"/>
-  <rich_text x="313" y="182" w="63" h="32" name="CO2" text="<font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;36&quot;>CO</font> <font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;20&quot;>2</font>"/>
+  <rich_text x="313" y="182" w="63" h="40" name="CO2" text="<font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;36&quot;>CO</font> <font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;20&quot;>2</font>"/>
   <rich_text x="187" y="117" w="50" h="28" text="<font color=&quot;white&quot; align_v=&quot;bottom&quot; size=&quot;28&quot;>m</font><font color=&quot;white&quot; align_v=&quot;top&quot; size=&quot;18&quot;>3</font><font color=&quot;white&quot; align_v=&quot;bottom&quot; size=&quot;28&quot;>/h</font>"/>
   <button name="timing" x="231" y="419" w="37" h="37" style:normal:icon="timer" style:over:icon="timer_hover" style:pressed:icon="timer_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
     <property name="style:over:bg_color">

@@ -1,0 +1,20 @@
+<window>
+  <style name="default">
+    <normal bg_color="#FFFFFF"/>
+  </style>
+  <style name="blue">
+    <normal bg_color="#4472C4"/>
+  </style>
+  <style name="green">
+    <normal bg_color="#70AC47"/>
+  </style>
+  <style name="pic_1">
+    <normal bg_color="#FFFFFF" bg_image="bg_landscape_1" bg_image_draw_type="default" border_color="#00000000"/>
+  </style>
+  <style name="pic_2">
+    <normal bg_color="#FFFFFF" bg_image="bg_landscape_2" bg_image_draw_type="default"/>
+  </style>
+  <style name="yellow">
+    <normal bg_color="#FFD964"/>
+  </style>
+</window>

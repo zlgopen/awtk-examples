@@ -3,7 +3,7 @@
  * Author: AWTK Develop Team
  * Brief:  window main
  *
- * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
+ * Copyright (c) 2020 - 2020  Guangzhou ZHIYUAN Electronics Co.,Ltd.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,12 +15,14 @@
 /**
  * History:
  * ================================================================
- * 2019-12-30 Li Peihuang created
+ * 2020-2-13 Li Peihuang created
  *
  */
+
 #include "awtk.h"
 
 #define PROP_BAR_TIMER "bar_timer_id"
+static void init_children_widget(widget_t* widget);
 
 /**
  * 正在编辑事件

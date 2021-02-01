@@ -1,12 +1,16 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
-#include "assets/default/inc/ui/animation/animation.data"
+#include "assets/default/inc/ui/animator/animator.data"
+#include "assets/default/inc/ui/background/background.data"
 #include "assets/default/inc/ui/basic/basic.data"
 #include "assets/default/inc/ui/home_page/home_page.data"
+#include "assets/default/inc/ui/listview/listview.data"
 #include "assets/default/inc/ui/kb_default.data"
+#include "assets/default/inc/strings/zh_CN.data"
+#include "assets/default/inc/styles/background.data"
 #include "assets/default/inc/styles/default.data"
-#include "assets/default/inc/styles/keyboard.data"
+#include "assets/default/inc/styles/home_page.data"
 #ifdef WITH_STB_IMAGE
 #include "assets/default/inc/images/arrow_down_d.res"
 #include "assets/default/inc/images/arrow_down_f.res"
@@ -29,6 +33,8 @@
 #include "assets/default/inc/images/arrow_up_o.res"
 #include "assets/default/inc/images/arrow_up_p.res"
 #include "assets/default/inc/images/awtk_logo.res"
+#include "assets/default/inc/images/bg_landscape_1.res"
+#include "assets/default/inc/images/bg_landscape_2.res"
 #include "assets/default/inc/images/big_earth.res"
 #include "assets/default/inc/images/check_checked_d.res"
 #include "assets/default/inc/images/check_checked_f.res"
@@ -45,8 +51,11 @@
 #include "assets/default/inc/images/clock_minute.res"
 #include "assets/default/inc/images/clock_second.res"
 #include "assets/default/inc/images/cross.res"
+#include "assets/default/inc/images/earth.res"
 #include "assets/default/inc/images/guage_bg.res"
 #include "assets/default/inc/images/guage_pointer.res"
+#include "assets/default/inc/images/language_en.res"
+#include "assets/default/inc/images/language_zh.res"
 #include "assets/default/inc/images/logo.res"
 #include "assets/default/inc/images/num0.res"
 #include "assets/default/inc/images/num1.res"
@@ -58,7 +67,7 @@
 #include "assets/default/inc/images/num7.res"
 #include "assets/default/inc/images/num8.res"
 #include "assets/default/inc/images/num9.res"
-#include "assets/default/inc/images/num_dot.res"
+#include "assets/default/inc/images/numdot.res"
 #include "assets/default/inc/images/radio_checked_d.res"
 #include "assets/default/inc/images/radio_checked_f.res"
 #include "assets/default/inc/images/radio_checked_n.res"
@@ -76,7 +85,7 @@
 #endif /*WITH_STB_IMAGE*/
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
-#if defined(WITH_TRUETYPE_FONT)
+#ifdef WITH_TRUETYPE_FONT
 #include "assets/default/inc/fonts/default.res"
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
@@ -90,12 +99,16 @@ ret_t assets_init(void) {
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");
   assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
 #else
-  assets_manager_add(am, ui_animation_animation);
+  assets_manager_add(am, ui_animator_animator);
+  assets_manager_add(am, ui_background_background);
   assets_manager_add(am, ui_basic_basic);
   assets_manager_add(am, ui_home_page_home_page);
+  assets_manager_add(am, ui_listview_listview);
   assets_manager_add(am, ui_kb_default);
+  assets_manager_add(am, strings_zh_CN);
+  assets_manager_add(am, style_background);
   assets_manager_add(am, style_default);
-  assets_manager_add(am, style_keyboard);
+  assets_manager_add(am, style_home_page);
   assets_manager_add(am, image_arrow_down_d);
   assets_manager_add(am, image_arrow_down_f);
   assets_manager_add(am, image_arrow_down_n);
@@ -117,6 +130,8 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_arrow_up_o);
   assets_manager_add(am, image_arrow_up_p);
   assets_manager_add(am, image_awtk_logo);
+  assets_manager_add(am, image_bg_landscape_1);
+  assets_manager_add(am, image_bg_landscape_2);
   assets_manager_add(am, image_big_earth);
   assets_manager_add(am, image_check_checked_d);
   assets_manager_add(am, image_check_checked_f);
@@ -133,8 +148,11 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_clock_minute);
   assets_manager_add(am, image_clock_second);
   assets_manager_add(am, image_cross);
+  assets_manager_add(am, image_earth);
   assets_manager_add(am, image_guage_bg);
   assets_manager_add(am, image_guage_pointer);
+  assets_manager_add(am, image_language_en);
+  assets_manager_add(am, image_language_zh);
   assets_manager_add(am, image_logo);
   assets_manager_add(am, image_num0);
   assets_manager_add(am, image_num1);
@@ -146,7 +164,7 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_num7);
   assets_manager_add(am, image_num8);
   assets_manager_add(am, image_num9);
-  assets_manager_add(am, image_num_dot);
+  assets_manager_add(am, image_numdot);
   assets_manager_add(am, image_radio_checked_d);
   assets_manager_add(am, image_radio_checked_f);
   assets_manager_add(am, image_radio_checked_n);
@@ -160,7 +178,10 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_rounded_n);
   assets_manager_add(am, image_rounded_o);
   assets_manager_add(am, image_rounded_p);
+#ifdef WITH_TRUETYPE_FONT
   assets_manager_add(am, font_default);
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
 #endif

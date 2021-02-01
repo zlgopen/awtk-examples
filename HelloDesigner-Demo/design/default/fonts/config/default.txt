@@ -1,2 +1,2 @@
 ﻿ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~
-中
+基础背景切换列表控件动画中

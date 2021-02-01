@@ -1,0 +1,35 @@
+<window name="list_view" anim_hint="htranslate(duration=500,easing=cubic_out)">
+  <list_view name="list_view1" x="r" y="0" w="35%" h="100%" default_item_height="60">
+    <scroll_view name="scroll_view" x="0" y="0" w="-10" h="100%" children_layout="list_view(i=60)" yslidable="true">
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="1.Hello AWTK !">
+        <image name="image1" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="2.Hello AWTK !">
+        <image name="image2" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="3.Hello AWTK !">
+        <image name="image3" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="4.Hello AWTK !">
+        <image name="image4" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="5.Hello AWTK !">
+        <image name="image5" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="6.Hello AWTK !">
+        <image name="image6" w="30" image="earth"/>
+      </list_item>
+      <list_item name="list_item" children_layout="default(r=1,c=0)" text="7.Hello AWTK !">
+        <image name="image7" w="30" image="earth"/>
+      </list_item>
+      <list_item name="clone_self" text="Clone Self"/>
+      <list_item name="clone_self" text="Clone Self"/>
+      <list_item name="remove_self" text="Remove Self"/>
+      <list_item name="remove_self" text="Remove Self"/>
+    </scroll_view>
+    <scroll_bar_m name="scroll_bar_m" x="r" y="0" w="6" h="100%" style:normal:round_radius="" max="1000"/>
+  </list_view>
+  <label name="list_view_label" x="c:-15%" y="m:-10%" w="25%" h="10%" text="Hello AWTK !"/>
+  <image name="image" x="10" y="10" w="100" h="26" image="awtk_logo"/>
+  <button name="close" x="c:-15%" y="b:5%" w="20%" h="10%" text="close"/>
+</window>

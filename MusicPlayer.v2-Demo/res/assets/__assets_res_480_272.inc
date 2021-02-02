@@ -1,14 +1,14 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
-#include "res_480_272/inc/ui/advanced/advanced.data"
-#include "res_480_272/inc/ui/equalizer/equalizer.data"
-#include "res_480_272/inc/ui/home_page/home_page.data"
-#include "res_480_272/inc/ui/play_list/play_list.data"
 #include "res_480_272/inc/styles/default.data"
 #include "res_480_272/inc/styles/equalizer.data"
 #include "res_480_272/inc/styles/home_page.data"
 #include "res_480_272/inc/styles/play_list.data"
+#include "res_480_272/inc/ui/advanced/advanced.data"
+#include "res_480_272/inc/ui/equalizer/equalizer.data"
+#include "res_480_272/inc/ui/home_page/home_page.data"
+#include "res_480_272/inc/ui/play_list/play_list.data"
 #include "res_480_272/inc/data/let_it_go_txt.data"
 #include "res_480_272/inc/data/see_you_again_txt.data"
 #include "res_480_272/inc/data/yellow_txt.data"
@@ -47,7 +47,7 @@ extern TK_CONST_DATA_ALIGN(const unsigned char image_play_prev_n[]);
 #include "res_480_272/inc/images/pointer.bsvg"
 #include "res_480_272/inc/images/round.bsvg"
 #endif /*WITH_VGCANVAS*/
-#if defined(WITH_TRUETYPE_FONT)
+#ifdef WITH_TRUETYPE_FONT
 #include "res_480_272/inc/fonts/default.res"
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
@@ -60,14 +60,14 @@ ret_t assets_init_res_480_272(void) {
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");
   assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
 #else
-  assets_manager_add(am, ui_advanced_advanced_res_480_272);
-  assets_manager_add(am, ui_equalizer_equalizer_res_480_272);
-  assets_manager_add(am, ui_home_page_home_page_res_480_272);
-  assets_manager_add(am, ui_play_list_play_list_res_480_272);
   assets_manager_add(am, style_default_res_480_272);
   assets_manager_add(am, style_equalizer_res_480_272);
   assets_manager_add(am, style_home_page_res_480_272);
   assets_manager_add(am, style_play_list_res_480_272);
+  assets_manager_add(am, ui_advanced_advanced_res_480_272);
+  assets_manager_add(am, ui_equalizer_equalizer_res_480_272);
+  assets_manager_add(am, ui_home_page_home_page_res_480_272);
+  assets_manager_add(am, ui_play_list_play_list_res_480_272);
   assets_manager_add(am, data_let_it_go_txt_res_480_272);
   assets_manager_add(am, data_see_you_again_txt_res_480_272);
   assets_manager_add(am, data_yellow_txt_res_480_272);
@@ -99,11 +99,14 @@ ret_t assets_init_res_480_272(void) {
   assets_manager_add(am, image_Vinyl_res_480_272);
   assets_manager_add(am, image_yellow_res_480_272);
   assets_manager_add(am, image_play_prev_n);
-  assets_manager_add(am, font_default_res_480_272);
 #ifdef WITH_VGCANVAS
   assets_manager_add(am, image_pointer_res_480_272);
   assets_manager_add(am, image_round_res_480_272);
 #endif /*WITH_VGCANVAS*/
+#ifdef WITH_TRUETYPE_FONT
+  assets_manager_add(am, font_default_res_480_272);
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
 #endif
 
   tk_init_assets();

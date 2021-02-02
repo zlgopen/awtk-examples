@@ -83,6 +83,7 @@ ret_t widget_subpart_set_style_color(widget_t* widget, const char* subpart,
 ret_t widget_subpart_set_style_str(widget_t* widget, const char* subpart,
                                    const char* state_and_name, const char* value,
                                    widget_subpart_get_style_obj_t get_style_obj);
+style_t* widget_subpart_create_style(widget_t* widget);
 
 END_C_DECLS
 

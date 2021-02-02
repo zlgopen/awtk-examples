@@ -21,6 +21,7 @@
 
 #include "chart_utils.h"
 #include "tkc/utils.h"
+#include "base/theme.h"
 #include "base/style_const.h"
 #include "base/style_mutable.h"
 #include "base/style_factory.h"
@@ -61,57 +62,17 @@ ret_t chart_utils_object_parse(chart_utils_on_object_parse_t on_parse, void* ctx
   return RET_OK;
 }
 
-static ret_t _widget_get_window_theme(widget_t* widget, theme_t** win_theme,
-                                      theme_t** default_theme) {
-  value_t v;
-  widget_t* win = widget_get_window(widget);
-
-  return_value_if_fail(win != NULL, RET_BAD_PARAMS);
-
-  if (widget_get_prop(win, WIDGET_PROP_THEME_OBJ, &v) == RET_OK) {
-    *win_theme = (theme_t*)value_pointer(&v);
-  }
-
-  if (widget_get_prop(win, WIDGET_PROP_DEFAULT_THEME_OBJ, &v) == RET_OK) {
-    *default_theme = (theme_t*)value_pointer(&v);
-  }
-
-  return RET_OK;
-}
-
-static bool_t _is_valid_style_name(const char* str) {
-  return str != NULL && *str;
-}
-
-static const void* widget_subpart_get_const_style_data(widget_t* widget, const char* subpart,
-                                                       const char* style_name) {
-  const void* data = NULL;
-  theme_t* win_theme = NULL;
-  theme_t* default_theme = NULL;
-  const char* state = widget_get_prop_str(widget, WIDGET_PROP_STATE_FOR_STYLE, widget->state);
-
-  style_name = _is_valid_style_name(style_name) ? style_name : TK_DEFAULT_STYLE;
-
-  return_value_if_fail(_widget_get_window_theme(widget, &win_theme, &default_theme) == RET_OK,
-                       NULL);
-
-  if (win_theme != NULL) {
-    data = theme_find_style(win_theme, subpart, style_name, state);
-  }
-
-  if (data == NULL) {
-    data = theme_find_style(default_theme, subpart, style_name, state);
-  }
-
-  return data;
-}
-
 static ret_t widget_subpart_style_const_notify_widget_state_changed(style_t* s, widget_t* widget,
                                                                     const char* subpart,
                                                                     const char* style_name) {
-  style_const_t* style = (style_const_t*)s;
+  theme_t* win_theme = NULL;
+  theme_t* default_theme = NULL;
 
-  style->data = widget_subpart_get_const_style_data(widget, subpart, style_name);
+  if (widget_get_window_theme(widget, &win_theme, &default_theme) == RET_OK) {
+    theme_t* t = win_theme != NULL ? win_theme : (default_theme != NULL ? default_theme : theme());
+    const char* state = widget_get_prop_str(widget, WIDGET_PROP_STATE_FOR_STYLE, widget->state);
+    style_update_state(s, t, subpart, style_name, state);
+  }
 
   return RET_OK;
 }
@@ -121,7 +82,6 @@ static ret_t widget_subpart_style_mutable_notify_widget_state_changed(style_t* s
                                                                       const char* style_name) {
   style_mutable_t* style = STYLE_MUTABLE(s);
 
-  style->widget = widget;
   return widget_subpart_style_const_notify_widget_state_changed(style->default_style, widget,
                                                                 subpart, style_name);
 }
@@ -160,12 +120,12 @@ static ret_t widget_subpart_ensure_style_mutable(widget_t* widget, style_t** sty
   return_value_if_fail(widget != NULL && style != NULL, RET_BAD_PARAMS);
 
   if (*style == NULL) {
-    *style = style_mutable_create(widget, NULL);
+    *style = style_mutable_create(NULL);
     return_value_if_fail(*style != NULL, RET_OOM);
   }
 
   if (!((*style)->vt->is_mutable)) {
-    *style = style_mutable_create(widget, *style);
+    *style = style_mutable_create(*style);
     return_value_if_fail(*style != NULL, RET_OOM);
   }
 
@@ -238,4 +198,11 @@ ret_t widget_subpart_set_style_str(widget_t* widget, const char* subpart,
   value_t v;
   value_set_str(&v, value);
   return widget_subpart_set_style(widget, subpart, state_and_name, &v, get_style_obj);
+}
+
+style_t* widget_subpart_create_style(widget_t* widget) {
+  const char* style_type = widget_get_style_type(widget);
+  return_value_if_fail(style_type != NULL, NULL);
+
+  return style_factory_create_style(style_factory(), style_type);
 }

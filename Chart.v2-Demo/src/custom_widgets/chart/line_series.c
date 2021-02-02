@@ -434,15 +434,15 @@ widget_t* line_series_create_internal(widget_t* parent, xy_t x, xy_t y, wh_t w, 
   series->symbol.size = 3;
 
   if (series->line.astyle == NULL) {
-    series->line.astyle = style_factory_create_style(style_factory(), widget);
+    series->line.astyle = widget_subpart_create_style(widget);
   }
 
   if (series->area.astyle == NULL) {
-    series->area.astyle = style_factory_create_style(style_factory(), widget);
+    series->area.astyle = widget_subpart_create_style(widget);
   }
 
   if (series->symbol.astyle == NULL) {
-    series->symbol.astyle = style_factory_create_style(style_factory(), widget);
+    series->symbol.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

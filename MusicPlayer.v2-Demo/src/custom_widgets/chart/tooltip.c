@@ -626,15 +626,15 @@ widget_t* tooltip_create(widget_t* parent, const widget_vtable_t* vt, xy_t x, xy
   return_value_if_fail(tooltip != NULL, NULL);
 
   if (tooltip->line.astyle == NULL) {
-    tooltip->line.astyle = style_factory_create_style(style_factory(), widget);
+    tooltip->line.astyle = widget_subpart_create_style(widget);
   }
 
   if (tooltip->symbol.astyle == NULL) {
-    tooltip->symbol.astyle = style_factory_create_style(style_factory(), widget);
+    tooltip->symbol.astyle = widget_subpart_create_style(widget);
   }
 
   if (tooltip->tip.astyle == NULL) {
-    tooltip->tip.astyle = style_factory_create_style(style_factory(), widget);
+    tooltip->tip.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

@@ -467,7 +467,7 @@ widget_t* bar_series_create_internal(widget_t* parent, xy_t x, xy_t y, wh_t w, w
   series->base.vt = svt;
 
   if (series->bar.astyle == NULL) {
-    series->bar.astyle = style_factory_create_style(style_factory(), widget);
+    series->bar.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

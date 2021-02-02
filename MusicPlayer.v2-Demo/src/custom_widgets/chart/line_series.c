@@ -224,7 +224,7 @@ static ret_t line_series_draw_one_series(widget_t* widget, canvas_t* c, float_t 
 
   if (series->symbol.show) {
     widget_t* axis = widget_get_prop_pointer(widget, SERIES_PROP_SERIES_AXIS);
-    float_t range = axis_get_range(axis);
+    float_t range = axis_get_range(axis, TRUE);
 
     // 默认symbol的border_with不超过symbol.size
     if (vertical) {
@@ -434,15 +434,15 @@ widget_t* line_series_create_internal(widget_t* parent, xy_t x, xy_t y, wh_t w, 
   series->symbol.size = 3;
 
   if (series->line.astyle == NULL) {
-    series->line.astyle = style_factory_create_style(style_factory(), widget);
+    series->line.astyle = widget_subpart_create_style(widget);
   }
 
   if (series->area.astyle == NULL) {
-    series->area.astyle = style_factory_create_style(style_factory(), widget);
+    series->area.astyle = widget_subpart_create_style(widget);
   }
 
   if (series->symbol.astyle == NULL) {
-    series->symbol.astyle = style_factory_create_style(style_factory(), widget);
+    series->symbol.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

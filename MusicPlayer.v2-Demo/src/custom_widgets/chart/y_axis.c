@@ -88,7 +88,7 @@ static float_t y_axis_measure_series_interval(widget_t* widget) {
   axis_t* axis = AXIS(widget);
   return_value_if_fail(axis != NULL, 0);
 
-  vrange = axis_get_range(widget);
+  vrange = axis_get_range(widget, TRUE);
   prange = axis->draw_rect.h;
 
   if (axis->type == AXIS_TYPE_CATEGORY) {
@@ -116,9 +116,9 @@ ret_t y_axis_measure_series(widget_t* widget, void* measure_params, fifo_t* src,
   return_value_if_true(nr == 0, RET_OK);
 
   vmin = axis->max * axis->min > 0 ? axis->min : 0;
-  vrange = axis_get_range(widget);
+  vrange = axis_get_range(widget, FALSE);
   prange = axis->draw_rect.h;
-  srange = axis_get_range(params->series_axis);
+  srange = axis_get_range(params->series_axis, TRUE);
   sinterval = axis_measure_series_interval(params->series_axis);
   sinterval = AXIS(params->series_axis)->inverse ? -sinterval : sinterval;
   soffset = AXIS(params->series_axis)->type == AXIS_TYPE_CATEGORY ? (sinterval / 2) : 0;

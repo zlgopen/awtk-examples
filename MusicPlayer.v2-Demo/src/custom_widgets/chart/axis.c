@@ -193,12 +193,12 @@ ret_t axis_set_range(widget_t* widget, float_t min, float_t max) {
   return widget_invalidate(widget, NULL);
 }
 
-float_t axis_get_range(widget_t* widget) {
+float_t axis_get_range(widget_t* widget, bool_t is_series_axis) {
   axis_t* axis = AXIS(widget);
   return_value_if_fail(axis != NULL, 0.0);
 
   if (axis->type == AXIS_TYPE_VALUE && axis->max != axis->min) {
-    return tk_abs(axis->max - axis->min) + 1;
+    return tk_abs(axis->max - axis->min) + (is_series_axis ? 1 : 0);
   } else {
     return (float_t)(axis->data->size);
   }
@@ -343,23 +343,23 @@ widget_t* axis_create(widget_t* parent, const widget_vtable_t* vt, xy_t x, xy_t 
   axis->data = darray_create(4, (tk_destroy_t)axis_data_destroy, NULL);
 
   if (axis->split_line.astyle == NULL) {
-    axis->split_line.astyle = style_factory_create_style(style_factory(), widget);
+    axis->split_line.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->line.astyle == NULL) {
-    axis->line.astyle = style_factory_create_style(style_factory(), widget);
+    axis->line.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->tick.astyle == NULL) {
-    axis->tick.astyle = style_factory_create_style(style_factory(), widget);
+    axis->tick.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->label.astyle == NULL) {
-    axis->label.astyle = style_factory_create_style(style_factory(), widget);
+    axis->label.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->title.astyle == NULL) {
-    axis->title.astyle = style_factory_create_style(style_factory(), widget);
+    axis->title.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

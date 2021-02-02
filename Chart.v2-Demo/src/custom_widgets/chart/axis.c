@@ -343,23 +343,23 @@ widget_t* axis_create(widget_t* parent, const widget_vtable_t* vt, xy_t x, xy_t 
   axis->data = darray_create(4, (tk_destroy_t)axis_data_destroy, NULL);
 
   if (axis->split_line.astyle == NULL) {
-    axis->split_line.astyle = style_factory_create_style(style_factory(), widget);
+    axis->split_line.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->line.astyle == NULL) {
-    axis->line.astyle = style_factory_create_style(style_factory(), widget);
+    axis->line.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->tick.astyle == NULL) {
-    axis->tick.astyle = style_factory_create_style(style_factory(), widget);
+    axis->tick.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->label.astyle == NULL) {
-    axis->label.astyle = style_factory_create_style(style_factory(), widget);
+    axis->label.astyle = widget_subpart_create_style(widget);
   }
 
   if (axis->title.astyle == NULL) {
-    axis->title.astyle = style_factory_create_style(style_factory(), widget);
+    axis->title.astyle = widget_subpart_create_style(widget);
   }
 
   return widget;

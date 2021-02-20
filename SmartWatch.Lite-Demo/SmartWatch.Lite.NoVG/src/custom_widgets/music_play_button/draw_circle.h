@@ -3,6 +3,10 @@
 
 #include "awtk.h"
 
+#ifdef WITH_NANOVG_GL
+#error "do not support OpenGL, please use AGGE!"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

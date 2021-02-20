@@ -24,8 +24,7 @@ public:
                       const std::string &save_file_path);
 
 private:
-  void clock_point_save::get_dir_file_list(const std::string &dir,
-                                           std::list<std::string> &file_list);
+  void get_dir_file_list(const std::string &dir, std::list<std::string> &file_list);
 
   unsigned int save_image_info_list(
       FILE *save_file,

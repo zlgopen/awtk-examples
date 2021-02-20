@@ -55,6 +55,7 @@ extern TK_CONST_DATA_ALIGN(const unsigned char image_play_prev_n[]);
 
 ret_t assets_init_res_480_272(void) {
   assets_manager_t* am = assets_manager();
+  assets_manager_set_theme(am, "res_480_272");
 
 #ifdef WITH_FS_RES
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");

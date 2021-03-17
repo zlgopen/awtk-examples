@@ -1,4 +1,4 @@
-# AWTK 示例 v2 使用说明
+# AWTK 示例使用说明
 
 #### 项目介绍：
 
@@ -10,8 +10,6 @@
 - SmartWatch.v2-Demo：智能手表演示 Demo
 - SmartWatch.Lite-Demo：小资源智能手表演示 Demo，可适配 1MB Flash 和 256kB RAM
 
-> awtk-examples.v2 与 awtk-examples 的区别是： v2 所有例子对 Designer 做了适配，可以用 Designer 打开工程文件 project.json 并编辑 UI 界面
->
 > HelloWorld.Xml-Demo：用传统手写 XML 方式开发的工程模板，可以用 assets_gen.bat 生成资源，但不能用 Designer 打开工程，也不依赖 Designer 生成资源
 
 
@@ -20,7 +18,7 @@
 
 1. 确保已经安装好 VS2015（Visual C++）、Python2.7（x64）、SCons3.0.1 等工具
 
-2. 将 awtk 和 awtk-examples.v2 下载到同一个文件夹下
+2. 将 awtk 和 awtk-examples 下载到同一个文件夹下
 
 3. 修改 awtk 文件夹的 awtk_config.py 脚本使用 AGGE 渲染方式
 
@@ -36,16 +34,16 @@
    C:\zlgopen\awtk> scons
    ```
 
-5. 进入 awtk-examples.v2 中某个项目文件夹，在命令行中输入 scons 编译项目
+5. 进入 awtk-examples 中某个项目文件夹，在命令行中输入 scons 编译项目
 
    ```
-   C:\zlgopen\awtk-examples.v2\HelloDesigner-Demo> scons
+   C:\zlgopen\awtk-examples\HelloDesigner-Demo> scons
    ```
 
 6. 进入项目的 bin 文件夹启动 demo
 
    ```
-   C:\zlgopen\awtk-examples.v2\HelloDesigner-Demo\bin> demo.exe
+   C:\zlgopen\awtk-examples\HelloDesigner-Demo\bin> demo.exe
    ```
 
 

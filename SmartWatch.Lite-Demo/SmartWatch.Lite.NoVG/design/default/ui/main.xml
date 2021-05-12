@@ -1,9 +1,0 @@
-<window x="0%" y="0%" w="320" h="240" >
-  <gesture name="gesture_manager" x="c" y="m" w="240" h="240">
-    <window_anim_menu w="100%" h="100%" animating_time="300">
-    </window_anim_menu>
-  </gesture>
-
-  <view x="0" y="0" w="40" h="240" style="bg_black" />
-  <view x="r" y="0" w="40" h="240" style="bg_black" />
-</window>

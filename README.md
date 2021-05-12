@@ -8,7 +8,6 @@
 - CleanAir.v2-Demo：新风系统演示 Demo
 - MusicPlayer.v2-Demo：音乐播放器演示 Demo
 - SmartWatch.v2-Demo：智能手表演示 Demo
-- SmartWatch.Lite-Demo：小资源智能手表演示 Demo，可适配 1MB Flash 和 256kB RAM
 
 > HelloWorld.Xml-Demo：用传统手写 XML 方式开发的工程模板，可以用 assets_gen.bat 生成资源，但不能用 Designer 打开工程，也不依赖 Designer 生成资源
 

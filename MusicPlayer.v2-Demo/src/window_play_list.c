@@ -100,7 +100,7 @@ static ret_t on_song_item_down(void* ctx, event_t* e) {
   if (m_win == NULL) return RET_FAIL;
   widget_t* widget = WIDGET(ctx);
   widget_t* vinyl_head = widget_lookup(m_win, "vinyl_head", TRUE);
-  guage_pointer_t* vh = GUAGE_POINTER(vinyl_head);
+  gauge_pointer_t* vh = GUAGE_POINTER(vinyl_head);
   int32_t iter_index = atoi(strtok(widget->name, "_"));
 
   list_view_clean(widget->parent);

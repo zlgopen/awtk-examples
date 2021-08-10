@@ -20,10 +20,11 @@
  */
 #include "awtk.h"
 #include <time.h>
+#include "text_selector/text_selector.h"
 
-static int32_t hour_value = 2;
-static int32_t min_value = 2;
-static int32_t sec_value = 2;
+static int32_t hour_value = 0;
+static int32_t min_value = 0;
+static int32_t sec_value = 0;
 
 static ret_t save_text_selector(widget_t* win) {
   widget_t* hour_selector = widget_lookup(win, "hour_selector", TRUE);
@@ -59,9 +60,9 @@ static ret_t on_cancle(void* ctx, event_t* e) {
 
   (void)e;
 
-  hour_value = 2;
-  min_value = 2;
-  sec_value = 2;
+  hour_value = 0;
+  min_value = 0;
+  sec_value = 0;
   dialog_quit(dialog, RET_QUIT);
 
   return RET_OK;
@@ -97,16 +98,25 @@ static void init_children_widget(widget_t* widget) {
 static ret_t set_text_selector(widget_t* win) {
   widget_t* hour_selector = widget_lookup(win, "hour_selector", TRUE);
   if (hour_selector) {
+#ifdef TEXT_SELECTOR_PROP_VALUE_ANIMATOR
+    widget_set_prop_bool(hour_selector, TEXT_SELECTOR_PROP_VALUE_ANIMATOR, FALSE);
+#endif
     text_selector_set_value(hour_selector, hour_value);
   }
 
   widget_t* min_selector = widget_lookup(win, "min_selector", TRUE);
   if (min_selector) {
+#ifdef TEXT_SELECTOR_PROP_VALUE_ANIMATOR
+    widget_set_prop_bool(min_selector, TEXT_SELECTOR_PROP_VALUE_ANIMATOR, FALSE);
+#endif
     text_selector_set_value(min_selector, min_value);
   }
 
   widget_t* sec_selector = widget_lookup(win, "sec_selector", TRUE);
   if (sec_selector) {
+#ifdef TEXT_SELECTOR_PROP_VALUE_ANIMATOR
+    widget_set_prop_bool(sec_selector, TEXT_SELECTOR_PROP_VALUE_ANIMATOR, FALSE);
+#endif
     text_selector_set_value(sec_selector, sec_value);
   }
 

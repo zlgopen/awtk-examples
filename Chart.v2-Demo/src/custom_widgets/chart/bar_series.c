@@ -436,7 +436,6 @@ static const series_vtable_t s_bar_series_minmax_internal_vtable = {
 
 TK_DECL_VTABLE(bar_series) = {.size = sizeof(bar_series_t),
                               .type = WIDGET_TYPE_BAR_SERIES,
-                              .enable_pool = TRUE,
                               .parent = TK_PARENT_VTABLE(series),
                               .clone_properties = s_bar_series_properties,
                               .persistent_properties = s_bar_series_properties,
@@ -448,7 +447,6 @@ TK_DECL_VTABLE(bar_series) = {.size = sizeof(bar_series_t),
 
 TK_DECL_VTABLE(bar_series_minmax) = {.size = sizeof(bar_series_t),
                                      .type = WIDGET_TYPE_BAR_SERIES_MINMAX,
-                                     .enable_pool = TRUE,
                                      .parent = TK_PARENT_VTABLE(series),
                                      .clone_properties = s_bar_series_properties,
                                      .persistent_properties = s_bar_series_properties,

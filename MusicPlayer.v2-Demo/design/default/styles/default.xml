@@ -370,3 +370,11 @@
     <normal bg_color="#FFFFFF"/>
   </style>
 </window>
+<series_line>
+    <style name="default">
+        <normal border_color="#00fffc" border_width="3"/>
+    </style>
+    <style name="s1">
+        <normal border_color="#00fffc"/>
+    </style>
+</series_line>

@@ -204,6 +204,10 @@ static ret_t changed_cover(widget_t* widget, bool_t next) {
   widget_animator_t* wa = NULL;
 
   WIDGET_FOR_EACH_CHILD_BEGIN(widget, child, index)
+  if (child->self_layout != NULL) {
+    self_layouter_destroy(child->self_layout);
+    child->self_layout = NULL;
+  }
   wa = widget_find_animator(child, "move");
   if (wa != NULL) {
     widget_destroy_animator(child, "move");
@@ -371,7 +375,7 @@ ret_t application_init() {
   /* 初始化自定义控件 */
   custom_widgets_init();
   system_info_set_default_font(system_info(), "default");
-  window_manager_set_cursor(window_manager(), NULL);
+
   g_img_index = 0;
 
   widget_t* win = window_open("home_page/home_page");

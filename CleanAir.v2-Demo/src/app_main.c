@@ -3,15 +3,14 @@
 /*********************************************************************************/
 #include "awtk.h"
 
-#if LCD_W == 480 || LCD_WIDTH == 480
-#include "../res/assets_res_480_272.inc"
-#else
-#include "../res/assets_default.inc"
-#endif
+#ifdef AWTK_WEB
+#include "assets.inc"
+#else /*AWTK_WEB*/
+#include "../res/assets.inc"
+#endif /*AWTK_WEB*/
 
 extern ret_t application_init(void);
 
 extern ret_t application_exit(void);
 
 #include "awtk_main.inc"
-

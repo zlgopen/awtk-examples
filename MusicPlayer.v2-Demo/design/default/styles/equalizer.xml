@@ -20,3 +20,43 @@
     <pressed/>
   </style>
 </slider>
+<line_series>
+  <style name="default">
+    <normal/>
+  </default>
+</line_series>
+<axis_split_line>
+  <style name="default">
+    <normal/>
+  </default>
+</axis_split_line>
+<axis_line>
+  <style name="default">
+    <normal/>
+  </default>
+</axis_line>
+<axis_tick>
+  <style name="default">
+    <normal/>
+  </default>
+</axis_tick>
+<axis_label>
+  <style name="default">
+    <normal/>
+  </default>
+</axis_label>
+<axis_title>
+  <style name="default">
+    <normal/>
+  </default>
+</axis_title>
+<series_line_area>
+  <style name="default">
+    <normal/>
+  </default>
+</series_line_area>
+<series_symbol>
+  <style name="default">
+    <normal/>
+  </default>
+</series_symbol>

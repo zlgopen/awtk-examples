@@ -1,5 +1,5 @@
-<dialog x="110" y="140" w="580" h="200" highlight="" name="timing" anim_hint="center_scale(easing=cubic_out)" style:normal:bg_color="#292929" style:normal:border="none">
-  <view w="100%" h="27" style:bg_color="gray">
+<dialog x="110" y="140" w="580" h="200" name="timing" anim_hint="center_scale(easing=cubic_out)" style:normal:bg_color="#292929" style:normal:border="none">
+  <view w="100%" h="28" style:bg_color="gray">
     <label name="title" x="0" y="0" w="100%" h="100%" style:text_color="black" style:text_align_h="left" style:normal:text_align_h="center" style:normal:bg_color="#000000" style:normal:text_color="#E7E6E6" style:normal:font_size="28">
       <property name="tr_text">
         <![CDATA[Timing Setting]]>
@@ -17,10 +17,10 @@
       <![CDATA[none]]>
     </property>
     <property name="options">
-      <![CDATA[1-24]]>
+      <![CDATA[0-23]]>
     </property>
     <property name="selected_index">
-      <![CDATA[7]]>
+      <![CDATA[0]]>
     </property>
   </text_selector>
   <text_selector name="min_selector" x="105" y="69" w="55" h="120" visible_nr="3" style:normal:fg_color="#A0A0A0" style:normal:bg_color="#292929" style:normal:text_color="#FFFFFF" style:normal:border_width="0" style:normal:border_color="#292929">
@@ -34,7 +34,7 @@
       <![CDATA[0-59]]>
     </property>
     <property name="selected_index">
-      <![CDATA[10]]>
+      <![CDATA[0]]>
     </property>
   </text_selector>
   <text_selector name="sec_selector" x="170" y="69" w="55" h="120" visible_nr="3" style:normal:fg_color="#A0A0A0" style:normal:bg_color="#292929" style:normal:text_color="#FFFFFF" style:normal:border_width="0" style:normal:border_color="#292929">
@@ -48,7 +48,7 @@
       <![CDATA[0-59]]>
     </property>
     <property name="selected_index">
-      <![CDATA[16]]>
+      <![CDATA[0]]>
     </property>
   </text_selector>
   <button name="ok" x="r:30" y="75" w="150" h="30" repeat="0" enable_long_press="false" style:normal:font_size="24" style:normal:text_color="#FFFFFF" style:normal:bg_color="#393939" style:normal:border_color="#484848">

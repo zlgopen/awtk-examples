@@ -1,4 +1,4 @@
-<dialog x="66" y="78" w="347" h="115" highlight="" name="timing" anim_hint="center_scale(easing=cubic_out)" style:normal:bg_color="#292929" style:normal:border="none">
+<dialog x="66" y="78" w="347" h="115" name="timing" anim_hint="center_scale(easing=cubic_out)" style:normal:bg_color="#292929" style:normal:border="none">
   <view w="100%" h="27" style:bg_color="gray">
     <label name="title" x="0" y="0" w="100%" h="100%" style:text_color="black" style:text_align_h="left" style:normal:text_align_h="center" style:normal:bg_color="#000000" style:normal:text_color="#E7E6E6" style:normal:font_size="20">
       <property name="tr_text">

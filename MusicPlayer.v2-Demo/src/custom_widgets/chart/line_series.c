@@ -382,7 +382,6 @@ static const series_vtable_t s_line_series_internal_vtable = {
 
 TK_DECL_VTABLE(line_series) = {.size = sizeof(line_series_t),
                                .type = WIDGET_TYPE_LINE_SERIES,
-                               .enable_pool = TRUE,
                                .parent = TK_PARENT_VTABLE(series),
                                .clone_properties = s_line_series_properties,
                                .persistent_properties = s_line_series_properties,
@@ -412,7 +411,6 @@ static const series_vtable_t s_line_series_colorful_internal_vtable = {
 
 TK_DECL_VTABLE(line_series_colorful) = {.size = sizeof(line_series_t),
                                         .type = WIDGET_TYPE_LINE_SERIES_COLORFUL,
-                                        .enable_pool = TRUE,
                                         .parent = TK_PARENT_VTABLE(series),
                                         .clone_properties = s_line_series_properties,
                                         .persistent_properties = s_line_series_properties,

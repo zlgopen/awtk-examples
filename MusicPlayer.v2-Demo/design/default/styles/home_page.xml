@@ -69,8 +69,8 @@
 <slider>
   <style name="slider_h" bg_color="#FFFFFF" fg_color="#00FFFC" icon="slider_drag">
     <normal/>
-    <disable bg_color="#D8D8D866" fg_color="#338FFF66" icon="rounded_n" round_radius="5"/>
-    <focused bg_color="#D8D8D8" fg_color="#338FFF" icon="rounded_o" round_radius="5"/>
+    <disable bg_color="#D8D8D866" fg_color="#338FFF66" round_radius="5"/>
+    <focused bg_color="#D8D8D8" fg_color="#338FFF" round_radius="5"/>
     <over round_radius=""/>
     <pressed round_radius=""/>
   </style>

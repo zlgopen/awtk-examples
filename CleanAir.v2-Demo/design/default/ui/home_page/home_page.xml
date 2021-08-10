@@ -1,280 +1,58 @@
 <window name="main" style:normal:bg_color="#323232">
   <label name="bkgnd" x="0" y="0" w="100%" h="100%" style="bg0" style:normal:bg_color="#000000" tr_text="Label"/>
-  <button name="auto" x="83" y="419" w="37" h="37" style:normal:icon="auto" style:over:icon="auto_hover" style:pressed:icon="auto_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
+  <button name="auto" x="83" y="419" w="37" h="37" style:normal:icon="auto" style:over:icon="auto_hover" style:pressed:icon="auto_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000"/>
   <rich_text x="456" y="148" w="56" h="30" text="<font color=&quot;black&quot; align_v=&quot;top&quot; size=&quot;28&quot;>μg/m</font><font color=&quot;black&quot; align_v=&quot;top&quot; size=&quot;16&quot;>3</font>"/>
   <rich_text x="313" y="182" w="63" h="40" name="CO2" text="<font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;36&quot;>CO</font> <font color=&quot;black&quot; align_v=&quot;bottom&quot; size=&quot;20&quot;>2</font>"/>
   <rich_text x="187" y="117" w="50" h="28" text="<font color=&quot;white&quot; align_v=&quot;bottom&quot; size=&quot;28&quot;>m</font><font color=&quot;white&quot; align_v=&quot;top&quot; size=&quot;18&quot;>3</font><font color=&quot;white&quot; align_v=&quot;bottom&quot; size=&quot;28&quot;>/h</font>"/>
-  <button name="timing" x="231" y="419" w="37" h="37" style:normal:icon="timer" style:over:icon="timer_hover" style:pressed:icon="timer_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="record" x="533" y="419" w="37" h="37" style:normal:icon="record" style:over:icon="record_hover" style:pressed:icon="record_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="setting" x="676" y="419" w="37" h="37" style:normal:icon="setting" style:over:icon="setting_hover" style:pressed:icon="setting_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <label name="Auto" x="87" y="461" w="25" h="12" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Auto"/>
-  <label name="Auto1" x="236" y="461" w="25" h="12" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Time"/>
-  <label name="Auto" x="538" y="460" w="25" h="12" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Record"/>
-  <label name="Auto3" x="682" y="460" w="25" h="12" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Setting"/>
-  <button name="switch" x="365" y="392" w="71" h="71" style:normal:icon="switch" style:over:icon="switch_hover" style:pressed:icon="switch_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <label name="flow" x="57" y="90" w="132" h="53" style:normal:text_color="#FFFFFF" style:normal:font_size="100" text="500"/>
-  <label name="humidity " x="693" y="307" w="35" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="50"/>
-  <button name="frequency_dec" x="648" y="106" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="temperature_dec" x="648" y="201" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="frequency_inc" x="745" y="106" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="temperature_inc" x="745" y="201" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <button name="humidity_inc" x="745" y="302" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
+  <button name="timing" x="231" y="419" w="37" h="37" style:normal:icon="timer" style:over:icon="timer_hover" style:pressed:icon="timer_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
+  <button name="record" x="533" y="419" w="37" h="37" style:normal:icon="record" style:over:icon="record_hover" style:pressed:icon="record_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000"/>
+  <button name="setting" x="676" y="419" w="37" h="37" style:normal:icon="setting" style:over:icon="setting_hover" style:pressed:icon="setting_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000"/>
+  <label name="Auto" x="88" y="456" w="25" h="20" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Auto"/>
+  <label name="Auto1" x="237" y="456" w="25" h="20" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Time"/>
+  <label name="Auto" x="538" y="456" w="25" h="20" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Record"/>
+  <label name="Auto3" x="682" y="456" w="25" h="20" style:normal:text_color="#E7E6E6" style:normal:font_size="20" tr_text="Setting"/>
+  <button name="switch" x="365" y="392" w="71" h="71" style:normal:icon="switch" style:over:icon="switch_hover" style:pressed:icon="switch_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
+  <label name="flow" x="57" y="69" w="132" h="100" style:normal:text_color="#FFFFFF" style:normal:font_size="100" text="500"/>
+  <label name="humidity " x="693" y="294" w="35" h="46" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="50"/>
+  <button name="frequency_dec" x="648" y="106" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
+  <button name="temperature_dec" x="648" y="201" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000"/>
+  <button name="frequency_inc" x="745" y="106" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000"/>
+  <button name="temperature_inc" x="745" y="201" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
+  <button name="humidity_inc" x="745" y="302" w="30" h="35" style:normal:icon="arr_right" style:over:icon="arr_right_hover" style:pressed:icon="arr_right_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
   <label name="frequency1" x="648" y="48" w="130" h="53" style:normal:text_color="#FFFFFF" style:normal:font_size="26" text="Frequency (Hz)"/>
   <label name="temperature1" x="639" y="154" w="145" h="42" style:normal:text_color="#FFFFFF" style:normal:font_size="26" text="Temperature  (℃)"/>
   <label name="label7" x="645" y="256" w="130" h="41" style:normal:text_color="#FFFFFF" style:normal:font_size="26" text="Humidity  (℃)"/>
   <image_animation name="fan_1" x="447" y="308" w="31" h="28" image="fan_1" sequence="ab" delay="100" auto_play="false" interval="500"/>
   <view name="view" x="-64" y="438" w="25" h="12"/>
-  <button name="humidity_dec" x="648" y="302" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000">
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:normal:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:pressed:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-  </button>
-  <label name="label1" x="7" y="7" w="173" h="35" style:normal:text_color="#FFFFFF" style:normal:font_size="36" tr_text="CleanAir Demo"/>
+  <button name="humidity_dec" x="648" y="302" w="30" h="35" style:normal:icon="arr_left" style:over:icon="arr_left_hover" style:pressed:icon="arr_left_push" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:over:bg_color="#00000000" style:over:border_color="#00000000" style:over:border="none" style:normal:border="none" style:pressed:border="none" style:pressed:bg_color="#00000000"/>
+  <label name="label1" x="7" y="7" w="173" h="36" style:normal:text_color="#FFFFFF" style:normal:font_size="36" tr_text="CleanAir Demo"/>
   <digit_clock name="digit_clock" x="528" y="7" w="206" h="35" style:normal:text_color="#FFFFFF" style:normal:font_size="32" format="Y/MM/DD hh:mm:ss"/>
-  <button name="language_btn" x="749" y="10" w="39" h="31" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none">
-    <property name="style:over:border">
-      <![CDATA[none]]>
-    </property>
-    <property name="style:over:border_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style:over:bg_color">
-      <![CDATA[#00000000]]>
-    </property>
-    <property name="style">
-      <![CDATA[language_zh]]>
-    </property>
-  </button>
+  <button name="language_btn" x="749" y="10" w="39" h="31" style:normal:bg_color="#00000000" style:normal:border_color="#00000000" style:pressed:bg_color="#00000000" style:pressed:border="none" style:normal:border="none" style:over:border="none" style:over:border_color="#00000000" style:over:bg_color="#00000000" style="language_zh"/>
   <image name="fan_2" x="448" y="359" w="28" h="27" image="fan_2"/>
-  <label name="fan1" x="488" y="305" w="35" h="30" style:normal:text_color="#000000" text="84"/>
-  <label name="fan2" x="487" y="356" w="35" h="30" style:normal:text_color="#000000" text="81"/>
-  <label name="temperature_out1" x="269" y="305" w="63" h="30" style="reading_temp_hum_black" text="23.5"/>
-  <label name="temperature_out2" x="270" y="356" w="63" h="30" style="reading_temp_hum_alarm" text="21.8"/>
-  <label name="label10" x="525" y="313" w="21" h="22" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
-  <label name="label11" x="525" y="364" w="21" h="22" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
-  <label name="label12" x="339" y="313" w="21" h="22" style:normal:text_color="#000000" style:normal:font_size="28" text="℃"/>
-  <label name="label13" x="339" y="364" w="21" h="22" style:normal:text_color="#000000" style:normal:font_size="28" text="℃"/>
-  <label name="temperature_in1" x="117" y="305" w="63" h="30" style:normal:text_color="#FFFFFF" text="21.2"/>
-  <label name="temperature_in2" x="117" y="356" w="63" h="30" style:normal:text_color="#FFFFFF" text="23.9"/>
-  <label name="label16" x="184" y="313" w="21" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="℃"/>
-  <label name="label17" x="184" y="364" w="21" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="℃"/>
+  <label name="fan1" x="488" y="299" w="35" h="46" style:normal:text_color="#000000" text="84"/>
+  <label name="fan2" x="487" y="350" w="35" h="46" style:normal:text_color="#000000" text="81"/>
+  <label name="temperature_out1" x="269" y="300" w="63" h="46" style="reading_temp_hum_black" text="23.5"/>
+  <label name="temperature_out2" x="270" y="352" w="63" h="46" style="reading_temp_hum_alarm" text="21.8"/>
+  <label name="label10" x="525" y="313" w="21" h="28" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
+  <label name="label11" x="525" y="364" w="21" h="28" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
+  <label name="label12" x="339" y="313" w="21" h="28" style:normal:text_color="#000000" style:normal:font_size="28" text="℃"/>
+  <label name="label13" x="339" y="364" w="21" h="28" style:normal:text_color="#000000" style:normal:font_size="28" text="℃"/>
+  <label name="temperature_in1" x="117" y="300" w="63" h="46" style:normal:text_color="#FFFFFF" text="21.2"/>
+  <label name="temperature_in2" x="117" y="352" w="63" h="46" style:normal:text_color="#FFFFFF" text="23.9"/>
+  <label name="label16" x="184" y="313" w="21" h="28" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="℃"/>
+  <label name="label17" x="184" y="364" w="21" h="28" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="℃"/>
   <image name="wind_in" x="215" y="322" w="45" h="14" image="wind_in"/>
   <image name="wind_out" x="215" y="372" w="45" h="14" image="wind_out"/>
-  <label name="label18" x="304" y="150" w="83" h="22" style:normal:text_color="#000000" style:normal:font_size="36" text="PM2.5"/>
-  <label name="PM2_5" x="413" y="150" w="33" h="22" style:normal:text_color="#000000" style:normal:font_size="42" text="19"/>
-  <label name="CO_2" x="396" y="192" w="55" h="22" style:normal:text_color="#000000" style:normal:font_size="42" text="315"/>
+  <label name="label18" x="304" y="150" w="83" h="36" style:normal:text_color="#000000" style:normal:font_size="36" text="PM2.5"/>
+  <label name="PM2_5" x="413" y="141" w="33" h="42" style:normal:text_color="#000000" style:normal:font_size="42" text="19"/>
+  <label name="CO_2" x="396" y="182" w="55" h="42" style:normal:text_color="#000000" style:normal:font_size="42" text="315"/>
   <label name="label21" x="455" y="194" w="35" h="22" style:normal:text_color="#000000" style:normal:font_size="22" text="PPM"/>
-  <label name="humidity_out" x="298" y="264" w="35" h="22" style:normal:text_color="#000000" text="50"/>
-  <label name="label23" x="339" y="268" w="21" h="22" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
-  <label name="humidity_in" x="145" y="264" w="35" h="22" style:normal:text_color="#FFFFFF" text="50"/>
-  <label name="label25" x="184" y="268" w="21" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="%"/>
-  <label name="temperature" x="693" y="206" w="35" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="45"/>
-  <label name="frequency" x="693" y="111" w="35" h="22" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="25"/>
+  <label name="humidity_out" x="298" y="256" w="35" h="46" style:normal:text_color="#000000" text="50"/>
+  <label name="label23" x="339" y="268" w="21" h="28" style:normal:text_color="#000000" style:normal:font_size="28" text="%"/>
+  <label name="humidity_in" x="145" y="256" w="35" h="46" style:normal:text_color="#FFFFFF" text="50"/>
+  <label name="label25" x="184" y="268" w="21" h="28" style:normal:text_color="#FFFFFF" style:normal:font_size="28" text="%"/>
+  <label name="temperature" x="693" y="193" w="35" h="46" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="45"/>
+  <label name="frequency" x="693" y="98" w="35" h="46" style:normal:text_color="#FFFFFF" style:normal:font_size="46" text="25"/>
   <image name="timing_status" x="63" y="62" w="25" h="25" image="num0" style:normal:icon="clock" visible="false"/>
   <image name="alarm_status" x="16" y="62" w="25" h="25" style:normal:icon="bell"/>
 </window>

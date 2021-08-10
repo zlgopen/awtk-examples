@@ -1,20 +1,6 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
-#include "assets/default/inc/styles/app.data"
-#include "assets/default/inc/styles/calendar.data"
-#include "assets/default/inc/styles/default.data"
-#include "assets/default/inc/styles/health.data"
-#include "assets/default/inc/styles/heart_rate.data"
-#include "assets/default/inc/styles/message.data"
-#include "assets/default/inc/styles/music.data"
-#include "assets/default/inc/styles/quick.data"
-#include "assets/default/inc/styles/select_dial.data"
-#include "assets/default/inc/styles/watch_01.data"
-#include "assets/default/inc/styles/watch_02.data"
-#include "assets/default/inc/styles/watch_04.data"
-#include "assets/default/inc/styles/watch_06.data"
-#include "assets/default/inc/styles/weather.data"
 #include "assets/default/inc/ui/app.data"
 #include "assets/default/inc/ui/app_default.data"
 #include "assets/default/inc/ui/calendar.data"
@@ -30,6 +16,20 @@
 #include "assets/default/inc/ui/watch_04.data"
 #include "assets/default/inc/ui/watch_06.data"
 #include "assets/default/inc/ui/weather.data"
+#include "assets/default/inc/styles/app.data"
+#include "assets/default/inc/styles/calendar.data"
+#include "assets/default/inc/styles/default.data"
+#include "assets/default/inc/styles/health.data"
+#include "assets/default/inc/styles/heart_rate.data"
+#include "assets/default/inc/styles/message.data"
+#include "assets/default/inc/styles/music.data"
+#include "assets/default/inc/styles/quick.data"
+#include "assets/default/inc/styles/select_dial.data"
+#include "assets/default/inc/styles/watch_01.data"
+#include "assets/default/inc/styles/watch_02.data"
+#include "assets/default/inc/styles/watch_04.data"
+#include "assets/default/inc/styles/watch_06.data"
+#include "assets/default/inc/styles/weather.data"
 #ifdef WITH_STB_IMAGE
 #include "assets/default/inc/images/0.res"
 #include "assets/default/inc/images/1.res"
@@ -191,20 +191,6 @@ ret_t assets_init(void) {
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");
   assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
 #else
-  assets_manager_add(am, style_app);
-  assets_manager_add(am, style_calendar);
-  assets_manager_add(am, style_default);
-  assets_manager_add(am, style_health);
-  assets_manager_add(am, style_heart_rate);
-  assets_manager_add(am, style_message);
-  assets_manager_add(am, style_music);
-  assets_manager_add(am, style_quick);
-  assets_manager_add(am, style_select_dial);
-  assets_manager_add(am, style_watch_01);
-  assets_manager_add(am, style_watch_02);
-  assets_manager_add(am, style_watch_04);
-  assets_manager_add(am, style_watch_06);
-  assets_manager_add(am, style_weather);
   assets_manager_add(am, ui_app);
   assets_manager_add(am, ui_app_default);
   assets_manager_add(am, ui_calendar);
@@ -220,6 +206,20 @@ ret_t assets_init(void) {
   assets_manager_add(am, ui_watch_04);
   assets_manager_add(am, ui_watch_06);
   assets_manager_add(am, ui_weather);
+  assets_manager_add(am, style_app);
+  assets_manager_add(am, style_calendar);
+  assets_manager_add(am, style_default);
+  assets_manager_add(am, style_health);
+  assets_manager_add(am, style_heart_rate);
+  assets_manager_add(am, style_message);
+  assets_manager_add(am, style_music);
+  assets_manager_add(am, style_quick);
+  assets_manager_add(am, style_select_dial);
+  assets_manager_add(am, style_watch_01);
+  assets_manager_add(am, style_watch_02);
+  assets_manager_add(am, style_watch_04);
+  assets_manager_add(am, style_watch_06);
+  assets_manager_add(am, style_weather);
   assets_manager_add(am, image_0);
   assets_manager_add(am, image_1);
   assets_manager_add(am, image_10);
@@ -362,12 +362,12 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_ico_wechart_over);
   assets_manager_add(am, image_vol_bar_bg);
   assets_manager_add(am, image_vol_bar_fg);
-#ifdef WITH_VGCANVAS
-#endif /*WITH_VGCANVAS*/
 #ifdef WITH_TRUETYPE_FONT
   assets_manager_add(am, font_default);
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
+#ifdef WITH_VGCANVAS
+#endif /*WITH_VGCANVAS*/
 #endif
 
   tk_init_assets();

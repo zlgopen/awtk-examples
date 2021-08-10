@@ -46,7 +46,8 @@
   },
   "creator": {
     "name": "AWTK Designer",
-    "version": "1.0.0"
+    "version": "1.1.4"
   },
-  "awtkRoot": "${DesignerPath}/SDK/awtk"
+  "awtkRoot": "${DesignerPath}/SDK/awtk",
+  "modifyTime": "2021/08/09"
 }

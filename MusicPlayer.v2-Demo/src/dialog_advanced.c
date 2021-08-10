@@ -24,6 +24,8 @@
 
 #define BUFF_LEN 32
 
+static bool_t s_is_down_dialog;
+static int32_t g_evt_pointer_up_num;
 static int32_t g_evt_pointer_down_num;
 
 static ret_t on_close(void* ctx, event_t* e) {
@@ -46,6 +48,7 @@ static ret_t on_quit_anim(void* ctx, event_t* e) {
   }
   animator = widget_find_animator(dialog, "move");
   widget_animator_on(animator, EVT_ANIM_END, on_close, dialog);
+  widget_off(dialog, g_evt_pointer_up_num);
   widget_off(dialog, g_evt_pointer_down_num);
 
   return RET_OK;
@@ -54,15 +57,21 @@ static ret_t on_quit_anim(void* ctx, event_t* e) {
 static ret_t on_dialog_state(void* ctx, event_t* e) {
   widget_t* dialog = (widget_t*)ctx;
   pointer_event_t evt = *(pointer_event_t*)e;
-  widget_t* close = widget_lookup(dialog, "close", TRUE);
-  if (evt.x > (dialog->x + dialog->w) || evt.x < dialog->x || evt.y < dialog->y ||
-      evt.y > (dialog->y + dialog->h)) {
-    evt.e = event_init(EVT_CLICK, close);
-    evt.e.size = sizeof(evt);
-    widget_dispatch(close, (event_t*)&evt);
-    widget_invalidate(close, NULL);
+  if (e->type == EVT_POINTER_DOWN) {
+    if (evt.x > (dialog->x + dialog->w) || evt.x < dialog->x || evt.y < dialog->y ||
+        evt.y > (dialog->y + dialog->h)) {
+      s_is_down_dialog = TRUE;
+    }
+  } else if (s_is_down_dialog) {
+    widget_t* close = widget_lookup(dialog, "close", TRUE);
+    if (evt.x > (dialog->x + dialog->w) || evt.x < dialog->x || evt.y < dialog->y ||
+        evt.y > (dialog->y + dialog->h)) {
+      evt.e = event_init(EVT_CLICK, close);
+      evt.e.size = sizeof(evt);
+      widget_dispatch(close, (event_t*)&evt);
+      widget_invalidate(close, NULL);
+    }
   }
-
   return RET_OK;
 }
 
@@ -169,13 +178,16 @@ ret_t open_advanced_dialog() {
   widget_t* dialog = dialog_open("advanced/advanced");
   widget_t* wm = window_manager();
 
+  s_is_down_dialog = FALSE;
+
   if (wm->w == 800) {
     widget_move(dialog, 400, 53);
   } else if (wm->w == 480) {
     widget_move(dialog, 240, 30);
   }
   if (dialog) {
-    g_evt_pointer_down_num = widget_on(dialog, EVT_POINTER_UP, on_dialog_state, dialog);
+    g_evt_pointer_up_num = widget_on(dialog, EVT_POINTER_UP, on_dialog_state, dialog);
+    g_evt_pointer_down_num = widget_on(dialog, EVT_POINTER_DOWN, on_dialog_state, dialog);
     init_children_widget(dialog);
     return dialog_modal(dialog);
   }

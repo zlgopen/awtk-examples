@@ -25,11 +25,11 @@ static ret_t assets_init_internal(const char* theme) {
 
   assets_manager_set_theme(am, theme);
 
-  if (tk_str_eq(theme, "default")) {
+  if (tk_str_eq(theme, "default")) { 
     return assets_init_default();
-  } else if (tk_str_eq(theme, "res_480_272")) {
+  }  else if (tk_str_eq(theme, "res_480_272")) {
     return assets_init_res_480_272();
-  } else {
+  }  else { 
     log_debug("%s not support.\n", theme);
     return RET_NOT_IMPL;
   }

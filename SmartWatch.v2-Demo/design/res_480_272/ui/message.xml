@@ -8,7 +8,7 @@
             <image name="image" image="app_cloudy_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
             <view name="row" x="86" y="m" w="123" h="100%">
               <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
-              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="天气晴朗"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" text="天气晴朗"/>
             </view>
             <draggable left="-250" horizontal_only="true"/>
           </view>
@@ -18,7 +18,7 @@
             <image name="image" image="app_message_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
             <view name="row" x="86" y="m" w="123" h="100%">
               <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
-              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="你好啊在干嘛？"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" text="你好啊在干嘛？"/>
             </view>
             <draggable left="-250" horizontal_only="true"/>
           </view>
@@ -28,7 +28,7 @@
             <image name="image" image="app_training_normal_88" x="31" y="m" w="54" h="54" draw_type="scale_auto"/>
             <view name="row" x="86" y="m" w="123" h="100%">
               <digit_clock name="digit_clock" format="hh:mm" x="0" y="0" w="100%" h="50%" style="time"/>
-              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" tr_text="多久没运动了"/>
+              <label name="label" x="0" y="50%" w="100%" h="50%" style="text" text="多久没运动了"/>
             </view>
             <draggable left="-250" horizontal_only="true"/>
           </view>

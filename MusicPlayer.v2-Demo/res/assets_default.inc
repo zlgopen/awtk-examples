@@ -1,13 +1,13 @@
 #include "awtk.h"
 #include "base/assets_manager.h"
 #ifndef WITH_FS_RES
-#include "assets/default/inc/styles/default.data"
-#include "assets/default/inc/styles/equalizer.data"
-#include "assets/default/inc/styles/home_page.data"
 #include "assets/default/inc/ui/advanced/advanced.data"
 #include "assets/default/inc/ui/equalizer/equalizer.data"
 #include "assets/default/inc/ui/home_page/home_page.data"
 #include "assets/default/inc/ui/play_list/play_list.data"
+#include "assets/default/inc/styles/default.data"
+#include "assets/default/inc/styles/equalizer.data"
+#include "assets/default/inc/styles/home_page.data"
 #include "assets/default/inc/data/let_it_go_txt.data"
 #include "assets/default/inc/data/see_you_again_txt.data"
 #include "assets/default/inc/data/yellow_txt.data"
@@ -56,13 +56,13 @@ ret_t assets_init(void) {
   assets_manager_preload(am, ASSET_TYPE_FONT, "default");
   assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
 #else
-  assets_manager_add(am, style_default);
-  assets_manager_add(am, style_equalizer);
-  assets_manager_add(am, style_home_page);
   assets_manager_add(am, ui_advanced_advanced);
   assets_manager_add(am, ui_equalizer_equalizer);
   assets_manager_add(am, ui_home_page_home_page);
   assets_manager_add(am, ui_play_list_play_list);
+  assets_manager_add(am, style_default);
+  assets_manager_add(am, style_equalizer);
+  assets_manager_add(am, style_home_page);
   assets_manager_add(am, data_let_it_go_txt);
   assets_manager_add(am, data_see_you_again_txt);
   assets_manager_add(am, data_yellow_txt);
@@ -90,14 +90,14 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_slider_drag);
   assets_manager_add(am, image_Vinyl);
   assets_manager_add(am, image_yellow);
-#ifdef WITH_VGCANVAS
-  assets_manager_add(am, image_pointer);
-  assets_manager_add(am, image_round);
-#endif /*WITH_VGCANVAS*/
 #ifdef WITH_TRUETYPE_FONT
   assets_manager_add(am, font_default);
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
+#ifdef WITH_VGCANVAS
+  assets_manager_add(am, image_pointer);
+  assets_manager_add(am, image_round);
+#endif /*WITH_VGCANVAS*/
 #endif
 
   tk_init_assets();

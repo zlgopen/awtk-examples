@@ -129,7 +129,7 @@
 #endif /*WITH_STB_IMAGE*/
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
-#if defined(WITH_TRUETYPE_FONT)
+#ifdef WITH_TRUETYPE_FONT
 #include "assets/default/inc/fonts/default.res"
 #else /*WITH_TRUETYPE_FONT*/
 #endif /*WITH_TRUETYPE_FONT*/
@@ -266,7 +266,10 @@ ret_t assets_init(void) {
   assets_manager_add(am, image_rounded_p);
   assets_manager_add(am, image_shift);
   assets_manager_add(am, image_shifton);
+#ifdef WITH_TRUETYPE_FONT
   assets_manager_add(am, font_default);
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
 #ifdef WITH_VGCANVAS
 #endif /*WITH_VGCANVAS*/
 #endif

@@ -18,6 +18,7 @@
 static ret_t on_calendar_down(void* ctx, event_t* e);
 static ret_t on_calendar_up(void* ctx, event_t* e);
 
+static self_layouter_t* s_calendar_label_layouter = NULL;
 static date_time_t date;                                                         // 当前时间
 static date_time_t date_current;                                                 // 展示时间
 static int day_of_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};  // 每个月的天数
@@ -132,6 +133,8 @@ static ret_t on_calendar_up_prev(void* ctx, event_t* e) {
       if (animator != NULL) {
         widget_animator_on(animator, EVT_ANIM_END, on_calendar_up, window);
       }
+      s_calendar_label_layouter = widget->self_layout;
+      widget->self_layout = NULL;
     }
   }
   widget_invalidate_force(window, NULL);
@@ -141,6 +144,10 @@ static ret_t on_calendar_up_prev(void* ctx, event_t* e) {
 ret_t on_widget_invalidate(void* ctx, event_t* e) {
   (void)e;
   widget_t* widget = WIDGET(ctx);
+  widget_t* calendar_labels = widget_lookup(widget, s_calendar_labels, TRUE);
+  if (calendar_labels) {
+    calendar_labels->self_layout = s_calendar_label_layouter;
+  }
   widget_invalidate(widget, NULL);
   return RET_OK;
 }
@@ -199,6 +206,8 @@ static ret_t on_calendar_down_prev(void* ctx, event_t* e) {
       if (animator != NULL) {
         widget_animator_on(animator, EVT_ANIM_END, on_calendar_down, window);
       }
+      s_calendar_label_layouter = widget->self_layout;
+      widget->self_layout = NULL;
     }
   }
   widget_invalidate_force(window, NULL);

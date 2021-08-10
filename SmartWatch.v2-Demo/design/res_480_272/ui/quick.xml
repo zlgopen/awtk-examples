@@ -2,12 +2,12 @@
   <gesture name="gesture" x="c" y="m" w="240" h="240">
     <slide_view name="slide_view" x="c" y="m" w="100%" h="100%">
       <view name="view" x="0" y="0" w="100%" h="100%">
-        <label name="label" x="c" y="38" w="131" h="21" style="text" tr_text="支付宝付款码"/>
-        <button name="alipay" x="c" y="77" w="188" h="96" repeat="0" enable_long_press="false" style="alipay" tr_text=""/>
+        <label name="label" x="c" y="33" w="131" h="31" style="text" text="支付宝付款码"/>
+        <button name="alipay" x="c" y="77" w="188" h="96" repeat="0" enable_long_press="false" style="alipay" text=""/>
       </view>
       <view name="view" x="0" y="0" w="100%" h="100%">
-        <label name="label" x="c" y="38" w="120" h="21" style="text" tr_text="请靠近读卡器"/>
-        <button name="gongshang" x="c" y="77" w="169" h="106" repeat="0" enable_long_press="false" style="gongshang" tr_text=""/>
+        <label name="label" x="c" y="33" w="120" h="31" style="text" text="请靠近读卡器"/>
+        <button name="gongshang" x="c" y="77" w="169" h="106" repeat="0" enable_long_press="false" style="gongshang" text=""/>
       </view>
     </slide_view>
     <slide_indicator_arc name="slide_indicator_arc" x="0" y="228" w="240" h="12" spacing="8"/>

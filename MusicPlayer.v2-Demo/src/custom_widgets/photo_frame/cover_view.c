@@ -27,7 +27,7 @@ static ret_t cover_view_on_paint_children(widget_t* widget, canvas_t* c) {
   vgcanvas_t* vg = canvas_get_vgcanvas(c);
   rect_t r;
   rect_t r_save;
-  rect_t r_vg_save;
+  rectf_t r_vg_save;
   return_value_if_fail(cover_view != NULL, RET_BAD_PARAMS);
 
   canvas_get_clip_rect(c, &r_save);

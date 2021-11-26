@@ -165,13 +165,6 @@ static ret_t on_hc_value_changed(void* ctx, event_t* e) {
   return RET_OK;
 }
 
-static float_t widget_get_prop_float(widget_t* widget, const char* name, float_t defval) {
-  value_t v;
-  return_value_if_fail(widget_get_prop(widget, name, &v) == RET_OK, defval);
-
-  return value_float(&v);
-}
-
 static void update_label_text(widget_t* widget, widget_t* label) {
   str_t str;
 

@@ -5,7 +5,7 @@
         <label name="week" x="c" y="18" w="43" h="35" style="week" text="WEN"/>
         <label name="day" x="c" y="43" w="25" h="35" style="day" text="10"/>
       </button>
-      <button name="watch_04_weather" x="215" y="125" w="88" h="88" repeat="0" enable_long_press="false" style="enable" text="">
+      <button name="watch_04_weather" x="215" y="125" w="88" h="88" repeat="0" enable_long_press="true" style="enable" text="">
         <view name="view" x="c" y="14" w="39" h="34" style="cloud_sun"/>
         <label name="day1" x="18" y="30" w="60" h="60" style="weather_now" text="18~24°"/>
       </button>

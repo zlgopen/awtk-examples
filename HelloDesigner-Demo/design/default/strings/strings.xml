@@ -1,12 +1,16 @@
 <string name="Basic">
   <language name="zh_CN">基础</language>
+  <language name="en_US">Basic</language>
 </string>
 <string name="Background Change">
   <language name="zh_CN">背景切换</language>
+  <language name="en_US">Background Change</language>
 </string>
 <string name="List View">
   <language name="zh_CN">列表</language>
+  <language name="en_US">List View</language>
 </string>
 <string name="Animate Widget">
   <language name="zh_CN">控件动画</language>
+  <language name="en_US">Animate Widget</language>
 </string>

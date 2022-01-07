@@ -1,6 +1,8 @@
 {
   "name": "HelloDesigner-Demo",
   "entry": "home_page/home_page",
+  "description": "最简单的入门 Demo，包含基本的文本和按钮控件使用方法",
+  "type": "PROJECT_WIDGETS_APPLICATION",
   "assets": {
     "loadFrom": "any",
     "const": "resource_data",

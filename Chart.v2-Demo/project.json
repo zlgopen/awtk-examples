@@ -1,6 +1,8 @@
 {
   "name": "Chart.2-Demo",
   "entry": "home_page/home_page",
+  "description": "图表演示 Demo，包含仪表、饼图、曲线图、柱状图",
+  "type": "PROJECT_WIDGETS_APPLICATION",
   "assets": {
     "loadFrom": "any",
     "const": "resource_data",

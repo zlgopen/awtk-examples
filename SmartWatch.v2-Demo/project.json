@@ -1,6 +1,8 @@
 {
   "name": "SmartWatch.d-Demo",
   "entry": "home_page/home_page",
+  "description": "智能手表演示 Demo",
+  "type": "PROJECT_WIDGETS_APPLICATION",
   "assets": {
     "loadFrom": "any",
     "const": "resource_data",

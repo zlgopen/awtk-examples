@@ -49,12 +49,12 @@
 
 #### 运行效果截图：
 
-![Chart-Demo](docs/images/chart_main.png)
+![Chart-Demo](Chart.v2-Demo/docs/images/screenshot.jpg)
 
-![Meter-Demo](docs/images/meter_main.png)
+![Meter-Demo](Meter.v2-Demo/docs/images/screenshot.jpg)
 
-![CleanAir-Demo](docs/images/cleanair_main.png)
+![CleanAir-Demo](CleanAir.v2-Demo/docs/images/screenshot.jpg)
 
-![MusicPlayer-Demo](docs/images/musicplayer_main.png)
+![MusicPlayer-Demo](MusicPlayer.v2-Demo/docs/images/screenshot.jpg)
 
-![SmartWatch-Demo](docs/images/smartwatch_main.png)
+![SmartWatch-Demo](SmartWatch.v2-Demo/docs/images/screenshot.jpg)

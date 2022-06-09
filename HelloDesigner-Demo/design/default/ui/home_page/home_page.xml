@@ -1,8 +1,0 @@
-<window name="home_page" theme="">
-  <button name="basic_btn" x="12%" y="27%" w="35%" h="17%" repeat="0" enable_long_press="false" tr_text="Basic"/>
-  <button name="background_btn" x="r:12%" y="27%" w="35%" h="17%" repeat="0" enable_long_press="false" tr_text="Background Change"/>
-  <button name="listview_btn" x="12%" y="55%" w="35%" h="17%" repeat="0" enable_long_press="false" tr_text="List View"/>
-  <button name="animator_btn" x="r:12%" y="55%" w="35%" h="17%" repeat="0" enable_long_press="false" tr_text="Animate Widget"/>
-  <button name="language_btn" x="r:120" y="10" w="26" h="26" repeat="0" enable_long_press="false" style="en"/>
-  <image name="image" x="r:10" w="100" h="26" image="awtk_logo" y="10"/>
-</window>
